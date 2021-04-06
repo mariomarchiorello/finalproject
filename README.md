@@ -2,7 +2,7 @@
 
 
 ## This is our final project. It will be a lot of work. There will be moments of frustration, for all of us.
-## But well be able to build a great product from scratch. No predefined layouts. No predefined endpoints.
+## But we'll be able to build a great product from scratch. No predefined layouts. No predefined endpoints.
 ## WE SHAPE THIS THE WAY WE WANT TO!
 
 ## Some ground rules
