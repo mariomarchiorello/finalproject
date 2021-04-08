@@ -12,10 +12,17 @@ class User(AbstractUser):
 
     email = models.EmailField(unique=True)
 
+    MODES = [
+        (1, 'plankton mode'),
+        (2, 'dark mode'),
+        (3, 'light mode')
+    ]
+
     home_latitude = models.CharField(max_length=25, blank=True)
     home_longitude = models.CharField(max_length=25, blank=True)
     vessel_name = models.CharField(max_length=100, blank=True)
     vessel_id = models.CharField(max_length=100, blank=True)
+    mode = models.IntegerField(choices=MODES, max_length=1, default=1)
 
     def __str__(self):
         return f'{User.id} {User.email}'
