@@ -20,7 +20,7 @@ align-items: center;
 margin-right: 20px;
 `
 export const Profile = styled.div`
-font-size: 16px;
+font-size: 18px;
 color: #FFFFFF;
 
 :hover {
@@ -32,7 +32,7 @@ margin-left: 35px;
 margin-right: 35px;
 background-color: transparent;
 color: #FFFFFF;
-font-size: 16px;
+font-size: 18px;
 font-weight: bold;
 border-radius: 10px;
 border: 2px solid #30ADEA;
