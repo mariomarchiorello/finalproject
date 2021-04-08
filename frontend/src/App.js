@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Map from "./components/map";
+import Map from "./components/map/index";
 
 
 const App = ()=> {
