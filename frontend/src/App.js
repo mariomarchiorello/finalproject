@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Map from "./components/map/index";
-
+import Header from "./components/header/index"
 
 const App = ()=> {
   return (
@@ -17,7 +17,7 @@ const App = ()=> {
 
 
         
-
+        <Route exact path='/header' component={Header} />
       </Switch>
     </Router> 
     
