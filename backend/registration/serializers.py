@@ -43,8 +43,8 @@ class RegistrationSerializer(serializers.Serializer):
             'Your Luna registration code',
             f'Here is your registration code: {registration.code}\n\n'
             f'Go to this link to complete your registration:\n'
-            f'https://luna-taurus.propulsion-learn.ch/verification',
-            'tencindin@gmail.com',
+            f'https://goes-app.ch/verification',
+            'goes.plankton.app@gmail.com',
             [f'{new_user.email}'],
             fail_silently=False,
         )
@@ -124,8 +124,10 @@ class ResetPasswordSerializer(serializers.Serializer):
         #  send email
         send_mail(
             'Your Luna password reset code',
-            f'Here is your password reset code: {registration.code}',
-            'tencindin@gmail.com',
+            f'Here is your password reset code: {registration.code}\n\n',
+            # f'Go to this link to reset your password:\n'
+            # f'https://goes-app.ch/verification',
+            'goes.plankton.app@gmail.com',
             [f'{existing_user.email}'],
             fail_silently=False,
         )
