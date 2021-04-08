@@ -37,3 +37,10 @@ font-size: 14px;
 border: 2px solid #30ADEA;
 width: auto;
 `;
+
+
+export const Background = styled.div`
+    background-color:#000000;
+    height:100%;
+    width:100%;
+`;

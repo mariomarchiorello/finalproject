@@ -1,7 +1,8 @@
 import React from 'react'
+import { Background } from '../../globalstyles/globalStyle'
 import Header from '../header'
 import Map from './map'
-import { CenterContainer ,Background, Bluebutton } from './style'
+import { CenterContainer , Bluebutton } from './style'
 
 export default function MapPage() {
     return (
