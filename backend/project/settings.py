@@ -26,7 +26,7 @@ SECRET_KEY = 'v@@xekh4=xt@%2gmlc@1v0_!zx$lz6f!*=1jtn5oq)b!nsc-9d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '0.0.0.0']
 
 # Application definition
 
@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
+    # own
+    'user',
+    'registration'
 ]
 
 MIDDLEWARE = [
@@ -134,7 +137,7 @@ REST_FRAMEWORK = {
 
 }
 
-# AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = 'user.User'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=20),
