@@ -40,6 +40,10 @@ border: 2px solid #30ADEA;
 padding: 10px 20px 10px 20px;
 `;
 
+export const LogoContainer = styled.div`
+width: 50%;
+display: flex;
+`
 
 
 
