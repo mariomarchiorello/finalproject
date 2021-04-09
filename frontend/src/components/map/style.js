@@ -14,14 +14,18 @@ export const BackgroundMap = styled(CenterContainer)`
 section{
     /* background-color:green; */
 }
-@media (max-width: 768px) {
+@media (max-width: 1620px) {
     flex-direction: column;
+    background-color: pink;
+    width:60vw;
   }
 `;
 
 export const Box = styled.div`
-    height:50vh;
-    width:66vw;
+    height:100%;
+    width:100%;
     border-radius:5px;
+    margin:10px;
+    border:2px red solid;
     
 `;
