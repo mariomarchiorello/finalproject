@@ -23,11 +23,11 @@ class SampleSet(models.Model):
     created = models.DateField(auto_now=True)
     modified = models.DateField(auto_now_add=True)
     day_or_night = models.BooleanField(default=True)
-    air_temperature = models.IntegerField(blank=True)
-    water_temperature = models.IntegerField(blank=True)
-    sample_latitude = models.FloatField(max_length=15)
-    sample_longitude = models.FloatField(max_length=15)
-    sample_depth = models.FloatField(max_length=8, blank=True)
+    air_temperature = models.IntegerField(blank=True, default=0)
+    water_temperature = models.IntegerField(blank=True, default=0)
+    sample_latitude = models.FloatField()
+    sample_longitude = models.FloatField()
+    sample_depth = models.FloatField(blank=True, default=0)
     submitted_by = models.ForeignKey(to=User,
                                      on_delete=models.SET_NULL,
                                      null=True,
