@@ -56,22 +56,21 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const CenterContainer = styled.div`
-    height:70%;
-    width:70%;
+    height:67vh;
+    width:70vw;
     background-color:#000000;
-    border: 2px solid linear-gradient(#30ADEA, #216273);
-    border-radius:5px;
-
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
-    padding:2%; 
+    justify-content:space-around;
+    padding:0% 0% 0%;
+    border:2px solid #30ADEA;
+    border-radius:5px;
+    
 `;
 
 export const Main = styled.div`
     
-    background-color:red;
     height:84%;
     width:100%;
     padding:0;
