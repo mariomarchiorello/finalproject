@@ -45,7 +45,9 @@ INSTALLED_APPS = [
 
     # own
     'user',
-    'registration'
+    'registration',
+    'sample_set',
+    'image',
 ]
 
 MIDDLEWARE = [
