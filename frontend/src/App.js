@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Map from "./components/map/index";
 import Header from "./components/header/index"
 import { GlobalStyle } from "./globalstyles/globalStyle";
+import SignUp from "./components/signIn-signUp/signUp/index"
+import Verification from "./components/signIn-signUp/verification";
 
 const App = ()=> {
   return (
@@ -16,8 +18,8 @@ const App = ()=> {
 
 
 
-
-        
+        <Route exact path='/verification' component={Verification} />
+        <Route exact path='/sign-up' component={SignUp} />
         <Route exact path='/header' component={Header} />
       </Switch>
     </Router> 
