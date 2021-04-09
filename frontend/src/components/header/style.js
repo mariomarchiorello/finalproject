@@ -6,8 +6,8 @@ width: 100vw;
 justify-content: space-between;
 position: sticky;
 top: 0;
-background-color: black;
-height: 4rem;
+background-color: transparent;
+height: 10%;
 border-bottom:2px white solid;
 `;
 export const Logo = styled.img`

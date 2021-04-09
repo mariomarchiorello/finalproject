@@ -33,7 +33,7 @@ export default function Map() {
 
     return (
         <> 
-            <MapContainer style={{ height: '560px', width: '1000px'}} center={center} zoom={2} minZoom={1} scrollWheelZoom={false} >
+            <MapContainer style={{ height: '100%', width: '100%'}} center={center} zoom={2} minZoom={1} scrollWheelZoom={false} >
                 
                 <TileLayer attribution='&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-earth">GoogleMaps</a> Data 2021' url='http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}'/>
 
