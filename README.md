@@ -1,38 +1,34 @@
-# Internal guidelines for the "Goes-App"
+# GOES-App
 
+GOES-App is part of a citizen science platform aimed at building a dataset of global plankton popultations.
+The app is used to annotate microscopic images, identifying and counting which Phytoplankton and Zooplankton
+are present in samples collected along coastlines or at sea. The results of the annotations are uploaded to a data set,
+which is used to monitor global plankton populations.
 
-## This is our final project. It will be a lot of work. There will be moments of frustration, for all of us.
-## 
+More information about the project can be found at [The GOES Foundation](https://www.goesfoundation.com)
 
-## Some ground rules
+## Installation
 
+?? How would someone install this app if they wanted to work on it locally ??
 
-- we're being respectful to eachother.
-- we don't hold back on our ideas. Be vocal. All opinions and Ideas are valid!
-- we all make suggestions and explain our points but desicions that impact all of us (packeges, tools, struckures, global variables, etc.) will be made as a team.
-- let's keep the project structure open and agile, that way we can deal better with changes (THEY WILL COME UP!) and the application will be more scaleable in the future.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
+```bash
+pip install foobar
+```
 
+## Usage
 
-## Dividing tasks
+This app can be used online at [GOES-App](https://goes-app.propulsion-learn.ch)
 
+## Contributing
+Are pull requests welcome?
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-- we use the ticketsystem to clearly say what we are working on. 
-- we strictly avoid for two developers to work on the same file at the same time.
-- if we e.g. see the need for a new GLOBAL container, we write a short message, decide who will do it, and once it's done, push it and let everyone know the changes
-  are there to pull. 
+Please make sure to update tests as appropriate.
 
+## License
 
-## GIT
+?? Do we want a particular license ??
 
-- commit a lot.
-- Do not work on local Master branch.
-- add  and commit before every other type of git-action. 
-- Do not merge into remote-Master. Only Dusko and Mario merge into Master. 
-- make another commit. it doesn't hurt.
-- always be in the root-directory when working on git-actions.
-- did I mention that it's important to commit a lot? 
-- always pull the development branch, merge locally, resolve possible convlicts locally and then push. 
-- commit more. 
-
-
+[MIT](https://choosealicense.com/licenses/mit/)
