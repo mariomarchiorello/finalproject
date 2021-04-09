@@ -22,7 +22,7 @@ class User(AbstractUser):
     home_longitude = models.CharField(max_length=25, blank=True)
     vessel_name = models.CharField(max_length=100, blank=True)
     vessel_id = models.CharField(max_length=100, blank=True)
-    mode = models.IntegerField(choices=MODES, max_length=1, default=1)
+    mode = models.IntegerField(choices=MODES, default=1)
 
     def __str__(self):
         return f'{User.id} {User.email}'
