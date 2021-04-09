@@ -1,13 +1,24 @@
 import styled from 'styled-components';
-import {Background, BlueButton,CenterContainer} from '../../globalstyles/globalStyle'
+import {BlueButton,CenterContainer} from '../../globalstyles/globalStyle'
 
 
 
 export const Bluebutton = styled(BlueButton)`
-    margin:10px;
+    margin-left:10px;
+    margin-right:10px;
+    
 
 `;
 export const BackgroundMap = styled(CenterContainer)`
+/* background-color:pink; */
+section{
+    /* background-color:green; */
+}
+`;
 
-
+export const Box = styled.div`
+    height:50vh;
+    width:66vw;
+    border-radius:5px;
+    
 `;

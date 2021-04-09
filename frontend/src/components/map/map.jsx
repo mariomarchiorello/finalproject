@@ -5,6 +5,7 @@ import L from 'leaflet';
 import icon from '../../assets/graphics/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import home from '../../assets/graphics/black-position-icon.png';
+import { Box } from './style';
 
 let sampleIcon = L.icon({
     iconUrl: icon,
@@ -33,6 +34,7 @@ export default function Map() {
 
     return (
         <> 
+            <Box> 
             <MapContainer style={{ height: '100%', width: '100%'}} center={center} zoom={2} minZoom={1} scrollWheelZoom={false} >
                 
                 <TileLayer attribution='&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-earth">GoogleMaps</a> Data 2021' url='http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}'/>
@@ -46,6 +48,7 @@ export default function Map() {
                 }
 
             </MapContainer>
+            </Box>
         </>
     )
 }

@@ -8,7 +8,6 @@ position: sticky;
 top: 0;
 background-color: transparent;
 height: 10%;
-border-bottom:2px white solid;
 `;
 export const Logo = styled.img`
 /* width: 70px;
