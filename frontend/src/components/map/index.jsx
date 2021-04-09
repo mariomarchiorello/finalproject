@@ -1,23 +1,28 @@
 import React from 'react'
-import { Background } from '../../globalstyles/globalStyle'
+import { CenterContainer, Background, Main } from '../../globalstyles/globalStyle'
+import Footer from '../footer'
 import Header from '../header'
 import Map from './map'
-import { CenterContainer , Bluebutton } from './style'
+import { BackgroundMap, Bluebutton } from './style'
 
 export default function MapPage() {
     return (
         <>  
-            <Background>
-                <Header />
-                <div><p>G O E S</p></div>
-                <CenterContainer>
-
-                <Map />
-                <Bluebutton>Upload</Bluebutton>
-                <Bluebutton>Profile</Bluebutton>
-                </CenterContainer>
-            </Background>
-
+                <Background>
+                    <Header />
+                    <Main>
+                        <div><p>G O E S</p></div>
+                        <BackgroundMap>
+                        <Map />
+                        <section className="button">
+                        <Bluebutton>Upload</Bluebutton>
+                        <Bluebutton>Profile</Bluebutton>
+                        </section>
+                        </BackgroundMap>
+                    </Main>
+                    <Footer />
+                </Background>
+                
 
         </>
     )
