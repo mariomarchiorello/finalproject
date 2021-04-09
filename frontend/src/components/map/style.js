@@ -14,6 +14,9 @@ export const BackgroundMap = styled(CenterContainer)`
 section{
     /* background-color:green; */
 }
+@media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const Box = styled.div`
