@@ -3,6 +3,9 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { Box } from './style';
 import { sampleAllIcon, sampleMeIcon,shipMeIcon, shipAllIcon, homeMeIcon, homeAllIcon } from './mapIcons';
+import {useSelector} from 'react-redux';
+
+
 
 
 // currently the positions are hardcoded, in the future they will be fetchen from the DB
@@ -15,6 +18,10 @@ const homeAllPositions = [[33.981140, -81.242119],[-17.97086,-70.325]];
 const center= [10, -2];
 
 export default function Map() {
+
+    // const userSelf = useSelector(state => state.getSelfReducer.user);
+    // const homeLocation = user
+
 
     return (
         <> 
