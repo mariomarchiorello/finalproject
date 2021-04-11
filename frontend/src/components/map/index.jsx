@@ -1,5 +1,5 @@
 import React from 'react'
-import { CenterContainer, Background, Main } from '../../globalstyles/globalStyle'
+import { Background, Main } from '../../globalstyles/globalStyle'
 import Footer from '../footer'
 import Header from '../header'
 import Map from './map'
