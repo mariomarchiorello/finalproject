@@ -21,6 +21,7 @@ const App = ()=> {
         <Route exact path='/verification' component={Verification} />
         <Route exact path='/sign-up' component={SignUp} />
         <Route exact path='/header' component={Header} />
+        
       </Switch>
     </Router> 
     <GlobalStyle/>

@@ -1,5 +1,5 @@
 
-export const listUsersAction = () => {
+export const getUserMeAction = () => {
     return (dispatch) => {
         const token = localStorage.getItem('token');
         const config = {
@@ -16,7 +16,7 @@ export const listUsersAction = () => {
         fetch(url, config)
         .then(res => res.json())
         .then(data => {
-            // console.log('data:', data);
+             console.log('data:', data);
             const action = {
                 type: 'GET_USER_ME',
                 payload: data

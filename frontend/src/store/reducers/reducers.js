@@ -7,23 +7,11 @@ const initialState = {
 
 
 const getSelfReducer = (state= initialState, action) => {
-    if(action.type === 'LIST_POSTGET_USER_ME'){
+    if(action.type === 'GET_USER_ME'){
         return {...state, posts: action.payload}
     }
     return state
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
