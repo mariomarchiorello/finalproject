@@ -6,6 +6,8 @@ import SignUp from "./components/signIn-signUp/signUp/index"
 import Verification from "./components/signIn-signUp/verification";
 import SignIn from "./components/signIn-signUp/signIn";
 import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
+import Home from "./components/home"
+
 
 const App = ()=> {
   return (
@@ -16,8 +18,8 @@ const App = ()=> {
         <Route exact path='/map' component={Map} />
         {/* <Route exact path='/annotate' component={XXX} /> */}
         {/* <Route exact path='/profile' component={XXX} /> */}
-
-
+        
+        <Route exact path='/home' component={Home} />
         <Route exact path='/resetOne' component={ResetPwEmail} />
         <Route exact path='/signIn' component={SignIn} />
         <Route exact path='/verification' component={Verification} />

@@ -45,6 +45,9 @@ export const Background = styled.div`
     width:100vw;
     display: flex;
     flex-direction:column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
 `;
 
 export const GlobalStyle = createGlobalStyle`
