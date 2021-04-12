@@ -8,6 +8,8 @@ import SignIn from "./components/signIn-signUp/signIn";
 import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
 import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Profile from "./components/profile";
+import Home from "./components/home"
+
 
 const App = ()=> {
   return (
@@ -20,7 +22,8 @@ const App = ()=> {
         <Route exact path='/profile' component={Profile} />
 
 
-        <Route exact path='/resetTwo' component={PasswordReset} />
+        <Route exact path='/resetTwo' component={PasswordReset} />        
+        <Route exact path='/home' component={Home} />
         <Route exact path='/resetOne' component={ResetPwEmail} />
         <Route exact path='/signIn' component={SignIn} />
         <Route exact path='/verification' component={Verification} />
