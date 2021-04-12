@@ -36,11 +36,9 @@ export default function SignIn() {
                     </RegistrationWrapper>
                     <RegInputContainer>
                         <VerLabel htmlFor="email">email</VerLabel>
-                        <GlobalInput type="text" name="email"
-                        value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
+                        <GlobalInput type="text" name="email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                         <VerLabel htmlFor="password">password</VerLabel>
-                        <GlobalInput type="password" name="password"
-                        value={password} onChange={(e)=>{setPassword(e.target.value)}}></GlobalInput>
+                        <GlobalInput type="password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                         <RegButton type='submit' onClick={signInHandler}>Sign in</RegButton>
                     </RegInputContainer>
                 </Main>
