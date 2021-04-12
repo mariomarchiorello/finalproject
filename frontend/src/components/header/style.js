@@ -22,6 +22,7 @@ margin-right: 20px;
 export const Profile = styled.div`
 font-size: 18px;
 color: #FFFFFF;
+cursor:pointer; 
 
 :hover {
   font-weight: bold;
@@ -37,6 +38,10 @@ font-weight: bold;
 border-radius: 10px;
 border: 2px solid #30ADEA;
 padding: 10px 20px 10px 20px;
+cursor: pointer; 
+:active{
+  outline:transparent;
+  }
 `;
 
 export const LogoContainer = styled.div`

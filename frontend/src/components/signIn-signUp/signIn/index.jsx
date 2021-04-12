@@ -14,7 +14,7 @@ export default function SignIn() {
     const [password, setPassword] = useState("");
 
     const dispatch = useDispatch();
-    const history = useHistory()
+    const history = useHistory();
 
     const signInHandler = (e) => {
         e.preventDefault();
@@ -23,6 +23,7 @@ export default function SignIn() {
           password: password
         }
         dispatch(signInAction(credentials, history))
+
   };
 
 

@@ -11,6 +11,10 @@ padding: 10px 20px 10px 20px;
 width: 13rem;
 height: 2.5rem;
 font-size: 18px;
+cursor:pointer;
+:active{
+  outline:transparent;
+}
 `;
 export const GlobalInput = styled.input`
 font-size: 18px;
@@ -29,13 +33,14 @@ font-size: 16px;
 
 export const TransparentButton = styled.button`
 border-radius: 5px;
-width: 8rem;
+//width: 8rem;
 background: transparent;
 color: orange;
 padding: 5px 20px 5px 20px;
 font-size: 14px;
 border: 2px solid #30ADEA;
 width: auto;
+cursor: pointer; 
 `;
 
 
