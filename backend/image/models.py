@@ -11,10 +11,10 @@ class Image(models.Model):
     original_image = models.ImageField()
     annotated_image = models.ImageField(blank=True)
     marker_state = models.JSONField(default=dict, blank=True)
-    zooplankton = models.IntegerField(default=0, blank=True)
-    phytoplankton = models.IntegerField(default=0, blank=True)
-    plastic_fibers = models.IntegerField(default=0, blank=True)
-    plastic_particles = models.IntegerField(default=0, blank=True)
+    zooplankton = models.IntegerField(null=True, blank=True)
+    phytoplankton = models.IntegerField(null=True, blank=True)
+    plastic_fibers = models.IntegerField(null=True, blank=True)
+    plastic_particles = models.IntegerField(null=True, blank=True)
 
 
 

@@ -36,6 +36,7 @@ api_patterns = [
     path('auth/', include('registration.urls')),
     path('users/', include('user.urls')),
     path('samples/', include('sample_set.urls')),
+    path('images/', include('image.urls')),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 

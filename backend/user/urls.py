@@ -1,7 +1,8 @@
 from django.urls import path
 
-from user.views import GetMyProfile
+from user.views import GetEditDeleteMyProfile, GetAllUsers
 
 urlpatterns = [
-    path('me/', GetMyProfile.as_view())
+    path('me/', GetEditDeleteMyProfile.as_view()),
+    path('all/', GetAllUsers.as_view())
 ]
