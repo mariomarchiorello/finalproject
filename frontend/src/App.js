@@ -9,7 +9,7 @@ import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
 import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Profile from "./components/profile";
 import Home from "./components/home"
-
+import DynamicBackground from "./components/backgroundChanger";
 
 const App = ()=> {
   return (
@@ -21,7 +21,7 @@ const App = ()=> {
         {/* <Route exact path='/annotate' component={XXX} /> */}
         <Route exact path='/profile' component={Profile} />
 
-
+        <Route exact path='/bg' component={DynamicBackground} />
         <Route exact path='/resetTwo' component={PasswordReset} />        
         <Route exact path='/home' component={Home} />
         <Route exact path='/resetOne' component={ResetPwEmail} />
