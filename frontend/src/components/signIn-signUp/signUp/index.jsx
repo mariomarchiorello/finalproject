@@ -22,9 +22,9 @@ const SignUp = () => {
         const credentials = {
             email: regEmail,
         }
-        const url = "http://localhost:8000/backend/api/auth/registration/";
+        //const url = "http://localhost:8000/backend/api/auth/registration/";
         
-        //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/";
+        const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/";
         const regConfig =  {
             method: "POST",
             body: JSON.stringify(credentials),
