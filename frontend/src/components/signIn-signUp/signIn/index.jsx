@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom';
 import { Background, BlueButton, GlobalInput, Main } from '../../../globalstyles/globalStyle';
 import { signInAction } from '../../../store/actions/signInAction';
 import Header from '../../header';
+import { RegButton, RegInputContainer, RegistrationWrapper } from '../signUp/style';
 import { VerLabel } from '../verification/style';
 
 export default function SignIn() {
@@ -30,13 +31,18 @@ export default function SignIn() {
             <Background>
                 <Header/>
                 <Main>
-                <VerLabel for="email">email</VerLabel>
-                <GlobalInput type="text" name="email"
-                value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
-                <VerLabel for="password">password</VerLabel>
-                <GlobalInput type="password" name="password"
-                value={password} onChange={(e)=>{setPassword.apply(e.target.value)}}></GlobalInput>
-                <BlueButton type='submit' onClick={signInHandler}></BlueButton>
+                    <RegistrationWrapper>
+                        <span> Welcome back, please sign in to procced</span>
+                    </RegistrationWrapper>
+                    <RegInputContainer>
+                        <VerLabel for="email">email</VerLabel>
+                        <GlobalInput type="text" name="email"
+                        value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
+                        <VerLabel for="password">password</VerLabel>
+                        <GlobalInput type="password" name="password"
+                        value={password} onChange={(e)=>{setPassword.apply(e.target.value)}}></GlobalInput>
+                        <RegButton type='submit' onClick={signInHandler}>Sign in</RegButton>
+                    </RegInputContainer>
                 </Main>
             </Background>
         </>    
