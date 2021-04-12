@@ -9,8 +9,8 @@ export const getUserMeAction = () => {
             })
         }
         
-        const url = 'http://localhost:8000/backend/api/users/me'
-        //const url = 'https://goes-app.propulsion-learn.ch/backend/api/users/me'
+        //const url = 'http://localhost:8000/backend/api/users/me'
+        const url = 'https://goes-app.propulsion-learn.ch/backend/api/users/me'
 
 
         fetch(url, config)

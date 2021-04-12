@@ -26,9 +26,9 @@ const PasswordReset = () => {
             code: code,
             password_repeat: password_repeat
         }
-        const url = "https://localhost:8000.propulsion-learn.ch/backend/api/auth/password-reset/";
+        //const url = "https://localhost:8000.propulsion-learn.ch/backend/api/auth/password-reset/";
 
-        //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/password-reset/validation/";
+        const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/password-reset/validation/";
         const config = {
             method: "PATCH",
             body: JSON.stringify(verificationCredentials),

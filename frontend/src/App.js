@@ -6,6 +6,7 @@ import SignUp from "./components/signIn-signUp/signUp/index"
 import Verification from "./components/signIn-signUp/verification";
 import SignIn from "./components/signIn-signUp/signIn";
 import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
+import PasswordReset from "./components/signIn-signUp/passwordReset";
 
 const App = ()=> {
   return (
@@ -18,6 +19,7 @@ const App = ()=> {
         {/* <Route exact path='/profile' component={XXX} /> */}
 
 
+        <Route exact path='/resetTwo' component={PasswordReset} />
         <Route exact path='/resetOne' component={ResetPwEmail} />
         <Route exact path='/signIn' component={SignIn} />
         <Route exact path='/verification' component={Verification} />
