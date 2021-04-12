@@ -8,9 +8,12 @@ import bg7 from "../../assets/background-images/7.jpg"
 import bg8 from "../../assets/background-images/8.jpg"
 import bg9 from "../../assets/background-images/9.jpg"
 import bg10 from "../../assets/background-images/10.jpg"
-import bg11 from "../../assets/background-images/11.jpg"
-import bg12 from "../../assets/background-images/12.jpg"
+import bg11 from "../../assets/background-images/valdiviella-insignis.jpg"
+import bg12 from "../../assets/background-images/yellow-oval.jpg"
 import { Background } from "../../globalstyles/globalStyle"
+import Header from "../header"
+import Home from "../home"
+import { QuoteWrapper } from "../home/style"
 
 const DynamicBackground = () => {
 
@@ -21,14 +24,17 @@ const DynamicBackground = () => {
 
      const background = {
         backgroundImage: `url(${selectedBackground})`,
-        backgroundPosition: "center",
+        backgroundPosition: "top center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        // opacity: "0.5",
         }
-        console.log(background)
 
     return <>
-        <Background className="bg" style={background}/>
+        
+        <Background className="bg" style={background}>
+           
+        </Background>
     </>
     
 };
