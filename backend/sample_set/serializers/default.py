@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from image.models import Image
 from image.serializers import ImageSerializer
 from sample_set.models import SampleSet
 

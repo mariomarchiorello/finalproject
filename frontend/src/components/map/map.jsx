@@ -3,8 +3,8 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { Box } from './style';
 import { sampleAllIcon, sampleMeIcon,shipMeIcon, shipAllIcon, homeMeIcon, homeAllIcon } from './mapIcons';
-// import {useSelector} from 'react-redux';
-// import getSelfReducer from '../../store/reducers'
+import {useSelector} from 'react-redux';
+
 
 
 
@@ -20,8 +20,8 @@ const center= [10, -2];
 
 export default function Map() {
 
-    /*const userSelf = useSelector(state => state.getSelfReducer.user);
-    console.log(userSelf)*/
+    const userSelf = useSelector(state => state.getSelfReducer.self);
+    console.log(userSelf)
 
 
     return (

@@ -21,4 +21,7 @@ export const RegInputContainer = styled.div`
 
 export const RegButton = styled(BlueButton)`
     margin-top: 1.5rem;
+  :active{
+    outline: transparent;
+  }
 `;

@@ -23,9 +23,9 @@ const App = ()=> {
 
         <Route exact path='/bg' component={DynamicBackground} />
         <Route exact path='/resetTwo' component={PasswordReset} />        
-        <Route exact path='/home' component={Home} />
+        <Route exact path='/' component={Home} />
         <Route exact path='/resetOne' component={ResetPwEmail} />
-        <Route exact path='/signIn' component={SignIn} />
+        <Route exact path='/sign-in' component={SignIn} />
         <Route exact path='/verification' component={Verification} />
         <Route exact path='/sign-up' component={SignUp} />
         <Route exact path='/header' component={Header} />

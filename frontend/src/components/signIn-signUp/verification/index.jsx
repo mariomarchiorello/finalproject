@@ -28,9 +28,9 @@ const Verification = () => {
             code: code,
             password_repeat: password_repeat
         }
-        const url = "https://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
+        //const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
 
-        //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/validation/";
+        const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/validation/";
         const config = {
             method: "PATCH",
             body: JSON.stringify(verificationCredentials),
