@@ -15,17 +15,31 @@ import { SelectionContainer } from './style'
 
 
 export default function Profile() {
+
+    
+    const selectHandler = value => {
+        console.log(value);
+        return value;
+    }
+
+
     return (
         <>
             <Background>
                 <Header/>
                 <Main>
                     <SelectionContainer>
-                        <Link className='underscored'>Profile</Link>
-                        <Link className='underscored'>Completet</Link>
-                        <Link className='underscored'>in progress</Link>
+                        <Link className='underscored'
+                         onClick={()=>selectHandler("userProfile")}
+                        >Profile</Link>
+                        <Link className='underscored'
+                         onClick={()=>selectHandler("completed")}
+                        >Completet</Link>
+                        <Link className='underscored'
+                         onClick={()=>selectHandler("inProgress")}
+                        >in progress</Link>
                     </SelectionContainer>
-                    <MyProfile />
+                    { selectHandler==="userProfile" ? <MyProfile /> : null}
                     
 
 

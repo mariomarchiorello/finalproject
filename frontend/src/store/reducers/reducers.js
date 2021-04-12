@@ -3,12 +3,13 @@ import { combineReducers } from 'redux';
 const initialState = {
     token: '',
     user: [],
+    self:[],
 }
 
 
 const getSelfReducer = (state= initialState, action) => {
     if(action.type === 'GET_USER_ME'){
-        return {...state, posts: action.payload}
+        return {...state, self: action.payload}
     }
     return state
 }
@@ -20,6 +21,7 @@ const signInReducer = (state = initialState, action) => {
     }
     return state
 }
+
 
 
 
