@@ -16,4 +16,12 @@ export const QuoteWrapper = styled.div`
 export const MainHome = styled(Main)`
     justify-content: start;
     align-items: flex-start;
-`
+`;
+
+export const Buttonholder = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+`;
