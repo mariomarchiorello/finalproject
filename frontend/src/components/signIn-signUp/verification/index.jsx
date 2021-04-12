@@ -55,19 +55,19 @@ const Verification = () => {
                     <p>Please check your email for the verification code to finish the process.</p>
                 </VerificationMsg>
                 <VerInputContainer>
-                    <VerLabel for="code">verification code</VerLabel>
+                    <VerLabel htmlFor="code">verification code</VerLabel>
                     <GlobalInput type="text" name="code"
                     value={code} onChange={(e)=>{setCode(e.target.value)}}></GlobalInput>
-                    <VerLabel for="email">email</VerLabel>
+                    <VerLabel htmlFor="email">email</VerLabel>
                     <GlobalInput type="text" name="email"
                     value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
-                    <VerLabel for="user">username</VerLabel>
+                    <VerLabel htmlFor="user">username</VerLabel>
                     <GlobalInput type="text" name="user"
                     value={username} onChange={(e)=>{setUsername(e.target.value)}}></GlobalInput>
-                    <VerLabel for="password">password</VerLabel>
+                    <VerLabel htmlFor="password">password</VerLabel>
                     <GlobalInput type="password" name="password"
                     value={password} onChange={(e)=>{setPassword.apply(e.target.value)}}></GlobalInput>
-                    <VerLabel for="password_repeat">repeat password</VerLabel>
+                    <VerLabel htmlFor="password_repeat">repeat password</VerLabel>
                     <GlobalInput type="password" name="password_repeat"
                     value={password_repeat} onChange={(e)=>{setPassword_repeat(e.target.value)}}></GlobalInput>
                     <VerButton type='submit' onClick={veriHandler}>Register</VerButton>

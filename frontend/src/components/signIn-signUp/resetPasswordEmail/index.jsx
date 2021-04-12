@@ -35,7 +35,7 @@ const ResetPwEmail = () => {
         .then(data => {
             console.log(data);
         })
-        history.push("/sucess")
+        history.push("/resetTwo")
     }
 
 
@@ -48,7 +48,7 @@ const ResetPwEmail = () => {
                     <span>Please enter your account email </span>
                 </RegistrationWrapper>
                 <RegInputContainer>
-                    <GlobalLabel for="email">email</GlobalLabel>
+                    <GlobalLabel htmlFor="email">email</GlobalLabel>
                     <GlobalInput type="text" name="email" placeholder='E-mail address' value={regEmail} onChange={(e)=>setEmail(e.target.value)}/>
                     <RegButton type='submit' onClick={registrationHandler}> Continue</RegButton>
                 </RegInputContainer>
