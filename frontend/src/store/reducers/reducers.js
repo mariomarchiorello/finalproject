@@ -22,7 +22,12 @@ const signInReducer = (state = initialState, action) => {
     return state
 }
 
-
+const menuCountAction = (state= {pageId:"0"}, action) => {
+    if(action.type === 'MENUCOUNTER'){
+        return {...state, pageId: action.payload}
+    }
+    return state
+}
 
 
 
@@ -31,5 +36,6 @@ const signInReducer = (state = initialState, action) => {
 export const rootReducer = combineReducers({
     getSelfReducer,
     signInReducer,
+    menuCountAction
     
 });

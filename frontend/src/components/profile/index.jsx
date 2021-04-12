@@ -5,7 +5,7 @@ import Footer from '../footer'
 import Header from '../header'
 import MyProfile from './self'
 import { SelectionContainer } from './style'
-
+// import { useDispatch, useSelector} from 'react-redux'
 
 
 
@@ -16,30 +16,29 @@ import { SelectionContainer } from './style'
 
 export default function Profile() {
 
-    
-    const selectHandler = value => {
-        console.log(value);
-        return value;
-    }
 
+    let sectionToRender = "0"
+    const selectHandler = (e) => {
+        return sectionToRender = e
+    }
 
     return (
         <>
-            <Background>
+            <Background> 
                 <Header/>
                 <Main>
                     <SelectionContainer>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("userProfile")}
+                         onClick={()=>selectHandler("0")}
                         >Profile</Link>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("completed")}
+                         onClick={()=>selectHandler("1")}
                         >Completet</Link>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("inProgress")}
+                         onClick={()=>selectHandler("2")}
                         >in progress</Link>
                     </SelectionContainer>
-                    { selectHandler==="userProfile" ? <MyProfile /> : null}
+                    {sectionToRender === "0" ? <MyProfile /> : null}
                     
 
 
