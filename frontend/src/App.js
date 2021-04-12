@@ -5,6 +5,7 @@ import { GlobalStyle } from "./globalstyles/globalStyle";
 import SignUp from "./components/signIn-signUp/signUp/index"
 import Verification from "./components/signIn-signUp/verification";
 import SignIn from "./components/signIn-signUp/signIn";
+import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
 
 const App = ()=> {
   return (
@@ -17,7 +18,7 @@ const App = ()=> {
         {/* <Route exact path='/profile' component={XXX} /> */}
 
 
-
+        <Route exact path='/resetOne' component={ResetPwEmail} />
         <Route exact path='/signIn' component={SignIn} />
         <Route exact path='/verification' component={Verification} />
         <Route exact path='/sign-up' component={SignUp} />
