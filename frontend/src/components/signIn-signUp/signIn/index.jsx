@@ -38,7 +38,7 @@ export default function SignIn() {
                         <VerLabel htmlFor="email">email</VerLabel>
                         <GlobalInput type="text" name="email"
                         value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
-                        <VerLabel for="password">password</VerLabel>
+                        <VerLabel htmlFor="password">password</VerLabel>
                         <GlobalInput type="password" name="password"
                         value={password} onChange={(e)=>{setPassword(e.target.value)}}></GlobalInput>
                         <RegButton type='submit' onClick={signInHandler}>Sign in</RegButton>

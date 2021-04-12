@@ -26,6 +26,7 @@ export default function Profile() {
                         <Link className='underscored'>in progress</Link>
                     </SelectionContainer>
                     <MyProfile />
+                    
 
 
                 </Main>
