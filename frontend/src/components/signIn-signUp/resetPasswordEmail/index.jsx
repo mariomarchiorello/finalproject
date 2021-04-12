@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-const SignUp = () => {
+const ResetPwEmail = () => {
 
     const [regEmail,setEmail] = useState("");
 
@@ -22,9 +22,9 @@ const SignUp = () => {
         const credentials = {
             email: regEmail,
         }
-        const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
+        const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/password-reset/";
         
-        //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/";
+        //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/password-reset/";
         const regConfig =  {
             method: "POST",
             body: JSON.stringify(credentials),
@@ -45,7 +45,7 @@ const SignUp = () => {
             <Header/>
             <Main>
                 <RegistrationWrapper>
-                    <span>Register New Account</span>
+                    <span>Please enter your account email </span>
                 </RegistrationWrapper>
                 <RegInputContainer>
                     <GlobalLabel for="email">email</GlobalLabel>
@@ -58,4 +58,4 @@ const SignUp = () => {
     </>
 }
 
-export default (SignUp)
+export default (ResetPwEmail)

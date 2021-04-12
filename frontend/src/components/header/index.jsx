@@ -1,5 +1,5 @@
 import { HeaderContainer, Logo, RightContainer, Profile, LoginButton, LogoContainer } from "./style"
- import goesLogo3 from "../../assets/graphics/GOES3.jpg"
+//  import goesLogo3 from "../../assets/graphics/GOES3.jpg"
  import first from "../../assets/graphics/bigicon.png"
  import second from "../../assets/graphics/goesicon.png"
 

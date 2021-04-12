@@ -4,6 +4,8 @@ import Header from "./components/header/index"
 import { GlobalStyle } from "./globalstyles/globalStyle";
 import SignUp from "./components/signIn-signUp/signUp/index"
 import Verification from "./components/signIn-signUp/verification";
+import SignIn from "./components/signIn-signUp/signIn";
+import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
 
 const App = ()=> {
   return (
@@ -11,16 +13,17 @@ const App = ()=> {
      <Router>
       <Switch>
         {/* <Route exact path='/' component={Home} /> */}
-        {/* <Route exact path='/signIn-signUp' component={XXX} /> */}
         <Route exact path='/map' component={Map} />
         {/* <Route exact path='/annotate' component={XXX} /> */}
         {/* <Route exact path='/profile' component={XXX} /> */}
 
 
-
+        <Route exact path='/resetOne' component={ResetPwEmail} />
+        <Route exact path='/signIn' component={SignIn} />
         <Route exact path='/verification' component={Verification} />
         <Route exact path='/sign-up' component={SignUp} />
         <Route exact path='/header' component={Header} />
+        
       </Switch>
     </Router> 
     <GlobalStyle/>

@@ -7,13 +7,12 @@ import Footer from "../../footer";
 
 
 
-const Verification = () => {
+const PasswordReset = () => {
 
     const history = useHistory()
 
     const [code, setCode] = useState("")
     const [email, setEmail] = useState("")
-    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [password_repeat, setPassword_repeat] = useState("")
     
@@ -23,14 +22,13 @@ const Verification = () => {
         e.preventDefault();
         const verificationCredentials = {
             email : email,
-            username: username,
             password: password,
             code: code,
             password_repeat: password_repeat
         }
-        const url = "https://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
+        const url = "https://localhost:8000.propulsion-learn.ch/backend/api/auth/password-reset/";
 
-        //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/validation/";
+        //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/password-reset/validation/";
         const config = {
             method: "PATCH",
             body: JSON.stringify(verificationCredentials),
@@ -58,12 +56,9 @@ const Verification = () => {
                     <VerLabel for="code">verification code</VerLabel>
                     <GlobalInput type="text" name="code"
                     value={code} onChange={(e)=>{setCode(e.target.value)}}></GlobalInput>
-                    <VerLabel for="email">email</VerLabel>
+                    <VerLabel for="email">verification code</VerLabel>
                     <GlobalInput type="text" name="email"
-                    value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
-                    <VerLabel for="user">username</VerLabel>
-                    <GlobalInput type="text" name="user"
-                    value={username} onChange={(e)=>{setUsername(e.target.value)}}></GlobalInput>
+                    value={code} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
                     <VerLabel for="password">password</VerLabel>
                     <GlobalInput type="password" name="password"
                     value={password} onChange={(e)=>{setPassword.apply(e.target.value)}}></GlobalInput>
@@ -78,5 +73,4 @@ const Verification = () => {
     </>
 
 }
-
-export default (Verification)
+export default (PasswordReset)
