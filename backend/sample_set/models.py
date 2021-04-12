@@ -23,20 +23,16 @@ class SampleSet(models.Model):
     created = models.DateField(auto_now=True)
     modified = models.DateField(auto_now_add=True)
     day_or_night = models.BooleanField(default=True)
-    air_temperature = models.IntegerField(blank=True, default=0)
-    water_temperature = models.IntegerField(blank=True, default=0)
+    air_temperature = models.IntegerField(blank=True, null=True)
+    water_temperature = models.IntegerField(blank=True, null=True)
     sample_latitude = models.FloatField()
     sample_longitude = models.FloatField()
-    sample_depth = models.FloatField(blank=True, default=0)
+    sample_depth = models.FloatField(blank=True, null=True)
     submitted_by = models.ForeignKey(to=User,
                                      on_delete=models.SET_NULL,
                                      null=True,
                                      related_name='sample_sets')
     is_completed = models.BooleanField(default=False)
-    total_zooplankton = models.IntegerField(default=0)
-    total_phytoplankton = models.IntegerField(default=0)
-    total_plastic_fibers = models.IntegerField(default=0)
-    total_plastic_particles = models.IntegerField(default=0)
 
 
 class WaterSurface(models.Model):
