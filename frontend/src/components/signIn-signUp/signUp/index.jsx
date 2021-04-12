@@ -22,7 +22,7 @@ const SignUp = () => {
         const credentials = {
             email: regEmail,
         }
-        const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
+        const url = "http://localhost:8000/backend/api/auth/registration/";
         
         //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/";
         const regConfig =  {
@@ -35,7 +35,7 @@ const SignUp = () => {
         .then(data => {
             console.log(data);
         })
-        history.push("/sucess")
+        history.push("/verification")
     }
 
 
@@ -48,7 +48,7 @@ const SignUp = () => {
                     <span>Register New Account</span>
                 </RegistrationWrapper>
                 <RegInputContainer>
-                    <GlobalLabel for="email">email</GlobalLabel>
+                    <GlobalLabel htmlFor="email">email</GlobalLabel>
                     <GlobalInput type="text" name="email" placeholder='E-mail address' value={regEmail} onChange={(e)=>setEmail(e.target.value)}/>
                     <RegButton type='submit' onClick={registrationHandler}> Continue</RegButton>
                 </RegInputContainer>

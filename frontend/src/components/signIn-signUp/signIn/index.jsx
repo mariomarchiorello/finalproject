@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import { Background, BlueButton, GlobalInput, Main } from '../../../globalstyles/globalStyle';
+import { Background, GlobalInput, Main } from '../../../globalstyles/globalStyle';
 import { signInAction } from '../../../store/actions/signInAction';
 import Header from '../../header';
 import { RegButton, RegInputContainer, RegistrationWrapper } from '../signUp/style';
@@ -32,15 +32,15 @@ export default function SignIn() {
                 <Header/>
                 <Main>
                     <RegistrationWrapper>
-                        <span> Welcome back, please sign in to procced</span>
+                        <span> Welcome back, please sign in to proceed</span>
                     </RegistrationWrapper>
                     <RegInputContainer>
-                        <VerLabel for="email">email</VerLabel>
+                        <VerLabel htmlFor="email">email</VerLabel>
                         <GlobalInput type="text" name="email"
                         value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
                         <VerLabel for="password">password</VerLabel>
                         <GlobalInput type="password" name="password"
-                        value={password} onChange={(e)=>{setPassword.apply(e.target.value)}}></GlobalInput>
+                        value={password} onChange={(e)=>{setPassword(e.target.value)}}></GlobalInput>
                         <RegButton type='submit' onClick={signInHandler}>Sign in</RegButton>
                     </RegInputContainer>
                 </Main>
