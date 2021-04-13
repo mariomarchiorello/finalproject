@@ -4,6 +4,7 @@ const initialState = {
     token: '',
     user: [],
     self:[],
+    profileEditSection:"info",
 }
 
 
@@ -16,7 +17,7 @@ const getSelfReducer = (state= initialState, action) => {
 
 const signInReducer = (state = initialState, action) => {
     
-    if(action.type === 'SIGNIN'){
+    if(action.type === 'USER_SIGNIN'){
         return {...state, token: action.payload.token, user: action.payload.userInfo}
     }
     return state
@@ -28,7 +29,13 @@ const menuCountAction = (state= {pageId:"0"}, action) => {
     }
     return state
 }
+//--------------------- used to render profile edit components-----------------
 
+const profileEdit = (state = initialState, action) => {
+    if (action.type === "PROFILE-EDIT-HANDLER"){
+        return {...state, profileEditSection: action.payload}
+    }return state
+}
 
 
 
@@ -36,6 +43,7 @@ const menuCountAction = (state= {pageId:"0"}, action) => {
 export const rootReducer = combineReducers({
     getSelfReducer,
     signInReducer,
-    menuCountAction
+    menuCountAction,
+    profileEdit,
     
 });

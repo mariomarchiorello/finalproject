@@ -2,37 +2,45 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
 display: flex;
-width: 100vw;
+//width: 100vw;
 justify-content: space-between;
 position: sticky;
 top: 0;
-background-color: transparent;
+background-color: black;
+opacity: 90%;  
 height: 10%;
+  z-index: 10;
 `;
 export const Logo = styled.img`
-/* width: 70px;
-height: 70px; */
+ width: 190px;
+height: 62px; 
 padding: 10px;
 `;
 export const RightContainer = styled.div`
 display: flex;
 align-items: center;
-margin-right: 20px;
+//margin-right: -40px;
+  a{
+    text-decoration:none;
+  }
 `;
 export const Profile = styled.div`
 font-size: 18px;
-color: #FFFFFF;
-cursor:pointer; 
+color: ${props => props.theme.buttoncolor };
+cursor:pointer;
+trasition:color 2s ease 0s;  
+
 
 :hover {
-  font-weight: bold;
+color:#30ADEA ;
+  
 }
 `;
 export const LoginButton = styled.button`
 margin-left: 35px;
 margin-right: 35px;
 background-color: transparent;
-color: #FFFFFF;
+color: ${props => props.theme.buttoncolor };
 font-size: 18px;
 font-weight: bold;
 border-radius: 10px;
@@ -40,7 +48,7 @@ border: 2px solid #30ADEA;
 padding: 10px 20px 10px 20px;
 cursor: pointer; 
 :active{
-  outline:transparent;
+  outline-color:#ffffff;
   }
 `;
 
@@ -48,7 +56,6 @@ export const LogoContainer = styled.div`
 width: 50%;
 display: flex;
 `
-
 
 
 

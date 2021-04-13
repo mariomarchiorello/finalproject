@@ -1,37 +1,29 @@
 import { HeaderContainer, Logo, RightContainer, Profile, LoginButton, LogoContainer } from "./style"
-//  import goesLogo3 from "../../assets/graphics/GOES3.jpg"
- import first from "../../assets/graphics/bigicon.png"
- import second from "../../assets/graphics/goesicon.png"
+ import first from "../../assets/graphics/img_2.png"
+
 import {withAuth} from "../HOC";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 const Header = () => {
 
-    const token = localStorage.getItem('token');
+    const dispatch = useDispatch();
 
-   /* const headerCounter = () => {
-        let count = "1"
-        if (token === true){
-            count = "0"
-        }
-        else if(token === false){
-            count = "1"
-        }
-        return count
-    }*/
-
+    const profileHandler = value => {
+        dispatch({type:"PROFILE-EDIT-HANDLER",payload: value})
+        console.log("from in da header--> go to profile")
+    };
 
     const logOut = () => localStorage.clear()
 
-
     return  <>
     <HeaderContainer>
-            <LogoContainer>
+
+            <Link to="/"><LogoContainer>
                 <Logo src={first}/>
-                <Logo src={second}/>
-            </LogoContainer>
-            { withAuth( <RightContainer><Profile to='/profile'>Username</Profile><LoginButton onCLick={logOut}>Sign Out</LoginButton></RightContainer> )}
-            <RightContainer><Profile to='/sign-up'>Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>;
+            </LogoContainer></Link>
+            { withAuth( <RightContainer><Profile onClick={()=>profileHandler("info")} to='/profile'>Username</Profile><LoginButton onCLick={logOut}>Sign Out</LoginButton></RightContainer> )}
+            <RightContainer><Link to='/sign-up'><Profile>Join</Profile></Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>;
 
     </HeaderContainer>
   </>

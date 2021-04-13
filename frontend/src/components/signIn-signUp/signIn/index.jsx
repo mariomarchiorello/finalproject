@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 import { Background, GlobalInput, Main } from '../../../globalstyles/globalStyle';
 import { signInAction } from '../../../store/actions/signInAction';
@@ -41,6 +41,7 @@ export default function SignIn() {
                         <VerLabel htmlFor="password">password</VerLabel>
                         <GlobalInput type="password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                         <RegButton type='submit' onClick={signInHandler}>Sign in</RegButton>
+                        <Link to='/resetOne'><p>forgot password?</p></Link>
                     </RegInputContainer>
                 </Main>
             </Background>
