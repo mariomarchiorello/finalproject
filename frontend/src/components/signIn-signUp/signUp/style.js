@@ -8,7 +8,7 @@ export const RegistrationWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #FFFFFF;
+    color: ${props => props.theme.labelcolor };
     font-size: 24px;
 `;
 
@@ -18,7 +18,7 @@ export const RegInputContainer = styled.div`
     flex-direction: column;
     justify-content: center;
   p{
-    color: white;
+    color: ${props => props.theme.labelcolor };
   }
 `;
 
