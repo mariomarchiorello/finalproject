@@ -12,6 +12,7 @@ const Header = () => {
 
     return  <>
     <HeaderContainer>
+
             <LogoContainer>
                 <Logo src={first}/>
             </LogoContainer>
