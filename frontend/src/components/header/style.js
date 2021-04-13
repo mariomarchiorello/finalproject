@@ -2,16 +2,18 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
 display: flex;
-width: 100vw;
+//width: 100vw;
 justify-content: space-between;
 position: sticky;
 top: 0;
-background-color: transparent;
+background-color: black;
+opacity: 90%;  
 height: 10%;
+  z-index: 10;
 `;
 export const Logo = styled.img`
-/* width: 70px;
-height: 70px; */
+ width: 190px;
+height: 62px; 
 padding: 10px;
 `;
 export const RightContainer = styled.div`
