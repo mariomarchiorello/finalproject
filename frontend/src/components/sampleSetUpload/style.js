@@ -52,3 +52,7 @@ export const AddImagesContainer = styled.div`
 export const ImagesContainer = styled.div`
   display: flex;
 `
+
+export const ImagePreview = styled.img`
+  height: 125px;
+`

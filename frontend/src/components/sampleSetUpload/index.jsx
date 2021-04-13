@@ -8,7 +8,7 @@ import {
     Main,
     SmallBlueButton
 } from "../../globalstyles/globalStyle"
-import {AddImagesContainer, ImagesContainer, LabelInputContainer, OuterInputsContainer} from "./style"
+import {AddImagesContainer, ImagePreview, ImagesContainer, LabelInputContainer, OuterInputsContainer} from "./style"
 import planktonImage from '../../assets/background-images/10.jpg'
 
 
@@ -62,7 +62,7 @@ const CreateNewSampleSet = () => {
                 <Main>
                     <CenterContainer>
                         <OuterInputsContainer>
-                            {/*left label coulumn*/}
+
                             <LabelInputContainer>
                                 <GlobalLabel>collection date*</GlobalLabel>
                                 <GlobalInput name='collection date' type='text' value= {undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
@@ -70,7 +70,6 @@ const CreateNewSampleSet = () => {
                                 <GlobalInput name='water depth' type='text' value= {undefined} onChange={(e)=>setWaterDepth(e.target.value)}/>
                             </LabelInputContainer>
 
-                            {/*middle label column*/}
                             <LabelInputContainer>
                                 <GlobalLabel>latitude*</GlobalLabel>
                                 <GlobalInput name='latitude' type='text' value= {undefined} onChange={(e)=>setLatitude(e.target.value)}/>
@@ -78,7 +77,6 @@ const CreateNewSampleSet = () => {
                                 <GlobalInput name='longitude' type='text' value= {undefined} onChange={(e)=>setLongitude(e.target.value)}/>
                             </LabelInputContainer>
 
-                            {/*right label column*/}
                             <LabelInputContainer>
                                 <GlobalLabel>air temperature</GlobalLabel>
                                 <GlobalInput name='air temperature' type='text' value= {undefined} onChange={(e)=>setAirTemperature(e.target.value)}/>
@@ -87,14 +85,14 @@ const CreateNewSampleSet = () => {
                             </LabelInputContainer>
                         </OuterInputsContainer>
 
-                        {/*image section*/}
                         <AddImagesContainer>
                             <SmallBlueButton>Add Images</SmallBlueButton>
                             <ImagesContainer>
-                                <img src={planktonImage} alt="Plankton" />
-                                <img src={planktonImage} alt="Plankton" />
-                                <img src={planktonImage} alt="Plankton" />
-                                <img src={planktonImage} alt="Plankton" />
+                                {/*placeholder images, should only show when images are added*/}
+                                <ImagePreview src={planktonImage} alt="Plankton" />
+                                <ImagePreview src={planktonImage} alt="Plankton" />
+                                <ImagePreview src={planktonImage} alt="Plankton" />
+                                <ImagePreview src={planktonImage} alt="Plankton" />
                             </ImagesContainer>
                         </AddImagesContainer>
                         <BlueButton>Continue</BlueButton>
