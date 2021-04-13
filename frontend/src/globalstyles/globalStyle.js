@@ -94,3 +94,13 @@ export const Main = styled.div`
     align-items:center;
 
 `;
+
+export const BackgroundWithOpacity = styled.div`
+    height:100vh;
+    width:100vw;
+    display: flex;
+    flex-direction:column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+`;
