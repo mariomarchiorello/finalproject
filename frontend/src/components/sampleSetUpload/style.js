@@ -1,28 +1,15 @@
 import styled from 'styled-components'
-import { CenterContainer } from '../../globalstyles/globalStyle'
 
 
-
-export const NewSampleSetContainer = styled.form`
-    background-color: #F2F2F2;
+export const TitleWrapper = styled.div`
+    width: 100%;
+    height: 10%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
-    font-weight: bold;
-`
-
-export const NewCenterContainer = styled(CenterContainer)`
-    background-color: #F2F2F2;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    font-weight: bold;
+    color: ${props => props.theme.labelcolor };
+    font-size: 24px;
 `
 
 export const OuterInputsContainer = styled.div`
@@ -51,4 +38,25 @@ export const AddImagesContainer = styled.div`
 
 export const ImagesContainer = styled.div`
   display: flex;
+`
+
+export const ImagePreview = styled.img`
+  padding: 10px;
+  height: 125px;
+`
+
+export const CheckboxFieldsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+`
+
+export const StandardText = styled.div`
+  color: white;
+  font-size: 18px;
+`
+
+export const SmallText = styled.div`
+  color: white;
+  font-size: 14px;
 `
