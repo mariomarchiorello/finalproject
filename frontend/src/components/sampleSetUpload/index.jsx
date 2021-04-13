@@ -1,7 +1,14 @@
 import React, {useState} from 'react';
-import Header from "../../header"
-import Footer from "../../footer"
-import {Background, CenterContainer, GlobalInput, Main} from "../../../globalstyles/globalStyle"
+import Header from "../header"
+import Footer from "../footer"
+import {
+    Background, BlueButton, CenterContainer,
+    GlobalInput,
+    GlobalLabel,
+    Main,
+    SmallBlueButton
+} from "../../globalstyles/globalStyle"
+import {AddImagesContainer, ImagesContainer, LabelInputContainer, OuterInputsContainer} from "./style";
 
 
 const CreateNewSampleSet = () => {
@@ -53,21 +60,43 @@ const CreateNewSampleSet = () => {
             <Header/>
                 <Main>
                     <CenterContainer>
-                        {/*let coulumn*/}
-                        <GlobalLabel>collection date</GlobalLabel>
-                        <GlobalInput/>
-                        <GlobalLabel>water depth</GlobalLabel>
-                        <GlobalInput/>
-                        {/*middle column*/}
-                        <GlobalLabel>latitude</GlobalLabel>
-                        <GlobalInput/>
-                        <GlobalLabel>longitude</GlobalLabel>
-                        <GlobalInput/>
-                        {/*right column*/}
-                        <GlobalLabel>air temperature</GlobalLabel>
-                        <GlobalInput/>
-                        <GlobalLabel>water temperature</GlobalLabel>
-                        <GlobalInput/>
+                        <OuterInputsContainer>
+                            {/*left label coulumn*/}
+                            <LabelInputContainer>
+                                <GlobalLabel>collection date*</GlobalLabel>
+                                <GlobalInput/>
+                                <GlobalLabel>water depth</GlobalLabel>
+                                <GlobalInput/>
+                            </LabelInputContainer>
+
+                            {/*middle label column*/}
+                            <LabelInputContainer>
+                                <GlobalLabel>latitude*</GlobalLabel>
+                                <GlobalInput/>
+                                <GlobalLabel>longitude*</GlobalLabel>
+                                <GlobalInput/>
+                            </LabelInputContainer>
+
+                            {/*right label column*/}
+                            <LabelInputContainer>
+                                <GlobalLabel>air temperature</GlobalLabel>
+                                <GlobalInput/>
+                                <GlobalLabel>water temperature</GlobalLabel>
+                                <GlobalInput/>
+                            </LabelInputContainer>
+                        </OuterInputsContainer>
+
+                        {/*image section*/}
+                        <AddImagesContainer>
+                            <SmallBlueButton>Add Images</SmallBlueButton>
+                            <ImagesContainer>
+                                <image/>
+                                <image/>
+                                <image/>
+                                <image/>
+                            </ImagesContainer>
+                        </AddImagesContainer>
+                        <BlueButton>Continue</BlueButton>
                     </CenterContainer>
                 </Main>
             <Footer/>

@@ -10,6 +10,7 @@ import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Profile from "./components/profile";
 import Home from "./components/home"
 import DynamicBackground from "./components/backgroundChanger";
+import CreateNewSampleSet from "./components/sampleSetUpload";
 
 const App = ()=> {
   return (
@@ -29,6 +30,7 @@ const App = ()=> {
         <Route exact path='/verification' component={Verification} />
         <Route exact path='/sign-up' component={SignUp} />
         <Route exact path='/header' component={Header} />
+        <Route exact path='/upload' component={CreateNewSampleSet} />
         
       </Switch>
     </Router> 
