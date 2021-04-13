@@ -6,9 +6,16 @@ import {
     GlobalInput,
     GlobalLabel,
     Main,
-    SmallBlueButton
+    SmallBlueButton, TransparentButton
 } from "../../globalstyles/globalStyle"
-import {AddImagesContainer, ImagePreview, ImagesContainer, LabelInputContainer, OuterInputsContainer} from "./style"
+import {
+    AddImagesContainer, CheckboxFieldsContainer,
+    ImagePreview,
+    ImagesContainer,
+    LabelInputContainer,
+    OuterInputsContainer, SmallText, StandardText,
+    TitleWrapper
+} from "./style"
 import planktonImage from '../../assets/background-images/10.jpg'
 
 
@@ -60,6 +67,9 @@ const CreateNewSampleSet = () => {
         <Background>
             <Header/>
                 <Main>
+                    <TitleWrapper>
+                        <span>Upload New Sample Set</span>
+                    </TitleWrapper>
                     <CenterContainer>
                         <OuterInputsContainer>
 
@@ -85,6 +95,46 @@ const CreateNewSampleSet = () => {
                             </LabelInputContainer>
                         </OuterInputsContainer>
 
+                        <CheckboxFieldsContainer>
+                            <StandardText>Water surface characteristics<SmallText>(Select all that apply)</SmallText></StandardText>
+                            <div>
+                                <StandardText>Foam</StandardText>
+                                <input type={'checkbox'} id={'foam'} name={'foam'}/>
+                                {/*<label for="foam">Foam</label>*/}
+                            </div>
+                            <div>
+                                <StandardText>Oil</StandardText>
+                                <input type={'checkbox'} id={'oil'} name={'oil'}/>
+                            </div>
+                            <div>
+                                <StandardText>Bioluminescence</StandardText>
+                                <input type={'checkbox'} id={'bioluminescence'} name={'bioluminescence'}/>
+                            </div>
+                        </CheckboxFieldsContainer>
+                        <CheckboxFieldsContainer>
+                            <StandardText>Weather events<SmallText>(Select all that apply)</SmallText></StandardText>
+                            <div>
+                                <StandardText>Sun</StandardText>
+                                <input type={'checkbox'} id={'sun'} name={'sun'}/>
+                            </div>
+                            <div>
+                                <StandardText>Cloud</StandardText>
+                                <input type={'checkbox'} id={'cloud'} name={'cloud'}/>
+                            </div>
+                            <div>
+                                <StandardText>Rain</StandardText>
+                                <input type={'checkbox'} id={'rain'} name={'rain'}/>
+                            </div>
+                            <div>
+                                <StandardText>Snow</StandardText>
+                                <input type={'checkbox'} id={'snow'} name={'snow'}/>
+                            </div>
+                            <div>
+                                <StandardText>Storm</StandardText>
+                                <input type={'checkbox'} id={'storm'} name={'storm'}/>
+                            </div>
+                        </CheckboxFieldsContainer>
+
                         <AddImagesContainer>
                             <SmallBlueButton>Add Images</SmallBlueButton>
                             <ImagesContainer>
@@ -96,6 +146,7 @@ const CreateNewSampleSet = () => {
                             </ImagesContainer>
                         </AddImagesContainer>
                         <BlueButton>Continue</BlueButton>
+                        <TransparentButton>Go To Summary</TransparentButton>
                     </CenterContainer>
                 </Main>
             <Footer/>
