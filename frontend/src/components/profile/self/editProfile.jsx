@@ -3,6 +3,7 @@ import {GlobalInput, GlobalLabel, SmallBlueButton} from '../../../globalstyles/g
 import {Edit, EditPasswordButton, RadioButton} from './style'
 import InfoSection from "./info";
 import {BottomContainer} from "../style";
+import {useDispatch} from "react-redux";
 
 export default function EditProfileSection() {
     
@@ -45,15 +46,19 @@ export default function EditProfileSection() {
                 console.log(data)
             })
     }
+    const dispatch = useDispatch()
 
+    const profileHandler = value => { dispatch({type:"PROFILE-EDIT-HANDLER",payload:value})}
 
 
     return (
         <>
             <InfoSection/>
+            <form>
             <Edit>
+
                 <section className="right">
-                    
+
                     <GlobalLabel
                     htmlFor="username">username</GlobalLabel>
                     <GlobalInput type="text" name="username"
@@ -84,12 +89,13 @@ export default function EditProfileSection() {
                             </div>
                         </RadioButton>
                 </section>
+
             </Edit>
             <BottomContainer>
-                    <EditPasswordButton>Change Password</EditPasswordButton>
+                    <EditPasswordButton onClick={()=>profileHandler("changePassword")} >Change Password</EditPasswordButton>
                     <SmallBlueButton  >Edit</SmallBlueButton>
             </BottomContainer>
-
+            </form>
         </>
     )
 }

@@ -9,13 +9,10 @@ import {useDispatch, useSelector} from "react-redux";
 
 export default function MyProfile() {
 
+     const profileEdit = useSelector( state => state.profileEdit.profileEditSection);
     const dispatch = useDispatch()
 
     const profileHandler = value => { dispatch({type:"PROFILE-EDIT-HANDLER",payload:value})}
-
-
-
-     const profileEdit = useSelector( state => state.profileEdit.profileEditSection);
 
 
 
@@ -24,16 +21,13 @@ export default function MyProfile() {
         <>
             <div>
             <ProfileCenterContainer>
-
-                 <InfoSection/>
-                    <BottomContainer>
-                    <SmallBlueButton onClick={()=>profileHandler("editProfile")} >Edit</SmallBlueButton>
-                    </BottomContainer>
+                { profileEdit=== "info" ? <InfoSection/> : null }
+                { profileEdit=== "info" ? <BottomContainer> <SmallBlueButton onClick={()=>profileHandler("editProfile")} >Edit</SmallBlueButton></BottomContainer> : null }
 
 
-                {/*<EditProfileSection/>*/}
+                { profileEdit === "editProfile" ? <EditProfileSection/> : null }
 
-                {/*<EditPasswordSection/>*/}
+                { profileEdit === "changePassword" ? <EditPasswordSection/> : null }
 
 
 
