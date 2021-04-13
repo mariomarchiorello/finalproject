@@ -8,7 +8,8 @@ import {
     Main,
     SmallBlueButton
 } from "../../globalstyles/globalStyle"
-import {AddImagesContainer, ImagesContainer, LabelInputContainer, OuterInputsContainer} from "./style";
+import {AddImagesContainer, ImagesContainer, LabelInputContainer, OuterInputsContainer} from "./style"
+import planktonImage from '../../assets/background-images/10.jpg'
 
 
 const CreateNewSampleSet = () => {
@@ -64,25 +65,25 @@ const CreateNewSampleSet = () => {
                             {/*left label coulumn*/}
                             <LabelInputContainer>
                                 <GlobalLabel>collection date*</GlobalLabel>
-                                <GlobalInput/>
+                                <GlobalInput name='collection date' type='text' value= {undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
                                 <GlobalLabel>water depth</GlobalLabel>
-                                <GlobalInput/>
+                                <GlobalInput name='water depth' type='text' value= {undefined} onChange={(e)=>setWaterDepth(e.target.value)}/>
                             </LabelInputContainer>
 
                             {/*middle label column*/}
                             <LabelInputContainer>
                                 <GlobalLabel>latitude*</GlobalLabel>
-                                <GlobalInput/>
+                                <GlobalInput name='latitude' type='text' value= {undefined} onChange={(e)=>setLatitude(e.target.value)}/>
                                 <GlobalLabel>longitude*</GlobalLabel>
-                                <GlobalInput/>
+                                <GlobalInput name='longitude' type='text' value= {undefined} onChange={(e)=>setLongitude(e.target.value)}/>
                             </LabelInputContainer>
 
                             {/*right label column*/}
                             <LabelInputContainer>
                                 <GlobalLabel>air temperature</GlobalLabel>
-                                <GlobalInput/>
+                                <GlobalInput name='air temperature' type='text' value= {undefined} onChange={(e)=>setAirTemperature(e.target.value)}/>
                                 <GlobalLabel>water temperature</GlobalLabel>
-                                <GlobalInput/>
+                                <GlobalInput name='water temperature' type='text' value= {undefined} onChange={(e)=>setWaterTemperature(e.target.value)}/>
                             </LabelInputContainer>
                         </OuterInputsContainer>
 
@@ -90,10 +91,10 @@ const CreateNewSampleSet = () => {
                         <AddImagesContainer>
                             <SmallBlueButton>Add Images</SmallBlueButton>
                             <ImagesContainer>
-                                <image/>
-                                <image/>
-                                <image/>
-                                <image/>
+                                <img src={planktonImage} alt="Plankton" />
+                                <img src={planktonImage} alt="Plankton" />
+                                <img src={planktonImage} alt="Plankton" />
+                                <img src={planktonImage} alt="Plankton" />
                             </ImagesContainer>
                         </AddImagesContainer>
                         <BlueButton>Continue</BlueButton>
