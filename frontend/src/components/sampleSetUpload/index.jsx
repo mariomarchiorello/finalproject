@@ -11,7 +11,7 @@ import {
 import {
     AddImagesContainer, CheckboxFieldsContainer,
     ImagePreview,
-    ImagesContainer,
+    ImagesContainer, InputField,
     LabelInputContainer,
     OuterInputsContainer, SmallText, StandardText,
     TitleWrapper
@@ -137,6 +137,7 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             <SmallBlueButton>Add Images</SmallBlueButton>
+                            <input name='image' type='file' value= {undefined} onChange={(e)=>setImage(e.target.files[0])}/>
                             <ImagesContainer>
                                 {/*placeholder images, should only show when images are added*/}
                                 <ImagePreview src={planktonImage} alt="Plankton" />
@@ -145,7 +146,7 @@ const CreateNewSampleSet = () => {
                                 <ImagePreview src={planktonImage} alt="Plankton" />
                             </ImagesContainer>
                         </AddImagesContainer>
-                        <BlueButton>Continue</BlueButton>
+                        <BlueButton type='submit' onClick={NewSampleSetHandler}>Continue</BlueButton>
                         <TransparentButton>Go To Summary</TransparentButton>
                     </CenterContainer>
                 </Main>
