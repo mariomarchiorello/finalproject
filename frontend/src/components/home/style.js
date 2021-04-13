@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Main } from "../../globalstyles/globalStyle";
+import { Main, Background } from "../../globalstyles/globalStyle";
+import bg from "../../assets/background-images/valdiviella-insignis.jpg"
 
 export const QuoteWrapper = styled.div`
     width: 20%;
@@ -25,3 +26,7 @@ export const Buttonholder = styled.div`
     width: 100%;
     height: 100%;
 `;
+
+export const HomeBackground = styled(Background)`
+    background-image: url(${bg});
+    `;
