@@ -1,5 +1,6 @@
 import React from 'react'
-import { Info } from './style'
+import {Info} from './style'
+
 
 export default function InfoSection() {
     return (
@@ -39,7 +40,9 @@ export default function InfoSection() {
                     </div>
 
                 </section>
-            </Info>  
+
+            </Info>
+
         </>
     )
 }
