@@ -41,6 +41,9 @@ font-size: 14px;
 border: 2px solid #30ADEA;
 width: auto;
 cursor: pointer; 
+:active{
+  outline:none;
+}
 `;
 
 

@@ -17,15 +17,21 @@ padding: 10px;
 export const RightContainer = styled.div`
 display: flex;
 align-items: center;
-margin-right: 20px;
+//margin-right: -40px;
+  a{
+    text-decoration:none;
+  }
 `;
 export const Profile = styled.div`
 font-size: 18px;
 color: #FFFFFF;
-cursor:pointer; 
+cursor:pointer;
+trasition:color 2s ease 0s;  
+
 
 :hover {
-  font-weight: bold;
+color:#30ADEA ;
+  
 }
 `;
 export const LoginButton = styled.button`
@@ -40,7 +46,7 @@ border: 2px solid #30ADEA;
 padding: 10px 20px 10px 20px;
 cursor: pointer; 
 :active{
-  outline:transparent;
+  outline-color:#ffffff;
   }
 `;
 
