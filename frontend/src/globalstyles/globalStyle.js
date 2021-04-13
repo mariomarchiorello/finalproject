@@ -11,6 +11,8 @@ width: 13rem;
 height: 2.5rem;
 font-size: 18px;
 cursor:pointer;
+outline:transparent;
+
 :active{
   outline:transparent;
 }
@@ -22,6 +24,9 @@ export const GlobalInput = styled.input`
   border-radius: 5px;
   width: 12rem;
   height: 2.5rem;
+  outline: transparent;
+    
+  
 `;
 export const GlobalLabel = styled.label`
   color: ${props => props.theme.labelcolor };
@@ -37,9 +42,10 @@ padding: 5px 20px 5px 20px;
 font-size: 14px;
 border: 2px solid #30ADEA;
 width: auto;
-cursor: pointer; 
+cursor: pointer;
+outline: transparent;  
 :active{
-  outline:none;
+  outline:transparent;
 }
 `;
 
@@ -108,6 +114,8 @@ color: ${props => props.theme.smallbcolor};
 width: 8rem;
 height: 1.5rem;
 cursor:pointer;
+outline:transparent;
+
 :active{
   outline:transparent;
 }

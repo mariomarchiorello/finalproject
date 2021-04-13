@@ -17,7 +17,7 @@ const getSelfReducer = (state= initialState, action) => {
 
 const signInReducer = (state = initialState, action) => {
     
-    if(action.type === 'SIGNIN'){
+    if(action.type === 'USER_SIGNIN'){
         return {...state, token: action.payload.token, user: action.payload.userInfo}
     }
     return state

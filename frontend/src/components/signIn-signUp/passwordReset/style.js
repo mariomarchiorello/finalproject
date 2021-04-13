@@ -29,4 +29,6 @@ export const VerLabel = styled(GlobalLabel)`
 
 export const VerButton = styled(BlueButton)`
     margin-top: 2rem;
+    outline:transparent;
+
 `;

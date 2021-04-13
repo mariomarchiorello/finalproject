@@ -17,16 +17,24 @@ export const VerificationMsg = styled.div`
 `;
 export const VerInputContainer = styled.div`
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
     margin-top: 1rem;
+    justify-content: center;
+    align-content: center;
+  div{
+    display:flex;
+    flex-direction: column;
+    margin:2%;
+  }
 `;
 
 export const VerLabel = styled(GlobalLabel)`
     margin-top: 0.7rem;
+  
 `;
 
 export const VerButton = styled(BlueButton)`
     margin-top: 2rem;
+    outline:transparent;
+
 `;
