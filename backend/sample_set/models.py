@@ -36,7 +36,7 @@ class SampleSet(models.Model):
 
 
 class WaterSurface(models.Model):
-    property = models.CharField(max_length=1, choices=WATER_SURFACE, blank=True)
+    property = models.CharField(max_length=10, choices=WATER_SURFACE, blank=True)
     sample = models.ForeignKey(to=SampleSet, related_name='water_surface', on_delete=models.CASCADE)
 
 
