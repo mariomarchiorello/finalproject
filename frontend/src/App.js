@@ -11,7 +11,10 @@ import Profile from "./components/profile";
 import Home from "./components/home";
 import { ThemeProvider } from "styled-components";
 import { darktheme, lighttheme } from "./components/themes"
-import CreateNewSampleSet from "./components/sampleSetUpload"
+import CreateNewSampleSet from "./components/sampleSetUpload";
+
+
+
 //add new imports below
 
 
@@ -28,17 +31,26 @@ const App = () => {
           <Route exact path="/map" component={Map} />
           {/* <Route exact path='/annotate' component={XXX} /> */}
           <Route exact path="/profile" component={Profile} />
-
+          <Route exact path="/upload" component={CreateNewSampleSet}/>
           <Route exact path="/resetTwo" component={PasswordReset} />
           <Route exact path={["/home", "/"]} component={Home} />
           <Route exact path="/resetOne" component={ResetPwEmail} />
-          <Route exact path="/signIn" component={SignIn} />
+          <Route exact path={["/signIn","/sign-in"]} component={SignIn} />
           <Route exact path="/verification" component={Verification} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/header" component={Header} />
+
+
+
+
+
+          {/*add new routes above*/}
+
+          {/*Always make sure to put the path"*" at the end the browser will stop looking
+          for routs below this line!*/}
+
           <Route path="*" component={() => "404 NOT FOUND"} />
-          <Route exact path="/upload" component={CreateNewSampleSet}/>
-          // add new routes below
+
 
 
 
