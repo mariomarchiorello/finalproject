@@ -1,8 +1,17 @@
-import { createGlobalStyle } from 'styled-components'
-import styled from 'styled-components'
-
+import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
 export const BlueButton = styled.button`
+<<<<<<< frontend/src/globalstyles/globalStyle.js
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(#30adea, #216273);
+  color: #ffffff;
+  padding: 10px 20px 10px 20px;
+  width: 13rem;
+  height: 2.5rem;
+  font-size: 18px;
+=======
 border-radius: 10px;
 border: none;
 background: linear-gradient(#30ADEA, #216273);
@@ -15,23 +24,32 @@ cursor:pointer;
 :active{
   outline:transparent;
 }
+>>>>>>> frontend/src/globalstyles/globalStyle.js
 `;
 export const GlobalInput = styled.input`
-font-size: 18px;
-background: #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
-width: 12rem;
-height: 2.5rem;
+  font-size: 18px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 12rem;
+  height: 2.5rem;
 `;
 export const GlobalLabel = styled.label`
-color: #FFFFFF;
-font-size: 16px;
+  color: #ffffff;
+  font-size: 16px;
 `;
 
-
-
 export const TransparentButton = styled.button`
+<<<<<<< frontend/src/globalstyles/globalStyle.js
+  border-radius: 5px;
+  width: 8rem;
+  background: transparent;
+  color: orange;
+  padding: 5px 20px 5px 20px;
+  font-size: 14px;
+  border: 2px solid #30adea;
+  width: auto;
+=======
 border-radius: 5px;
 //width: 8rem;
 background: transparent;
@@ -44,18 +62,18 @@ cursor: pointer;
 :active{
   outline:none;
 }
+>>>>>>> frontend/src/globalstyles/globalStyle.js
 `;
 
-
 export const Background = styled.div`
-    background-color:#000000;
-    height:100vh;
-    width:100vw;
-    display: flex;
-    flex-direction:column;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
+  background-color: #000000;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -67,35 +85,32 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const CenterContainer = styled.div`
-    height:67vh;
-    width:70vw;
-    background-color:#000000;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:space-around;
-    padding:0% 0% 0%;
-    border:2px solid #30ADEA;
-    border-radius:5px;
-    @media (max-width: 1620px) {
+  height: 67vh;
+  width: 70vw;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0% 0% 0%;
+  border: 2px solid #30adea;
+  border-radius: 5px;
+  @media (max-width: 1620px) {
     flex-direction: column;
-    width:50vw;
-    padding:2%
+    width: 50vw;
+    padding: 2%;
   }
-    
 `;
 
 export const Main = styled.div`
-    
-    height:84%;
-    width:100%;
-    padding:0;
-    margin:0;
-    display:flex;
-    flex-direction:column;
-    justify-items:center;
-    align-items:center;
-
+  height: 84%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 `;
 
 export const BackgroundWithOpacity = styled.div`
