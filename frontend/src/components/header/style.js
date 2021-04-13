@@ -26,7 +26,7 @@ align-items: center;
 `;
 export const Profile = styled.div`
 font-size: 18px;
-color: #FFFFFF;
+color: ${props => props.theme.buttoncolor };
 cursor:pointer;
 trasition:color 2s ease 0s;  
 
@@ -40,7 +40,7 @@ export const LoginButton = styled.button`
 margin-left: 35px;
 margin-right: 35px;
 background-color: transparent;
-color: #FFFFFF;
+color: ${props => props.theme.buttoncolor };
 font-size: 18px;
 font-weight: bold;
 border-radius: 10px;
@@ -56,7 +56,6 @@ export const LogoContainer = styled.div`
 width: 50%;
 display: flex;
 `
-
 
 
 
