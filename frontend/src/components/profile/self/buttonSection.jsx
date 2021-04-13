@@ -1,10 +1,12 @@
 import React from 'react'
+import {SmallBlueButton} from "../../../globalstyles/globalStyle";
 
 export default function ButtonSection() {
     return (
-        <div>
+        <>
+            <SmallBlueButton>Edit</SmallBlueButton>
             
-        </div>
+        </>
     )
 }
 

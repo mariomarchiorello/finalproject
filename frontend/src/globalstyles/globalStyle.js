@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 
 export const BlueButton = styled.button`
+<<<<<<< frontend/src/globalstyles/globalStyle.js
   border-radius: 10px;
   border: none;
   background: linear-gradient(#30adea, #216273);
@@ -10,6 +11,20 @@ export const BlueButton = styled.button`
   width: 13rem;
   height: 2.5rem;
   font-size: 18px;
+=======
+border-radius: 10px;
+border: none;
+background: linear-gradient(#30ADEA, #216273);
+color: #FFFFFF;
+padding: 10px 20px 10px 20px;
+width: 13rem;
+height: 2.5rem;
+font-size: 18px;
+cursor:pointer;
+:active{
+  outline:transparent;
+}
+>>>>>>> frontend/src/globalstyles/globalStyle.js
 `;
 export const GlobalInput = styled.input`
   font-size: 18px;
@@ -25,6 +40,7 @@ export const GlobalLabel = styled.label`
 `;
 
 export const TransparentButton = styled.button`
+<<<<<<< frontend/src/globalstyles/globalStyle.js
   border-radius: 5px;
   width: 8rem;
   background: transparent;
@@ -33,6 +49,20 @@ export const TransparentButton = styled.button`
   font-size: 14px;
   border: 2px solid #30adea;
   width: auto;
+=======
+border-radius: 5px;
+//width: 8rem;
+background: transparent;
+color: orange;
+padding: 5px 20px 5px 20px;
+font-size: 14px;
+border: 2px solid #30ADEA;
+width: auto;
+cursor: pointer; 
+:active{
+  outline:none;
+}
+>>>>>>> frontend/src/globalstyles/globalStyle.js
 `;
 
 export const Background = styled.div`
@@ -81,4 +111,28 @@ export const Main = styled.div`
   flex-direction: column;
   justify-items: center;
   align-items: center;
+`;
+
+export const BackgroundWithOpacity = styled.div`
+    height:100vh;
+    width:100vw;
+    display: flex;
+    flex-direction:column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+`;
+export const SmallBlueButton = styled.button`
+border-radius: 3px;
+border: none;
+background: linear-gradient(#30ADEA, #216273);
+color: #FFFFFF;
+width: 8rem;
+height: 1.5rem;
+cursor:pointer;
+:active{
+  outline:transparent;
+}
+    
+    
 `;

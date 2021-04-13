@@ -4,6 +4,12 @@ import { VerButton, VerificationMsg, VerInputContainer, VerLabel } from "./style
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import Footer from "../../footer";
+import bg1 from "../../../assets/background-images/6.jpg"
+import bg2 from "../../../assets/background-images/7.jpg"
+import bg3 from "../../../assets/background-images/8.jpg"
+import bg4 from "../../../assets/background-images/9.jpg"
+import bg5 from "../../../assets/background-images/10.jpg"
+
 
 
 
@@ -28,9 +34,9 @@ const Verification = () => {
             code: code,
             password_repeat: password_repeat
         }
-        const url = "https://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
+        //const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
 
-        //const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/validation/";
+        const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/validation/";
         const config = {
             method: "PATCH",
             body: JSON.stringify(verificationCredentials),
@@ -44,10 +50,20 @@ const Verification = () => {
             history.push('/sign-in')
     }
 
+    const backgroundArray = [bg1, bg2, bg3, bg4, bg5];
+    const randomIndex = Math.floor(Math.random() * backgroundArray.length);
+    const selectedBackground = backgroundArray[randomIndex];
+
+    const background = {
+        backgroundImage: `url(${selectedBackground})`,
+        backgroundPosition: "top center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        }
 
 
     return <>
-        <Background>
+        <Background style={background}>
             <Header/>
             <Main>
                 <VerificationMsg>
