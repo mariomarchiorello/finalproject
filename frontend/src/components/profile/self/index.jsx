@@ -24,11 +24,8 @@ export default function MyProfile() {
         <>
             <div>
             <ProfileCenterContainer>
-
-                 <InfoSection/>
-                    <BottomContainer>
-                    <SmallBlueButton onClick={()=>profileHandler("editProfile")} >Edit</SmallBlueButton>
-                    </BottomContainer>
+                { profileEdit=== "info" ? <InfoSection/> : null }
+                { profileEdit=== "info" ? <BottomContainer> <SmallBlueButton onClick={()=>profileHandler("editProfile")} >Edit</SmallBlueButton></BottomContainer> : null }
 
 
                 {/*<EditProfileSection/>*/}
