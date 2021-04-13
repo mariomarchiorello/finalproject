@@ -19,9 +19,9 @@ const Header = () => {
     return  <>
     <HeaderContainer>
 
-            <LogoContainer>
+            <Link to="/"><LogoContainer>
                 <Logo src={first}/>
-            </LogoContainer>
+            </LogoContainer></Link>
             { withAuth( <RightContainer><Profile onClick={()=>profileHandler("info")} to='/profile'>Username</Profile><LoginButton onCLick={logOut}>Sign Out</LoginButton></RightContainer> )}
             <RightContainer><Link to='/sign-up'><Profile>Join</Profile></Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>;
 
