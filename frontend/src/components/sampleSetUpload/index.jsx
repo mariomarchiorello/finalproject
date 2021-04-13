@@ -11,7 +11,7 @@ import {
 import {
     AddImagesContainer, CheckboxFieldsContainer,
     ImagePreview,
-    ImagesContainer, InputField,
+    ImagesContainer,
     LabelInputContainer,
     OuterInputsContainer, SmallText, StandardText,
     TitleWrapper
@@ -137,6 +137,7 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             <SmallBlueButton>Add Images</SmallBlueButton>
+                            {/*only works for single image upload?*/}
                             <input name='image' type='file' value= {undefined} onChange={(e)=>setImage(e.target.files[0])}/>
                             <ImagesContainer>
                                 {/*placeholder images, should only show when images are added*/}
