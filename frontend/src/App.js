@@ -15,7 +15,7 @@ import { darktheme, lighttheme } from "./components/themes"
 const App = () => {
   return (
     <>
-      <ThemeProvider theme={lighttheme}>
+      <ThemeProvider theme={darktheme}>
       <Router>
         <Switch>
           {/* <Route exact path='/' component={Home} /> */}
