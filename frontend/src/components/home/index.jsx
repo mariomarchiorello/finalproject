@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Background, BlueButton } from "../../globalstyles/globalStyle";
 import Header from "../header";
-import { QuoteWrapper, MainHome, Buttonholder, HomeBackground } from "./style";
+import { QuoteWrapper, MainHome, Buttonholder } from "./style";
 
 
 
@@ -9,7 +9,7 @@ export default function Home() {
 
     return (
         <>
-            <HomeBackground>
+            <Background>
                 <Header/>
                 <MainHome>
                     <QuoteWrapper>
@@ -20,7 +20,7 @@ export default function Home() {
                         <Link to="/sign-up"><BlueButton>Join Us!</BlueButton></Link>
                     </Buttonholder>
                 </MainHome>
-            </HomeBackground>
+            </Background>
         </>
     )
 };
