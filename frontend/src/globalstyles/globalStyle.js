@@ -2,20 +2,10 @@ import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 
 export const BlueButton = styled.button`
-<<<<<<< frontend/src/globalstyles/globalStyle.js
-  border-radius: 10px;
-  border: none;
-  background: linear-gradient(#30adea, #216273);
-  color: #ffffff;
-  padding: 10px 20px 10px 20px;
-  width: 13rem;
-  height: 2.5rem;
-  font-size: 18px;
-=======
 border-radius: 10px;
 border: none;
 background: linear-gradient(#30ADEA, #216273);
-color: #FFFFFF;
+color: ${props => props.theme.buttoncolor };
 padding: 10px 20px 10px 20px;
 width: 13rem;
 height: 2.5rem;
@@ -24,7 +14,6 @@ cursor:pointer;
 :active{
   outline:transparent;
 }
->>>>>>> frontend/src/globalstyles/globalStyle.js
 `;
 export const GlobalInput = styled.input`
   font-size: 18px;
@@ -35,25 +24,15 @@ export const GlobalInput = styled.input`
   height: 2.5rem;
 `;
 export const GlobalLabel = styled.label`
-  color: #ffffff;
+  color: ${props => props.theme.labelcolor };
   font-size: 16px;
 `;
 
 export const TransparentButton = styled.button`
-<<<<<<< frontend/src/globalstyles/globalStyle.js
-  border-radius: 5px;
-  width: 8rem;
-  background: transparent;
-  color: orange;
-  padding: 5px 20px 5px 20px;
-  font-size: 14px;
-  border: 2px solid #30adea;
-  width: auto;
-=======
 border-radius: 5px;
 //width: 8rem;
 background: transparent;
-color: orange;
+color: ${props => props.theme.transbuttoncolor };
 padding: 5px 20px 5px 20px;
 font-size: 14px;
 border: 2px solid #30ADEA;
@@ -62,11 +41,10 @@ cursor: pointer;
 :active{
   outline:none;
 }
->>>>>>> frontend/src/globalstyles/globalStyle.js
 `;
 
 export const Background = styled.div`
-  background-color: #000000;
+  background-color: ${props => props.theme.bgcolor };
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -87,7 +65,7 @@ export const GlobalStyle = createGlobalStyle`
 export const CenterContainer = styled.div`
   height: 67vh;
   width: 70vw;
-  background-color: #000000;
+  background-color: ${props => props.theme.containerbg};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,7 +104,7 @@ export const SmallBlueButton = styled.button`
 border-radius: 3px;
 border: none;
 background: linear-gradient(#30ADEA, #216273);
-color: #FFFFFF;
+color: ${props => props.theme.smallbcolor};
 width: 8rem;
 height: 1.5rem;
 cursor:pointer;

@@ -9,10 +9,13 @@ import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
 import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Profile from "./components/profile";
 import Home from "./components/home";
+import { ThemeProvider } from "styled-components";
+import { darktheme, lighttheme } from "./components/themes"
 
 const App = () => {
   return (
     <>
+      <ThemeProvider theme={lighttheme}>
       <Router>
         <Switch>
           {/* <Route exact path='/' component={Home} /> */}
@@ -31,6 +34,7 @@ const App = () => {
         </Switch>
       </Router>
       <GlobalStyle />
+      </ThemeProvider>
     </>
   );
 };
