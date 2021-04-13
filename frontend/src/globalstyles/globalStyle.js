@@ -107,3 +107,17 @@ export const BackgroundWithOpacity = styled.div`
     background-repeat: no-repeat;
     background-position: top center;
 `;
+export const SmallBlueButton = styled.button`
+border-radius: 3px;
+border: none;
+background: linear-gradient(#30ADEA, #216273);
+color: #FFFFFF;
+width: 8rem;
+height: 1.5rem;
+cursor:pointer;
+:active{
+  outline:transparent;
+}
+    
+    
+`;
