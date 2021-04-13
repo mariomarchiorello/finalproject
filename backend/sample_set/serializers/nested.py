@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from sample_set.models import SampleSet
+from sample_set.models import SampleSet, WaterSurface
 from user.serializers.nested import UsersForMapSerializer
 
 
@@ -67,3 +67,9 @@ class AllSampleSetsSerializer(serializers.ModelSerializer):
                   'total_plastic_particles',
                   'images'
                   ]
+
+
+class WaterSurfaceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WaterSurface
+        fields = '__all__'

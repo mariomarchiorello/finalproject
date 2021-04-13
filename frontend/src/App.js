@@ -11,6 +11,12 @@ import Profile from "./components/profile";
 import Home from "./components/home";
 import { ThemeProvider } from "styled-components";
 import { darktheme, lighttheme } from "./components/themes"
+import CreateNewSampleSet from "./components/sampleSetUpload"
+//add new imports below
+
+
+
+
 
 const App = () => {
   return (
@@ -31,6 +37,13 @@ const App = () => {
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/header" component={Header} />
           <Route path="*" component={() => "404 NOT FOUND"} />
+          <Route exact path="/upload" component={CreateNewSampleSet}/>
+          // add new routes below
+
+
+
+
+
         </Switch>
       </Router>
       <GlobalStyle />
