@@ -41,6 +41,9 @@ font-size: 14px;
 border: 2px solid #30ADEA;
 width: auto;
 cursor: pointer; 
+:active{
+  outline:none;
+}
 `;
 
 
@@ -93,4 +96,28 @@ export const Main = styled.div`
     justify-items:center;
     align-items:center;
 
+`;
+
+export const BackgroundWithOpacity = styled.div`
+    height:100vh;
+    width:100vw;
+    display: flex;
+    flex-direction:column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+`;
+export const SmallBlueButton = styled.button`
+border-radius: 3px;
+border: none;
+background: linear-gradient(#30ADEA, #216273);
+color: #FFFFFF;
+width: 8rem;
+height: 1.5rem;
+cursor:pointer;
+:active{
+  outline:transparent;
+}
+    
+    
 `;
