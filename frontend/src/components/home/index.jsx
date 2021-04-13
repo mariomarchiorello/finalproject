@@ -17,7 +17,7 @@ export default function Home() {
                         <p>Dr. Howard Dryden, CSO</p>
                     </QuoteWrapper>
                     <Buttonholder>
-                        <BlueButton type='submit'><Link to="/sign-up">Join Us!</Link></BlueButton>
+                        <Link to="/sign-up"><BlueButton>Join Us!</BlueButton></Link>
                     </Buttonholder>
                 </MainHome>
             </Background>
