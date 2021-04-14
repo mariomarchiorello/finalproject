@@ -22,7 +22,7 @@ import planktonImage from '../../assets/background-images/10.jpg'
 
 const CreateNewSampleSet = () => {
 
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     const history = useHistory()
 
     const [collectionDate, setCollectionDate] = useState("");
@@ -41,20 +41,23 @@ const CreateNewSampleSet = () => {
     const [snowChecked, setSnowChecked] = useState(false)
     const [stormChecked, setStormChecked] = useState(false)
 
-    console.log('Water Surface Characteristics:')
-    console.log('foam checked', foamChecked)
-    console.log('oil checked', oilChecked)
-    console.log('bio checked', bioluminescenceChecked)
-    console.log('Weather Events:')
-    console.log('sun checked', sunChecked)
-    console.log('cloud checked', cloudChecked)
-    console.log('rain checked', rainChecked)
-    console.log('snow checked', snowChecked)
-    console.log('storm checked', stormChecked)
-    console.log('--------------------')
+    // // checkboxes console verification
+    // console.log('Water Surface Characteristics:')
+    // console.log('foam checked', foamChecked)
+    // console.log('oil checked', oilChecked)
+    // console.log('bio checked', bioluminescenceChecked)
+    // console.log('Weather Events:')
+    // console.log('sun checked', sunChecked)
+    // console.log('cloud checked', cloudChecked)
+    // console.log('rain checked', rainChecked)
+    // console.log('snow checked', snowChecked)
+    // console.log('storm checked', stormChecked)
+    // console.log('--------------------')
 
     // const [surface, setSurface] = useState("");
     // const [weather, setWeather] = useState("");
+
+    // images
     const [image, setImage] = useState(null);
 
 
@@ -63,14 +66,27 @@ const CreateNewSampleSet = () => {
         const url = "https://goes-app.propulsion-learn.ch/backend/api/samples/new/";
 
         let formData = new FormData();
+        // basic info
         formData.append('collection_date', collectionDate)
         formData.append('sample_depth', waterDepth)
         formData.append('sample_latitude', latitude)
         formData.append('sample_longitude', longitude)
         formData.append('air_temperature', airTemperature)
         formData.append('water_temperature', waterTemperature)
+
+        // water surface and weather variables
         // formData.append('water_surface', surface)
         // formData.append('weather_events', weather)
+        formData.append('foam', String(foamChecked))
+        formData.append('oil', String(oilChecked))
+        formData.append('bioluminescence', String(bioluminescenceChecked))
+        formData.append('sun', String(sunChecked))
+        formData.append('cloud', String(cloudChecked))
+        formData.append('rain', String(rainChecked))
+        formData.append('snow', String(snowChecked))
+        formData.append('storm', String(stormChecked))
+
+        // images
         formData.append('images', image)
 
 
@@ -123,35 +139,17 @@ const CreateNewSampleSet = () => {
 
                         <CheckboxFieldsContainer>
                             <StandardText>Water Surface Characteristics<SmallText>(Select all that apply)</SmallText></StandardText>
-                            <div>
-                                <StandardText>Foam <input type={'checkbox'} name={'foam'} onClick={() => setFoamChecked(!foamChecked)} checked={foamChecked} /></StandardText>
-                                {/*<StandardText>Foam <input type={'checkbox'} id={'foam'} name={'foam'}/></StandardText>*/}
-                            </div>
-                            <div>
-                                <StandardText>Oil <input type={'checkbox'} name={'oil'} onClick={() => setOilChecked(!oilChecked)} checked={oilChecked} /></StandardText>
-
-                            </div>
-                            <div>
-                                <StandardText>Bioluminescence <input type={'checkbox'} name={'bioluminescence'} onClick={() => setBioluminescenceChecked(!bioluminescenceChecked)} checked={bioluminescenceChecked} /></StandardText>
-                            </div>
+                                <StandardText>Foam <input type={'checkbox'} name={'foam'} onChange={() => setFoamChecked(!foamChecked)} checked={foamChecked} /></StandardText>
+                                <StandardText>Oil <input type={'checkbox'} name={'oil'} onChange={() => setOilChecked(!oilChecked)} checked={oilChecked} /></StandardText>
+                                <StandardText>Bioluminescence <input type={'checkbox'} name={'bioluminescence'} onChange={() => setBioluminescenceChecked(!bioluminescenceChecked)} checked={bioluminescenceChecked} /></StandardText>
                         </CheckboxFieldsContainer>
                         <CheckboxFieldsContainer>
                             <StandardText>Weather Events<SmallText>(Select all that apply)</SmallText></StandardText>
-                            <div>
-                                <StandardText>Sun <input type={'checkbox'} name={'sun'} onClick={() => setSunChecked(!sunChecked)} checked={sunChecked} /></StandardText>
-                            </div>
-                            <div>
-                                <StandardText>Cloud <input type={'checkbox'} name={'cloud'} onClick={() => setCloudChecked(!cloudChecked)} checked={cloudChecked} /></StandardText>
-                            </div>
-                            <div>
-                                <StandardText>Rain <input type={'checkbox'} name={'rain'} onClick={() => setRainChecked(!rainChecked)} checked={rainChecked} /></StandardText>
-                            </div>
-                            <div>
-                                <StandardText>Snow <input type={'checkbox'} name={'snow'} onClick={() => setSnowChecked(!snowChecked)} checked={snowChecked} /></StandardText>
-                            </div>
-                            <div>
-                                <StandardText>Storm <input type={'checkbox'} name={'storm'} onClick={() => setStormChecked(!stormChecked)} checked={stormChecked} /></StandardText>
-                            </div>
+                                <StandardText>Sun <input type={'checkbox'} name={'sun'} onChange={() => setSunChecked(!sunChecked)} checked={sunChecked} /></StandardText>
+                                <StandardText>Cloud <input type={'checkbox'} name={'cloud'} onChange={() => setCloudChecked(!cloudChecked)} checked={cloudChecked} /></StandardText>
+                                <StandardText>Rain <input type={'checkbox'} name={'rain'} onChange={() => setRainChecked(!rainChecked)} checked={rainChecked} /></StandardText>
+                                <StandardText>Snow <input type={'checkbox'} name={'snow'} onChange={() => setSnowChecked(!snowChecked)} checked={snowChecked} /></StandardText>
+                                <StandardText>Storm <input type={'checkbox'} name={'storm'} onChange={() => setStormChecked(!stormChecked)} checked={stormChecked} /></StandardText>
                         </CheckboxFieldsContainer>
 
                         <AddImagesContainer>
