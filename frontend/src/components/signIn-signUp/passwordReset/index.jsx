@@ -4,6 +4,7 @@ import { VerButton, VerificationMsg, VerInputContainer, VerLabel } from "./style
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import Footer from "../../footer";
+import baseUrl from "../../../helpers/baseUrl";
 
 
 
@@ -26,9 +27,8 @@ const PasswordReset = () => {
             code: code,
             password_repeat: password_repeat
         }
-        //const url = "http://localhost:8000/backend/api/auth/password-reset/";
 
-        const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/password-reset/";
+        const url = `${baseUrl}/auth/password-reset/`;
         const config = {
             method: "PATCH",
             body: JSON.stringify(verificationCredentials),

@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 export default function MyProfile() {
 
-     const profileEdit = useSelector( state => state.profileEdit.profileEditSection);
+     const profileEdit = useSelector( state => state.UserReducer.profileEditSection);
     const dispatch = useDispatch()
 
     const profileHandler = value => { dispatch({type:"PROFILE-EDIT-HANDLER",payload:value})}

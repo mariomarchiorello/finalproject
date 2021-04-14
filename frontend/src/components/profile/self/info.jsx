@@ -2,7 +2,7 @@ import React from 'react'
 import {Info} from './style'
 
 
-export default function InfoSection(props) {
+export default function InfoSection() {
     return (
         <>
             <Info>
