@@ -3,14 +3,15 @@ import { combineReducers } from 'redux';
 const initialState = {
     token: '',
     user: [],
-    self:{},
+    userMe:{},
     profileEditSection:"info",
 }
 
 
 const getSelfReducer = (state= initialState, action) => {
     if(action.type === 'GET_USER_ME'){
-        return {...state, self: action.payload}
+        console.log("action", action.payload)
+        return {...state, userMe: action.payload}
     }
     return state
 }

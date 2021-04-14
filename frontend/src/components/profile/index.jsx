@@ -42,6 +42,7 @@ export default function Profile() {
             }
             dispatch(action)
 
+
         })
 
     }, []);
@@ -73,7 +74,7 @@ export default function Profile() {
     return (
         <>
             <BackgroundProfile style={background}>
-                <Header/>
+                <Header userSelf ={userSelf}/>
                 <MainProfile>
                     <SelectionContainer>
                         <Link className='underscored'
@@ -86,7 +87,7 @@ export default function Profile() {
                          onClick={()=>selectHandler("2")}
                         >in progress</Link>
                     </SelectionContainer>
-                    {sectionToRender === "0" ? <MyProfile /> : null}
+                    {sectionToRender === "0" ? <MyProfile userSelf ={userSelf}/> : null}
                     
 
 

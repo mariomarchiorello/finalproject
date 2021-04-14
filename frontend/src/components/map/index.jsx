@@ -15,6 +15,7 @@ const MapPage = ()=>  {
 
     const getSelf = ()=>{
         dispatch(getUserMeAction(history));
+
     };
 
 

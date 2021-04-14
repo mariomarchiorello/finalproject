@@ -24,6 +24,7 @@ export const getUserMeAction = (history) => {
                 payload: data
             }
             dispatch(action);
+            localStorage.setItem("user", data.first_name);
             history.push('/profile');
         })
     }

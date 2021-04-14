@@ -38,7 +38,7 @@ export const BottomContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content:flex-end ;
-  margin-top: 5%;
+  //margin-top: 5%;
   
 `;
 
