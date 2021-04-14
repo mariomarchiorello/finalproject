@@ -11,16 +11,16 @@ import bg2 from "../../assets/background-images/8.jpg"
 import bg3 from "../../assets/background-images/2.jpg"
 import bg4 from "../../assets/background-images/1.jpg"
 import bg5 from "../../assets/background-images/10.jpg"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 
 export default function Profile() {
 
-    let sectionToRender = "0"
-    const selectHandler = (e) => {
-        return sectionToRender = e
-    }
+    const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
+    const dispatch = useDispatch()
+    const profileMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
+
 
     const backgroundArray = [bg1, bg2, bg3, bg4, bg5];
     const randomIndex = Math.floor(Math.random() * backgroundArray.length);
@@ -41,16 +41,17 @@ export default function Profile() {
                 <MainProfile>
                     <SelectionContainer>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("0")}
+                         onClick={()=>profileMainChoice("profile")}
                         >Profile</Link>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("1")}
+                         onClick={()=>profileMainChoice("completed")}
                         >Completed</Link>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("2")}
+                         onClick={()=>profileMainChoice("incomplete")}
                         >in progress</Link>
                     </SelectionContainer>
-                     <MyProfile/>
+                    {profileMainAction === "profile"? <MyProfile/> : null}
+
                     
 
 

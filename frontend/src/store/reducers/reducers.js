@@ -4,7 +4,8 @@ const initialState = {
     token: '',
     user: [],
     userMe:{},
-    profileEditSection:"info",
+    profileEditSection:"default",
+    profileMainChoice:"profile",
 }
 
 
@@ -21,6 +22,8 @@ const UserReducer = (state= initialState, action) => {
             return {...state, pageId: action.payload}
         case "PROFILE-EDIT-HANDLER":
             return {...state, profileEditSection: action.payload}
+        case "PROFILE-MAIN-HANDLER":
+            return {...state, profileMainSection: action.payload}
         default:
             return state;
     }

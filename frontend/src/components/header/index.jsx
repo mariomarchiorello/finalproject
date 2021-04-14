@@ -22,9 +22,9 @@ const Header = () => {
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
     const storeToken = useSelector(state => state.UserReducer.token);
-    console.log("from useSelector",storeToken)
+   // console.log("from useSelector",storeToken)
 
-    console.log("from use Selecthor",userSelf.first_name)
+    //console.log("from use Selecthor",userSelf.first_name)
     const profileHandler = value => {dispatch({type:"PROFILE-EDIT-HANDLER",payload: value})};
 
     // const logout = (e) => {
