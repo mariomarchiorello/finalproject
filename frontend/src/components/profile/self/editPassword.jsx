@@ -4,10 +4,12 @@ import {Edit} from "./style";
 import {GlobalInput, GlobalLabel, SmallBlueButton} from "../../../globalstyles/globalStyle";
 import { useHistory } from "react-router-dom";
 import {BottomContainer} from "../style";
+import {useDispatch} from "react-redux";
 
 
 export default function EditPasswordSection() {
         const history = useHistory()
+        const dispatch = useDispatch()
 
     const [regEmail, setEmail]=useState("")
 
@@ -31,6 +33,7 @@ export default function EditPasswordSection() {
         })
         history.push("/resetTwo")
     }
+    const profileHandler = value => { dispatch({type:"PROFILE-EDIT-HANDLER",payload:value})}
 
 
     return (
@@ -46,6 +49,7 @@ export default function EditPasswordSection() {
             </Edit>
             <BottomContainer>
                     <SmallBlueButton onClick={registrationHandler}>Reset Password</SmallBlueButton>
+                    < SmallBlueButton onClick={()=>profileHandler("editProfile")}>back</SmallBlueButton>
             </BottomContainer>
         </>
     )
