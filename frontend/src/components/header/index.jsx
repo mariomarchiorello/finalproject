@@ -3,9 +3,15 @@ import { HeaderContainer, Logo, RightContainer, Profile, LoginButton, LogoContai
 
 import {withAuth} from "../HOC";
 import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+
+
 
 const Header = () => {
+    const token = localStorage.getItem("token");
+    const test = useSelector(state => state.signInReducer)
+    //console.log("in da test",test)
+
 
     const dispatch = useDispatch();
 
@@ -22,8 +28,8 @@ const Header = () => {
             <Link to="/"><LogoContainer>
                 <Logo src={first}/>
             </LogoContainer></Link>
-            { withAuth( <RightContainer><Profile onClick={()=>profileHandler("info")} to='/profile'>Username</Profile><LoginButton onCLick={logOut}>Sign Out</LoginButton></RightContainer> )}
-            <RightContainer><Link to='/sign-up'><Profile>Join</Profile></Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>;
+            { token ? <RightContainer><Profile onClick={()=>profileHandler("info")} to='/profile'>Username</Profile><LoginButton onCLick={logOut}>Sign Out</LoginButton></RightContainer> :null }
+            { token === null ? <RightContainer><Link to='/sign-up'><Profile>Join</Profile></Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>: null};
 
     </HeaderContainer>
   </>

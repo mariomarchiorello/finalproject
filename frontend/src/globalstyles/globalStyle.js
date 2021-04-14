@@ -115,7 +115,7 @@ width: 8rem;
 height: 1.5rem;
 cursor:pointer;
 outline:transparent;
-
+margin:3%;
 :active{
   outline:transparent;
 }
