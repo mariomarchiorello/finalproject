@@ -8,7 +8,7 @@ export const QuoteWrapper = styled.div`
     justify-content: start;
     align-items: flex-end;
     font-style: italic;
-    color: #FFFFFF;
+    color: ${props => props.theme.labelcolor};
     margin-top: 5rem;
     margin-left: 3rem;
     `;

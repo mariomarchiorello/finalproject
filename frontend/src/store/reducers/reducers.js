@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const initialState = {
     token: '',
     user: [],
-    self:[],
+    self:{},
     profileEditSection:"info",
 }
 
@@ -18,7 +18,7 @@ const getSelfReducer = (state= initialState, action) => {
 const signInReducer = (state = initialState, action) => {
     
     if(action.type === 'USER_SIGNIN'){
-        return {...state, token: action.payload.token, user: action.payload.userInfo}
+        return {...state, token: action.payload.token}
     }
     return state
 }
