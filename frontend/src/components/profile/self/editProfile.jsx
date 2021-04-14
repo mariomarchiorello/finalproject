@@ -93,7 +93,8 @@ export default function EditProfileSection() {
             </Edit>
             <BottomContainer>
                     <EditPasswordButton onClick={()=>profileHandler("changePassword")} >Change Password</EditPasswordButton>
-                    <SmallBlueButton  >save</SmallBlueButton>
+                    <SmallBlueButton onClick={()=>profileHandler("info")} > go back</SmallBlueButton>
+                    <SmallBlueButton onClick={editProfileHandler} >save</SmallBlueButton>
             </BottomContainer>
             </form>
         </>
