@@ -1,15 +1,15 @@
 import styled from 'styled-components'
-import { CenterContainer } from '../../../globalstyles/globalStyle';
+import {CenterContainer, TransparentButton} from '../../../globalstyles/globalStyle';
 
 
 
 
 
 export const ProfileCenterContainer = styled(CenterContainer)`
-background-color: green;
 height:auto;
 display:flex;
 flex-direction:column;
+  flex-grow: 2;
 
 `;
 
@@ -33,16 +33,44 @@ export const Info = styled.div`
 `;
 
 export const Edit = styled.div`
-    /* background-color:red; */
     display: flex;
     flex-direction:row;
+  z-index: 5;
     section{
         width:20vw;
         color:#ffffff;
         display:flex;
-        flex-direction:column;
-        
+        flex-direction:column;        
     }
+  p{
+    color:white;
+    margin-top: 3%;
+    margin-right: 3%;
+    margin-left: -3%;
     
+  }
+`;
 
+export const RadioButton = styled.div`
+    div{
+      margin-top: 5%;
+      label{
+        font-size: 14px;
+        margin-right: 3%;
+      }
+    }    
+`;
+
+export const EditPasswordButton = styled(TransparentButton)`
+border-radius: 3px;
+color: #FFFFFF;
+width: auto;
+height: 1.5rem;
+cursor:pointer;
+padding: 0 20px 0 20px;
+  margin: 3%;
+  
+:active{
+  outline:transparent;
+}
 `;

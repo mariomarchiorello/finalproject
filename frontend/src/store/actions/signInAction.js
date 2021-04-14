@@ -1,8 +1,9 @@
-export const signInAction = (credentials, history) => {
-    return (dispatch,getState) => {
-      //const url = 'http://localhost:8000/backend/api/auth/token/';
+import baseUrl from "../../helpers/baseUrl";
 
-      const url = 'https://goes-app.propulsion-home.ch/backend/api/auth/token/';
+export const signInAction = (credentials, history) => {
+    return (dispatch) => {
+      const url = `${baseUrl}auth/token/`;
+      
       const config = {
       method: "POST",
       body: JSON.stringify(credentials),
@@ -15,19 +16,19 @@ export const signInAction = (credentials, history) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data)
+        //console.log("inside the fetch", data)
           if(data.access || localStorage.getItem('token')){
         const user = {
-          token: data.access,
-          userInfo: data.user
-        }    
+          token: data.access
+        }
+        //console.log("in da fetch", data)
         const action = {
           type: "USER_SIGNIN",
-          payload: user,
+          payload: data.access,
         };
+        //console.log("IN DA ACTION", action)
         dispatch(action);
         if(data.access)localStorage.setItem("token", data.access);
-         localStorage.setItem("user", data.user);
         history.push('/map')
         }else {
             alert('something went wrong please enter the correct information or create an account ')

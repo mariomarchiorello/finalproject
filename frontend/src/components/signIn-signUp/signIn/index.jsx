@@ -7,6 +7,7 @@ import { signInAction } from '../../../store/actions/signInAction';
 import Header from '../../header';
 import { RegButton, RegInputContainer, RegistrationWrapper } from '../signUp/style';
 import { VerLabel } from '../verification/style';
+//import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 
 export default function SignIn() {
 
@@ -24,9 +25,10 @@ export default function SignIn() {
         }
         dispatch(signInAction(credentials, history))
 
+
   };
-
-
+    //const token = localStorage.getItem("token")
+    //console.log("from inside signin",token)
     return (
         <>
             <Background>

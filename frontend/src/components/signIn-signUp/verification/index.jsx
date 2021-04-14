@@ -4,6 +4,7 @@ import { VerButton, VerificationMsg, VerInputContainer, VerLabel } from "./style
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import Footer from "../../footer";
+import baseUrl from "../../../helpers/baseUrl";
 
 
 
@@ -13,7 +14,8 @@ const Verification = () => {
 
     const [code, setCode] = useState("")
     const [email, setEmail] = useState("")
-    const [username, setUsername] = useState("")
+    const [first_name, setFirstName] = useState("")
+    const [last_name, setLastName] = useState("")
     const [password, setPassword] = useState("")
     const [password_repeat, setPassword_repeat] = useState("")
     
@@ -23,14 +25,16 @@ const Verification = () => {
         e.preventDefault();
         const verificationCredentials = {
             email : email,
-            username: username,
+            username: email,
+            first_name: first_name,
+            last_name: last_name,
             password: password,
             code: code,
             password_repeat: password_repeat
         }
         //const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
 
-        const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/validation/";
+        const url = `${baseUrl}auth/registration/validation/`;
         const config = {
             method: "PATCH",
             body: JSON.stringify(verificationCredentials),
@@ -55,23 +59,31 @@ const Verification = () => {
                     <p>Please check your email for the verification code to finish the process.</p>
                 </VerificationMsg>
                 <VerInputContainer>
-                    <VerLabel htmlFor="code">verification code</VerLabel>
-                    <GlobalInput type="text" name="code"
-                    value={code} onChange={(e)=>{setCode(e.target.value)}}></GlobalInput>
-                    <VerLabel htmlFor="email">email</VerLabel>
-                    <GlobalInput type="text" name="email"
-                    value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
-                    <VerLabel htmlFor="user">username</VerLabel>
-                    <GlobalInput type="text" name="user"
-                    value={username} onChange={(e)=>{setUsername(e.target.value)}}></GlobalInput>
-                    <VerLabel htmlFor="password">password</VerLabel>
-                    <GlobalInput type="password" name="password"
-                    value={password} onChange={(e)=>{setPassword.apply(e.target.value)}}></GlobalInput>
-                    <VerLabel htmlFor="password_repeat">repeat password</VerLabel>
-                    <GlobalInput type="password" name="password_repeat"
-                    value={password_repeat} onChange={(e)=>{setPassword_repeat(e.target.value)}}></GlobalInput>
-                    <VerButton type='submit' onClick={veriHandler}>Register</VerButton>
+                    <section className="right"></section>
+                    <div>
+                        <VerLabel htmlFor="code">verification code</VerLabel>
+                        <GlobalInput type="text" name="code"
+                                     value={code} onChange={(e)=>{setCode(e.target.value)}}></GlobalInput>
+                        <VerLabel htmlFor="email">email</VerLabel>
+                        <GlobalInput type="text" name="email"
+                                     value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
+                        <VerLabel htmlFor="first">first name</VerLabel>
+                        <GlobalInput type="text" name="first"
+                        value={first_name} onChange={(e)=>{setFirstName(e.target.value)}}></GlobalInput>
+                    </div>
+                    <div>
+                        <VerLabel htmlFor="last">last name</VerLabel>
+                        <GlobalInput type="text" name="last"
+                        value={last_name} onChange={(e)=>{setLastName(e.target.value)}}></GlobalInput>
+                        <VerLabel htmlFor="password">password</VerLabel>
+                        <GlobalInput type="password" name="password"
+                        value={password} onChange={(e)=>{setPassword(e.target.value)}}></GlobalInput>
+                        <VerLabel htmlFor="password_repeat">repeat password</VerLabel>
+                        <GlobalInput type="password" name="password_repeat"
+                        value={password_repeat} onChange={(e)=>{setPassword_repeat(e.target.value)}}></GlobalInput>
+                    </div>
                 </VerInputContainer>
+                <VerButton type='submit' onClick={veriHandler}>Register</VerButton>
             </Main>
             <Footer/>
         </Background>

@@ -1,22 +1,26 @@
 import React from 'react'
-import { Info } from './style'
+import {Info} from './style'
+
 
 export default function InfoSection() {
+
+
+
     return (
         <>
             <Info>
                 <section className='right'>
                     <div>
                         <p className='type'>Username</p>
-                        <p className='value'>Value</p>
+                        <p className='value'></p>
                     </div>
                     <div>
                         <p className='type'>First Name</p>
-                        <p className='value'>Value</p>
+                        <p className='value'></p>
                     </div>
                     <div>
                         <p className='type'>Home Latitude</p>
-                        <p className='value'>Value</p>
+                        <p className='value'></p>
                     </div>
                     <div>
                         <p className='type'>Vessel</p>
@@ -39,7 +43,9 @@ export default function InfoSection() {
                     </div>
 
                 </section>
-            </Info>  
+
+            </Info>
+
         </>
     )
 }

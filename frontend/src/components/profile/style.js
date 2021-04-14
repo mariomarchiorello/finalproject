@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {Background, Main} from "../../globalstyles/globalStyle";
 
 
 
@@ -24,3 +25,24 @@ export const SelectionContainer = styled.div`
     }
 `;
 
+export const BackgroundProfile = styled(Background)`
+    width: auto;
+    height: 100%;
+    background-color: black;
+    z-index: -5;
+
+`;
+
+export const BottomContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end ;
+  //margin-top: 5%;
+  
+`;
+
+export const MainProfile = styled(Main)`
+height: 100%;
+  z-index: 5;
+`;
