@@ -13,6 +13,7 @@ import { ThemeProvider } from "styled-components";
 import { darktheme, lighttheme } from "./components/themes"
 import CreateNewSampleSet from "./components/sampleSetUpload";
 import Toggle from "./components/themes/toggle";
+import {withAuth} from "./components/HOC";
 
 
 
@@ -29,10 +30,10 @@ const App = () => {
       <Router>
         <Switch>
           {/* <Route exact path='/' component={Home} /> */}
-          <Route exact path="/map" component={Map} />
+          <Route exact path="/map" component={withAuth(Map)} />
           {/* <Route exact path='/annotate' component={XXX} /> */}
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/upload" component={CreateNewSampleSet}/>
+          <Route exact path="/profile" component={withAuth(Profile)} />
+          <Route exact path="/upload" component={withAuth(CreateNewSampleSet)}/>
           <Route exact path="/resetTwo" component={PasswordReset} />
           <Route exact path={["/home", "/"]} component={Home} />
           <Route exact path="/resetOne" component={ResetPwEmail} />
