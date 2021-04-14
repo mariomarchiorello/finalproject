@@ -116,16 +116,16 @@ const CreateNewSampleSet = () => {
                         <OuterInputsContainer>
 
                             <LabelInputContainer>
-                                <GlobalLabel>collection date*</GlobalLabel>
+                                <GlobalLabel>collection date *</GlobalLabel>
                                 <GlobalInput name='collection_date' type='date' value={undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
                                 <GlobalLabel>water depth</GlobalLabel>
                                 <GlobalInput name='sample_depth' type='text' value={undefined} onChange={(e)=>setWaterDepth(e.target.value)}/>
                             </LabelInputContainer>
 
                             <LabelInputContainer>
-                                <GlobalLabel>latitude*</GlobalLabel>
+                                <GlobalLabel>latitude *</GlobalLabel>
                                 <GlobalInput name='sample_latitude' type='text' value={undefined} onChange={(e)=>setLatitude(e.target.value)}/>
-                                <GlobalLabel>longitude*</GlobalLabel>
+                                <GlobalLabel>longitude *</GlobalLabel>
                                 <GlobalInput name='sample_longitude' type='text' value={undefined} onChange={(e)=>setLongitude(e.target.value)}/>
                             </LabelInputContainer>
 
@@ -143,6 +143,7 @@ const CreateNewSampleSet = () => {
                                 <StandardText>Oil <input type={'checkbox'} name={'oil'} onChange={() => setOilChecked(!oilChecked)} checked={oilChecked} /></StandardText>
                                 <StandardText>Bioluminescence <input type={'checkbox'} name={'bioluminescence'} onChange={() => setBioluminescenceChecked(!bioluminescenceChecked)} checked={bioluminescenceChecked} /></StandardText>
                         </CheckboxFieldsContainer>
+
                         <CheckboxFieldsContainer>
                             <StandardText>Weather Events<SmallText>(Select all that apply)</SmallText></StandardText>
                                 <StandardText>Sun <input type={'checkbox'} name={'sun'} onChange={() => setSunChecked(!sunChecked)} checked={sunChecked} /></StandardText>
