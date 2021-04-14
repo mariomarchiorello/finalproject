@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
+import {Link, useHistory} from "react-router-dom"
 import Header from "../header"
 import Footer from "../footer"
 import {
@@ -21,6 +22,9 @@ import planktonImage from '../../assets/background-images/10.jpg'
 
 const CreateNewSampleSet = () => {
 
+    const token = localStorage.getItem('token');
+    const history = useHistory()
+
     const [collectionDate, setCollectionDate] = useState("");
     const [waterDepth, setWaterDepth] = useState("");
     const [latitude, setLatitude] = useState("");
@@ -30,8 +34,6 @@ const CreateNewSampleSet = () => {
     // const [surface, setSurface] = useState("");
     // const [weather, setWeather] = useState("");
     const [image, setImage] = useState(null);
-
-    const token = localStorage.getItem('token');
 
 
     const NewSampleSetHandler = (event) =>  {
@@ -54,12 +56,14 @@ const CreateNewSampleSet = () => {
             method: "POST",
             body: formData,
             headers: new Headers ({
-                "Authorization": `Bearer ${token}`,
+                // "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwMTEzMTE4LCJqdGkiOiI1ZDI3YTM0NGNlNjA0YTZlOTEyZjk5Y2Y4NzgyYjU2NSIsInVzZXJfaWQiOjEyfQ.OOGiejtyT0LbvH0fRSlLyhbPOQrxwALvwNpM4WakZGg`,
             })
         }
         fetch(url, config)
         .then(res => res.json())
         .then(data => console.log(data))
+        history.push('/annotate')
     }
 
 
@@ -75,7 +79,7 @@ const CreateNewSampleSet = () => {
 
                             <LabelInputContainer>
                                 <GlobalLabel>collection date*</GlobalLabel>
-                                <GlobalInput name='collection date' type='text' value= {undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
+                                <GlobalInput name='collection date' type='date' value= {undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
                                 <GlobalLabel>water depth</GlobalLabel>
                                 <GlobalInput name='water depth' type='text' value= {undefined} onChange={(e)=>setWaterDepth(e.target.value)}/>
                             </LabelInputContainer>
@@ -137,8 +141,7 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             <SmallBlueButton>Add Images</SmallBlueButton>
-                            {/*only works for single image upload?*/}
-                            <input name='image' type='file' value= {undefined} onChange={(e)=>setImage(e.target.files[0])}/>
+                            <input name='image' type='file' multiple value= {undefined} onChange={(e)=>setImage(e.target.files[0])}/>
                             <ImagesContainer>
                                 {/*placeholder images, should only show when images are added*/}
                                 <ImagePreview src={planktonImage} alt="Plankton" />
@@ -147,8 +150,9 @@ const CreateNewSampleSet = () => {
                                 <ImagePreview src={planktonImage} alt="Plankton" />
                             </ImagesContainer>
                         </AddImagesContainer>
+
                         <BlueButton type='submit' onClick={NewSampleSetHandler}>Continue</BlueButton>
-                        <TransparentButton>Go To Summary</TransparentButton>
+                        <Link to='/summary'><TransparentButton>Go To Summary</TransparentButton></Link>
                     </CenterContainer>
                 </Main>
             <Footer/>
