@@ -49,7 +49,7 @@ const SignUp = () => {
                 </RegistrationWrapper>
                 <RegInputContainer>
                     <GlobalLabel htmlFor="email">email</GlobalLabel>
-                    <GlobalInput type="text" name="email" placeholder='E-mail address' value={regEmail} onChange={(e)=>setEmail(e.target.value)}/>
+                    <GlobalInput type="text" name="email" value={regEmail} onChange={(e)=>setEmail(e.target.value)}/>
                     <RegButton type='submit' onClick={registrationHandler}> Continue</RegButton>
                 </RegInputContainer>
             </Main>

@@ -1,6 +1,6 @@
 import { HeaderContainer, Logo, RightContainer, Profile, LoginButton, LogoContainer } from "./style"
- import first from "../../assets/graphics/img_2.png"
-
+import darklogo from "../../assets/graphics/goes-logo_color-white.png"
+import lightlogo from "../../assets/graphics/GOES-Logo_dark-text.png"
 import {withAuth} from "../HOC";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -26,7 +26,7 @@ const Header = () => {
     <HeaderContainer>
 
             <Link to="/"><LogoContainer>
-                <Logo src={first}/>
+                <Logo src={darklogo}/>
             </LogoContainer></Link>
             { token ? <RightContainer><Profile onClick={()=>profileHandler("info")} to='/profile'>Username</Profile><LoginButton onCLick={logOut}>Sign Out</LoginButton></RightContainer> :null }
             { token === null ? <RightContainer><Link to='/sign-up'><Profile>Join</Profile></Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>: null};
