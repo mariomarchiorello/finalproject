@@ -31,7 +31,7 @@ const Header = (props) => {
 
             { token ? <Link to="/map"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link> : null}
             { token === null ? <Link to="/"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link> : null}
-            { token ? <RightContainer><Profile onClick={()=>profileHandler("info")} to='/profile'>{props.userMe.first_name}' profile</Profile><LoginButton onCLick={logout}>Sign Out</LoginButton></RightContainer> :null }
+            { token ? <RightContainer><Profile onClick={()=>profileHandler("info")} to='/profile'>profile</Profile><LoginButton onCLick={logout}>Sign Out</LoginButton></RightContainer> :null }
             { token === null ? <RightContainer><Link to='/sign-up'><Profile>Join</Profile></Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>: null};
 
     </HeaderContainer>
