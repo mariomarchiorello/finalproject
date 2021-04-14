@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import EditPasswordSection from './editPassword'
 import EditProfileSection from './editProfile'
 import InfoSection from './info'
@@ -6,8 +6,19 @@ import { ProfileCenterContainer} from './style'
 import {SmallBlueButton} from "../../../globalstyles/globalStyle";
 import {BottomContainer} from "../style";
 import {useDispatch, useSelector} from "react-redux";
+import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
+import {useHistory} from "react-router-dom";
 
 export default function MyProfile() {
+
+    const history = useHistory()
+    useEffect(()=>{
+        dispatch(getUserMeAction(history))
+
+    },[])
+
+    const userSelf = useSelector(state => state.UserReducer.userMe);
+
 
     const dispatch = useDispatch()
 
@@ -22,8 +33,8 @@ export default function MyProfile() {
         <>
             <div>
             <ProfileCenterContainer>
-                { profileEdit=== "info" ||profileEdit==="default" ? <InfoSection/> : null }
-                { profileEdit=== "info" ||profileEdit==="default" ? <BottomContainer><SmallBlueButton onClick={()=>profileHandler("editProfile")} >Edit</SmallBlueButton></BottomContainer> : null }
+                { profileEdit=== "info"  ? <InfoSection/> : null }
+                { profileEdit=== "info"  ? <BottomContainer><SmallBlueButton onClick={()=>profileHandler("editProfile")} >Edit</SmallBlueButton></BottomContainer> : null }
 
 
                 { profileEdit === "editProfile" ? <EditProfileSection/> : null }

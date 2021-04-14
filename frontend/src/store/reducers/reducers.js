@@ -4,8 +4,8 @@ const initialState = {
     token: '',
     user: [],
     userMe:{},
-    profileEditSection:"default",
-    profileMainChoice:"profile",
+    profileEditSection:"info",
+    profileMainSection:"profile",
 }
 
 

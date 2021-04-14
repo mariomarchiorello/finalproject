@@ -15,7 +15,7 @@ const InfoSection=()=> {
 
     },[])
 
-    const userSelf = useSelector(state => state.UserReducer.userMe,()=>{});
+    const userSelf = useSelector(state => state.UserReducer.userMe);
     // console.log("from inside the infosection:",userSelf)
 
 

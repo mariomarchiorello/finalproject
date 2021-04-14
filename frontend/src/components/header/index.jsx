@@ -15,6 +15,7 @@ const Header = () => {
 
     const [localToken, setLocalToken] = useState("");
     useEffect(()=>{
+
         setLocalToken(localStorage.getItem("token"));
         //console.log("in da useEffect", localToken);
     },[]);
@@ -25,7 +26,11 @@ const Header = () => {
    // console.log("from useSelector",storeToken)
 
     //console.log("from use Selecthor",userSelf.first_name)
-    const profileHandler = value => {dispatch({type:"PROFILE-EDIT-HANDLER",payload: value})};
+    const profileHandler = value => {
+        dispatch({type:"PROFILE-EDIT-HANDLER",payload: value})
+            .then(()=>dispatch({type:"PROFILE_MAIN_HANDLER", payload:"profile"}))
+            .then(()=>history.push("/profile"))
+    };
 
     // const logout = (e) => {
     //     e.preventDefault()
@@ -39,7 +44,7 @@ const Header = () => {
     <HeaderContainer>
 
         {localToken ? (<Link to="/map"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>)}
-        {localToken ? (<RightContainer><Profile to='/profile'>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
+        {localToken ? (<RightContainer><Profile onClick={()=>profileHandler("info")}>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
             (<RightContainer><Profile to="/sign-up">Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
 
     </HeaderContainer>
