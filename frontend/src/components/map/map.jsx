@@ -20,7 +20,7 @@ const center= [10, -2];
 
 export default function Map() {
 
-    const userSelf = useSelector(state => state.UserReducer.userMe);
+    const userSelf = useSelector(state => state);
     console.log("in da map", userSelf)
 
 

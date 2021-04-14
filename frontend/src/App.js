@@ -17,6 +17,7 @@ import {
   CreateNewSampleSet,
 } from "./LazyComponents";
 import Spinner from "./components/spinner";
+import {withAuth} from "./components/HOC";
 
 const App = () => {
   return (
@@ -25,10 +26,10 @@ const App = () => {
         <Router>
           <Switch>
             <Suspense fallback={<Spinner />}>
-              <Route exact path="/map" component={Map} />
+              <Route exact path="/map" component={withAuth(Map)} />
               {/* <Route exact path='/annotate' component={XXX} /> */}
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/upload" component={CreateNewSampleSet} />
+              <Route exact path="/profile" component={withAuth(Profile)} />
+              <Route exact path="/upload" component={withAuth(CreateNewSampleSet)} />
               <Route exact path="/resetTwo" component={PasswordReset} />
               <Route exact path={["/home", "/"]} component={Home} />
               <Route exact path="/resetOne" component={ResetPwEmail} />

@@ -16,12 +16,11 @@ export const getUserMeAction = (history) => {
         fetch(url, config)
             .then(res => res.json())
             .then(data => {
-                console.log('data:', data);
+                //console.log('data:', data);
                 const action = {
                     type: 'GET_USER_ME',
                     payload: data
                 }
-                console.log("IN DA USEEFFECT ACTION", action)
                 dispatch(action);
                 localStorage.setItem("user", data.first_name);
                 // history.push('/profile');

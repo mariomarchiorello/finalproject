@@ -11,14 +11,15 @@ import {useHistory} from "react-router-dom";
 
 const MapPage = ()=>  {
     const history = useHistory()
-
-    // MAYBE USE USEEFFECT HOOK TO GET AUTOMATICALLY
     const dispatch = useDispatch()
-    const getSelf = ()=>{
-        dispatch(getUserMeAction(history));
-    };
 
-    const [userSelf, setUserSelf] = useState({})
+    useEffect(()=>{
+        dispatch(getUserMeAction(history))
+
+    },[])
+
+
+
 
     return (
         <>  
@@ -30,7 +31,7 @@ const MapPage = ()=>  {
                         <Map />
                         <section className="button">
                         <Bluebutton>Upload</Bluebutton>
-                        <Bluebutton onClick={getSelf} >Profile</Bluebutton>
+                        <Bluebutton>Profile</Bluebutton>
                         </section>
                         </BackgroundMap>
                     </Main>

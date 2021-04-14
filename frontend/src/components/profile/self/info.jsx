@@ -3,6 +3,9 @@ import {Info} from './style'
 
 
 export default function InfoSection() {
+
+
+
     return (
         <>
             <Info>

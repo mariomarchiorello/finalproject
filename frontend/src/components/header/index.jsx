@@ -3,36 +3,44 @@ import darklogo from "../../assets/graphics/goes-logo_color-white.png"
 import lightlogo from "../../assets/graphics/GOES-Logo_dark-text.png"
 import {Link, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+import store from "../../store";
 
 
-const Header = (props) => {
-
-    const history = useHistory()
-    const token = localStorage.getItem("token");
+const Header = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
-    const profileHandler = value => {
-                console.log("from in da header--> go to profile")
 
-        dispatch({type:"PROFILE-EDIT-HANDLER",payload: value})
-    };
+    const [localToken, setLocalToken] = useState("");
+    useEffect(()=>{
+        setLocalToken(localStorage.getItem("token"));
+        //console.log("in da useEffect", localToken);
+    },[]);
+    //console.log("from selecthor", localToken)
 
-    const logout = (e) => {
-        e.preventDefault()
-        localStorage.clear()
-        window.location.reload()
-        history.push('/')
-    }
+    const userSelf = useSelector(state => state.UserReducer.userMe);
+    const storeToken = useSelector(state => state.UserReducer.token);
+    console.log("from useSelector",storeToken)
+
+    console.log("from use Selecthor",userSelf.first_name)
+    const profileHandler = value => {dispatch({type:"PROFILE-EDIT-HANDLER",payload: value})};
+
+    // const logout = (e) => {
+    //     e.preventDefault()
+    //     localStorage.clear()
+    //     window.location.reload()
+    //     history.push('/')
+    // }
 
 
     return  <>
     <HeaderContainer>
 
-            { token ? <Link to="/map"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link> : null}
-            { token === null ? <Link to="/"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link> : null}
-            { token ? <RightContainer><Profile onClick={()=>profileHandler("info")} to='/profile'>profile</Profile><LoginButton onCLick={logout}>Sign Out</LoginButton></RightContainer> :null }
-            { token === null ? <RightContainer><Link to='/sign-up'><Profile>Join</Profile></Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>: null};
+        {localToken ? (<Link to="/map"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>)}
+        {localToken ? (<RightContainer><Profile to='/profile'>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
+            (<RightContainer><Link to='/sign-up'><Profile>Join</Profile></Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
 
     </HeaderContainer>
   </>
