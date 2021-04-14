@@ -12,6 +12,7 @@ import {useHistory} from "react-router-dom";
 const MapPage = ()=>  {
     const history = useHistory()
 
+    // MAYBE USE USEEFFECT HOOK TO GET AUTOMATICALLY
     const getSelf = ()=>{
         dispatch(getUserMeAction(history));
 
