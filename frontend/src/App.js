@@ -10,6 +10,7 @@ import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Profile from "./components/profile";
 import Home from "./components/home"
 import DynamicBackground from "./components/backgroundChanger";
+import Annotate from './components/annotate'
 
 const App = ()=> {
   return (
@@ -18,7 +19,7 @@ const App = ()=> {
       <Switch>
         {/* <Route exact path='/' component={Home} /> */}
         <Route exact path='/map' component={Map} />
-        {/* <Route exact path='/annotate' component={XXX} /> */}
+        <Route exact path='/annotate' component={Annotate} />
         <Route exact path='/profile' component={Profile} />
 
         <Route exact path='/bg' component={DynamicBackground} />
