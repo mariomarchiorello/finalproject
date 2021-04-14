@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 // import {Background, Main } from '../../globalstyles/globalStyle'
 import Footer from '../footer'
@@ -11,10 +11,44 @@ import bg2 from "../../assets/background-images/8.jpg"
 import bg3 from "../../assets/background-images/2.jpg"
 import bg4 from "../../assets/background-images/1.jpg"
 import bg5 from "../../assets/background-images/10.jpg"
+import {useDispatch} from "react-redux";
 
 
 
 export default function Profile() {
+
+    const dispatch = useDispatch()
+    const [userSelf, setUserSelf] = useState({})
+
+    useEffect(() => {
+
+        const token = localStorage.getItem('token');
+        const config = {
+            method: "GET",
+            headers: new Headers ({
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            })
+        }
+
+        fetch("https://goes-app.propulsion-learn.ch/backend/api/users/me/", config)
+        .then(res => res.json())
+        .then(data => {
+            setUserSelf(data);
+            console.log("from inside the effect-fetch", data);
+            const action = {
+                type: 'GET_USER_ME',
+                payload: data
+            }
+            dispatch(action)
+
+
+        })
+
+    }, []);
+
+    //console.log("from inside useEffect", userSelf)
+
 
 
     let sectionToRender = "0"
@@ -37,7 +71,7 @@ export default function Profile() {
     return (
         <>
             <BackgroundProfile style={background}>
-                <Header/>
+                <Header userMe ={userSelf}/>
                 <MainProfile>
                     <SelectionContainer>
                         <Link className='underscored'
@@ -50,7 +84,7 @@ export default function Profile() {
                          onClick={()=>selectHandler("2")}
                         >in progress</Link>
                     </SelectionContainer>
-                    {sectionToRender === "0" ? <MyProfile /> : null}
+                     <MyProfile userMe ={userSelf}/>
                     
 
 
