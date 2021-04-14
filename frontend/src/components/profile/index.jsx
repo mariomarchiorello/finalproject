@@ -19,8 +19,8 @@ export default function Profile() {
 
     const dispatch = useDispatch()
     const [userSelf, setUserSelf] = useState({})
-    useEffect(() => {
 
+    useEffect(() => {
 
         const token = localStorage.getItem('token');
         const config = {
@@ -42,14 +42,12 @@ export default function Profile() {
             }
             dispatch(action)
 
+
         })
 
     }, []);
 
-    console.log("from inside useEffect", userSelf)
-
-
-
+    //console.log("from inside useEffect", userSelf)
 
 
 
@@ -73,7 +71,7 @@ export default function Profile() {
     return (
         <>
             <BackgroundProfile style={background}>
-                <Header/>
+                <Header userMe ={userSelf}/>
                 <MainProfile>
                     <SelectionContainer>
                         <Link className='underscored'
@@ -86,7 +84,7 @@ export default function Profile() {
                          onClick={()=>selectHandler("2")}
                         >in progress</Link>
                     </SelectionContainer>
-                    {sectionToRender === "0" ? <MyProfile /> : null}
+                     <MyProfile userMe ={userSelf}/>
                     
 
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Background, Main } from '../../globalstyles/globalStyle'
 import Footer from '../footer'
 import Header from '../header'
@@ -11,12 +11,14 @@ import {useHistory} from "react-router-dom";
 
 const MapPage = ()=>  {
     const history = useHistory()
-    const dispatch = useDispatch()
 
+    // MAYBE USE USEEFFECT HOOK TO GET AUTOMATICALLY
+    const dispatch = useDispatch()
     const getSelf = ()=>{
         dispatch(getUserMeAction(history));
     };
 
+    const [userSelf, setUserSelf] = useState({})
 
     return (
         <>  
@@ -34,8 +36,6 @@ const MapPage = ()=>  {
                     </Main>
                     <Footer />
                 </Background>
-                
-
         </>
     )
 }

@@ -4,6 +4,7 @@ import { VerButton, VerificationMsg, VerInputContainer, VerLabel } from "./style
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import Footer from "../../footer";
+import baseUrl from "../../../helpers/baseUrl";
 
 
 
@@ -33,7 +34,7 @@ const Verification = () => {
         }
         //const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
 
-        const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/registration/validation/";
+        const url = `${baseUrl}auth/registration/validation/`;
         const config = {
             method: "PATCH",
             body: JSON.stringify(verificationCredentials),

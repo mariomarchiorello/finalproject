@@ -68,7 +68,8 @@ width: auto;
 height: 1.5rem;
 cursor:pointer;
 padding: 0 20px 0 20px;
-  margin-right:5%;
+  margin: 3%;
+  
 :active{
   outline:transparent;
 }
