@@ -12,6 +12,7 @@ import Home from "./components/home";
 import { ThemeProvider } from "styled-components";
 import { darktheme, lighttheme } from "./components/themes"
 import CreateNewSampleSet from "./components/sampleSetUpload";
+import Toggle from "./components/themes/toggle";
 
 
 
@@ -40,7 +41,7 @@ const App = () => {
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/header" component={Header} />
 
-
+          <Route exact path="/toggletest" component={Toggle} />
 
 
 

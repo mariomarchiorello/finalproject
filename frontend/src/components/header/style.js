@@ -6,7 +6,7 @@ display: flex;
 justify-content: space-between;
 position: sticky;
 top: 0;
-background-color: black;
+background-color: transparent;
 opacity: 90%;  
 height: 10%;
   z-index: 10;
