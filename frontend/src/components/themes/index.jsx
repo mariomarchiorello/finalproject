@@ -1,7 +1,5 @@
-import darkpicture from "../../assets/graphics/goes-logo_color-white.png"
 
-
-export const darktheme = {
+export const darkTheme = {
     bgcolor: "#000000",
     labelcolor: "#FFFF",
     buttoncolor: "#FFFF",
@@ -12,7 +10,7 @@ export const darktheme = {
     logo: "darkolgo",
 };
 
-export const lighttheme = {
+export const lightTheme  = {
     bgcolor: "#FFFF",
     labelcolor: "#000000",
     buttoncolor: "#000000",
