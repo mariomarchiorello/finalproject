@@ -7,7 +7,7 @@ border: none;
 background: linear-gradient(#30ADEA, #216273);
 color: ${props => props.theme.buttoncolor };
 padding: 10px 20px 10px 20px;
-width: 13rem;
+width: 12.5rem;
 height: 2.5rem;
 font-size: 18px;
 cursor:pointer;
