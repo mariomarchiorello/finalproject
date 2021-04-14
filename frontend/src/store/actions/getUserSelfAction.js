@@ -1,3 +1,4 @@
+import baseUrl from "../../helpers/baseUrl";
 
 export const getUserMeAction = (history) => {
     return (dispatch) => {
@@ -10,21 +11,19 @@ export const getUserMeAction = (history) => {
             })
         }
         
-        //const url = 'http://localhost:8000/backend/api/users/me/'
-        const url = 'https://goes-app.propulsion-learn.ch/backend/api/users/me/'
-
+        const url = `${baseUrl}users/me/`;
 
         fetch(url, config)
-        .then(res => res.json())
-
-        .then(data => {
-             console.log('data:', data);
-            const action = {
-                type: 'GET_USER_ME',
-                payload: data
-            }
-            dispatch(action);
-            history.push('/profile');
-        })
+            .then(res => res.json())
+            .then(data => {
+                //console.log('data:', data);
+                const action = {
+                    type: 'GET_USER_ME',
+                    payload: data
+                }
+                dispatch(action);
+                localStorage.setItem("user", data.first_name);
+                // history.push('/profile');
+            })
     }
 }

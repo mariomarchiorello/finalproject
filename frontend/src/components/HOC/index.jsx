@@ -4,7 +4,7 @@ export const withAuth = (WrappedComponent) => {
         if(token) {
             return <WrappedComponent />
         }else {
-            props.history.push('/sign-in', token)
+            props.history.push('/', token)
             return null
         }
     }

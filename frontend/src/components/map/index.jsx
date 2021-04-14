@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Background, Main } from '../../globalstyles/globalStyle'
 import Footer from '../footer'
 import Header from '../header'
@@ -13,9 +13,12 @@ const MapPage = ()=>  {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const getSelf = ()=>{
-        dispatch(getUserMeAction(history));
-    };
+    useEffect(()=>{
+        dispatch(getUserMeAction(history))
+
+    },[])
+
+
 
 
     return (
@@ -28,14 +31,12 @@ const MapPage = ()=>  {
                         <Map />
                         <section className="button">
                         <Bluebutton>Upload</Bluebutton>
-                        <Bluebutton onClick={getSelf} >Profile</Bluebutton>
+                        <Bluebutton>Profile</Bluebutton>
                         </section>
                         </BackgroundMap>
                     </Main>
                     <Footer />
                 </Background>
-                
-
         </>
     )
 }
