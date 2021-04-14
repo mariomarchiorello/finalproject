@@ -1,7 +1,7 @@
 import baseUrl from "../../helpers/baseUrl";
 
 export const signInAction = (credentials, history) => {
-    return (dispatch,getState) => {
+    return (dispatch) => {
       const url = `${baseUrl}auth/token/`;
       
       const config = {
@@ -21,12 +21,12 @@ export const signInAction = (credentials, history) => {
         const user = {
           token: data.access
         }
-        console.log("in da fetch", data)
+        //console.log("in da fetch", data)
         const action = {
           type: "USER_SIGNIN",
           payload: data.access,
         };
-        console.log("IN DA ACTION", action)
+        //console.log("IN DA ACTION", action)
         dispatch(action);
         if(data.access)localStorage.setItem("token", data.access);
         history.push('/map')

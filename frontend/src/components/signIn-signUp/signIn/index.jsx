@@ -27,7 +27,7 @@ export default function SignIn() {
 
 
   };
-    const token = localStorage.getItem("token")
+    //const token = localStorage.getItem("token")
     //console.log("from inside signin",token)
     return (
         <>
