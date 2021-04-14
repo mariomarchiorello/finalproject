@@ -31,6 +31,28 @@ const CreateNewSampleSet = () => {
     const [longitude, setLongitude] = useState("");
     const [airTemperature, setAirTemperature] = useState("");
     const [waterTemperature, setWaterTemperature] = useState("");
+    // checkboxes
+    const [foamChecked, setFoamChecked] = useState(false)
+    const [oilChecked, setOilChecked] = useState(false)
+    const [bioluminescenceChecked, setBioluminescenceChecked] = useState(false)
+    const [sunChecked, setSunChecked] = useState(false)
+    const [cloudChecked, setCloudChecked] = useState(false)
+    const [rainChecked, setRainChecked] = useState(false)
+    const [snowChecked, setSnowChecked] = useState(false)
+    const [stormChecked, setStormChecked] = useState(false)
+
+    console.log('Water Surface Characteristics:')
+    console.log('foam checked', foamChecked)
+    console.log('oil checked', oilChecked)
+    console.log('bio checked', bioluminescenceChecked)
+    console.log('Weather Events:')
+    console.log('sun checked', sunChecked)
+    console.log('cloud checked', cloudChecked)
+    console.log('rain checked', rainChecked)
+    console.log('snow checked', snowChecked)
+    console.log('storm checked', stormChecked)
+    console.log('--------------------')
+
     // const [surface, setSurface] = useState("");
     // const [weather, setWeather] = useState("");
     const [image, setImage] = useState(null);
@@ -41,14 +63,14 @@ const CreateNewSampleSet = () => {
         const url = "https://goes-app.propulsion-learn.ch/backend/api/samples/new/";
 
         let formData = new FormData();
-        formData.append('collection date', collectionDate)
-        formData.append('water depth', waterDepth)
-        formData.append('latitude', latitude)
-        formData.append('longitude', longitude)
-        formData.append('air temperature', airTemperature)
-        formData.append('water temperature', waterTemperature)
-        // formData.append('water surface characteristics', surface)
-        // formData.append('weather events', weather)
+        formData.append('collection_date', collectionDate)
+        formData.append('sample_depth', waterDepth)
+        formData.append('sample_latitude', latitude)
+        formData.append('sample_longitude', longitude)
+        formData.append('air_temperature', airTemperature)
+        formData.append('water_temperature', waterTemperature)
+        // formData.append('water_surface', surface)
+        // formData.append('weather_events', weather)
         formData.append('images', image)
 
 
@@ -79,63 +101,56 @@ const CreateNewSampleSet = () => {
 
                             <LabelInputContainer>
                                 <GlobalLabel>collection date*</GlobalLabel>
-                                <GlobalInput name='collection date' type='date' value= {undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
+                                <GlobalInput name='collection_date' type='date' value={undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
                                 <GlobalLabel>water depth</GlobalLabel>
-                                <GlobalInput name='water depth' type='text' value= {undefined} onChange={(e)=>setWaterDepth(e.target.value)}/>
+                                <GlobalInput name='sample_depth' type='text' value={undefined} onChange={(e)=>setWaterDepth(e.target.value)}/>
                             </LabelInputContainer>
 
                             <LabelInputContainer>
                                 <GlobalLabel>latitude*</GlobalLabel>
-                                <GlobalInput name='latitude' type='text' value= {undefined} onChange={(e)=>setLatitude(e.target.value)}/>
+                                <GlobalInput name='sample_latitude' type='text' value={undefined} onChange={(e)=>setLatitude(e.target.value)}/>
                                 <GlobalLabel>longitude*</GlobalLabel>
-                                <GlobalInput name='longitude' type='text' value= {undefined} onChange={(e)=>setLongitude(e.target.value)}/>
+                                <GlobalInput name='sample_longitude' type='text' value={undefined} onChange={(e)=>setLongitude(e.target.value)}/>
                             </LabelInputContainer>
 
                             <LabelInputContainer>
                                 <GlobalLabel>air temperature</GlobalLabel>
-                                <GlobalInput name='air temperature' type='text' value= {undefined} onChange={(e)=>setAirTemperature(e.target.value)}/>
+                                <GlobalInput name='air_temperature' type='text' value={undefined} onChange={(e)=>setAirTemperature(e.target.value)}/>
                                 <GlobalLabel>water temperature</GlobalLabel>
-                                <GlobalInput name='water temperature' type='text' value= {undefined} onChange={(e)=>setWaterTemperature(e.target.value)}/>
+                                <GlobalInput name='water_temperature' type='text' value={undefined} onChange={(e)=>setWaterTemperature(e.target.value)}/>
                             </LabelInputContainer>
                         </OuterInputsContainer>
 
                         <CheckboxFieldsContainer>
-                            <StandardText>Water surface characteristics<SmallText>(Select all that apply)</SmallText></StandardText>
+                            <StandardText>Water Surface Characteristics<SmallText>(Select all that apply)</SmallText></StandardText>
                             <div>
-                                <StandardText>Foam</StandardText>
-                                <input type={'checkbox'} id={'foam'} name={'foam'}/>
-                                {/*<label for="foam">Foam</label>*/}
+                                <StandardText>Foam <input type={'checkbox'} name={'foam'} onClick={() => setFoamChecked(!foamChecked)} checked={foamChecked} /></StandardText>
+                                {/*<StandardText>Foam <input type={'checkbox'} id={'foam'} name={'foam'}/></StandardText>*/}
                             </div>
                             <div>
-                                <StandardText>Oil</StandardText>
-                                <input type={'checkbox'} id={'oil'} name={'oil'}/>
+                                <StandardText>Oil <input type={'checkbox'} name={'oil'} onClick={() => setOilChecked(!oilChecked)} checked={oilChecked} /></StandardText>
+
                             </div>
                             <div>
-                                <StandardText>Bioluminescence</StandardText>
-                                <input type={'checkbox'} id={'bioluminescence'} name={'bioluminescence'}/>
+                                <StandardText>Bioluminescence <input type={'checkbox'} name={'bioluminescence'} onClick={() => setBioluminescenceChecked(!bioluminescenceChecked)} checked={bioluminescenceChecked} /></StandardText>
                             </div>
                         </CheckboxFieldsContainer>
                         <CheckboxFieldsContainer>
-                            <StandardText>Weather events<SmallText>(Select all that apply)</SmallText></StandardText>
+                            <StandardText>Weather Events<SmallText>(Select all that apply)</SmallText></StandardText>
                             <div>
-                                <StandardText>Sun</StandardText>
-                                <input type={'checkbox'} id={'sun'} name={'sun'}/>
+                                <StandardText>Sun <input type={'checkbox'} name={'sun'} onClick={() => setSunChecked(!sunChecked)} checked={sunChecked} /></StandardText>
                             </div>
                             <div>
-                                <StandardText>Cloud</StandardText>
-                                <input type={'checkbox'} id={'cloud'} name={'cloud'}/>
+                                <StandardText>Cloud <input type={'checkbox'} name={'cloud'} onClick={() => setCloudChecked(!cloudChecked)} checked={cloudChecked} /></StandardText>
                             </div>
                             <div>
-                                <StandardText>Rain</StandardText>
-                                <input type={'checkbox'} id={'rain'} name={'rain'}/>
+                                <StandardText>Rain <input type={'checkbox'} name={'rain'} onClick={() => setRainChecked(!rainChecked)} checked={rainChecked} /></StandardText>
                             </div>
                             <div>
-                                <StandardText>Snow</StandardText>
-                                <input type={'checkbox'} id={'snow'} name={'snow'}/>
+                                <StandardText>Snow <input type={'checkbox'} name={'snow'} onClick={() => setSnowChecked(!snowChecked)} checked={snowChecked} /></StandardText>
                             </div>
                             <div>
-                                <StandardText>Storm</StandardText>
-                                <input type={'checkbox'} id={'storm'} name={'storm'}/>
+                                <StandardText>Storm <input type={'checkbox'} name={'storm'} onClick={() => setStormChecked(!stormChecked)} checked={stormChecked} /></StandardText>
                             </div>
                         </CheckboxFieldsContainer>
 
