@@ -2,22 +2,22 @@ import React from 'react'
 import {Info} from './style'
 
 
-export default function InfoSection(props) {
+export default function InfoSection() {
     return (
         <>
             <Info>
                 <section className='right'>
                     <div>
                         <p className='type'>Username</p>
-                        <p className='value'>{props.first_name}</p>
+                        <p className='value'></p>
                     </div>
                     <div>
                         <p className='type'>First Name</p>
-                        <p className='value'>{props.userMe.last_name}</p>
+                        <p className='value'></p>
                     </div>
                     <div>
                         <p className='type'>Home Latitude</p>
-                        <p className='value'>{props.userMe.home_latitude}</p>
+                        <p className='value'></p>
                     </div>
                     <div>
                         <p className='type'>Vessel</p>
