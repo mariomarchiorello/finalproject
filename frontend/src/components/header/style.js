@@ -27,7 +27,7 @@ align-items: center;
     text-decoration:none;
   }
 `;
-export const Profile = styled(Link)`
+export const Profile = styled.button`
 font-size: 18px;
 color: ${props => props.theme.buttoncolor };
 cursor:pointer;
