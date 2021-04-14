@@ -13,6 +13,7 @@ const MapPage = ()=>  {
     const history = useHistory()
     const dispatch = useDispatch()
 
+    // MAYBE USE USEEFFECT HOOK TO GET AUTOMATICALLY
     const getSelf = ()=>{
         dispatch(getUserMeAction(history));
 
