@@ -17,7 +17,6 @@ import {
 } from "./LazyComponents";
 import Spinner from "./components/spinner";
 import { withAuth } from "./components/HOC";
-import Annotate from "./components/annotate";
 import CanvasContainer from "./components/canvasContainer";
 import { CanvasProvider } from "./components/canvasContainer/CanvasContext";
 
