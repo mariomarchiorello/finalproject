@@ -7,7 +7,7 @@ export const darkTheme = {
     smallbcolor: "#FFFF",
     containerbg: "#000000",
     profile: "#FFFF",
-    logo: "darkolgo",
+    logo: "darklogo",
 };
 
 export const lightTheme  = {

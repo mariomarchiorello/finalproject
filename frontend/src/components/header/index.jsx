@@ -39,11 +39,12 @@ const Header = () => {
     //     history.push('/')
     // }
 
+    const [theme, setTheme] = useState('dark');
 
     return  <>
     <HeaderContainer>
 
-        {localToken ? (<Link to="/map"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>)}
+        {localToken ? (<Link to="/map"><LogoContainer><Logo src={ theme === "dark" ? darklogo : lightlogo }/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={ theme === "dark" ? darklogo : lightlogo}/></LogoContainer></Link>)}
         {localToken ? (<RightContainer><Profile onClick={()=>profileHandler("info")}>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
             (<RightContainer><Profile to="/sign-up">Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
 
