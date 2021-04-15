@@ -18,6 +18,7 @@ import {
     TitleWrapper
 } from "./style"
 import planktonImage from '../../assets/background-images/10.jpg'
+import baseUrl from "../../helpers/baseUrl";
 
 
 const CreateNewSampleSet = () => {
@@ -26,6 +27,7 @@ const CreateNewSampleSet = () => {
     const history = useHistory()
 
     const [collectionDate, setCollectionDate] = useState("");
+    // day/night toggle missing
     const [waterDepth, setWaterDepth] = useState("");
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
@@ -63,7 +65,8 @@ const CreateNewSampleSet = () => {
 
     const NewSampleSetHandler = (event) =>  {
         event.preventDefault();
-        const url = "https://goes-app.propulsion-learn.ch/backend/api/samples/new/";
+        // const url = "https://goes-app.propulsion-learn.ch/backend/api/samples/new/";
+        const url = `${baseUrl}samples/new/`
 
         let formData = new FormData();
         // basic info
