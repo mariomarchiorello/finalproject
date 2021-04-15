@@ -120,7 +120,7 @@ const CreateNewSampleSet = () => {
 
                             <LabelInputContainer>
                                 <GlobalLabel>collection date *</GlobalLabel>
-                                <GlobalInput name='collection_date' type='date' value={undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
+                                <GlobalInput name='collection_date' type='date' placeholder='2021-04-21' value={undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
                                 <GlobalLabel>water depth</GlobalLabel>
                                 <GlobalInput name='sample_depth' type='text' value={undefined} onChange={(e)=>setWaterDepth(e.target.value)}/>
                             </LabelInputContainer>
@@ -157,7 +157,7 @@ const CreateNewSampleSet = () => {
                         </CheckboxFieldsContainer>
 
                         <AddImagesContainer>
-                            <SmallBlueButton>Add Images</SmallBlueButton>
+                            {/*<SmallBlueButton>Add Images</SmallBlueButton>*/}
                             <input name='image' type='file' multiple value= {undefined} onChange={(e)=>setImage(e.target.files[0])}/>
                             <ImagesContainer>
                                 {/*placeholder images, should only show when images are added*/}
