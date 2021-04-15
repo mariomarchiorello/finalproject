@@ -19,6 +19,7 @@ import { withAuth } from "./components/HOC";
 import Annotate from "./components/annotate";
 import CanvasContainer from "./components/canvasContainer";
 import { CanvasProvider } from "./components/canvasContainer/CanvasContext";
+import CanvasPage from "./components/canvaspage";
 
 const App = () => {
   return (
@@ -45,6 +46,11 @@ const App = () => {
               <CanvasProvider>
                 <Route exact path="/canvas" component={CanvasContainer} />
               </CanvasProvider>
+              <Route exact path="/canvas-page" component={CanvasPage}/>
+
+
+
+
               {/*add new routes above*/}
               {/*Always make sure to put the path"*" at the end the browser will stop looking
           for routs below this line!*/}
