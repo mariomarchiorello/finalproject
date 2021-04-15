@@ -5,7 +5,8 @@ import {getUserMeAction} from "../../store/actions/getUserSelfAction";
 import {useDispatch, useSelector} from "react-redux";
 import Header from "../header";
 import Footer from "../footer";
-import CanvasContainer from "../canvasContainer/index";
+import {CanvasProvider} from "../canvasContainer/CanvasContext";
+import CanvasContainer from "../canvasContainer";
 
 const CanvasPage=()=>{
     const history = useHistory()
@@ -26,7 +27,9 @@ const CanvasPage=()=>{
                     <Header/>
                     <Main>
                         <CenterContainer>
-                            <CanvasContainer />
+                            <CanvasProvider>
+                                <CanvasContainer/>
+                            </CanvasProvider>
 
                         </CenterContainer>
 
