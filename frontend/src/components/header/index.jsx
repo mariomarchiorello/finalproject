@@ -28,16 +28,10 @@ const Header = () => {
     //console.log("from use Selecthor",userSelf.first_name)
     const profileHandler = value => {
         dispatch({type:"PROFILE-EDIT-HANDLER",payload: value})
-            .then(()=>dispatch({type:"PROFILE_MAIN_HANDLER", payload:"profile"}))
-            .then(()=>history.push("/profile"))
+        history.push("/profile")
     };
 
-    // const logout = (e) => {
-    //     e.preventDefault()
-    //     localStorage.clear()
-    //     window.location.reload()
-    //     history.push('/')
-    // }
+
 
 
     return  <>
