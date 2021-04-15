@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, React  } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/header/index";
 import { GlobalStyle } from "./globalstyles/globalStyle";
@@ -6,7 +6,7 @@ import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
 import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Home from "./components/home";
 import { ThemeProvider } from "styled-components";
-import { darktheme, lighttheme } from "./components/themes";
+import { darkTheme, lightTheme } from "./components/themes";
 import Toggle from "./components/themes/toggle";
 import {
   SignIn,
@@ -18,11 +18,16 @@ import {
 } from "./LazyComponents";
 import Spinner from "./components/spinner";
 import {withAuth} from "./components/HOC";
+import { useDarkMode } from "./components/themes/useDarkMode";
 
 const App = () => {
+
+  const [theme, toggleTheme] = useDarkMode();
+  const themeMode = theme === 'dark' ? darkTheme : lightTheme
+
   return (
     <>
-      <ThemeProvider theme={darktheme}>
+      <ThemeProvider theme={themeMode}>
         <Router>
           <Switch>
             <Suspense fallback={<Spinner />}>

@@ -5,6 +5,7 @@ const initialState = {
     user: [],
     userMe:{},
     profileEditSection:"info",
+    profileMainSection:"profile",
 }
 
 
@@ -21,6 +22,10 @@ const UserReducer = (state= initialState, action) => {
             return {...state, pageId: action.payload}
         case "PROFILE-EDIT-HANDLER":
             return {...state, profileEditSection: action.payload}
+        case "PROFILE-MAIN-HANDLER":
+            return {...state, profileMainSection: action.payload}
+        case "HEADER_TO_PROFILE_ACTION":
+            return {...state, }
         default:
             return state;
     }
