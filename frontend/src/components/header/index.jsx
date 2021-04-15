@@ -7,7 +7,9 @@ import React, {useEffect, useState} from 'react'
 import {getUserMeAction} from "../../store/actions/getUserSelfAction";
 import store from "../../store";
 import Toggle from "../themes/toggle";
-
+import { useDarkMode } from "../themes/useDarkMode"
+import { darkTheme, lightTheme } from "../themes/index"
+import { ThemeProvider } from "styled-components";
 
 const Header = () => {
     const history = useHistory();
@@ -28,21 +30,21 @@ const Header = () => {
 
     //console.log("from use Selecthor",userSelf.first_name)
     const profileHandler = value => {
-        dispatch({type:"PROFILE-EDIT-HANDLER",payload: value})
+        dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
         history.push("/profile")
     };
 
 
-
-    const [theme, setTheme] = useState('dark');
+    const [theme, toggleTheme] = useDarkMode();
+    const themeMode = theme === 'dark' ? darkTheme : lightTheme
 
     return  <>
     <HeaderContainer>
 
-        {localToken ? (<Link to="/map"><LogoContainer><Logo src={ theme === "dark" ? darklogo : lightlogo }/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={ theme === "dark" ? darklogo : lightlogo}/></LogoContainer></Link>)}
-        {localToken ? (<RightContainer><Profile onClick={()=>profileHandler("info")}>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
+        {localToken ? (<Link to="/map"><LogoContainer><Logo src={ theme === "dark" ? darklogo : lightlogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={ theme === "dark" ? darklogo : lightlogo}/></LogoContainer></Link>)}
+        {localToken ? (<RightContainer><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
             (<RightContainer><Profile to="/sign-up">Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
-        <Toggle>Mode</Toggle>
+        <Toggle theme={theme} toggleTheme={toggleTheme}></Toggle>
     </HeaderContainer>
   </>
 }
