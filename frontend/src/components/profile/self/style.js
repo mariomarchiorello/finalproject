@@ -51,14 +51,14 @@ export const Edit = styled.div`
   }
 `;
 
-export const RadioButton = styled.div`
-    div{
-      margin-top: 5%;
-      label{
-        font-size: 14px;
-        margin-right: 3%;
-      }
-    }    
+export const ModeSelect = styled.select`
+  font-size: 18px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 12rem;
+  height: 2.5rem;
+  outline: transparent;
 `;
 
 export const EditPasswordButton = styled(TransparentButton)`

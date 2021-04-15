@@ -5,8 +5,7 @@ import { GlobalStyle } from "./globalstyles/globalStyle";
 import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
 import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Home from "./components/home";
-import { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "./components/themes";
+import ThemeSwitchProvider from "./components/themes/ThemeProvider"
 import Toggle from "./components/themes/toggle";
 import {
   SignIn,
@@ -18,21 +17,18 @@ import {
 } from "./LazyComponents";
 import Spinner from "./components/spinner";
 import {withAuth} from "./components/HOC";
-import { useDarkMode } from "./components/themes/useDarkMode";
+import Annotate from "./components/annotate";
 
 const App = () => {
 
-  const [theme, toggleTheme] = useDarkMode();
-  const themeMode = theme === 'dark' ? darkTheme : lightTheme
-
   return (
     <>
-      <ThemeProvider theme={themeMode}>
+      <ThemeSwitchProvider>
         <Router>
           <Switch>
             <Suspense fallback={<Spinner />}>
               <Route exact path="/map" component={withAuth(Map)} />
-              {/* <Route exact path='/annotate' component={XXX} /> */}
+              * <Route exact path='/annotate' component={Annotate} />
               <Route exact path="/profile" component={withAuth(Profile)} />
               <Route exact path="/upload" component={withAuth(CreateNewSampleSet)} />
               <Route exact path="/resetTwo" component={PasswordReset} />
@@ -53,7 +49,7 @@ const App = () => {
           </Switch>
         </Router>
         <GlobalStyle />
-      </ThemeProvider>
+      </ThemeSwitchProvider>
     </>
   );
 };
