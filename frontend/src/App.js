@@ -1,11 +1,10 @@
-import { Suspense, React  } from "react";
+import { Suspense, React } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./components/header/index";
 import { GlobalStyle } from "./globalstyles/globalStyle";
 import ResetPwEmail from "./components/signIn-signUp/resetPasswordEmail";
 import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Home from "./components/home";
-import ThemeSwitchProvider from "./components/themes/ThemeProvider"
+import ThemeSwitchProvider from "./components/themes/ThemeProvider";
 import Toggle from "./components/themes/toggle";
 import {
   SignIn,
@@ -16,11 +15,12 @@ import {
   CreateNewSampleSet,
 } from "./LazyComponents";
 import Spinner from "./components/spinner";
-import {withAuth} from "./components/HOC";
+import { withAuth } from "./components/HOC";
 import Annotate from "./components/annotate";
+import CanvasContainer from "./components/canvasContainer";
+import { CanvasProvider } from "./components/canvasContainer/CanvasContext";
 
 const App = () => {
-
   return (
     <>
       <ThemeSwitchProvider>
@@ -28,20 +28,24 @@ const App = () => {
           <Switch>
             <Suspense fallback={<Spinner />}>
               <Route exact path="/map" component={withAuth(Map)} />
-              * <Route exact path='/annotate' component={Annotate} />
+              * <Route exact path="/annotate" component={Annotate} />
               <Route exact path="/profile" component={withAuth(Profile)} />
-              <Route exact path="/upload" component={withAuth(CreateNewSampleSet)} />
+              <Route
+                exact
+                path="/upload"
+                component={withAuth(CreateNewSampleSet)}
+              />
               <Route exact path="/resetTwo" component={PasswordReset} />
               <Route exact path={["/home", "/"]} component={Home} />
               <Route exact path="/resetOne" component={ResetPwEmail} />
               <Route exact path={["/signIn", "/sign-in"]} component={SignIn} />
               <Route exact path="/verification" component={Verification} />
               <Route exact path="/sign-up" component={SignUp} />
-
               <Route exact path="/toggletest" component={Toggle} />
-
+              <CanvasProvider>
+                <Route exact path="/canvas" component={CanvasContainer} />
+              </CanvasProvider>
               {/*add new routes above*/}
-
               {/*Always make sure to put the path"*" at the end the browser will stop looking
           for routs below this line!*/}
             </Suspense>
