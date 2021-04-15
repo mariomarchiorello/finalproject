@@ -18,6 +18,7 @@ const EditProfileSection=()=> {
     useEffect(()=>{
         dispatch(getUserMeAction(history))
 
+
     },[])
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
@@ -34,7 +35,7 @@ const EditProfileSection=()=> {
     const [mode, setMode] = useState()
     
     const editProfileHandler = (e) => {
-        e.preventDefault();
+        //e.preventDefault();
         const editProfileCredentials = {
             email : email,
             username: username,
