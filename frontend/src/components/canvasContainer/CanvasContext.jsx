@@ -27,6 +27,7 @@ export const CanvasProvider = ({ children }) => {
     canvas.height = window.innerHeight / 1.5;
     canvas.style.width = `${window.innerWidth / 3}px`;
     canvas.style.height = `${window.innerHeight / 3}px`;
+    canvas.style.backgroundColor = "pink"
 
     const context = canvas.getContext("2d");
 
