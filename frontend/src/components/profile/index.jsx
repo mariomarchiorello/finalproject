@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import {Link, useHistory} from 'react-router-dom'
 // import {Background, Main } from '../../globalstyles/globalStyle'
 import Footer from '../footer'
 import Header from '../header'
@@ -11,16 +11,27 @@ import bg2 from "../../assets/background-images/8.jpg"
 import bg3 from "../../assets/background-images/2.jpg"
 import bg4 from "../../assets/background-images/1.jpg"
 import bg5 from "../../assets/background-images/10.jpg"
+import {useDispatch, useSelector} from "react-redux";
+import {getUserMeAction} from "../../store/actions/getUserSelfAction";
 
 
 
 export default function Profile() {
 
+    const history = useHistory()
 
-    let sectionToRender = "0"
-    const selectHandler = (e) => {
-        return sectionToRender = e
-    }
+    useEffect(()=>{
+    dispatch(getUserMeAction(history))
+
+    },[])
+
+    const userSelf = useSelector(state => state.UserReducer.userMe);
+    // console.log("from inside the infosection:",userSelf)
+
+    const dispatch = useDispatch()
+    const profileMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
+    const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
+
 
     const backgroundArray = [bg1, bg2, bg3, bg4, bg5];
     const randomIndex = Math.floor(Math.random() * backgroundArray.length);
@@ -41,16 +52,17 @@ export default function Profile() {
                 <MainProfile>
                     <SelectionContainer>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("0")}
+                         onClick={()=>profileMainChoice("profile")}
                         >Profile</Link>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("1")}
+                         onClick={()=>profileMainChoice("completed")}
                         >Completed</Link>
                         <Link className='underscored'
-                         onClick={()=>selectHandler("2")}
+                         onClick={()=>profileMainChoice("incomplete")}
                         >in progress</Link>
                     </SelectionContainer>
-                    {sectionToRender === "0" ? <MyProfile /> : null}
+                    {profileMainAction === "profile"? <MyProfile/> : null}
+
                     
 
 

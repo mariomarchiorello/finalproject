@@ -1,11 +1,27 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Background, Main } from '../../globalstyles/globalStyle'
 import Footer from '../footer'
 import Header from '../header'
 import Map from './map'
 import { BackgroundMap, Bluebutton } from './style'
+//import {preventDefault} from "leaflet/src/dom/DomEvent";
+import {useDispatch} from "react-redux";
+import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+import {useHistory} from "react-router-dom";
 
-export default function MapPage() {
+const MapPage = ()=>  {
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(getUserMeAction(history))
+
+    },[])
+
+
+
+
+
     return (
         <>  
                 <Background>
@@ -22,8 +38,8 @@ export default function MapPage() {
                     </Main>
                     <Footer />
                 </Background>
-                
-
         </>
     )
 }
+
+export default (MapPage)

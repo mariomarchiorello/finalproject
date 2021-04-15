@@ -1,12 +1,29 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {GlobalInput, GlobalLabel, SmallBlueButton} from '../../../globalstyles/globalStyle'
 import {Edit, EditPasswordButton, RadioButton} from './style'
 import InfoSection from "./info";
 import {BottomContainer} from "../style";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import baseUrl from "../../../helpers/baseUrl";
+import {useHistory} from "react-router-dom";
+import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 
-export default function EditProfileSection() {
-    
+const EditProfileSection=()=> {
+
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    const token = localStorage.getItem("token");
+
+    useEffect(()=>{
+        dispatch(getUserMeAction(history))
+
+
+    },[])
+
+    const userSelf = useSelector(state => state.UserReducer.userMe);
+    // console.log("from inside the infosection:",userSelf)
+
 
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
@@ -15,12 +32,10 @@ export default function EditProfileSection() {
     const [home_latitude, setHomeLat] = useState("")
     const [home_longitude, setHomeLon] = useState("")
     const [vessel, setVessel] = useState("")
-    const [mode, setMode] = useState("")
-    
-
+    const [mode, setMode] = useState()
     
     const editProfileHandler = (e) => {
-        e.preventDefault();
+        //e.preventDefault();
         const editProfileCredentials = {
             email : email,
             username: username,
@@ -30,25 +45,28 @@ export default function EditProfileSection() {
             home_longitude:home_longitude,
             vessel:vessel,
             mode:mode
-
         }
-        const url = "https://localhost:8000.propulsion-learn.ch/backend/api/users/me/";
-
-        //const url = "https://goes-app.propulsion-learn.ch/backend/api/users/me/";
+        console.log("changing credentials",editProfileCredentials)
         const config = {
             method: "PATCH",
             body: JSON.stringify(editProfileCredentials),
-            headers: { "Content-Type": "application/json"}
+            headers: new Headers({
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            })
         }
-        fetch(url,config)
+        fetch(`${baseUrl}users/me/`,config)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log(" in da patch fatch",data)
+                profileHandler("info")
             })
     }
-    const dispatch = useDispatch()
 
-    const profileHandler = value => { dispatch({type:"PROFILE-EDIT-HANDLER",payload:value})}
+    const profileHandler = value => {
+        dispatch({type:"PROFILE-EDIT-HANDLER",payload:value});
+        editProfileHandler();
+    }
 
 
     return (
@@ -83,9 +101,9 @@ export default function EditProfileSection() {
                         <RadioButton>
                         <GlobalLabel>mode <br/></GlobalLabel>
                             <div>
-                                <label><input type="radio" value="1" checked onChange={(e)=>{setMode(e.target.value)}} /> Plankton</label>
-                                <label><input type="radio" value="2" onChange={(e)=>{setMode(e.target.value)}} /> Dark</label>
-                                <label><input type="radio" value="3" onChange={(e)=>{setMode(e.target.value)}} /> Light</label>
+                                <input type="radio" value={1} name="Plankton"  onSelect={(e)=>{setMode(e.target.value)}} />
+                                <input type="radio" value={2} name="Dark" onSelect={(e)=>{setMode(e.target.value)}} />
+                                <input type="radio" value={3} name="Light" onSelect={(e)=>{setMode(e.target.value)}} />
                             </div>
                         </RadioButton>
                 </section>
@@ -93,9 +111,12 @@ export default function EditProfileSection() {
             </Edit>
             <BottomContainer>
                     <EditPasswordButton onClick={()=>profileHandler("changePassword")} >Change Password</EditPasswordButton>
-                    <SmallBlueButton  >Edit</SmallBlueButton>
+                    <SmallBlueButton onClick={()=>profileHandler("info")} > go back</SmallBlueButton>
+                    <SmallBlueButton onClick={editProfileHandler} >save</SmallBlueButton>
             </BottomContainer>
             </form>
         </>
     )
 }
+
+export default(EditProfileSection)
