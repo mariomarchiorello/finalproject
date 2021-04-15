@@ -77,7 +77,7 @@ export const CanvasProvider = ({ children }) => {
 
   const saveImage = () => {
     // dale
-    window.scroll(0, 0);
+    window.scrollTo(0, 0);
     html2canvas(canvasRef.current, {
       allowTaint: true,
       useCORS: true,
