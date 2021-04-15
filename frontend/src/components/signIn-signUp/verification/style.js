@@ -8,7 +8,7 @@ export const VerificationMsg = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    color: #FFFFFF;
+    color: ${props => props.theme.labelcolor };
     font-size: 24px;
 
     p {
