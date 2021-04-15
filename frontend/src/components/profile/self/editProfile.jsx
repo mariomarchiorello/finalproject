@@ -101,9 +101,9 @@ const EditProfileSection=()=> {
                         <RadioButton>
                         <GlobalLabel>mode <br/></GlobalLabel>
                             <div>
-                                <input type="radio" value={1} name="Plankton"  onSelect={(e)=>{setMode(e.target.value)}} />
-                                <input type="radio" value={2} name="Dark" onSelect={(e)=>{setMode(e.target.value)}} />
-                                <input type="radio" value={3} name="Light" onSelect={(e)=>{setMode(e.target.value)}} />
+                                <input type="checkbox" value={1} name="Plankton"  onSelect={(e)=>{setMode(e.target.value)}} />
+                                <input type="checkbox" value={2} name="Dark" onSelect={(e)=>{setMode(e.target.value)}} />
+                                <input type="checkbox" value={3} name="Light" onSelect={(e)=>{setMode(e.target.value)}} />
                             </div>
                         </RadioButton>
                 </section>
