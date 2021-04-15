@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
-import canvasToImage from "canvas-to-image";
+import html2canvas from "html2canvas";
+import plankton from "../../assets/background-images/1.jpg";
 
 const CanvasContext = React.createContext();
 
@@ -40,8 +41,11 @@ export const CanvasProvider = ({ children }) => {
     contextRef.current.closePath();
     setIsDrawing(false);
     setCounter((counter) => (counter += 1));
-    console.log(contextRef.current, "context ref");
-    console.log(canvasRef.current, "canvas ref");
+    // console.log(contextRef.current, "context ref");
+    // console.log(canvasRef.current, "canvas ref");
+
+    // var fullQuality = canvasRef.current.toDataURL("png", 1.0);
+    // console.log(fullQuality);
     // const test = canvasToImage(canvasRef.current, {
     //   name: "myImage",
     //   type: "jpg",
@@ -71,31 +75,46 @@ export const CanvasProvider = ({ children }) => {
     );
   };
 
+  const saveImage = () => {
+    // dale
+    window.scroll(0, 0);
+    html2canvas(canvasRef.current, {
+      allowTaint: true,
+      useCORS: true,
+      foreignObjectRendering: true,
+    }).then(function (canvas) {
+      console.log(canvas.toDataURL("image/jpeg", 0.9));
+    });
+  };
+
   useEffect(() => {
     const catImage = new Image();
-    catImage.crossorigin = "anonymous";
-    catImage.src = "https://thiscatdoesnotexist.com/";
+    // catImage.crossOrigin = "anonymous";
+    // catImage.src = "https://thiscatdoesnotexist.com/";
+    catImage.src = plankton;
     setImage(catImage);
   }, []);
 
   return (
     <>
-      <CanvasContext.Provider
-        value={{
-          canvasRef,
-          contextRef,
-          prepareCanvas,
-          startDrawing,
-          // finishDrawing,
-          displayImage,
-          clearCanvas,
-          draw,
-        }}
-      >
-        {children}
-      </CanvasContext.Provider>
+      <div id="screenshot__div">
+        <CanvasContext.Provider
+          value={{
+            canvasRef,
+            contextRef,
+            prepareCanvas,
+            startDrawing,
+            // finishDrawing,
+            displayImage,
+            clearCanvas,
+            draw,
+          }}
+        >
+          {children}
+        </CanvasContext.Provider>
+      </div>
       <div>Plankton: {counter}</div>
-      {/* <button onClick={saveImage}></button> */}
+      <button onClick={saveImage}>Submit</button>
     </>
   );
 };
