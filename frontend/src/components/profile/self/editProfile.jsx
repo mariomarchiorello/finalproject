@@ -110,9 +110,9 @@ const EditProfileSection=()=> {
                     <GlobalInput type="text" name="vessel" value={vessel} onChange={(e) => {setVessel(e.target.value)}}/>
                     <GlobalLabel forHtml="mode">mode</GlobalLabel>
                     <ModeSelect name="mode" onChange={(e)=>{setMode(e.target.value)}}>
-                         <option  value={'plankton mode'} name="Plankton">Plankton</option>
-                         <option  value={'dark mode'} name="Dark">Dark</option>
-                         <option  value={'light mode'} name="Light">Light</option>
+                         <option  value={1} name="Plankton">Plankton</option>
+                         <option  value={2} name="Dark">Dark</option>
+                         <option  value={3} name="Light">Light</option>
                     </ModeSelect>
                 </section>
 
