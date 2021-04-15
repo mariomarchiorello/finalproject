@@ -1,12 +1,20 @@
 import React from 'react'
+import { useSelector, useDispatch } from "react-redux";
+import { TOGGLE_THEME } from "../../store/actions/changeMode"
+import { useDarkMode } from './useDarkMode';
 
 
-const Toggle = ({theme, toggleTheme}) => {
+const Toggle = () => {
+
+  const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
+  const dispatch = useDispatch();
 
     return (
-      <button theme={theme} onClick={toggleTheme}>
-          Toggle Dark / Light Mode
-      </button>
+      <input
+        type="checkbox"
+        checked={ThemeEnabled}
+        onChange={() => dispatch({ type: TOGGLE_THEME })}>
+        </input>
     );
   };
   
