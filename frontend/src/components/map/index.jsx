@@ -7,7 +7,7 @@ import { BackgroundMap, Bluebutton } from './style'
 //import {preventDefault} from "leaflet/src/dom/DomEvent";
 import {useDispatch} from "react-redux";
 import {getUserMeAction} from "../../store/actions/getUserSelfAction";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 const MapPage = ()=>  {
     const history = useHistory()
@@ -18,12 +18,17 @@ const MapPage = ()=>  {
 
     },[])
 
-
+    const profileHandler = value => {
+        dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
+        history.push("/profile")
+    };
 
 
 
     return (
-        <>  
+        <>
+
+
                 <Background>
                     <Header />
                     <Main>
@@ -31,8 +36,8 @@ const MapPage = ()=>  {
                         <BackgroundMap>
                         <Map />
                         <section className="button">
-                        <Bluebutton>Upload</Bluebutton>
-                        <Bluebutton>Profile</Bluebutton>
+                        <Link to="/upload"><Bluebutton>Upload</Bluebutton></Link>
+                        <Bluebutton onClick={()=>profileHandler(["info","profile"])} >Profile</Bluebutton>
                         </section>
                         </BackgroundMap>
                     </Main>

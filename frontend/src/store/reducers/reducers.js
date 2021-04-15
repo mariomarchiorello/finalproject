@@ -25,7 +25,7 @@ const UserReducer = (state= initialState, action) => {
         case "PROFILE-MAIN-HANDLER":
             return {...state, profileMainSection: action.payload}
         case "HEADER_TO_PROFILE_ACTION":
-            return {...state, }
+            return {...state,profileMainSection: action.payload[1], profileEditSection: action.payload[0]}
         default:
             return state;
     }
