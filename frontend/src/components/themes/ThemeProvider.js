@@ -9,7 +9,7 @@ const ThemeSwitchProvider = ({children}) => {
     const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled);
 
     return  (
-        <ThemeProvider theme={ThemeEnabled ? darkTheme : lightTheme}>
+        <ThemeProvider theme={ThemeEnabled ? lightTheme : darkTheme}>
             {children}
         </ThemeProvider>
     );
