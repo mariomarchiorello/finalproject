@@ -11,8 +11,8 @@ export const getUserMeAction = (history) => {
             })
         }
         
-        //const url = `${baseUrl}users/me/`;
-        const url = "https://goes-app.propulsion-learn.ch/backend/api/users/me/"
+        const url = `${baseUrl}users/me/`;
+        // const url = "https://goes-app.propulsion-learn.ch/backend/api/users/me/"
         fetch(url, config)
             .then(res => res.json())
             .then(data => {
