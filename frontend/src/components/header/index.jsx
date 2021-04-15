@@ -6,38 +6,47 @@ import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from 'react'
 import {getUserMeAction} from "../../store/actions/getUserSelfAction";
 import store from "../../store";
-
+import Toggle from "../themes/toggle";
+import { useDarkMode } from "../themes/useDarkMode"
+import { darkTheme, lightTheme } from "../themes/index"
 
 const Header = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
+
     const [localToken, setLocalToken] = useState("");
-
-
     useEffect(()=>{
+
         setLocalToken(localStorage.getItem("token"));
-    })
+        //console.log("in da useEffect", localToken);
+    },[]);
+    //console.log("from selecthor", localToken)
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
+    const storeToken = useSelector(state => state.UserReducer.token);
+   // console.log("from useSelector",storeToken)
 
+    //console.log("from use Selecthor",userSelf.first_name)
     const profileHandler = value => {
         dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
         history.push("/profile")
     };
 
 
-
+    const [theme, toggleTheme] = useDarkMode();
+    
+    const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
 
     return  <>
     <HeaderContainer>
 
-        {localToken ? (<Link to="/map"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>)}
-        {localToken ? (<RightContainer><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile><LoginButton >Sign Out</LoginButton></RightContainer>) :
+        {localToken ? (<Link to="/map"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
+        {localToken ? (<RightContainer><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
             (<RightContainer><Profile to="/sign-up">Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
-
+        <Toggle theme={theme} toggleTheme={toggleTheme}></Toggle>
     </HeaderContainer>
   </>
 }
 
-export default(Header)
+export default (Header)
