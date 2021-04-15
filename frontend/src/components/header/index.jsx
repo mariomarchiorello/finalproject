@@ -12,20 +12,15 @@ const Header = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-
     const [localToken, setLocalToken] = useState("");
-    useEffect(()=>{
 
+
+    useEffect(()=>{
         setLocalToken(localStorage.getItem("token"));
-        //console.log("in da useEffect", localToken);
-    },[]);
-    //console.log("from selecthor", localToken)
+    })
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
-    const storeToken = useSelector(state => state.UserReducer.token);
-   // console.log("from useSelector",storeToken)
 
-    //console.log("from use Selecthor",userSelf.first_name)
     const profileHandler = value => {
         dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
         history.push("/profile")
@@ -38,11 +33,11 @@ const Header = () => {
     <HeaderContainer>
 
         {localToken ? (<Link to="/map"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={darklogo}/></LogoContainer></Link>)}
-        {localToken ? (<RightContainer><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
+        {localToken ? (<RightContainer><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile><LoginButton >Sign Out</LoginButton></RightContainer>) :
             (<RightContainer><Profile to="/sign-up">Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
 
     </HeaderContainer>
   </>
 }
 
-export default (Header)
+export default(Header)

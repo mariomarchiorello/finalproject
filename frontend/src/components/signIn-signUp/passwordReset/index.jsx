@@ -50,15 +50,15 @@ const PasswordReset = () => {
             <Main>
                 <VerificationMsg>
                     <span>Congratulations!</span>
-                    <p>Please check your email for the verification code to finish the process.</p>
+                    <p>Please check your email for your new verification code to reset your password.</p>
                 </VerificationMsg>
                 <VerInputContainer>
                     <VerLabel htmlFor="code">verification code</VerLabel>
                     <GlobalInput type="text" name="code"
                     value={code} onChange={(e)=>{setCode(e.target.value)}}></GlobalInput>
-                    <VerLabel htmlFor="email">verification code</VerLabel>
+                    <VerLabel htmlFor="email">E-Mail</VerLabel>
                     <GlobalInput type="text" name="email"
-                    value={code} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
+                    value={email} onChange={(e)=>{setEmail(e.target.value)}}></GlobalInput>
                     <VerLabel htmlFor="password">password</VerLabel>
                     <GlobalInput type="password" name="password"
                     value={password} onChange={(e)=>{setPassword.apply(e.target.value)}}></GlobalInput>
