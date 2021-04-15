@@ -24,15 +24,24 @@ const Header = () => {
     //console.log("from selecthor", localToken)
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
-    const storeToken = useSelector(state => state.UserReducer.token);
    // console.log("from useSelector",storeToken)
 
     //console.log("from use Selecthor",userSelf.first_name)
-    const profileHandler = value => {
+    const profileHandler = (value) => {
+
         dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
         history.push("/profile")
     };
+    const logOut = (e)=>{
+        e.preventDefault()
+        window.localStorage.clear()
+        history.push("/")
 
+    };
+    const joinUs=(e)=>{
+        e.preventDefault();
+        history.push("/sign-up")
+    }
 
     const [theme, toggleTheme] = useDarkMode();
     
@@ -42,11 +51,11 @@ const Header = () => {
     <HeaderContainer>
 
         {localToken ? (<Link to="/map"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
-        {localToken ? (<RightContainer><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile><LoginButton>Sign Out</LoginButton></RightContainer>) :
-            (<RightContainer><Profile to="/sign-up">Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
+        {localToken ? (<RightContainer><Link><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile></Link><LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) :
+            (<RightContainer><Profile onClick={joinUs}>Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
         <Toggle theme={theme} toggleTheme={toggleTheme}></Toggle>
     </HeaderContainer>
   </>
 }
 
-export default (Header)
+export default(Header)

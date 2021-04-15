@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 import {Link} from 'react-router-dom'
+import {TransparentButton} from "../../globalstyles/globalStyle";
 
 export const HeaderContainer = styled.div`
 display: flex;
-//width: 100vw;
+width: 100%;
 justify-content: space-between;
 position: sticky;
 top: 0;
@@ -23,15 +24,13 @@ export const RightContainer = styled.div`
 display: flex;
 align-items: center;
 //margin-right: -40px;
-  a{
-    text-decoration:none;
-  }
+  
 `;
-export const Profile = styled.button`
+export const Profile = styled(TransparentButton)`
 font-size: 18px;
 color: ${props => props.theme.buttoncolor };
 cursor:pointer;
-trasition:color 2s ease 0s;  
+//trasition:color 2s ease 0s;  
 
 
 :hover {
@@ -39,17 +38,20 @@ color:#30ADEA ;
   
 }
 `;
-export const LoginButton = styled.button`
+export const LoginButton = styled(TransparentButton)`
 margin-left: 35px;
 margin-right: 35px;
 background-color: transparent;
 color: ${props => props.theme.buttoncolor };
 font-size: 18px;
 font-weight: bold;
-border-radius: 10px;
-border: 2px solid #30ADEA;
-padding: 10px 20px 10px 20px;
-cursor: pointer; 
+//trasition:color 2s ease 0s;  
+:hover {
+color:#30ADEA;  
+}  
+
+  
+
 :active{
   outline-color:#ffffff;
   }

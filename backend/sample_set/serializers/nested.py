@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from sample_set.models import SampleSet, WaterSurface
+from sample_set.models import SampleSet
 from user.serializers.nested import UsersForMapSerializer
 
 
@@ -69,7 +69,19 @@ class AllSampleSetsSerializer(serializers.ModelSerializer):
                   ]
 
 
-class WaterSurfaceSerializer(serializers.ModelSerializer):
+# class WaterSurfaceSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = WaterSurface
+#         fields = '__all__'
+#
+#
+# class WeatherSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = WeatherCondition
+#         fields = '__all__'
+
+
+class SampleSetLocationsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = WaterSurface
-        fields = '__all__'
+        model = SampleSet
+        fields = ['id', 'sample_latitude', 'sample_longitude']
