@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {GlobalInput, GlobalLabel, SmallBlueButton} from '../../../globalstyles/globalStyle'
-import {Edit, EditPasswordButton, RadioButton} from './style'
+import {Edit, EditPasswordButton, ModeSelect, RadioButton} from './style'
 import InfoSection from "./info";
 import {BottomContainer} from "../style";
 import {useDispatch, useSelector} from "react-redux";
@@ -15,11 +15,11 @@ const EditProfileSection=()=> {
 
     const token = localStorage.getItem("token");
 
-    useEffect(()=>{
-        dispatch(getUserMeAction(history))
-
-
-    },[])
+    // useEffect(()=>{
+    //     dispatch(getUserMeAction(history))
+    //
+    //
+    // },[])
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
     // console.log("from inside the infosection:",userSelf)
@@ -35,31 +35,41 @@ const EditProfileSection=()=> {
     const [mode, setMode] = useState()
     
     const editProfileHandler = (e) => {
-        //e.preventDefault();
-        const editProfileCredentials = {
-            email : email,
-            username: username,
-            first_name: first_name,
-            last_name:last_name,
-            home_latitude:home_latitude,
-            home_longitude:home_longitude,
-            vessel:vessel,
-            mode:mode
-        }
-        console.log("changing credentials",editProfileCredentials)
+            //debugger
+            // const editProfileCredentials = {
+            //     email: email,
+            //     username: username,
+            //     first_name: first_name,
+            //     last_name: last_name,
+            //     home_latitude: home_latitude,
+            //     home_longitude: home_longitude,
+            //     vessel: vessel,
+            //     mode: mode,
+            // }
+            //e.preventDefault()
+            let formData = new FormData
+            formData.append("email",email)
+            formData.append("username",username)
+            formData.append("first",first_name)
+            formData.append("last",last_name)
+            formData.append("homelat",home_latitude)
+            formData.append("homelon",home_longitude)
+            formData.append("vessel",vessel)
+            formData.append("mode",mode)
+        // console.log("changing credentials",editProfileCredentials)
         const config = {
             method: "PATCH",
-            body: JSON.stringify(editProfileCredentials),
+            body: formData,
             headers: new Headers({
                 "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
+
             })
         }
         fetch(`${baseUrl}users/me/`,config)
             .then(res => res.json())
             .then(data => {
                 console.log(" in da patch fatch",data)
-                profileHandler("info")
+                //profileHandler("info")
             })
     }
 
@@ -95,17 +105,15 @@ const EditProfileSection=()=> {
                     <GlobalLabel htmlFor="homeLat">latitude</GlobalLabel>
                     <GlobalInput type="text" name="homelat" value={home_latitude} onChange={(e) => {setHomeLat(e.target.value)}}/>
                     <GlobalLabel htmlFor="homeLon">longitude</GlobalLabel>
-                    <GlobalInput type="text" name="homeLon" value={home_longitude} onChange={(e) => {setHomeLon(e.target.value)}}/>
+                    <GlobalInput type="text" name="homelon" value={home_longitude} onChange={(e) => {setHomeLon(e.target.value)}}/>
                     <GlobalLabel htmlFor="vessel">vessel</GlobalLabel>
                     <GlobalInput type="text" name="vessel" value={vessel} onChange={(e) => {setVessel(e.target.value)}}/>
-                        <RadioButton>
-                        <GlobalLabel>mode <br/></GlobalLabel>
-                            <div>
-                                <input type="checkbox" value={1} name="Plankton"  onSelect={(e)=>{setMode(e.target.value)}} />
-                                <input type="checkbox" value={2} name="Dark" onSelect={(e)=>{setMode(e.target.value)}} />
-                                <input type="checkbox" value={3} name="Light" onSelect={(e)=>{setMode(e.target.value)}} />
-                            </div>
-                        </RadioButton>
+                    <GlobalLabel forHtml="mode">mode</GlobalLabel>
+                    <ModeSelect name="mode" onChange={(e)=>{setMode(e.target.value)}}>
+                         <option  value={'plankton mode'} name="Plankton">Plankton</option>
+                         <option  value={'dark mode'} name="Dark">Dark</option>
+                         <option  value={'light mode'} name="Light">Light</option>
+                    </ModeSelect>
                 </section>
 
             </Edit>
@@ -118,5 +126,4 @@ const EditProfileSection=()=> {
         </>
     )
 }
-
 export default(EditProfileSection)
