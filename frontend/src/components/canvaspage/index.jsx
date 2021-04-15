@@ -1,50 +1,41 @@
-import React from "react";
-import bg1 from "../../assets/background-images/5.jpg";
-import bg2 from "../../assets/background-images/8.jpg";
-import bg3 from "../../assets/background-images/2.jpg";
-import bg4 from "../../assets/background-images/1.jpg";
-import bg5 from "../../assets/background-images/10.jpg";
-import {Background, Main} from "../../globalstyles/globalStyle";
-import {Handler} from "leaflet/dist/leaflet-src.esm";
+import React, {useEffect} from 'react';
+import {Background, CenterContainer, Main} from "../../globalstyles/globalStyle";
+import {useHistory} from "react-router-dom";
+import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+import {useDispatch, useSelector} from "react-redux";
+import Header from "../header";
+import Footer from "../footer";
+import CanvasContainer from "../canvasContainer/index";
+
+const CanvasPage=()=>{
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+    dispatch(getUserMeAction(history))
+
+    },[])
+
+    const userSelf = useSelector(state => state.UserReducer.userMe);
+    // console.log("from inside the infosection:",userSelf)
 
 
+        return (
+            <>
+                <Background>
+                    <Header/>
+                    <Main>
+                        <CenterContainer>
+                            <CanvasContainer />
 
+                        </CenterContainer>
 
-const CanvasPage = () =>{
+                    </Main>
+                    <Footer/>
 
-    const backgroundArray = [bg1, bg2, bg3, bg4, bg5];
-    const randomIndex = Math.floor(Math.random() * backgroundArray.length);
-    const selectedBackground = backgroundArray[randomIndex];
-
-    const background = {
-        backgroundImage: `url(${selectedBackground})`,
-        backgroundPosition: "top center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-
-        };
-
-
-    return(
-        <>
-            <Background style={background}>
-                <Handler/>
-                <Main>
-
-                </Main>
-
-
-            </Background>
-
-
-        </>
-    )
-
-
-
-
-
-
-
+                </Background>
+            </>
+        );
 }
-export default(CanvasPage)
+
+export default(CanvasPage);

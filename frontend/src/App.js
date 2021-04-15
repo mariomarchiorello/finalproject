@@ -29,13 +29,9 @@ const App = () => {
           <Switch>
             <Suspense fallback={<Spinner />}>
               <Route exact path="/map" component={withAuth(Map)} />
-              * <Route exact path="/annotate" component={Annotate} />
+              <Route exact path="/annotate" component={Annotate} />
               <Route exact path="/profile" component={withAuth(Profile)} />
-              <Route
-                exact
-                path="/upload"
-                component={withAuth(CreateNewSampleSet)}
-              />
+              <Route exact path="/upload" component={withAuth(CreateNewSampleSet)}/>
               <Route exact path="/resetTwo" component={PasswordReset} />
               <Route exact path={["/home", "/"]} component={Home} />
               <Route exact path="/resetOne" component={ResetPwEmail} />
@@ -43,10 +39,10 @@ const App = () => {
               <Route exact path="/verification" component={Verification} />
               <Route exact path="/sign-up" component={SignUp} />
               <Route exact path="/toggletest" component={Toggle} />
+              <Route exact path="/canvas-page" component={CanvasPage}/>
               <CanvasProvider>
                 <Route exact path="/canvas" component={CanvasContainer} />
               </CanvasProvider>
-              <Route exact path="/canvas-page" component={CanvasPage}/>
 
 
 
