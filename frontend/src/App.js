@@ -6,6 +6,7 @@ import PasswordReset from "./components/signIn-signUp/passwordReset";
 import Home from "./components/home";
 import ThemeSwitchProvider from "./components/themes/ThemeProvider";
 import Toggle from "./components/themes/toggle";
+import Annotate from './components/annotate'
 import {
   SignIn,
   SignUp,
@@ -16,7 +17,6 @@ import {
 } from "./LazyComponents";
 import Spinner from "./components/spinner";
 import { withAuth } from "./components/HOC";
-import Annotate from "./components/annotate";
 import CanvasContainer from "./components/canvasContainer";
 import { CanvasProvider } from "./components/canvasContainer/CanvasContext";
 import CanvasPage from "./components/canvaspage";
