@@ -37,7 +37,7 @@ const InfoSection=()=> {
                     </div>
                     <div>
                         <p className='type'>Vessel</p>
-                        <p className='value'>{userSelf.vessel}</p>
+                        <p className='value'>{userSelf.vessel_name}</p>
                     </div>
 
                 </section>
