@@ -7,6 +7,8 @@ import {useDispatch, useSelector} from "react-redux";
 import baseUrl from "../../../helpers/baseUrl";
 import {useHistory} from "react-router-dom";
 import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
+import Toggle from "../../themes/toggle"
+import { useDarkMode } from "../../themes/useDarkMode"
 
 const EditProfileSection=()=> {
 
@@ -46,7 +48,7 @@ const EditProfileSection=()=> {
                 vessel_name: vessel_name,
                 mode: mode,
             }
-            e.preventDefault()
+            // e.preventDefault()
          console.log("changing credentials",editProfileCredentials)
         const config = {
             method: "PATCH",
@@ -68,7 +70,10 @@ const EditProfileSection=()=> {
         dispatch({type:"PROFILE-EDIT-HANDLER",payload:value});
         editProfileHandler();
     }
-
+    
+    const [theme, toggleTheme] = useDarkMode();
+    
+    const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
 
     return (
         <>
@@ -99,12 +104,8 @@ const EditProfileSection=()=> {
                     <GlobalInput type="text" name="homelon" value={home_longitude} onChange={(e) => {setHomeLon(e.target.value)}}/>
                     <GlobalLabel htmlFor="vessel">vessel</GlobalLabel>
                     <GlobalInput type="text" name="vessel" value={vessel_name} onChange={(e) => {setVessel(e.target.value)}}/>
-                    <GlobalLabel forHtml="mode">mode</GlobalLabel>
-                    <ModeSelect name="mode" onChange={(e)=>{setMode(e.target.value)}}>
-                         <option  value={1} name="Plankton">Plankton</option>
-                         <option  value={2} name="Dark">Dark</option>
-                         <option  value={3} name="Light">Light</option>
-                    </ModeSelect>
+                    <GlobalLabel forHtml="theme">Switch to Light Theme</GlobalLabel>
+                    <Toggle theme={theme} toggleTheme={toggleTheme}></Toggle>
                 </section>
 
             </Edit>
