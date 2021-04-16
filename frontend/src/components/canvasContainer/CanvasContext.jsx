@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import html2canvas from "html2canvas";
+import { getUserSampleAction } from "../../store/actions/getUserSampleSetAction";
 import plankton1 from "../../assets/background-images/1.jpg";
 import plankton2 from "../../assets/background-images/2.jpg";
 import plankton3 from "../../assets/background-images/3.jpg";
@@ -16,10 +17,14 @@ export const CanvasProvider = ({ children }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [counter, setCounter] = useState(0);
 
-  const arrImages = [plankton1, plankton2, plankton3, plankton4];
+  // const arrImages = [plankton1, plankton2, plankton3, plankton4];
   const dispatch = useDispatch();
-  const stateImages = useSelector((state) => state.annotationReducer);
-  console.log(stateImages, "state images");
+  const annotatedData = useSelector((state) => state.annotationReducer);
+  console.log(annotatedData, "state images");
+  // const sampleData = useSelector(
+  //   (state) => state.annotationReducer.currentSample
+  // );
+  // console.log(sampleData, "current sample");
 
   const prepareCanvas = () => {
     const canvas = canvasRef.current;
@@ -27,7 +32,7 @@ export const CanvasProvider = ({ children }) => {
     canvas.height = window.innerHeight / 1.5;
     canvas.style.width = `${window.innerWidth / 3}px`;
     canvas.style.height = `${window.innerHeight / 3}px`;
-    canvas.style.backgroundColor = "pink"
+    canvas.style.backgroundColor = "pink";
 
     const context = canvas.getContext("2d");
 
@@ -43,27 +48,12 @@ export const CanvasProvider = ({ children }) => {
   };
 
   const draw = ({ nativeEvent }) => {
-    if (!isDrawing) {
-      return;
-    }
     const { offsetX, offsetY } = nativeEvent;
     contextRef.current.arc(offsetX, offsetY, 20, 0, Math.PI * 2);
     contextRef.current.stroke();
     contextRef.current.closePath();
     setIsDrawing(false);
     setCounter((counter) => (counter += 1));
-    // console.log(contextRef.current, "context ref");
-    // console.log(canvasRef.current, "canvas ref");
-
-    // var fullQuality = canvasRef.current.toDataURL("png", 1.0);
-    // console.log(fullQuality);
-    // const test = canvasToImage(canvasRef.current, {
-    //   name: "myImage",
-    //   type: "jpg",
-    //   quality: 0.7,
-    // });
-
-    // console.log(test, "test");
   };
 
   const clearCanvas = () => {
@@ -72,7 +62,6 @@ export const CanvasProvider = ({ children }) => {
     const context = canvas.getContext("2d");
     context.fillStyle = "white";
     context.fillRect(0, 0, canvas.width, canvas.height);
-    // (image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
   };
 
   const displayImage = () => {
@@ -88,7 +77,6 @@ export const CanvasProvider = ({ children }) => {
   };
 
   const saveImage = () => {
-    // dale
     window.scrollTo(0, 0);
     html2canvas(canvasRef.current, {
       allowTaint: true,
@@ -100,9 +88,11 @@ export const CanvasProvider = ({ children }) => {
   };
   const nextImage = () => {
     console.log(imageIndex);
-    // setImageIndex((state) => state + 1);
-    console.log(imageIndex);
-    setImage(arrImages[imageIndex]);
+    console.log("annotatedData", annotatedData);
+    const storedImage =
+      annotatedData.currentSample.images[imageIndex].original_image;
+    console.log(storedImage, "stored image");
+    setImage(storedImage);
     createImage();
     displayImage();
     dispatch({ type: "ANNOTATED_IMAGE", payload: counter, id: imageIndex });
@@ -110,16 +100,23 @@ export const CanvasProvider = ({ children }) => {
   };
 
   const createImage = () => {
-    const catImage = new Image();
-    // catImage.crossOrigin = "anonymous";
-    // catImage.src = "https://thiscatdoesnotexist.com/";
-    catImage.src = arrImages[imageIndex];
-    setImage(catImage);
+    const newImage = new Image();
+    newImage.crossOrigin = "anonymous";
+    // newImage.src = "https://thiscatdoesnotexist.com/";
+    const storedImage =
+      annotatedData.currentSample.images[imageIndex].original_image;
+    console.log(storedImage, "stored image");
+    newImage.src = storedImage;
+    setImage(newImage);
     setImageIndex((state) => state + 1);
   };
 
   useEffect(() => {
-    createImage();
+    async function fetchSample() {
+      await dispatch(getUserSampleAction());
+      if (annotatedData.currentSample.images) createImage();
+    }
+    fetchSample();
   }, []);
 
   return (
