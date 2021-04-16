@@ -57,7 +57,7 @@ export default function Map() {
     dispatch(getAllLocationsAction(history))
     },[])
     const test = useSelector(state => state.locationReducer.allLocations)
-    console.log("all locations inside the map ",typeof(test))
+    console.log("all locations inside the map ",test[0].id)
 
 
     // const mapped = test.map(value=>{

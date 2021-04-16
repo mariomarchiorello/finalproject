@@ -8,6 +8,9 @@ import Footer from "../footer";
 import {CanvasProvider} from "../canvasContainer/CanvasContext";
 import CanvasContainer from "../canvasContainer";
 import {getUserSample, getUserSampleAction} from "../../store/actions/getUserSampleSetAction";
+import {CanvasTopSection, CenterContainerCanvas, ExampleContainer} from "./style";
+import {ClearCanvasButton} from "../canvasContainer/ClearCanvasButton";
+import {DrawImageButton} from "../canvasContainer/DrawImage";
 
 const CanvasPage=()=>{
     const history = useHistory()
@@ -27,12 +30,22 @@ const CanvasPage=()=>{
                 <Background>
                     <Header/>
                     <Main>
-                        <CenterContainer>
+                        <CenterContainerCanvas>
+                            <CanvasTopSection>
+                            <ExampleContainer> </ExampleContainer>
                             <CanvasProvider>
                                 <CanvasContainer/>
+                                 <ClearCanvasButton/>
+                                <DrawImageButton/>
                             </CanvasProvider>
+                            </CanvasTopSection>
+                            <ExampleContainer> </ExampleContainer>
 
-                        </CenterContainer>
+                            {/*<CanvasProvider>*/}
+                            {/*   */}
+                            {/*</CanvasProvider>*/}
+
+                        </CenterContainerCanvas>
 
                     </Main>
                     <Footer/>

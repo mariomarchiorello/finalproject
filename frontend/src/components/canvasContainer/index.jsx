@@ -7,8 +7,8 @@ function CanvasContainer() {
   return (
     <>
       <Canvas />
-      <DrawImageButton />
-      <ClearCanvasButton />
+      {/*<DrawImageButton />*/}
+      {/*<ClearCanvasButton />*/}
     </>
   );
 }

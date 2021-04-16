@@ -76,6 +76,7 @@ export const CanvasProvider = ({ children }) => {
   };
 
   const displayImage = () => {
+    console.log(image)
     contextRef.current.drawImage(
       image,
       0,
@@ -124,7 +125,6 @@ export const CanvasProvider = ({ children }) => {
 
   return (
     <>
-      <div id="screenshot__div">
         <CanvasContext.Provider
           value={{
             canvasRef,
@@ -139,10 +139,10 @@ export const CanvasProvider = ({ children }) => {
         >
           {children}
         </CanvasContext.Provider>
-      </div>
+
       <div>Plankton: {counter}</div>
-      <button onClick={nextImage}>Next Image</button>
-      <button onClick={saveImage}>Submit</button>
+      {/*<button onClick={nextImage}>Next Image</button>*/}
+      {/*<button onClick={saveImage}>Submit</button>*/}
     </>
   );
 };
