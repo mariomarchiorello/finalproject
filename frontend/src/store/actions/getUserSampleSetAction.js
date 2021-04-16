@@ -16,7 +16,10 @@ export const getUserSampleAction = (history) => {
     fetch(url, config)
       .then((res) => res.json())
       .then((data) => {
-        const last = data.results[data.results.length - 1];
+        let last = {};
+        if (data.results) {
+          last = data.results[data.results.length - 1];
+        }
         const action = {
           type: "GET_LAST_SAMPLE",
           payload: last,

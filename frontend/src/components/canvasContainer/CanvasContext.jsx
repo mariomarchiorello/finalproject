@@ -2,10 +2,6 @@ import React, { useContext, useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import html2canvas from "html2canvas";
 import { getUserSampleAction } from "../../store/actions/getUserSampleSetAction";
-import plankton1 from "../../assets/background-images/1.jpg";
-import plankton2 from "../../assets/background-images/2.jpg";
-import plankton3 from "../../assets/background-images/3.jpg";
-import plankton4 from "../../assets/background-images/4.jpg";
 
 const CanvasContext = React.createContext();
 
@@ -13,18 +9,12 @@ export const CanvasProvider = ({ children }) => {
   const [isDrawing, setIsDrawing] = useState(false);
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
-  const [image, setImage] = useState(null);
   const [imageIndex, setImageIndex] = useState(0);
   const [counter, setCounter] = useState(0);
 
-  // const arrImages = [plankton1, plankton2, plankton3, plankton4];
   const dispatch = useDispatch();
   const annotatedData = useSelector((state) => state.annotationReducer);
   console.log(annotatedData, "state images");
-  // const sampleData = useSelector(
-  //   (state) => state.annotationReducer.currentSample
-  // );
-  // console.log(sampleData, "current sample");
 
   const prepareCanvas = () => {
     const canvas = canvasRef.current;
@@ -65,15 +55,19 @@ export const CanvasProvider = ({ children }) => {
   };
 
   const displayImage = () => {
+    const newImage = new Image();
+    newImage.crossorigin = "anonymous";
+    newImage.crossOrigin = "anonymous";
+    newImage.src =
+      annotatedData.currentSample.images[imageIndex].original_image;
+    console.log("image before drawww", newImage);
     contextRef.current.drawImage(
-      image,
+      newImage,
       0,
       0,
       canvasRef.current.width / 2,
       canvasRef.current.height / 2
     );
-    // setImageIndex((state) => (state += 1));
-    // console.log(imageIndex);
   };
 
   const saveImage = () => {
@@ -87,56 +81,42 @@ export const CanvasProvider = ({ children }) => {
     });
   };
   const nextImage = () => {
-    console.log(imageIndex);
-    console.log("annotatedData", annotatedData);
-    const storedImage =
-      annotatedData.currentSample.images[imageIndex].original_image;
-    console.log(storedImage, "stored image");
-    setImage(storedImage);
     createImage();
     displayImage();
     dispatch({ type: "ANNOTATED_IMAGE", payload: counter, id: imageIndex });
     setCounter((counter) => (counter = 0));
   };
 
-  const createImage = () => {
+  const createImage = async () => {
     const newImage = new Image();
+    newImage.crossorigin = "anonymous";
     newImage.crossOrigin = "anonymous";
-    // newImage.src = "https://thiscatdoesnotexist.com/";
-    const storedImage =
-      annotatedData.currentSample.images[imageIndex].original_image;
-    console.log(storedImage, "stored image");
-    newImage.src = storedImage;
-    setImage(newImage);
     setImageIndex((state) => state + 1);
   };
 
   useEffect(() => {
-    async function fetchSample() {
-      await dispatch(getUserSampleAction());
-      if (annotatedData.currentSample.images) createImage();
+    function fetchSample() {
+      dispatch(getUserSampleAction());
     }
     fetchSample();
   }, []);
 
   return (
     <>
-      <div id="screenshot__div">
-        <CanvasContext.Provider
-          value={{
-            canvasRef,
-            contextRef,
-            prepareCanvas,
-            startDrawing,
-            // finishDrawing,
-            displayImage,
-            clearCanvas,
-            draw,
-          }}
-        >
-          {children}
-        </CanvasContext.Provider>
-      </div>
+      <CanvasContext.Provider
+        value={{
+          canvasRef,
+          contextRef,
+          prepareCanvas,
+          startDrawing,
+          // finishDrawing,
+          displayImage,
+          clearCanvas,
+          draw,
+        }}
+      >
+        {children}
+      </CanvasContext.Provider>
       <div>Plankton: {counter}</div>
       <button onClick={nextImage}>Next Image</button>
       <button onClick={saveImage}>Submit</button>
