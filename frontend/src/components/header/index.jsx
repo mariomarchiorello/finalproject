@@ -8,7 +8,6 @@ import {getUserMeAction} from "../../store/actions/getUserSelfAction";
 import store from "../../store";
 import Toggle from "../themes/toggle";
 import { useDarkMode } from "../themes/useDarkMode"
-import { darkTheme, lightTheme } from "../themes/index"
 
 const Header = () => {
     const history = useHistory();
@@ -42,8 +41,7 @@ const Header = () => {
         e.preventDefault();
         history.push("/sign-up")
     }
-
-    const [theme, toggleTheme] = useDarkMode();
+    
     
     const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
 
@@ -53,7 +51,6 @@ const Header = () => {
         {localToken ? (<Link to="/map"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
         {localToken ? (<RightContainer><Link><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile></Link><LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) :
             (<RightContainer><Profile onClick={joinUs}>Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
-        <Toggle theme={theme} toggleTheme={toggleTheme}></Toggle>
     </HeaderContainer>
   </>
 }

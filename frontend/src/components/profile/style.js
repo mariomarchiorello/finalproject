@@ -14,7 +14,7 @@ export const SelectionContainer = styled.div`
 
     .underscored{
         /* max-width:8vw; */
-        color:white;
+        color: ${props => props.theme.labelcolor };
         text-decoration:none;
         border-bottom: transparent;
     }
@@ -28,7 +28,7 @@ export const SelectionContainer = styled.div`
 export const BackgroundProfile = styled(Background)`
     width: auto;
     height: 100%;
-    background-color: black;
+    background-color: ${props => props.theme.bgcolor };
     z-index: -5;
 
 `;
