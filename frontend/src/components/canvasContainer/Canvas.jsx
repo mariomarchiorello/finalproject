@@ -6,7 +6,7 @@ export function Canvas() {
     canvasRef,
     prepareCanvas,
     startDrawing,
-    // displayImage,
+    displayImage,
     draw,
   } = useCanvas();
 
@@ -17,7 +17,6 @@ export function Canvas() {
   return (
     <canvas
       onMouseDown={startDrawing}
-      // onDoubleClick={displayImage}
       onMouseUp={draw}
       ref={canvasRef}
     />

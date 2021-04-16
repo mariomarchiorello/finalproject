@@ -14,12 +14,13 @@ const Header = () => {
     const dispatch = useDispatch();
 
 
-    const [localToken, setLocalToken] = useState("");
     useEffect(()=>{
 
         setLocalToken(localStorage.getItem("token"));
         //console.log("in da useEffect", localToken);
     },[]);
+        const [localToken, setLocalToken] = useState("");
+
     //console.log("from selecthor", localToken)
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
