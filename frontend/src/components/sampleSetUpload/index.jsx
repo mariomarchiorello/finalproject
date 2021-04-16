@@ -101,7 +101,7 @@ const CreateNewSampleSet = () => {
         fetch(url, config)
         .then(res => res.json())
         .then(data => console.log(data))
-        history.push('/annotate')
+        history.push('/canvas-page')
     }
 
 

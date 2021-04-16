@@ -56,13 +56,12 @@ export default function Map() {
     useEffect(()=>{
     dispatch(getAllLocationsAction(history))
     },[])
-    const allLocations = useSelector(state => state.locationReducer.allLocations.results)
-    console.log("all locations inside the map ",allLocations)
+    const test = useSelector(state => state.locationReducer.allLocations)
+    console.log("all locations inside the map ",typeof(test))
 
 
-
-    // const mapped = [...allLocations].map((value,index)=>{
-    //     return arr.push(value.sample_latitude)
+    // const mapped = test.map(value=>{
+    //     return mapped.push(value.sample_latitude)
     // })
     // console.log("all locations inside the map new",allLocations)
     return (
