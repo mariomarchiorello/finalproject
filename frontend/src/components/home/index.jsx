@@ -1,11 +1,22 @@
-import { Link } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import { Background, BlueButton } from "../../globalstyles/globalStyle";
 import Header from "../header";
 import { QuoteWrapper, MainHome, Buttonholder } from "./style";
+import {useEffect} from "react";
+import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+//import {getUserSampleAction} from "../../store/actions/getUserSampleSetAction";
+import {useDispatch} from "react-redux";
 
 
 
 export default function Home() {
+
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+    dispatch(getUserMeAction(history))
+    },[])
 
     return (
         <>

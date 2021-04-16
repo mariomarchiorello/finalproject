@@ -7,6 +7,7 @@ import Header from "../header";
 import Footer from "../footer";
 import {CanvasProvider} from "../canvasContainer/CanvasContext";
 import CanvasContainer from "../canvasContainer";
+import {getUserSample, getUserSampleAction} from "../../store/actions/getUserSampleSetAction";
 
 const CanvasPage=()=>{
     const history = useHistory()
@@ -14,7 +15,7 @@ const CanvasPage=()=>{
 
     useEffect(()=>{
     dispatch(getUserMeAction(history))
-
+    dispatch(getUserSampleAction(history))
     },[])
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
