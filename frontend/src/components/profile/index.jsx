@@ -33,21 +33,21 @@ export default function Profile() {
     const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
 
 
-    const backgroundArray = [bg1, bg2, bg3, bg4, bg5];
-    const randomIndex = Math.floor(Math.random() * backgroundArray.length);
-    const selectedBackground = backgroundArray[randomIndex];
+    // const backgroundArray = [bg1, bg2, bg3, bg4, bg5];
+    // const randomIndex = Math.floor(Math.random() * backgroundArray.length);
+    // const selectedBackground = backgroundArray[randomIndex];
 
-    const background = {
-        backgroundImage: `url(${selectedBackground})`,
-        backgroundPosition: "top center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+    // const background = {
+    //     backgroundImage: `url(${selectedBackground})`,
+    //     backgroundPosition: "top center",
+    //     backgroundRepeat: "no-repeat",
+    //     backgroundSize: "cover",
 
-        };
+    //     };
 
     return (
         <>
-            <BackgroundProfile style={background}>
+            <BackgroundProfile>
                 <Header/>
                 <MainProfile>
                     <SelectionContainer>
