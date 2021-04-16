@@ -7,7 +7,7 @@ import {
     GlobalInput,
     GlobalLabel,
     Main,
-    SmallBlueButton, TransparentButton
+    TransparentButton
 } from "../../globalstyles/globalStyle"
 import {
     AddImagesContainer, CheckboxFieldsContainer,
@@ -23,7 +23,7 @@ import baseUrl from "../../helpers/baseUrl";
 
 const CreateNewSampleSet = () => {
 
-    // const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     const history = useHistory()
 
     const [collectionDate, setCollectionDate] = useState("");
@@ -33,7 +33,7 @@ const CreateNewSampleSet = () => {
     const [longitude, setLongitude] = useState("");
     const [airTemperature, setAirTemperature] = useState("");
     const [waterTemperature, setWaterTemperature] = useState("");
-    // checkboxes
+    // checkboxes (not connected to database yet)
     const [foamChecked, setFoamChecked] = useState(false)
     const [oilChecked, setOilChecked] = useState(false)
     const [bioluminescenceChecked, setBioluminescenceChecked] = useState(false)
@@ -56,16 +56,17 @@ const CreateNewSampleSet = () => {
     // console.log('storm checked', stormChecked)
     // console.log('--------------------')
 
+    // delete after checkboxes linked to database?
     // const [surface, setSurface] = useState("");
     // const [weather, setWeather] = useState("");
 
     // images
-    const [image, setImage] = useState(null);
+    const [image, setImages] = useState(null);
 
 
     const NewSampleSetHandler = (event) =>  {
+        // console.log(images)
         event.preventDefault();
-        // const url = "https://goes-app.propulsion-learn.ch/backend/api/samples/new/";
         const url = `${baseUrl}samples/new/`
 
         let formData = new FormData();
@@ -77,9 +78,10 @@ const CreateNewSampleSet = () => {
         formData.append('air_temperature', airTemperature)
         formData.append('water_temperature', waterTemperature)
 
-        // water surface and weather variables
+        // delete after checkboxes linked to database?
         // formData.append('water_surface', surface)
         // formData.append('weather_events', weather)
+
         formData.append('foam', String(foamChecked))
         formData.append('oil', String(oilChecked))
         formData.append('bioluminescence', String(bioluminescenceChecked))
@@ -90,7 +92,9 @@ const CreateNewSampleSet = () => {
         formData.append('storm', String(stormChecked))
 
         // images
-        formData.append('images', image)
+        for (let i = 0; i < image.length; i++) {
+            formData.append(`images`, image[i])
+        }
 
 
         const config = {
@@ -98,7 +102,6 @@ const CreateNewSampleSet = () => {
             body: formData,
             headers: new Headers ({
                 "Authorization": `Bearer ${token}`,
-                // "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwMTEzMTE4LCJqdGkiOiI1ZDI3YTM0NGNlNjA0YTZlOTEyZjk5Y2Y4NzgyYjU2NSIsInVzZXJfaWQiOjEyfQ.OOGiejtyT0LbvH0fRSlLyhbPOQrxwALvwNpM4WakZGg`,
             })
         }
         fetch(url, config)
@@ -158,7 +161,8 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             {/*<SmallBlueButton>Add Images</SmallBlueButton>*/}
-                            <input name='image' type='file' multiple value= {undefined} onChange={(e)=>setImage(e.target.files[0])}/>
+                            <input name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
+
                             <ImagesContainer>
                                 {/*placeholder images, should only show when images are added*/}
                                 <ImagePreview src={planktonImage} alt="Plankton" />
