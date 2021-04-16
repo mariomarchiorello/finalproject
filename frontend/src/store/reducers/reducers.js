@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { annotationReducer } from "./annotationReducer";
+import { locationReducer} from "./locationReducer";
 
 const initialState = {
   token: "",
@@ -12,11 +13,11 @@ const initialState = {
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_USER_ME":
-      console.log("IN DA GET USER ME", action.payload);
+      //console.log("IN DA GET USER ME", action.payload);
       return { ...state, userMe: action.payload };
     case "USER_SIGNIN":
       // THIS IS THE ACTION TRIGERRED AFTER LOGIN, UserMe WILL BE STILL EMPTY THEN
-      console.log(" IN DA USER SIGN IN", action.payload);
+      //console.log(" IN DA USER SIGN IN", action.payload);
       return { ...state, token: action.payload };
     case "MENUCOUNTER":
       return { ...state, pageId: action.payload };
@@ -40,4 +41,5 @@ const UserReducer = (state = initialState, action) => {
 export const rootReducer = combineReducers({
   UserReducer,
   annotationReducer,
+  locationReducer,
 });

@@ -3,13 +3,16 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { Box } from './style';
 import { sampleAllIcon, sampleMeIcon,shipMeIcon, shipAllIcon, homeMeIcon, homeAllIcon } from './mapIcons';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import baseUrl from '../../helpers/baseUrl'
+import {useHistory} from "react-router-dom";
+import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+import {getAllLocationsAction} from "../../store/actions/getAllLocationsAction";
 
 
 
 
-// currently the positions are hardcoded, in the future they will be fetchen from the DB
+// currently the positions are hardcoded, in the future they will be fetched from the DB
 const sampleMePositions = [[54.65,-18.75],[-16.710,-25.12]];
 const sampleAllPositions = [[52.65,-29.75],[5.485,165.583],[35.652,-40.000],[23.710,-60.12],[16.485,-24.583],[2.652,60.000],[-40.710,-10.12]];
 const shipMePositions = [[39.710,3.12]];
@@ -24,27 +27,44 @@ export default function Map() {
 //     //console.log(myPos)
 //---------------------------------------------------------------------------------------------
 //------------get pos of all sample-sets-------------------------------------------------------
-    const token = localStorage.getItem("token")
+//     const token = localStorage.getItem("token")
+//     useEffect(()=>{
+//         const config = {
+//             method: "GET",
+//             headers: new Headers({
+//                 "Authorization": `Bearer ${token}`,
+//                 "Content-Type": "application/json"
+//             })
+//         }
+//
+//         const url = "https://goes-app.propulsion-learn.ch/backend/api/samples/all-samples/";
+//         fetch(url, config)
+//             .then(res=>res.json())
+//             .then(data=>{
+//                 const allSamples = data.results
+//                 console.log(allSamples)
+//
+//             })
+//
+//     })
+//     // console.log("all samples:",)
+
+
+    const history = useHistory()
+    const dispatch = useDispatch()
+
     useEffect(()=>{
-        const config = {
-            method: "GET",
-            headers: new Headers({
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            })
-        }
+    dispatch(getAllLocationsAction(history))
+    },[])
+    const allLocations = useSelector(state => state.locationReducer.allLocations.results)
+    console.log("all locations inside the map ",allLocations)
 
-        const url = "https://goes-app.propulsion-learn.ch/backend/api/samples/all-samples/";
-        fetch(url, config)
-            .then(res=>res.json())
-            .then(data=>{
-                const allSamples = data.results
-                console.log(allSamples)
 
-            })
 
-    })
-    // console.log("all samples:",)
+    // const mapped = [...allLocations].map((value,index)=>{
+    //     return arr.push(value.sample_latitude)
+    // })
+    // console.log("all locations inside the map new",allLocations)
     return (
         <> 
             <Box> 

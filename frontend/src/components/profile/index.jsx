@@ -26,7 +26,7 @@ export default function Profile() {
     },[])
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
-    // console.log("from inside the infosection:",userSelf)
+    // console.log("from inside the profile/index:",userSelf)
 
     const dispatch = useDispatch()
     const profileMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
