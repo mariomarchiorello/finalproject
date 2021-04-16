@@ -18,7 +18,7 @@ export const Info = styled.div`
     flex-direction:row;
     section{
         width:20vw;
-        color:#ffffff;
+        color:${props => props.theme.labelcolor };
         div{
             margin:0%;
         }
@@ -38,12 +38,12 @@ export const Edit = styled.div`
   z-index: 5;
     section{
         width:20vw;
-        color:#ffffff;
+        color:${props => props.theme.labelcolor };
         display:flex;
         flex-direction:column;        
     }
   p{
-    color:white;
+    color:${props => props.theme.labelcolor };
     margin-top: 3%;
     margin-right: 3%;
     margin-left: -3%;
@@ -63,7 +63,7 @@ export const ModeSelect = styled.select`
 
 export const EditPasswordButton = styled(TransparentButton)`
 border-radius: 3px;
-color: #FFFFFF;
+color: ${props => props.theme.labelcolor };
 width: auto;
 height: 1.5rem;
 cursor:pointer;
