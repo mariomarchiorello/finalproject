@@ -97,8 +97,8 @@ const CreateNewSampleSet = () => {
             method: "POST",
             body: formData,
             headers: new Headers ({
-                // "Authorization": `Bearer ${token}`,
-                "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwMTEzMTE4LCJqdGkiOiI1ZDI3YTM0NGNlNjA0YTZlOTEyZjk5Y2Y4NzgyYjU2NSIsInVzZXJfaWQiOjEyfQ.OOGiejtyT0LbvH0fRSlLyhbPOQrxwALvwNpM4WakZGg`,
+                "Authorization": `Bearer ${token}`,
+                // "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwMTEzMTE4LCJqdGkiOiI1ZDI3YTM0NGNlNjA0YTZlOTEyZjk5Y2Y4NzgyYjU2NSIsInVzZXJfaWQiOjEyfQ.OOGiejtyT0LbvH0fRSlLyhbPOQrxwALvwNpM4WakZGg`,
             })
         }
         fetch(url, config)
