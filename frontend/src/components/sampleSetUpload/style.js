@@ -52,12 +52,12 @@ export const CheckboxFieldsContainer = styled.div`
 `
 
 export const StandardText = styled.div`
-  color: white;
+  color: ${props => props.theme.labelcolor };
   font-size: 18px;
 `
 
 export const SmallText = styled.div`
-  color: white;
+  color: ${props => props.theme.labelcolor };
   font-size: 14px;
 `
 
