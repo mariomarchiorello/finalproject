@@ -15,7 +15,8 @@ import {
     ImagesContainer,
     LabelInputContainer,
     OuterInputsContainer, SmallText, StandardText,
-    TitleWrapper
+    TitleWrapper,
+    FileUpload
 } from "./style"
 // import planktonImage from '../../assets/background-images/10.jpg'
 import baseUrl from "../../helpers/baseUrl";
@@ -60,6 +61,14 @@ const CreateNewSampleSet = () => {
     //     // free memory when ever this component is unmounted
     //     return () => URL.revokeObjectURL(objectUrl)
     // }, [image])
+    
+    const hiddenFileInput = React.useRef(null);
+    
+        const handleClick = event => {
+            hiddenFileInput.current.click();
+    
+        };
+    
 
      useEffect(() => {
         if (!image) {
@@ -169,7 +178,8 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             {/*<SmallBlueButton>Add Images</SmallBlueButton>*/}
-                            <input name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
+                            <FileUpload onClick={handleClick}>Upload file</FileUpload>
+                            <input style={{display:'none'}} ref={hiddenFileInput} name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
                             {/*<input ref={this.fileRef} type="file" accept="image/png, image/jpeg" />*/}
 
                             <ImagesContainer>
