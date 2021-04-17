@@ -56,8 +56,8 @@ export const CanvasProvider = ({ children }) => {
 
   const displayImage = () => {
     const newImage = new Image();
-    newImage.crossorigin = "anonymous";
-    newImage.crossOrigin = "anonymous";
+    // newImage.crossorigin = "anonymous";
+    // newImage.crossOrigin = "anonymous";
     newImage.src =
       annotatedData.currentSample.images[imageIndex].original_image;
     console.log("image before drawww", newImage);
@@ -89,8 +89,8 @@ export const CanvasProvider = ({ children }) => {
 
   const createImage = async () => {
     const newImage = new Image();
-    newImage.crossorigin = "anonymous";
-    newImage.crossOrigin = "anonymous";
+    // newImage.crossorigin = "anonymous";
+    // newImage.crossOrigin = "anonymous";
     setImageIndex((state) => state + 1);
   };
 
