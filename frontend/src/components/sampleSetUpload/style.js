@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BlueButton, TransparentButton } from "../../globalstyles/globalStyle"
+import { BlueButton, CenterContainer } from "../../globalstyles/globalStyle"
 
 
 export const TitleWrapper = styled.div`
@@ -70,3 +70,8 @@ export const FileUpload = styled(BlueButton)`
   margin-bottom: 3px;
   padding: 0px;
   `;
+
+export const UploadContainer = styled(CenterContainer)`
+  width: auto;
+  padding: 3% 3% 3%;
+`;
