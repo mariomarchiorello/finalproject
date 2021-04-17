@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { TransparentButton } from "../../globalstyles/globalStyle"
+import { BlueButton, TransparentButton } from "../../globalstyles/globalStyle"
 
 
 export const TitleWrapper = styled.div`
@@ -62,8 +62,11 @@ export const SmallText = styled.div`
   font-size: 14px;
 `
 
-export const FileUpload = styled(TransparentButton)`
-  width: 6rem;
+export const FileUpload = styled(BlueButton)`
+  width: 8rem;
+  height: 1.8rem;
   color: ${props => props.theme.transbuttoncolor };
-  
+  font-size: 14px;
+  margin-bottom: 3px;
+  padding: 0px;
   `;

@@ -178,7 +178,7 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             {/*<SmallBlueButton>Add Images</SmallBlueButton>*/}
-                            <FileUpload onClick={handleClick}>Upload file</FileUpload>
+                            <FileUpload onClick={handleClick}>Upload files</FileUpload>
                             <input style={{display:'none'}} ref={hiddenFileInput} name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
                             {/*<input ref={this.fileRef} type="file" accept="image/png, image/jpeg" />*/}
 
