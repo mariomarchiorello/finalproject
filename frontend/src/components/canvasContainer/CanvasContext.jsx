@@ -1,10 +1,8 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import html2canvas from "html2canvas";
-import plankton1 from "../../assets/background-images/1.jpg";
-import plankton2 from "../../assets/background-images/2.jpg";
-import plankton3 from "../../assets/background-images/3.jpg";
-import plankton4 from "../../assets/background-images/4.jpg";
+import { getUserSampleAction } from "../../store/actions/getUserSampleSetAction";
+import planktonImg from "../../assets/background-images/1.jpg";
 
 const CanvasContext = React.createContext();
 
@@ -12,22 +10,20 @@ export const CanvasProvider = ({ children }) => {
   const [isDrawing, setIsDrawing] = useState(false);
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
-  const [image, setImage] = useState(null);
   const [imageIndex, setImageIndex] = useState(0);
   const [counter, setCounter] = useState(0);
 
-  const arrImages = [plankton1, plankton2, plankton3, plankton4];
   const dispatch = useDispatch();
-  const stateImages = useSelector((state) => state.annotationReducer);
-  console.log(stateImages, "state images");
+  const annotatedData = useSelector((state) => state.annotationReducer);
+  // console.log(annotatedData, "state images after selector");
 
   const prepareCanvas = () => {
     const canvas = canvasRef.current;
-    canvas.width = window.innerWidth / 1.5;
-    canvas.height = window.innerHeight / 1.5;
-    canvas.style.width = `${window.innerWidth / 3}px`;
-    canvas.style.height = `${window.innerHeight / 3}px`;
-    canvas.style.backgroundColor = "pink"
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.width = `${window.innerWidth / 2}px`;
+    canvas.style.height = `${window.innerHeight / 2}px`;
+    canvas.style.backgroundColor = "pink";
 
     const context = canvas.getContext("2d");
 
@@ -43,27 +39,12 @@ export const CanvasProvider = ({ children }) => {
   };
 
   const draw = ({ nativeEvent }) => {
-    if (!isDrawing) {
-      return;
-    }
     const { offsetX, offsetY } = nativeEvent;
     contextRef.current.arc(offsetX, offsetY, 20, 0, Math.PI * 2);
     contextRef.current.stroke();
     contextRef.current.closePath();
     setIsDrawing(false);
     setCounter((counter) => (counter += 1));
-    // console.log(contextRef.current, "context ref");
-    // console.log(canvasRef.current, "canvas ref");
-
-    // var fullQuality = canvasRef.current.toDataURL("png", 1.0);
-    // console.log(fullQuality);
-    // const test = canvasToImage(canvasRef.current, {
-    //   name: "myImage",
-    //   type: "jpg",
-    //   quality: 0.7,
-    // });
-
-    // console.log(test, "test");
   };
 
   const clearCanvas = () => {
@@ -72,24 +53,25 @@ export const CanvasProvider = ({ children }) => {
     const context = canvas.getContext("2d");
     context.fillStyle = "white";
     context.fillRect(0, 0, canvas.width, canvas.height);
-    // (image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
   };
 
   const displayImage = () => {
-    console.log(image)
-    contextRef.current.drawImage(
-      image,
-      0,
-      0,
-      canvasRef.current.width / 2,
-      canvasRef.current.height / 2
-    );
-    // setImageIndex((state) => (state += 1));
-    // console.log(imageIndex);
+    const newImage = new Image();
+    newImage.src =
+      annotatedData.currentSample.images[imageIndex].original_image;
+    newImage.onload = function () {
+      contextRef.current.drawImage(
+        newImage,
+        0,
+        0,
+        canvasRef.current.width / 2,
+        canvasRef.current.height / 2
+      );
+    };
+    setImageIndex((state) => state + 1);
   };
 
   const saveImage = () => {
-    // dale
     window.scrollTo(0, 0);
     html2canvas(canvasRef.current, {
       allowTaint: true,
@@ -99,54 +81,43 @@ export const CanvasProvider = ({ children }) => {
       console.log(canvas.toDataURL("image/jpeg", 0.9));
     });
   };
+
   const nextImage = () => {
-    console.log(imageIndex);
-    // setImageIndex((state) => state + 1);
-    console.log(imageIndex);
-    setImage(arrImages[imageIndex]);
-    createImage();
+    if (imageIndex > 3) return;
     displayImage();
     dispatch({ type: "ANNOTATED_IMAGE", payload: counter, id: imageIndex });
     setCounter((counter) => (counter = 0));
   };
 
-  const createImage = () => {
-    const catImage = new Image();
-    // catImage.crossOrigin = "anonymous";
-    // catImage.src = "https://thiscatdoesnotexist.com/";
-    catImage.src = arrImages[imageIndex];
-    setImage(catImage);
-    setImageIndex((state) => state + 1);
-  };
-
   useEffect(() => {
-    createImage();
+    function fetchSample() {
+      dispatch(getUserSampleAction());
+      console.log("------inside use effect ", annotatedData);
+    }
+    fetchSample();
   }, []);
 
   return (
     <>
-        <CanvasContext.Provider
-          value={{
-            canvasRef,
-            contextRef,
-            prepareCanvas,
-            startDrawing,
-            // finishDrawing,
-            displayImage,
-            clearCanvas,
-            draw,
-            counter,
-          }}
-        >
+      <CanvasContext.Provider
+        value={{
+          canvasRef,
+          contextRef,
+          prepareCanvas,
+          startDrawing,
+          // finishDrawing,
+          // displayImage,
+          clearCanvas,
+          draw,
+          counter,
+        }}
+      >
+        {children}
+      </CanvasContext.Provider>
+      <div>Plankton: {counter}</div>
 
-          {children}
-
-        </CanvasContext.Provider>
-        {/*<div>Plankton: {counter}</div>*/}
-
-
-      {/*<button onClick={nextImage}>Next Image</button>*/}
-      {/*<button onClick={saveImage}>Submit</button>*/}
+      <button onClick={nextImage}>Next Image</button>
+      <button onClick={saveImage}>Submit</button>
     </>
   );
 };
