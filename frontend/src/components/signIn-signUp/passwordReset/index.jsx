@@ -68,7 +68,6 @@ const PasswordReset = () => {
                     <VerButton type='submit' onClick={veriHandler}>Register</VerButton>
                 </VerInputContainer>
             </Main>
-            <Footer/>
         </Background>
     </>
 

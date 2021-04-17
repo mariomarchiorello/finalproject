@@ -6,10 +6,12 @@ import {BlueButton,CenterContainer} from '../../globalstyles/globalStyle'
 export const Bluebutton = styled(BlueButton)`
     margin-left:10px;
     margin-right:10px;
+    margin-bottom:10px;
 `;
 
 export const BackgroundMap = styled(CenterContainer)`
 /* background-color:pink; */
+    margin: 1rem;
 section{
     /* background-color:green; */
 }

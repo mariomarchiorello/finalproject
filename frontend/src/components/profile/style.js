@@ -27,7 +27,7 @@ export const SelectionContainer = styled.div`
 
 export const BackgroundProfile = styled(Background)`
     width: auto;
-    height: 100%;
+    height: 100vh;
     background-color: ${props => props.theme.bgcolor };
     z-index: -5;
 
