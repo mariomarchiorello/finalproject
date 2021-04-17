@@ -16,7 +16,8 @@ import {
     LabelInputContainer,
     OuterInputsContainer, SmallText, StandardText,
     TitleWrapper,
-    FileUpload
+    FileUpload,
+    UploadContainer
 } from "./style"
 // import planktonImage from '../../assets/background-images/10.jpg'
 import baseUrl from "../../helpers/baseUrl";
@@ -135,7 +136,7 @@ const CreateNewSampleSet = () => {
                     <TitleWrapper>
                         <span>Upload New Sample Set</span>
                     </TitleWrapper>
-                    <CenterContainer>
+                    <UploadContainer>
                         <OuterInputsContainer>
 
                             <LabelInputContainer>
@@ -178,7 +179,7 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             {/*<SmallBlueButton>Add Images</SmallBlueButton>*/}
-                            <FileUpload onClick={handleClick}>Upload file</FileUpload>
+                            <FileUpload onClick={handleClick}>Upload Files</FileUpload>
                             <input style={{display:'none'}} ref={hiddenFileInput} name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
                             {/*<input ref={this.fileRef} type="file" accept="image/png, image/jpeg" />*/}
 
@@ -193,9 +194,8 @@ const CreateNewSampleSet = () => {
 
                         <BlueButton type='submit' onClick={NewSampleSetHandler}>Continue</BlueButton>
                         <Link to='/summary'><TransparentButton>Go To Summary</TransparentButton></Link>
-                    </CenterContainer>
+                    </UploadContainer>
                 </Main>
-            <Footer/>
         </Background>
     </>
 }
