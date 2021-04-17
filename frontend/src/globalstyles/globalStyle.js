@@ -79,11 +79,11 @@ export const CenterContainer = styled.div`
   padding: 0% 0% 0%;
   border: 2px solid #30adea;
   border-radius: 5px;
-  @media (max-width: 1620px) {
-    flex-direction: column;
-    width: 50vw;
-    padding: 2%;
-  }
+  //@media (max-width: 1620px) {
+  //  flex-direction: column;
+  //  width: 50vw;
+  //  padding: 2%;
+  //}
 `;
 
 export const Main = styled.div`
