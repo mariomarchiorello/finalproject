@@ -1,7 +1,6 @@
 import baseUrl from "../../helpers/baseUrl";
 
 export const getUserSampleAction = (history) => {
-  console.log("sample action");
   return (dispatch) => {
     const token = localStorage.getItem("token");
     const config = {
@@ -12,13 +11,13 @@ export const getUserSampleAction = (history) => {
       }),
     };
     const url = `${baseUrl}samples/my-samples/`;
-    console.log("sample action before fetch");
     fetch(url, config)
       .then((res) => res.json())
       .then((data) => {
         let last = {};
         if (data.results) {
           last = data.results[data.results.length - 1];
+          console.log("----------- results from fetch", data);
         }
         const action = {
           type: "GET_LAST_SAMPLE",

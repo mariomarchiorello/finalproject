@@ -120,7 +120,7 @@ export const CanvasProvider = ({ children }) => {
       </CanvasContext.Provider>
       {/*<div>Plankton: {counter}</div>*/}
 
-      {/*<button onClick={nextImage}>Next Image</button>*/}
+      <button onClick={nextImage}>Next Image</button>
       {/*<button onClick={saveImage}>Submit</button>*/}
     </>
   );
