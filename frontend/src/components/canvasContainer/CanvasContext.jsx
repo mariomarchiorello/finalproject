@@ -145,8 +145,8 @@ export const CanvasProvider = ({ children }) => {
         {/*<div>Plankton: {counter}</div>*/}
 
 
-      {/*<button onClick={nextImage}>Next Image</button>*/}
-      {/*<button onClick={saveImage}>Submit</button>*/}
+      <button onClick={nextImage}>Next Image</button>
+      <button onClick={saveImage}>Submit</button>
     </>
   );
 };
