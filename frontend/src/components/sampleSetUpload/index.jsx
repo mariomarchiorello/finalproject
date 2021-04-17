@@ -124,7 +124,7 @@ const CreateNewSampleSet = () => {
         }
         fetch(url, config)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => console.log("FROM IN DA SAMPLE_UPLOAD",data))
         history.push('/canvas-page')
     }
 
