@@ -15,6 +15,3 @@ class Image(models.Model):
     phytoplankton = models.IntegerField(null=True, blank=True)
     plastic_fibers = models.IntegerField(null=True, blank=True)
     plastic_particles = models.IntegerField(null=True, blank=True)
-
-
-

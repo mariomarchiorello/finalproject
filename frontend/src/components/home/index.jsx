@@ -1,7 +1,7 @@
 import {Link, useHistory} from "react-router-dom";
-import { Background, BlueButton } from "../../globalstyles/globalStyle";
+import { BlueButton } from "../../globalstyles/globalStyle";
 import Header from "../header";
-import { QuoteWrapper, MainHome, Buttonholder } from "./style";
+import { QuoteWrapper, MainHome, Buttonholder, HomeBackground } from "./style";
 import {useEffect} from "react";
 import {getUserMeAction} from "../../store/actions/getUserSelfAction";
 //import {getUserSampleAction} from "../../store/actions/getUserSampleSetAction";
@@ -20,7 +20,7 @@ export default function Home() {
 
     return (
         <>
-            <Background>
+            <HomeBackground>
                 <Header/>
                 <MainHome>
                     <QuoteWrapper>
@@ -31,7 +31,7 @@ export default function Home() {
                         <Link to="/sign-up"><BlueButton>Join Us!</BlueButton></Link>
                     </Buttonholder>
                 </MainHome>
-            </Background>
+            </HomeBackground>
         </>
     )
 };

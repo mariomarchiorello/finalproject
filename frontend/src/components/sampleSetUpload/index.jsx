@@ -15,10 +15,12 @@ import {
     ImagesContainer,
     LabelInputContainer,
     OuterInputsContainer, SmallText, StandardText,
-    TitleWrapper
+    TitleWrapper,
+    FileUpload
 } from "./style"
 // import planktonImage from '../../assets/background-images/10.jpg'
 import baseUrl from "../../helpers/baseUrl";
+import placeholderimg from "../../assets/graphics/placeholder.jpg"
 
 
 const CreateNewSampleSet = () => {
@@ -59,6 +61,14 @@ const CreateNewSampleSet = () => {
     //     // free memory when ever this component is unmounted
     //     return () => URL.revokeObjectURL(objectUrl)
     // }, [image])
+    
+    const hiddenFileInput = React.useRef(null);
+    
+        const handleClick = event => {
+            hiddenFileInput.current.click();
+    
+        };
+    
 
      useEffect(() => {
         if (!image) {
@@ -151,14 +161,14 @@ const CreateNewSampleSet = () => {
                         </OuterInputsContainer>
 
                         <CheckboxFieldsContainer>
-                            <StandardText>Water Surface Characteristics<SmallText>(Select all that apply)</SmallText></StandardText>
+                            <StandardText>Water Surface Characteristics:<SmallText>(Select all that apply)</SmallText></StandardText>
                                 <StandardText>Foam <input type={'checkbox'} name={'foam'} onChange={() => setFoamChecked(!foamChecked)} checked={foamChecked} /></StandardText>
                                 <StandardText>Oil <input type={'checkbox'} name={'oil'} onChange={() => setOilChecked(!oilChecked)} checked={oilChecked} /></StandardText>
                                 <StandardText>Bioluminescence <input type={'checkbox'} name={'bioluminescence'} onChange={() => setBioluminescenceChecked(!bioluminescenceChecked)} checked={bioluminescenceChecked} /></StandardText>
                         </CheckboxFieldsContainer>
 
                         <CheckboxFieldsContainer>
-                            <StandardText>Weather Events<SmallText>(Select all that apply)</SmallText></StandardText>
+                            <StandardText>Weather Events:<SmallText>(Select all that apply)</SmallText></StandardText>
                                 <StandardText>Sun <input type={'checkbox'} name={'sun'} onChange={() => setSunChecked(!sunChecked)} checked={sunChecked} /></StandardText>
                                 <StandardText>Cloud <input type={'checkbox'} name={'cloud'} onChange={() => setCloudChecked(!cloudChecked)} checked={cloudChecked} /></StandardText>
                                 <StandardText>Rain <input type={'checkbox'} name={'rain'} onChange={() => setRainChecked(!rainChecked)} checked={rainChecked} /></StandardText>
@@ -168,15 +178,16 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             {/*<SmallBlueButton>Add Images</SmallBlueButton>*/}
-                            <input name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
+                            <FileUpload onClick={handleClick}>Upload file</FileUpload>
+                            <input style={{display:'none'}} ref={hiddenFileInput} name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
                             {/*<input ref={this.fileRef} type="file" accept="image/png, image/jpeg" />*/}
 
                             <ImagesContainer>
                                 {/*placeholder images, should only show when images are added*/}
-                                <ImagePreview src={preview ? preview[0] : "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_female_woman_avatar-512.png"} alt="image 1 preview" />
-                                <ImagePreview src={preview ? preview[1]  : "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_female_woman_avatar-512.png"} alt="image 2 preview" />
-                                <ImagePreview src={preview ? preview[2]  : "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_female_woman_avatar-512.png"} alt="image 3 preview" />
-                                <ImagePreview src={preview ? preview[3]  : "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_female_woman_avatar-512.png"} alt="image 4 preview" />
+                                <ImagePreview src={preview ? preview[0] : placeholderimg } alt="image 1 preview" />
+                                <ImagePreview src={preview ? preview[1]  : placeholderimg } alt="image 2 preview" />
+                                <ImagePreview src={preview ? preview[2]  : placeholderimg } alt="image 3 preview" />
+                                <ImagePreview src={preview ? preview[3]  : placeholderimg } alt="image 4 preview" />
                             </ImagesContainer>
                         </AddImagesContainer>
 

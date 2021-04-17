@@ -53,7 +53,6 @@ const SignUp = () => {
                     <RegButton type='submit' onClick={registrationHandler}> Continue</RegButton>
                 </RegInputContainer>
             </Main>
-            <Footer />
         </Background>
     </>
 }
