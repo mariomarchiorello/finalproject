@@ -44,7 +44,7 @@ margin-right: 35px;
 background-color: transparent;
 color: ${props => props.theme.buttoncolor };
 font-size: 18px;
-font-weight: bold;
+//font-weight: bold;
 //trasition:color 2s ease 0s;  
 :hover {
 color:#30ADEA;  

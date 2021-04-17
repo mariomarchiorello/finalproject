@@ -4,8 +4,8 @@ const initialState = {
 };
 
 export function annotationReducer(state = initialState, action) {
-  console.log(initialState.currentSample, "current sample");
-  console.log(action.id, "id");
+  // console.log(initialState.currentSample, "current sample");
+  // console.log(action.id, "id");
   if (action.type === "ANNOTATED_IMAGE") {
     return {
       ...state,
@@ -17,6 +17,7 @@ export function annotationReducer(state = initialState, action) {
     };
   }
   if (action.type === "GET_LAST_SAMPLE") {
+    // console.log("././././ on reducer sample ", action.payload);
     return {
       ...state,
       currentSample: action.payload,

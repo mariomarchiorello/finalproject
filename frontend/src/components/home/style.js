@@ -3,7 +3,7 @@ import { Main, Background } from "../../globalstyles/globalStyle";
 import backgroundimg from "../../assets/background-images/2.jpg"
 
 export const QuoteWrapper = styled.div`
-    width: 20%;
+    width: 27%;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -12,6 +12,7 @@ export const QuoteWrapper = styled.div`
     color: ${props => props.theme.labelcolor};
     margin-top: 5rem;
     margin-left: 3rem;
+    font-size: 2rem;
     `;
 
 export const MainHome = styled(Main)`

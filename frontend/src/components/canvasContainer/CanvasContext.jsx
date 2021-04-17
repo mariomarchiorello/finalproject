@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import html2canvas from "html2canvas";
 import { getUserSampleAction } from "../../store/actions/getUserSampleSetAction";
+import planktonImg from "../../assets/background-images/1.jpg";
 
 const CanvasContext = React.createContext();
 
@@ -14,14 +15,14 @@ export const CanvasProvider = ({ children }) => {
 
   const dispatch = useDispatch();
   const annotatedData = useSelector((state) => state.annotationReducer);
-  console.log(annotatedData, "state images");
+  // console.log(annotatedData, "state images after selector");
 
   const prepareCanvas = () => {
     const canvas = canvasRef.current;
-    canvas.width = window.innerWidth / 1.5;
-    canvas.height = window.innerHeight / 1.5;
-    canvas.style.width = `${window.innerWidth / 3}px`;
-    canvas.style.height = `${window.innerHeight / 3}px`;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.width = `${window.innerWidth / 2}px`;
+    canvas.style.height = `${window.innerHeight / 2}px`;
     canvas.style.backgroundColor = "pink";
 
     const context = canvas.getContext("2d");
@@ -56,18 +57,18 @@ export const CanvasProvider = ({ children }) => {
 
   const displayImage = () => {
     const newImage = new Image();
-    // newImage.crossorigin = "anonymous";
-    // newImage.crossOrigin = "anonymous";
     newImage.src =
       annotatedData.currentSample.images[imageIndex].original_image;
-    console.log("image before drawww", newImage);
-    contextRef.current.drawImage(
-      newImage,
-      0,
-      0,
-      canvasRef.current.width / 2,
-      canvasRef.current.height / 2
-    );
+    newImage.onload = function () {
+      contextRef.current.drawImage(
+        newImage,
+        0,
+        0,
+        canvasRef.current.width / 2,
+        canvasRef.current.height / 2
+      );
+    };
+    setImageIndex((state) => state + 1);
   };
 
   const saveImage = () => {
@@ -80,23 +81,18 @@ export const CanvasProvider = ({ children }) => {
       console.log(canvas.toDataURL("image/jpeg", 0.9));
     });
   };
+
   const nextImage = () => {
-    createImage();
+    if (imageIndex > 3) return;
     displayImage();
     dispatch({ type: "ANNOTATED_IMAGE", payload: counter, id: imageIndex });
     setCounter((counter) => (counter = 0));
   };
 
-  const createImage = async () => {
-    const newImage = new Image();
-    // newImage.crossorigin = "anonymous";
-    // newImage.crossOrigin = "anonymous";
-    setImageIndex((state) => state + 1);
-  };
-
   useEffect(() => {
     function fetchSample() {
       dispatch(getUserSampleAction());
+      console.log("------inside use effect ", annotatedData);
     }
     fetchSample();
   }, []);
@@ -110,7 +106,7 @@ export const CanvasProvider = ({ children }) => {
           prepareCanvas,
           startDrawing,
           // finishDrawing,
-          displayImage,
+          // displayImage,
           clearCanvas,
           draw,
           counter,
@@ -118,10 +114,10 @@ export const CanvasProvider = ({ children }) => {
       >
         {children}
       </CanvasContext.Provider>
-      {/*<div>Plankton: {counter}</div>*/}
+      <div>Plankton: {counter}</div>
 
       <button onClick={nextImage}>Next Image</button>
-      {/*<button onClick={saveImage}>Submit</button>*/}
+      <button onClick={saveImage}>Submit</button>
     </>
   );
 };

@@ -17,7 +17,7 @@ export const getUserSampleAction = (history) => {
         let last = {};
         if (data.results) {
           last = data.results[data.results.length - 1];
-          console.log("----------- results from fetch", data);
+          // console.log("----------- results from fetch", data.results);
         }
         const action = {
           type: "GET_LAST_SAMPLE",
