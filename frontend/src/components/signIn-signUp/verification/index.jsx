@@ -85,7 +85,6 @@ const Verification = () => {
                 </VerInputContainer>
                 <VerButton type='submit' onClick={veriHandler}>Register</VerButton>
             </Main>
-            <Footer/>
         </Background>
     </>
 

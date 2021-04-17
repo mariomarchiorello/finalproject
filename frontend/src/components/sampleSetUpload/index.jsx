@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {createRef, useEffect, useRef, useState} from 'react'
 import {Link, useHistory} from "react-router-dom"
 import Header from "../header"
 import Footer from "../footer"
@@ -15,10 +15,12 @@ import {
     ImagesContainer,
     LabelInputContainer,
     OuterInputsContainer, SmallText, StandardText,
-    TitleWrapper
+    TitleWrapper,
+    FileUpload
 } from "./style"
-import planktonImage from '../../assets/background-images/10.jpg'
+// import planktonImage from '../../assets/background-images/10.jpg'
 import baseUrl from "../../helpers/baseUrl";
+import placeholderimg from "../../assets/graphics/placeholder.jpg"
 
 
 const CreateNewSampleSet = () => {
@@ -33,7 +35,7 @@ const CreateNewSampleSet = () => {
     const [longitude, setLongitude] = useState("");
     const [airTemperature, setAirTemperature] = useState("");
     const [waterTemperature, setWaterTemperature] = useState("");
-    // checkboxes (not connected to database yet)
+    // checkboxes
     const [foamChecked, setFoamChecked] = useState(false)
     const [oilChecked, setOilChecked] = useState(false)
     const [bioluminescenceChecked, setBioluminescenceChecked] = useState(false)
@@ -42,26 +44,47 @@ const CreateNewSampleSet = () => {
     const [rainChecked, setRainChecked] = useState(false)
     const [snowChecked, setSnowChecked] = useState(false)
     const [stormChecked, setStormChecked] = useState(false)
-
-    // // checkboxes console verification
-    // console.log('Water Surface Characteristics:')
-    // console.log('foam checked', foamChecked)
-    // console.log('oil checked', oilChecked)
-    // console.log('bio checked', bioluminescenceChecked)
-    // console.log('Weather Events:')
-    // console.log('sun checked', sunChecked)
-    // console.log('cloud checked', cloudChecked)
-    // console.log('rain checked', rainChecked)
-    // console.log('snow checked', snowChecked)
-    // console.log('storm checked', stormChecked)
-    // console.log('--------------------')
-
-    // delete after checkboxes linked to database?
-    // const [surface, setSurface] = useState("");
-    // const [weather, setWeather] = useState("");
-
     // images
     const [image, setImages] = useState(null);
+
+    const [preview, setPreview] = useState([])
+
+    // create a preview as a side effect, whenever selected file is changed
+    // useEffect(() => {
+    //     if (!image) {
+    //         setPreview(undefined)
+    //         console.log(preview)
+    //         return
+    //     }
+    //     const objectUrl = URL.createObjectURL(image[0])
+    //     setPreview(objectUrl)
+    //     // free memory when ever this component is unmounted
+    //     return () => URL.revokeObjectURL(objectUrl)
+    // }, [image])
+    
+    const hiddenFileInput = React.useRef(null);
+    
+        const handleClick = event => {
+            hiddenFileInput.current.click();
+    
+        };
+    
+
+     useEffect(() => {
+        if (!image) {
+            setPreview(undefined)
+            console.log(preview)
+            return
+        }
+        let tempPreview = []
+        for (let i = 0; i < image.length; i++) {
+            const objectUrl = URL.createObjectURL(image[i])
+            tempPreview.push(objectUrl)
+            setPreview(tempPreview)
+        }
+
+    }, [image])
+
 
 
     const NewSampleSetHandler = (event) =>  {
@@ -77,25 +100,19 @@ const CreateNewSampleSet = () => {
         formData.append('sample_longitude', longitude)
         formData.append('air_temperature', airTemperature)
         formData.append('water_temperature', waterTemperature)
-
-        // delete after checkboxes linked to database?
-        // formData.append('water_surface', surface)
-        // formData.append('weather_events', weather)
-
-        formData.append('foam', String(foamChecked))
-        formData.append('oil', String(oilChecked))
-        formData.append('bioluminescence', String(bioluminescenceChecked))
-        formData.append('sun', String(sunChecked))
-        formData.append('cloud', String(cloudChecked))
-        formData.append('rain', String(rainChecked))
-        formData.append('snow', String(snowChecked))
-        formData.append('storm', String(stormChecked))
-
+        // water surface and weather event booleans
+        formData.append('water_foam', String(foamChecked))
+        formData.append('water_oil', String(oilChecked))
+        formData.append('water_bioluminescence', String(bioluminescenceChecked))
+        formData.append('weather_sun', String(sunChecked))
+        formData.append('weather_cloud', String(cloudChecked))
+        formData.append('weather_rain', String(rainChecked))
+        formData.append('weather_snow', String(snowChecked))
+        formData.append('weather_storm', String(stormChecked))
         // images
         for (let i = 0; i < image.length; i++) {
             formData.append(`images`, image[i])
         }
-
 
         const config = {
             method: "POST",
@@ -107,7 +124,7 @@ const CreateNewSampleSet = () => {
         fetch(url, config)
         .then(res => res.json())
         .then(data => console.log(data))
-        history.push('/annotate')
+        history.push('/canvas-page')
     }
 
 
@@ -123,35 +140,35 @@ const CreateNewSampleSet = () => {
 
                             <LabelInputContainer>
                                 <GlobalLabel>collection date *</GlobalLabel>
-                                <GlobalInput name='collection_date' type='date' placeholder='2021-04-21' value={undefined} onChange={(e)=>setCollectionDate(e.target.value)}/>
+                                <GlobalInput name='collection_date' type='date' placeholder='2021-04-23' onChange={(e)=>setCollectionDate(e.target.value)}/>
                                 <GlobalLabel>water depth</GlobalLabel>
-                                <GlobalInput name='sample_depth' type='text' value={undefined} onChange={(e)=>setWaterDepth(e.target.value)}/>
+                                <GlobalInput name='sample_depth' type='text' onChange={(e)=>setWaterDepth(e.target.value)}/>
                             </LabelInputContainer>
 
                             <LabelInputContainer>
                                 <GlobalLabel>latitude *</GlobalLabel>
-                                <GlobalInput name='sample_latitude' type='text' value={undefined} onChange={(e)=>setLatitude(e.target.value)}/>
+                                <GlobalInput name='sample_latitude' type='text' onChange={(e)=>setLatitude(e.target.value)}/>
                                 <GlobalLabel>longitude *</GlobalLabel>
-                                <GlobalInput name='sample_longitude' type='text' value={undefined} onChange={(e)=>setLongitude(e.target.value)}/>
+                                <GlobalInput name='sample_longitude' type='text' onChange={(e)=>setLongitude(e.target.value)}/>
                             </LabelInputContainer>
 
                             <LabelInputContainer>
                                 <GlobalLabel>air temperature</GlobalLabel>
-                                <GlobalInput name='air_temperature' type='text' value={undefined} onChange={(e)=>setAirTemperature(e.target.value)}/>
+                                <GlobalInput name='air_temperature' type='text' onChange={(e)=>setAirTemperature(e.target.value)}/>
                                 <GlobalLabel>water temperature</GlobalLabel>
-                                <GlobalInput name='water_temperature' type='text' value={undefined} onChange={(e)=>setWaterTemperature(e.target.value)}/>
+                                <GlobalInput name='water_temperature' type='text' onChange={(e)=>setWaterTemperature(e.target.value)}/>
                             </LabelInputContainer>
                         </OuterInputsContainer>
 
                         <CheckboxFieldsContainer>
-                            <StandardText>Water Surface Characteristics<SmallText>(Select all that apply)</SmallText></StandardText>
+                            <StandardText>Water Surface Characteristics:<SmallText>(Select all that apply)</SmallText></StandardText>
                                 <StandardText>Foam <input type={'checkbox'} name={'foam'} onChange={() => setFoamChecked(!foamChecked)} checked={foamChecked} /></StandardText>
                                 <StandardText>Oil <input type={'checkbox'} name={'oil'} onChange={() => setOilChecked(!oilChecked)} checked={oilChecked} /></StandardText>
                                 <StandardText>Bioluminescence <input type={'checkbox'} name={'bioluminescence'} onChange={() => setBioluminescenceChecked(!bioluminescenceChecked)} checked={bioluminescenceChecked} /></StandardText>
                         </CheckboxFieldsContainer>
 
                         <CheckboxFieldsContainer>
-                            <StandardText>Weather Events<SmallText>(Select all that apply)</SmallText></StandardText>
+                            <StandardText>Weather Events:<SmallText>(Select all that apply)</SmallText></StandardText>
                                 <StandardText>Sun <input type={'checkbox'} name={'sun'} onChange={() => setSunChecked(!sunChecked)} checked={sunChecked} /></StandardText>
                                 <StandardText>Cloud <input type={'checkbox'} name={'cloud'} onChange={() => setCloudChecked(!cloudChecked)} checked={cloudChecked} /></StandardText>
                                 <StandardText>Rain <input type={'checkbox'} name={'rain'} onChange={() => setRainChecked(!rainChecked)} checked={rainChecked} /></StandardText>
@@ -161,14 +178,16 @@ const CreateNewSampleSet = () => {
 
                         <AddImagesContainer>
                             {/*<SmallBlueButton>Add Images</SmallBlueButton>*/}
-                            <input name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
+                            <FileUpload onClick={handleClick}>Upload file</FileUpload>
+                            <input style={{display:'none'}} ref={hiddenFileInput} name='images' type='file' multiple onChange={(e)=>setImages(e.target.files)}/>
+                            {/*<input ref={this.fileRef} type="file" accept="image/png, image/jpeg" />*/}
 
                             <ImagesContainer>
                                 {/*placeholder images, should only show when images are added*/}
-                                <ImagePreview src={planktonImage} alt="Plankton" />
-                                <ImagePreview src={planktonImage} alt="Plankton" />
-                                <ImagePreview src={planktonImage} alt="Plankton" />
-                                <ImagePreview src={planktonImage} alt="Plankton" />
+                                <ImagePreview src={preview ? preview[0] : placeholderimg } alt="image 1 preview" />
+                                <ImagePreview src={preview ? preview[1]  : placeholderimg } alt="image 2 preview" />
+                                <ImagePreview src={preview ? preview[2]  : placeholderimg } alt="image 3 preview" />
+                                <ImagePreview src={preview ? preview[3]  : placeholderimg } alt="image 4 preview" />
                             </ImagesContainer>
                         </AddImagesContainer>
 
