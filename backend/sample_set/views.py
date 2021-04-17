@@ -45,4 +45,3 @@ class GetSamplesFromUser(ListAPIView):
 
     def get_queryset(self):
         return SampleSet.objects.filter(submitted_by=self.request.user)
-
