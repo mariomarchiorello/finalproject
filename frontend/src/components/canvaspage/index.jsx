@@ -32,14 +32,14 @@ const CanvasPage=()=>{
                     <Main>
                         <CenterContainerCanvas>
                             <CanvasTopSection>
-                            <ExampleContainer> </ExampleContainer>
+                            <ExampleContainer>hallo </ExampleContainer>
                             <CanvasProvider>
                                 <CanvasContainer/>
                                  <ClearCanvasButton/>
                                 <DrawImageButton/>
                             </CanvasProvider>
                             </CanvasTopSection>
-                            <ExampleContainer> </ExampleContainer>
+                            <ExampleContainer>welt </ExampleContainer>
 
                             {/*<CanvasProvider>*/}
                             {/*   */}
