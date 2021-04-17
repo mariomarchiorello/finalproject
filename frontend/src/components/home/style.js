@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Main } from "../../globalstyles/globalStyle";
+import { Main, Background } from "../../globalstyles/globalStyle";
+import backgroundimg from "../../assets/background-images/2.jpg"
 
 export const QuoteWrapper = styled.div`
     width: 20%;
@@ -24,4 +25,8 @@ export const Buttonholder = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
+`;
+
+export const HomeBackground = styled(Background)`
+    background-image: url(${backgroundimg});
 `;

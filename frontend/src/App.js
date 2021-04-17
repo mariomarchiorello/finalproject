@@ -20,6 +20,7 @@ import { withAuth } from "./components/HOC";
 import CanvasContainer from "./components/canvasContainer";
 import { CanvasProvider } from "./components/canvasContainer/CanvasContext";
 import CanvasPage from "./components/canvaspage";
+import SampleSetSummary from "./components/summary";
 
 const App = () => {
   return (
@@ -33,7 +34,7 @@ const App = () => {
               <Route exact path="/profile" component={withAuth(Profile)} />
               <Route exact path="/upload" component={withAuth(CreateNewSampleSet)}/>
               <Route exact path="/resetTwo" component={PasswordReset} />
-              <Route exact path={["/home", "/"]} component={withAuth(Home)} />
+              <Route exact path={["/home", "/"]} component={Home} />
               <Route exact path="/resetOne" component={ResetPwEmail} />
               <Route exact path={["/signIn", "/sign-in"]} component={SignIn} />
               <Route exact path="/verification" component={Verification} />
@@ -43,6 +44,7 @@ const App = () => {
               <CanvasProvider>
                 <Route exact path="/canvas" component={CanvasContainer} />
               </CanvasProvider>
+              <Route exact path="/summary" component={withAuth(SampleSetSummary)} />
 
 
 

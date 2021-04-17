@@ -26,10 +26,12 @@ export const SelectionContainer = styled.div`
 `;
 
 export const BackgroundProfile = styled(Background)`
-    width: auto;
-    height: 100%;
+    width: 100%;
+    min-height: 100%;
     background-color: ${props => props.theme.bgcolor };
     z-index: -5;
+  display: flex;
+  flex-grow: 4;
 
 `;
 
@@ -43,6 +45,7 @@ export const BottomContainer = styled.div`
 `;
 
 export const MainProfile = styled(Main)`
-height: 100%;
+  background-color: black; 
+  height: 100%;
   z-index: 5;
 `;

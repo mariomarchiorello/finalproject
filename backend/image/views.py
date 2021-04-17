@@ -8,4 +8,3 @@ class GetUpdateDeleteImageResults(RetrieveUpdateDestroyAPIView):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
     lookup_url_kwarg = 'image_id'
-

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { BlueButton, CenterContainer } from "../../globalstyles/globalStyle"
 
 
 export const TitleWrapper = styled.div`
@@ -61,14 +62,16 @@ export const SmallText = styled.div`
   font-size: 14px;
 `
 
-// // use for file upload button?
-// export const InputField = styled.input`
-//     padding: 0.7em 1em;
-//     width: 20em;
-//     margin-top: 1em;
-//     margin-bottom: 1.5em;
-//     font-size: 1rem;
-//     font-weight: normal;
-//     border: 1.5px solid #e5e5e5;
-//     border-radius: 5px;
-// `
+export const FileUpload = styled(BlueButton)`
+  width: 8rem;
+  height: 1.8rem;
+  color: ${props => props.theme.transbuttoncolor };
+  font-size: 14px;
+  margin-bottom: 3px;
+  padding: 0px;
+  `;
+
+export const UploadContainer = styled(CenterContainer)`
+  width: auto;
+  padding: 3% 3% 3%;
+`;
