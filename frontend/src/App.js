@@ -20,6 +20,7 @@ import { withAuth } from "./components/HOC";
 import CanvasContainer from "./components/canvasContainer";
 import { CanvasProvider } from "./components/canvasContainer/CanvasContext";
 import CanvasPage from "./components/canvaspage";
+import SampleSetSummary from "./components/summary";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
               <CanvasProvider>
                 <Route exact path="/canvas" component={CanvasContainer} />
               </CanvasProvider>
+              <Route exact path="/summary" component={withAuth(SampleSetSummary)} />
 
 
 
