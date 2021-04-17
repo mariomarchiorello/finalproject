@@ -21,9 +21,10 @@ const center= [30, -2];
 
 export default function Map() {
 //-----------user home pos--------------------------------------------------------------------
-//     const userSelf = useSelector(state => state.UserReducer.userMe);
-//     const myPos =[[parseInt(userSelf.home_latitude),parseInt(userSelf.home_longitude)]]
-//     //console.log(myPos)
+    const userSelf = useSelector(state => state.UserReducer.userMe);
+
+
+    // const myPos=[[parseInt(userSelf.home_latitude),parseInt(userSelf.home_longitude)]];
 
 
     const history = useHistory()
@@ -33,11 +34,11 @@ export default function Map() {
     dispatch(getAllLocationsAction(history))
     },[])
     const locationsArray = useSelector(state => state.locationReducer.allLocations)
-    console.log("all locations inside the map ",locationsArray)
+    // console.log("all locations inside the map ",locationsArray)
 
     const allPos = locationsArray.map((value) => [value.sample_latitude,value.sample_longitude]    )
 
-    console.log(allPos)
+    // console.log(allPos)
 
     // const allLon = test.map(value => value.sample_longitude)
 

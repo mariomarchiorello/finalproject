@@ -64,7 +64,7 @@ export const ModeSelect = styled.select`
 export const EditPasswordButton = styled(TransparentButton)`
 border-radius: 3px;
 color: ${props => props.theme.labelcolor };
-width: auto;
+width: 14rem;
 height: 1.5rem;
 cursor:pointer;
 padding: 0 20px 0 20px;

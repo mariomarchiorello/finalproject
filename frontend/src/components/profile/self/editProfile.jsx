@@ -9,6 +9,7 @@ import {useHistory} from "react-router-dom";
 import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 import Toggle from "../../themes/toggle"
 import { useDarkMode } from "../../themes/useDarkMode"
+import Footer from "../../footer";
 
 const EditProfileSection=()=> {
 
@@ -115,6 +116,7 @@ const EditProfileSection=()=> {
                     <SmallBlueButton onClick={editProfileHandler} >save</SmallBlueButton>
             </BottomContainer>
             </form>
+
         </>
     )
 }
