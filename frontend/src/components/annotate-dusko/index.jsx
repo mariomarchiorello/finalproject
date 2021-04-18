@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {ToolsContainer, Tool, References, CanvasContainer, Header, SampleContainer} from './style'
 import CanvasTwo from './canvas-dusko/'
+import {useDispatch, useSelector} from 'react-redux'
+import { getUserSampleAction } from "../../store/actions/getUserSampleSetAction";
 import zoo1 from '../../assets/background-images/1.jpg';
 import zoo2 from '../../assets/background-images/2.jpg';
 import zoo3 from '../../assets/background-images/3.jpg';
@@ -9,27 +11,33 @@ import phyto1 from '../../assets/background-images/5.jpg';
 import phyto2 from '../../assets/background-images/6.jpg';
 import phyto3 from '../../assets/background-images/7.jpg';
 import phyto4 from '../../assets/background-images/8.jpg';
-import sample1 from '../../assets/samples/plankton1.jpg'
-import sample2 from '../../assets/samples/plankton2.jpg'
-import sample3 from '../../assets/samples/plankton3.jpg'
-import sample4 from '../../assets/samples/plankton4.jpg'
 
 
 function AnnotateTwo() {
+    const dispatch = useDispatch()
     const [color, setColor] = useState('transparent')
     const [reference, setReference] = useState('null')
     const [sample, setSample] = useState('null')
     const [size, setSize] = useState(30)
+    const annotatedData = useSelector(state => state.annotationReducer)
+    const {images} = annotatedData.currentSample
 
+    useEffect(() => {
+          dispatch(getUserSampleAction());
+          console.log(annotatedData)
+    }, []);
 
     return (
         <>
         <Header><h1>HEADER</h1></Header>
         <SampleContainer>
-            <img onClick={e => setSample(e.target.src)} src={sample1} height='100px' width='100px'/>
-            <img onClick={e => setSample(e.target.src)} src={sample2} height='100px' width='100px'/>
-            <img onClick={e => setSample(e.target.src)} src={sample3} height='100px' width='100px'/>
-            <img onClick={e => setSample(e.target.src)} src={sample4} height='100px' width='100px'/>
+            {images ? images.map((img, index) => {
+               return <img height='100px' 
+                           width='100px' 
+                           onClick={e => setSample(e.target.src)}
+                           src={img.original_image}
+                           key={index}/> 
+            }) : null}
         </SampleContainer>
         <ToolsContainer>
             <Tool>undo</Tool>

@@ -1,16 +1,19 @@
 import React, {useRef, useEffect, useState} from 'react'
 import {StyledCanvas} from '../style'
+import html2canvas from 'html2canvas'
 
 const CanvasTwo = (props) => {
 
     const {color, sample, size} = props
     const [zooCount, setZooCount] = useState(0)
     const [phytoCount, setPhytoCount] = useState(0)
+    const [imageData, setImageData] = useState(null)
 
     let [history, setHistory] = useState([])
 
     const canvasRef = useRef(null)
     const contextRef = useRef(null)
+    const imgRef = useRef(null)
 
     useEffect(() => {
       const canvas = canvasRef.current;
@@ -50,7 +53,6 @@ const CanvasTwo = (props) => {
           size
         }
         setHistory(currentState => [...currentState, annotation])
-        console.log(history)
       }
     }
 
@@ -78,7 +80,14 @@ const CanvasTwo = (props) => {
     }
 
     const save = () => {
-      
+        html2canvas(canvasRef.current, {
+            allowTaint: true,
+            useCORS: true,
+            foreignObjectRendering: true,
+        }).then(canvas => {
+            setImageData(canvas.toDataURL('image/jpeg', 0.5))
+            console.log(imageData);
+          });
     }
 
     return (
@@ -89,7 +98,9 @@ const CanvasTwo = (props) => {
         ref={canvasRef}
         onClick={annotate}
         />
+        <button onClick={() => save()}>save</button>
         <h1>{phytoCount}</h1>
+        <img ref={imgRef} height='60px' width='60px'/>
       </>
     )
 }
