@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Header from "../header"
 import Footer from "../footer"
 
@@ -8,20 +8,37 @@ import {
 } from "../../globalstyles/globalStyle"
 
 import {
-    AddImagesContainer,
-    CheckboxFieldsContainer, ImagePreview, ImagesContainer,
-    LabelInputContainer, OuterInputsContainer, StandardText,
+    ImagePreview, StandardText,
     TitleWrapper
 } from "../sampleSetUpload/style"
-import {Link} from "react-router-dom";
-import placeholderimg from "../../assets/graphics/placeholder.jpg";
+
+import {Link, useHistory} from "react-router-dom"
+import placeHolderImg from "../../assets/graphics/placeholder.jpg"
+import {useDispatch, useSelector} from "react-redux"
+import {getUserSampleAction} from "../../store/actions/getUserSampleSetAction"
+import {
+    ConfirmElementsContainer,
+    ImagesElementsContainer, InfoLabelsContainer,
+    LocalLabel, OuterImagesContainer, PlanktonCountContainer, PreviewImagesContainer,
+    SummariesSectionsContainer,
+    TextsContainer
+} from "./style"
 
 
 const SampleSetSummary = () => {
 
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUserSampleAction(history))
+    },[])
+
+    const currentSample = useSelector(state => state.annotationReducer.currentSample)
+    console.log('Current sample from summary page: ', currentSample)
 
 
-return <>
+    return <>
         <Background>
             <Header/>
                 <Main>
@@ -29,48 +46,102 @@ return <>
                         <span>Sample Set Summary</span>
                     </TitleWrapper>
                     <CenterContainer>
-                        <GlobalLabel>Sample Information</GlobalLabel>
-                        <OuterInputsContainer>
-                            <LabelInputContainer>
-                                <GlobalLabel>Collection Date</GlobalLabel>
-                                <GlobalLabel>Water Depth</GlobalLabel>
-                            </LabelInputContainer>
+                        <TextsContainer>
+                            <GlobalLabel>Sample Information</GlobalLabel>
+                            <SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Collection Date: {currentSample.collection_date}</LocalLabel>
+                                </InfoLabelsContainer>
 
-                            <LabelInputContainer>
-                                <GlobalLabel>Latitude</GlobalLabel>
-                                <GlobalLabel>Longitude</GlobalLabel>
-                            </LabelInputContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Latitude: {currentSample.sample_latitude}</LocalLabel>
+                                </InfoLabelsContainer>
 
-                            <LabelInputContainer>
-                                <GlobalLabel>Air Temperature</GlobalLabel>
-                                <GlobalLabel>Water Temperature</GlobalLabel>
-                            </LabelInputContainer>
-                        </OuterInputsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Air Temperature: {currentSample.air_temperature}</LocalLabel>
+                                </InfoLabelsContainer>
+                            </SummariesSectionsContainer>
 
-                        <CheckboxFieldsContainer>
-                            <StandardText>Water Surface Characteristics:</StandardText>
-                        </CheckboxFieldsContainer>
+                            <SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Sample Depth: {currentSample.sample_depth}</LocalLabel>
+                                </InfoLabelsContainer>
 
-                        <CheckboxFieldsContainer>
-                            <StandardText>Weather Events:</StandardText>
-                        </CheckboxFieldsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Longitude: {currentSample.sample_longitude}</LocalLabel>
+                                </InfoLabelsContainer>
 
-                        <Link to='/upload'><TransparentButton>Edit Sample Information</TransparentButton></Link>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Water Temperature: {currentSample.water_temperature}</LocalLabel>
+                                </InfoLabelsContainer>
+                            </SummariesSectionsContainer>
+
+                            <SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Water Surface Characteristics: {!currentSample.water_foam ? '' : 'Foam  '} {!currentSample.water_oil ? '' : 'Oil  '} {!currentSample.water_bioluminescence ? '' : 'Bioluminescence'} </LocalLabel>
+                                </InfoLabelsContainer>
+                            </SummariesSectionsContainer>
+
+                            <SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Weather Events: {!currentSample.weather_sun ? '' : 'Sun  '} {!currentSample.weather_cloud ? '' : 'Clound  '} {!currentSample.weather_rain ? '' : 'Rain  '} {!currentSample.weather_snow ? '' : 'Snow  '} {!currentSample.weather_storm ? '' : 'storm'} </LocalLabel>
+                                </InfoLabelsContainer>
+                            </SummariesSectionsContainer>
+
+                            <Link to='/upload'><TransparentButton>Edit Sample Information</TransparentButton></Link>
+                        </TextsContainer>
 
 
-                        <GlobalLabel>Annotation Overview</GlobalLabel>
-                        <AddImagesContainer>
+                        <ImagesElementsContainer>
+                            <GlobalLabel>Annotation Overview</GlobalLabel>
+                            <OuterImagesContainer>
 
-                            <ImagesContainer>
-                                <ImagePreview src={placeholderimg} alt="annotated image 1 preview" />
-                                <ImagePreview src={placeholderimg} alt="annotated image 2 preview" />
-                                <ImagePreview src={placeholderimg} alt="annotated image 3 preview" />
-                                <ImagePreview src={placeholderimg} alt="annotated image 4 preview" />
-                            </ImagesContainer>
-                        </AddImagesContainer>
-                        <Link to='/canvas-page'><TransparentButton>Examine Images Further</TransparentButton></Link>
+                                <PreviewImagesContainer>
 
-                        <Link to='/map'><BlueButton>Confirm</BlueButton></Link>
+                                    <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" />
+                                    <PlanktonCountContainer>
+                                    <LocalLabel>Phytoplankton: 9</LocalLabel>
+                                    <LocalLabel>Zooplankton: 12</LocalLabel>
+                                    </PlanktonCountContainer>
+                                    <ImagePreview src={placeHolderImg} alt="annotated image 2 preview" />
+                                    <PlanktonCountContainer>
+                                    <LocalLabel>Phytoplankton: 2</LocalLabel>
+                                    <LocalLabel>Zooplankton: 23</LocalLabel>
+                                    </PlanktonCountContainer>
+                                    {/*<ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
+                                </PreviewImagesContainer>
+
+                                <PreviewImagesContainer>
+                                    <ImagePreview src={placeHolderImg} alt="annotated image 3 preview" />
+                                    <PlanktonCountContainer>
+                                    <LocalLabel>Phytoplankton: 12</LocalLabel>
+                                    <LocalLabel>Zooplankton: 7</LocalLabel>
+                                    </PlanktonCountContainer>
+                                    <ImagePreview src={placeHolderImg} alt="annotated image 4 preview" />
+                                    <PlanktonCountContainer>
+                                    <LocalLabel>Phytoplankton: 18</LocalLabel>
+                                    <LocalLabel>Zooplankton: 4</LocalLabel>
+                                    </PlanktonCountContainer>
+                                    {/*<ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
+                                </PreviewImagesContainer>
+
+                            </OuterImagesContainer>
+                            <Link to='/canvas-page'><TransparentButton>Examine Images Further</TransparentButton></Link>
+                        </ImagesElementsContainer>
+
+                        <LocalLabel>Submit my sample for double check? (optional) <input type={'checkbox'} name={'storm'} /></LocalLabel>
+                        {/*<LocalLabel>Storm <input type={'checkbox'} name={'storm'} onChange={() => setStormChecked(!stormChecked)} checked={stormChecked} /></LocalLabel>*/}
+
+                        <ConfirmElementsContainer>
+                            <Link to='/map'><BlueButton>Confirm</BlueButton></Link>
+                        </ConfirmElementsContainer>
+
                     </CenterContainer>
                 </Main>
             <Footer/>
