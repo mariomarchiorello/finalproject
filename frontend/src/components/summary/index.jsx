@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Header from "../header"
 import Footer from "../footer"
 
@@ -8,20 +8,33 @@ import {
 } from "../../globalstyles/globalStyle"
 
 import {
-    AddImagesContainer,
-    CheckboxFieldsContainer, ImagePreview, ImagesContainer,
-    LabelInputContainer, OuterInputsContainer, StandardText,
+    AddImagesContainer, ImagePreview,
+    ImagesContainer,
+    LabelInputContainer,
     TitleWrapper
 } from "../sampleSetUpload/style"
-import {Link} from "react-router-dom";
-import placeholderimg from "../../assets/graphics/placeholder.jpg";
+
+import {Link, useHistory} from "react-router-dom"
+import placeHolderImg from "../../assets/graphics/placeholder.jpg"
+import {useDispatch, useSelector} from "react-redux"
+import {getUserSampleAction} from "../../store/actions/getUserSampleSetAction"
+import {SummariesSectionsContainer} from "./style"
 
 
 const SampleSetSummary = () => {
 
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUserSampleAction(history))
+    },[])
+
+    const currentSample = useSelector(state => state.annotationReducer.currentSample)
+    console.log('Current sample from summary page: ', currentSample)
 
 
-return <>
+    return <>
         <Background>
             <Header/>
                 <Main>
@@ -30,30 +43,45 @@ return <>
                     </TitleWrapper>
                     <CenterContainer>
                         <GlobalLabel>Sample Information</GlobalLabel>
-                        <OuterInputsContainer>
+                        <SummariesSectionsContainer>
                             <LabelInputContainer>
-                                <GlobalLabel>Collection Date</GlobalLabel>
-                                <GlobalLabel>Water Depth</GlobalLabel>
+                                <GlobalLabel>Collection Date: {currentSample.collection_date}</GlobalLabel>
                             </LabelInputContainer>
 
                             <LabelInputContainer>
-                                <GlobalLabel>Latitude</GlobalLabel>
-                                <GlobalLabel>Longitude</GlobalLabel>
+                                <GlobalLabel>Latitude: {currentSample.sample_latitude}</GlobalLabel>
                             </LabelInputContainer>
 
                             <LabelInputContainer>
-                                <GlobalLabel>Air Temperature</GlobalLabel>
-                                <GlobalLabel>Water Temperature</GlobalLabel>
+                                <GlobalLabel>Air Temperature: {currentSample.air_temperature}</GlobalLabel>
                             </LabelInputContainer>
-                        </OuterInputsContainer>
+                        </SummariesSectionsContainer>
 
-                        <CheckboxFieldsContainer>
-                            <StandardText>Water Surface Characteristics:</StandardText>
-                        </CheckboxFieldsContainer>
+                        <SummariesSectionsContainer>
+                            <LabelInputContainer>
+                                <GlobalLabel>Sample Depth: {currentSample.sample_depth}</GlobalLabel>
+                            </LabelInputContainer>
 
-                        <CheckboxFieldsContainer>
-                            <StandardText>Weather Events:</StandardText>
-                        </CheckboxFieldsContainer>
+                            <LabelInputContainer>
+                                <GlobalLabel>Longitude: {currentSample.sample_longitude}</GlobalLabel>
+                            </LabelInputContainer>
+
+                            <LabelInputContainer>
+                                <GlobalLabel>Water Temperature: {currentSample.water_temperature}</GlobalLabel>
+                            </LabelInputContainer>
+                        </SummariesSectionsContainer>
+
+                        <SummariesSectionsContainer>
+                            <LabelInputContainer>
+                                <GlobalLabel>Water Surface Characteristics: {!currentSample.water_foam ? '' : 'foam  '} {!currentSample.water_oil ? '' : 'oil  '} {!currentSample.water_bioluminescence ? '' : 'bioluminescence'} </GlobalLabel>
+                            </LabelInputContainer>
+                        </SummariesSectionsContainer>
+
+                        <SummariesSectionsContainer>
+                            <LabelInputContainer>
+                                <GlobalLabel>Weather Events: {!currentSample.weather_sun ? '' : 'sun  '} {!currentSample.weather_cloud ? '' : 'clound  '} {!currentSample.weather_rain ? '' : 'rain  '} {!currentSample.weather_snow ? '' : 'snow  '} {!currentSample.weather_storm ? '' : 'storm'} </GlobalLabel>
+                            </LabelInputContainer>
+                        </SummariesSectionsContainer>
 
                         <Link to='/upload'><TransparentButton>Edit Sample Information</TransparentButton></Link>
 
@@ -62,10 +90,14 @@ return <>
                         <AddImagesContainer>
 
                             <ImagesContainer>
-                                <ImagePreview src={placeholderimg} alt="annotated image 1 preview" />
-                                <ImagePreview src={placeholderimg} alt="annotated image 2 preview" />
-                                <ImagePreview src={placeholderimg} alt="annotated image 3 preview" />
-                                <ImagePreview src={placeholderimg} alt="annotated image 4 preview" />
+                                <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" />
+                                <ImagePreview src={placeHolderImg} alt="annotated image 2 preview" />
+                                <ImagePreview src={placeHolderImg} alt="annotated image 3 preview" />
+                                <ImagePreview src={placeHolderImg} alt="annotated image 4 preview" />
+                                {/*<ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                {/*<ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
+                                {/*<ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
+                                {/*<ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
                             </ImagesContainer>
                         </AddImagesContainer>
                         <Link to='/canvas-page'><TransparentButton>Examine Images Further</TransparentButton></Link>
