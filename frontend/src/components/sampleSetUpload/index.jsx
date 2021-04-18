@@ -142,7 +142,7 @@ const CreateNewSampleSet = () => {
                             <LabelInputContainer>
                                 <GlobalLabel>collection date *</GlobalLabel>
                                 <GlobalInput name='collection_date' type='date' placeholder='2021-04-23' onChange={(e)=>setCollectionDate(e.target.value)}/>
-                                <GlobalLabel>water depth</GlobalLabel>
+                                <GlobalLabel>sample depth</GlobalLabel>
                                 <GlobalInput name='sample_depth' type='text' onChange={(e)=>setWaterDepth(e.target.value)}/>
                             </LabelInputContainer>
 
