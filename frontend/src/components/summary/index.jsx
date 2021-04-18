@@ -8,9 +8,7 @@ import {
 } from "../../globalstyles/globalStyle"
 
 import {
-    AddImagesContainer, ImagePreview,
-    ImagesContainer,
-    LabelInputContainer,
+    ImagePreview, StandardText,
     TitleWrapper
 } from "../sampleSetUpload/style"
 
@@ -18,7 +16,13 @@ import {Link, useHistory} from "react-router-dom"
 import placeHolderImg from "../../assets/graphics/placeholder.jpg"
 import {useDispatch, useSelector} from "react-redux"
 import {getUserSampleAction} from "../../store/actions/getUserSampleSetAction"
-import {SummariesSectionsContainer} from "./style"
+import {
+    ConfirmElementsContainer,
+    ImagesElementsContainer, InfoLabelsContainer,
+    LocalLabel, OuterImagesContainer, PlanktonCountContainer, PreviewImagesContainer,
+    SummariesSectionsContainer,
+    TextsContainer
+} from "./style"
 
 
 const SampleSetSummary = () => {
@@ -42,67 +46,102 @@ const SampleSetSummary = () => {
                         <span>Sample Set Summary</span>
                     </TitleWrapper>
                     <CenterContainer>
-                        <GlobalLabel>Sample Information</GlobalLabel>
-                        <SummariesSectionsContainer>
-                            <LabelInputContainer>
-                                <GlobalLabel>Collection Date: {currentSample.collection_date}</GlobalLabel>
-                            </LabelInputContainer>
+                        <TextsContainer>
+                            <GlobalLabel>Sample Information</GlobalLabel>
+                            <SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Collection Date: {currentSample.collection_date}</LocalLabel>
+                                </InfoLabelsContainer>
 
-                            <LabelInputContainer>
-                                <GlobalLabel>Latitude: {currentSample.sample_latitude}</GlobalLabel>
-                            </LabelInputContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Latitude: {currentSample.sample_latitude}</LocalLabel>
+                                </InfoLabelsContainer>
 
-                            <LabelInputContainer>
-                                <GlobalLabel>Air Temperature: {currentSample.air_temperature}</GlobalLabel>
-                            </LabelInputContainer>
-                        </SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Air Temperature: {currentSample.air_temperature}</LocalLabel>
+                                </InfoLabelsContainer>
+                            </SummariesSectionsContainer>
 
-                        <SummariesSectionsContainer>
-                            <LabelInputContainer>
-                                <GlobalLabel>Sample Depth: {currentSample.sample_depth}</GlobalLabel>
-                            </LabelInputContainer>
+                            <SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Sample Depth: {currentSample.sample_depth}</LocalLabel>
+                                </InfoLabelsContainer>
 
-                            <LabelInputContainer>
-                                <GlobalLabel>Longitude: {currentSample.sample_longitude}</GlobalLabel>
-                            </LabelInputContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Longitude: {currentSample.sample_longitude}</LocalLabel>
+                                </InfoLabelsContainer>
 
-                            <LabelInputContainer>
-                                <GlobalLabel>Water Temperature: {currentSample.water_temperature}</GlobalLabel>
-                            </LabelInputContainer>
-                        </SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Water Temperature: {currentSample.water_temperature}</LocalLabel>
+                                </InfoLabelsContainer>
+                            </SummariesSectionsContainer>
 
-                        <SummariesSectionsContainer>
-                            <LabelInputContainer>
-                                <GlobalLabel>Water Surface Characteristics: {!currentSample.water_foam ? '' : 'foam  '} {!currentSample.water_oil ? '' : 'oil  '} {!currentSample.water_bioluminescence ? '' : 'bioluminescence'} </GlobalLabel>
-                            </LabelInputContainer>
-                        </SummariesSectionsContainer>
+                            <SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Water Surface Characteristics: {!currentSample.water_foam ? '' : 'Foam  '} {!currentSample.water_oil ? '' : 'Oil  '} {!currentSample.water_bioluminescence ? '' : 'Bioluminescence'} </LocalLabel>
+                                </InfoLabelsContainer>
+                            </SummariesSectionsContainer>
 
-                        <SummariesSectionsContainer>
-                            <LabelInputContainer>
-                                <GlobalLabel>Weather Events: {!currentSample.weather_sun ? '' : 'sun  '} {!currentSample.weather_cloud ? '' : 'clound  '} {!currentSample.weather_rain ? '' : 'rain  '} {!currentSample.weather_snow ? '' : 'snow  '} {!currentSample.weather_storm ? '' : 'storm'} </GlobalLabel>
-                            </LabelInputContainer>
-                        </SummariesSectionsContainer>
+                            <SummariesSectionsContainer>
+                                <InfoLabelsContainer>
+                                    <LocalLabel>Weather Events: {!currentSample.weather_sun ? '' : 'Sun  '} {!currentSample.weather_cloud ? '' : 'Clound  '} {!currentSample.weather_rain ? '' : 'Rain  '} {!currentSample.weather_snow ? '' : 'Snow  '} {!currentSample.weather_storm ? '' : 'storm'} </LocalLabel>
+                                </InfoLabelsContainer>
+                            </SummariesSectionsContainer>
 
-                        <Link to='/upload'><TransparentButton>Edit Sample Information</TransparentButton></Link>
+                            <Link to='/upload'><TransparentButton>Edit Sample Information</TransparentButton></Link>
+                        </TextsContainer>
 
 
-                        <GlobalLabel>Annotation Overview</GlobalLabel>
-                        <AddImagesContainer>
+                        <ImagesElementsContainer>
+                            <GlobalLabel>Annotation Overview</GlobalLabel>
+                            <OuterImagesContainer>
 
-                            <ImagesContainer>
-                                <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" />
-                                <ImagePreview src={placeHolderImg} alt="annotated image 2 preview" />
-                                <ImagePreview src={placeHolderImg} alt="annotated image 3 preview" />
-                                <ImagePreview src={placeHolderImg} alt="annotated image 4 preview" />
-                                {/*<ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
-                                {/*<ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
-                                {/*<ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
-                                {/*<ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
-                            </ImagesContainer>
-                        </AddImagesContainer>
-                        <Link to='/canvas-page'><TransparentButton>Examine Images Further</TransparentButton></Link>
+                                <PreviewImagesContainer>
 
-                        <Link to='/map'><BlueButton>Confirm</BlueButton></Link>
+                                    <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" />
+                                    <PlanktonCountContainer>
+                                    <LocalLabel>Phytoplankton: 9</LocalLabel>
+                                    <LocalLabel>Zooplankton: 12</LocalLabel>
+                                    </PlanktonCountContainer>
+                                    <ImagePreview src={placeHolderImg} alt="annotated image 2 preview" />
+                                    <PlanktonCountContainer>
+                                    <LocalLabel>Phytoplankton: 2</LocalLabel>
+                                    <LocalLabel>Zooplankton: 23</LocalLabel>
+                                    </PlanktonCountContainer>
+                                    {/*<ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
+                                </PreviewImagesContainer>
+
+                                <PreviewImagesContainer>
+                                    <ImagePreview src={placeHolderImg} alt="annotated image 3 preview" />
+                                    <PlanktonCountContainer>
+                                    <LocalLabel>Phytoplankton: 12</LocalLabel>
+                                    <LocalLabel>Zooplankton: 7</LocalLabel>
+                                    </PlanktonCountContainer>
+                                    <ImagePreview src={placeHolderImg} alt="annotated image 4 preview" />
+                                    <PlanktonCountContainer>
+                                    <LocalLabel>Phytoplankton: 18</LocalLabel>
+                                    <LocalLabel>Zooplankton: 4</LocalLabel>
+                                    </PlanktonCountContainer>
+                                    {/*<ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
+                                    {/*<ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
+                                </PreviewImagesContainer>
+
+                            </OuterImagesContainer>
+                            <Link to='/canvas-page'><TransparentButton>Examine Images Further</TransparentButton></Link>
+                        </ImagesElementsContainer>
+
+                        <LocalLabel>Submit my sample for double check? (optional) <input type={'checkbox'} name={'storm'} /></LocalLabel>
+                        {/*<LocalLabel>Storm <input type={'checkbox'} name={'storm'} onChange={() => setStormChecked(!stormChecked)} checked={stormChecked} /></LocalLabel>*/}
+
+                        <ConfirmElementsContainer>
+                            <Link to='/map'><BlueButton>Confirm</BlueButton></Link>
+                        </ConfirmElementsContainer>
+
                     </CenterContainer>
                 </Main>
             <Footer/>
