@@ -18,7 +18,7 @@ const CanvasPage=()=>{
 
     useEffect(()=>{
     dispatch(getUserMeAction(history))
-    dispatch(getUserSampleAction(history))
+    // dispatch(getUserSampleAction(history))
     },[])
 
     const userSelf = useSelector(state => state.UserReducer.userMe);

@@ -7,6 +7,7 @@ import Home from "./components/home";
 import ThemeSwitchProvider from "./components/themes/ThemeProvider";
 import Toggle from "./components/themes/toggle";
 import Annotate from './components/annotate'
+import AnnotateTwo from './components/annotate-dusko'
 import {
   SignIn,
   SignUp,
@@ -31,6 +32,7 @@ const App = () => {
             <Suspense fallback={<Spinner />}>
               <Route exact path="/map" component={withAuth(Map)} />
               <Route exact path="/annotate" component={Annotate} />
+              <Route exact path="/annotate-dusko" component={AnnotateTwo} />
               <Route exact path="/profile" component={withAuth(Profile)} />
               <Route exact path="/upload" component={withAuth(CreateNewSampleSet)}/>
               <Route exact path="/resetTwo" component={PasswordReset} />
