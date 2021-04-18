@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker , Popup} from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { Box } from './style';
 import { sampleAllIcon, sampleMeIcon,shipMeIcon, shipAllIcon, homeMeIcon, homeAllIcon } from './mapIcons';
@@ -8,6 +8,7 @@ import baseUrl from '../../helpers/baseUrl'
 import {useHistory} from "react-router-dom";
 import {getUserMeAction} from "../../store/actions/getUserSelfAction";
 import {getAllLocationsAction} from "../../store/actions/getAllLocationsAction";
+// import {Popup} from "leaflet/dist/leaflet-src.esm";
 
 
 
@@ -36,7 +37,9 @@ export default function Map() {
     const locationsArray = useSelector(state => state.locationReducer.allLocations)
     // console.log("all locations inside the map ",locationsArray)
 
-    const allPos = locationsArray.map((value) => [value.sample_latitude,value.sample_longitude]    )
+    const allPos = locationsArray.map((value) => [[value.sample_latitude,value.sample_longitude],value.id, value.collection_date])
+
+    console.log("ARRAY WITH POS AND ID",allPos)
 
     // console.log(allPos)
 
@@ -57,8 +60,8 @@ export default function Map() {
                 {/*}*/}
 
                 {
-                    allPos.map(position => <Marker position={position} icon={sampleAllIcon}/> )
-                } 
+                    allPos.map(position => <Marker position={position[0]} icon={sampleAllIcon}><Popup>{`Sample Id: ${position[1]}`}<br/>{`Sample Date: ${position[2]}`}</Popup></Marker>  )
+                }
 
                 {/*{*/}
                 {/*    shipMePositions.map(position => <Marker position={position} icon={shipMeIcon}/> )*/}

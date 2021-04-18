@@ -19,7 +19,7 @@ export const sampleAllIcon = L.icon({
   iconUrl: sampleAll,
   iconSize: [10, 10],
   iconAnchor: [2, 8], //[left/right, top/bottom]
-  popupAnchor: [0, -46], //[left/right, top/bottom]
+  popupAnchor: [0, -10], //[left/right, top/bottom]
 });
 L.Marker.prototype.options.sampleAll = sampleAllIcon;
 

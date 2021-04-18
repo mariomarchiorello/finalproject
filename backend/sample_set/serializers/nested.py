@@ -84,4 +84,4 @@ class AllSampleSetsSerializer(serializers.ModelSerializer):
 class SampleSetLocationsSerializer(serializers.ModelSerializer):
     class Meta:
         model = SampleSet
-        fields = ['id', 'sample_latitude', 'sample_longitude']
+        fields = ['id', 'collection_date', 'sample_latitude', 'sample_longitude']
