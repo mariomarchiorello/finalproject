@@ -3,7 +3,7 @@ import Header from "../header"
 import Footer from "../footer"
 
 import {
-    Background, BlueButton, CenterContainer, GlobalLabel,
+    Background, BlueButton, GlobalLabel,
     Main, TransparentButton,
 } from "../../globalstyles/globalStyle"
 
@@ -21,7 +21,8 @@ import {
     ImagesElementsContainer, InfoLabelsContainer,
     LocalLabel, OuterImagesContainer, PlanktonCountContainer, PreviewImagesContainer,
     SummariesSectionsContainer,
-    TextsContainer
+    TextsContainer,
+    SummaryContainer
 } from "./style"
 
 
@@ -45,7 +46,7 @@ const SampleSetSummary = () => {
                     <TitleWrapper>
                         <span>Sample Set Summary</span>
                     </TitleWrapper>
-                    <CenterContainer>
+                    <SummaryContainer>
                         <TextsContainer>
                             <GlobalLabel>Sample Information</GlobalLabel>
                             <SummariesSectionsContainer>
@@ -141,10 +142,8 @@ const SampleSetSummary = () => {
                         <ConfirmElementsContainer>
                             <Link to='/map'><BlueButton>Confirm</BlueButton></Link>
                         </ConfirmElementsContainer>
-
-                    </CenterContainer>
-                </Main>
-            <Footer/>
+                    </SummaryContainer>
+                </Main> 
         </Background>
     </>
 }
