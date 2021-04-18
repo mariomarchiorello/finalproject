@@ -45,7 +45,7 @@ export const BottomContainer = styled.div`
 `;
 
 export const MainProfile = styled(Main)`
-  background-color: black; 
+  background-color: ${props => props.theme.bgcolor }; 
   height: 100%;
   z-index: 5;
 `;

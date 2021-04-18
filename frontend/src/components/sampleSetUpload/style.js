@@ -43,7 +43,7 @@ export const ImagesContainer = styled.div`
 
 export const ImagePreview = styled.img`
   padding: 10px;
-  height: 125px;
+  height: 100px;
 `
 
 export const CheckboxFieldsContainer = styled.div`
