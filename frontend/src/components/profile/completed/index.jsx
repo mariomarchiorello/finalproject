@@ -27,17 +27,32 @@ const Completed = () => {
         allUserSamples.map((element, index)=>{
             if(element.is_completed){
 
-            let totalZooCount = "";
-            let totalPhytoCount = "";
-
-            console.log("IMAGES FROM COMPLETED", element.images[0].phytoplankton)
-
+            let totalZooCount = element.images.reduce((currentVal, total)=>currentVal + total.zooplankton, 0);
+            let totalPhytoCount = element.images.reduce((currentVal, total)=>currentVal + total.phytoplankton, 0);
+            let sampleImageArray = element.images.map(pic=>pic.original_image)
+                // console.log(sampleImageArray)
             return (
             <CompletedContainer key={index}>
+                <section className='left'>
+                    <div>
                 <p> Sample ID: {element.id}</p>
                 <p>Collection Date: {element.collection_date}</p>
+                    </div>
+                    <div>
                 <p>Latitude: {element.sample_latitude}</p>
                 <p>Longitude: {element.sample_longitude}</p>
+                    </div>
+                    <div>
+                <p>Total Zooplankton: {totalZooCount}</p>
+                <p>Total Phytoplankton: {totalPhytoCount}</p>
+                    </div>
+                </section>
+                <section className='right'>
+                    {sampleImageArray.map(image=> <img src={image} alt="sample Image"/>)}
+
+
+                </section>
+
 
 
             </CompletedContainer>
