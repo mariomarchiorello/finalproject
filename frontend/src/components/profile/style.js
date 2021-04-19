@@ -55,6 +55,7 @@ export const DisplayContainer = styled.div`
   height: 75vh;
   overflow: scroll;
   overflow-x: hidden;
+  width: 75vw;
   
   // width 
 ::-webkit-scrollbar {

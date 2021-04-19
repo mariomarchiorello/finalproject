@@ -25,8 +25,7 @@ function AnnotateTwo() {
 
     useEffect(() => {
           dispatch(getUserSampleAction());
-          console.log(annotatedData)
-    }, []);
+    }, [annotatedData.annotatedImages]);
 
 
     return (
@@ -40,7 +39,7 @@ function AnnotateTwo() {
                                setSampleId(e.target.id)
                                setSample(e.target.src)
                             }}
-                           src={img.original_image}
+                           src={img.annotated_image ? img.annotated_image : img.original_image}
                            key={img.id}
                            id={img.id}/> 
             }) : null}
@@ -60,7 +59,11 @@ function AnnotateTwo() {
                 <img src={zoo3} height='200px' width='200px'/>
                 <img src={zoo4} height='200px' width='200px'/>
             </References>
-            <CanvasTwo color={color} sample={sample} size={size} sampleId={sampleId}/>
+            <CanvasTwo color={color} 
+                       sample={sample} 
+                       size={size} 
+                       sampleId={sampleId}
+                       setSample={setSample}/>
             <References onClick={() => {setColor('rgba(244, 208, 63, 0.5)')
                                         setReference(false)}}
                         style={{border: `7px solid ${(color == 'rgba(244, 208, 63, 0.5)' && !reference) ? color : 'transparent'}` }}>

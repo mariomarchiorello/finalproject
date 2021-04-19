@@ -2,61 +2,52 @@ import React, {useEffect} from 'react'
 import {Info} from '../self/style'
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
+import {getUserSampleAction} from "../../../store/actions/getUserSampleSetAction";
+import {CompletedContainer} from "../completed/style";
+// import {DisplayContainer} from "../style";
+// import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 
 
-const InfoSection = () => {
+const NotCompleted = () => {
 
     const history = useHistory()
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        dispatch(getUserMeAction(history))
+        dispatch(getUserSampleAction(history))
 
     },[])
 
-    const userSelf = useSelector(state => state.UserReducer.userMe);
-
+    const allUserSamples = useSelector(state => state.UserReducer.allMySamples);
+    // console.log("IN the component", allUserSamples)
 
     return (
-        <>
-            <Info>
-                <section className='right'>
-                    <div>
-                        <p className='type'>Username</p>
-                        <p className='value'>{userSelf.username}</p>
-                    </div>
-                    <div>
-                        <p className='type'>First Name</p>
-                        <p className='value'>{userSelf.first_name}</p>
-                    </div>
-                    <div>
-                        <p className='type'>Home Latitude</p>
-                        <p className='value'>{userSelf.home_latitude}</p>
-                    </div>
-                    <div>
-                        <p className='type'>Vessel</p>
-                        <p className='value'>{userSelf.vessel_name}</p>
-                    </div>
 
-                </section>
 
-                <section className='left'>
-                    <div>
-                        <p className='type'>Email</p>
-                        <p className='value'>{userSelf.email}</p>
-                    </div>
-                    <div>
-                        <p className='type'>Last Name</p>
-                        <p className='value'>{userSelf.last_name}</p>
-                    </div>
-                    <div>
-                        <p className='type'>Home Longitude</p>
-                        <p className='value'>{userSelf.home_longitude}</p>
-                    </div>
-                </section>
-            </Info>
-        </>
+
+        allUserSamples.map((element, index)=>{
+            if(!element.is_completed){
+            console.log("IMAGES FROM NOT COMPLETED", element.images)
+
+
+            return (
+            <CompletedContainer key={index}>
+                <p> Sample ID: {element.id}</p>
+                <p>Collection Date: {element.collection_date}</p>
+                <p>Latitude: {element.sample_latitude}</p>
+                <p>Longitude: {element.sample_longitude}</p>
+
+
+            </CompletedContainer>
+            )}
+        })
+
+
+
+
+
+
+
     )
 }
-export default(InfoSection)
+export default(NotCompleted)

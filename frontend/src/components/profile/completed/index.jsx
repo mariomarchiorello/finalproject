@@ -19,26 +19,31 @@ const Completed = () => {
     },[])
 
     const allUserSamples = useSelector(state => state.UserReducer.allMySamples);
-    console.log("IN the component", allUserSamples)
 
     return (
 
 
 
         allUserSamples.map((element, index)=>{
+            if(element.is_completed){
+
+            let totalZooCount = "";
+            let totalPhytoCount = "";
+
+            console.log("IMAGES FROM COMPLETED", element.images[0].phytoplankton)
+
             return (
             <CompletedContainer key={index}>
-                <p>{element.id}</p>
+                <p> Sample ID: {element.id}</p>
+                <p>Collection Date: {element.collection_date}</p>
+                <p>Latitude: {element.sample_latitude}</p>
+                <p>Longitude: {element.sample_longitude}</p>
+
+
             </CompletedContainer>
             )
+            }
         })
-
-
-
-
-
-
-
     )
 }
 export default(Completed)
