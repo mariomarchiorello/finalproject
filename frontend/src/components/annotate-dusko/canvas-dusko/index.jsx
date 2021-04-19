@@ -1,10 +1,12 @@
 import React, {useRef, useEffect, useState} from 'react'
 import {StyledCanvas} from '../style'
 import html2canvas from 'html2canvas'
+import {useDispatch} from 'react-redux'
+import {patchImageAction} from '../../../store/actions/patchImage'
 
 const CanvasTwo = (props) => {
-
-    const {color, sample, size} = props
+    const dispatch = useDispatch()
+    const {color, sample, sampleId, size} = props
     const [zooCount, setZooCount] = useState(0)
     const [phytoCount, setPhytoCount] = useState(0)
     const [imageData, setImageData] = useState(null)
@@ -87,7 +89,8 @@ const CanvasTwo = (props) => {
         }).then(canvas => {
             setImageData(canvas.toDataURL('image/jpeg', 0.5))
             console.log(imageData);
-          });
+          })
+        dispatch(patchImageAction(zooCount, phytoCount, imageData, sampleId));
     }
 
     return (

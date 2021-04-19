@@ -18,6 +18,7 @@ function AnnotateTwo() {
     const [color, setColor] = useState('transparent')
     const [reference, setReference] = useState('null')
     const [sample, setSample] = useState('null')
+    const [sampleId, setSampleId] = useState('null')
     const [size, setSize] = useState(30)
     const annotatedData = useSelector(state => state.annotationReducer)
     const {images} = annotatedData.currentSample
@@ -27,16 +28,21 @@ function AnnotateTwo() {
           console.log(annotatedData)
     }, []);
 
+
     return (
         <>
         <Header><h1>HEADER</h1></Header>
         <SampleContainer>
-            {images ? images.map((img, index) => {
+            {images ? images.map(img => {
                return <img height='100px' 
                            width='100px' 
-                           onClick={e => setSample(e.target.src)}
+                           onClick={e => {
+                               setSampleId(e.target.id)
+                               setSample(e.target.src)
+                            }}
                            src={img.original_image}
-                           key={index}/> 
+                           key={img.id}
+                           id={img.id}/> 
             }) : null}
         </SampleContainer>
         <ToolsContainer>
@@ -54,7 +60,7 @@ function AnnotateTwo() {
                 <img src={zoo3} height='200px' width='200px'/>
                 <img src={zoo4} height='200px' width='200px'/>
             </References>
-            <CanvasTwo color={color} sample={sample} size={size}/>
+            <CanvasTwo color={color} sample={sample} size={size} sampleId={sampleId}/>
             <References onClick={() => {setColor('rgba(244, 208, 63, 0.5)')
                                         setReference(false)}}
                         style={{border: `7px solid ${(color == 'rgba(244, 208, 63, 0.5)' && !reference) ? color : 'transparent'}` }}>
