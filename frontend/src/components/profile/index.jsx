@@ -62,15 +62,12 @@ export default function Profile() {
                         >In Progress</Link>
                     </SelectionContainer>
                     {profileMainAction === "profile"? <MyProfile/> : null}
-
-                    
-
+                    {profileMainAction === "completed"? <MyProfile/> : null}
+                    {profileMainAction === "incomplete"? <MyProfile/> : null}
 
                 </MainProfile>
                 <Footer/>
-
             </BackgroundProfile>
-            
         </>
     )
 }

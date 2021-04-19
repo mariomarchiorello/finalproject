@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react'
-import {Info} from './style'
+import {Info} from '../self/style'
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 
 
-const InfoSection = () => {
+const Completed = () => {
 
     const history = useHistory()
     const dispatch = useDispatch()
