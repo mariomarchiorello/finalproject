@@ -32,7 +32,6 @@ const MapPage = ()=>  {
                 <Background>
                     <Header />
                     <Main>
-                        <div><p>G O E S</p></div>
                         <BackgroundMap>
                         <Map />
                         <section className="button">
