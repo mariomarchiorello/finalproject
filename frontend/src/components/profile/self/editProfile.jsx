@@ -38,7 +38,7 @@ const EditProfileSection=()=> {
     const [mode, setMode] = useState()
     
     const editProfileHandler = (e) => {
-            // debugger
+
             const editProfileCredentials = {
                 email: email,
                 username: username,
@@ -49,7 +49,6 @@ const EditProfileSection=()=> {
                 vessel_name: vessel_name,
                 mode: mode,
             }
-            // e.preventDefault()
          console.log("changing credentials",editProfileCredentials)
         const config = {
             method: "PATCH",

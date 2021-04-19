@@ -32,7 +32,6 @@ const Verification = () => {
             code: code,
             password_repeat: password_repeat
         }
-        //const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/registration/";
 
         const url = `${baseUrl}auth/registration/validation/`;
         const config = {
@@ -43,7 +42,7 @@ const Verification = () => {
         fetch(url,config)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
             })
             history.push('/sign-in')
     }

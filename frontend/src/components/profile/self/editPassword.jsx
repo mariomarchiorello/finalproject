@@ -5,6 +5,7 @@ import {GlobalInput, GlobalLabel, SmallBlueButton} from "../../../globalstyles/g
 import { useHistory } from "react-router-dom";
 import {BottomContainer} from "../style";
 import {useDispatch} from "react-redux";
+import baseUrl from "../../../helpers/baseUrl";
 
 
 export default function EditPasswordSection() {
@@ -18,9 +19,8 @@ export default function EditPasswordSection() {
         const credentials = {
             email: regEmail,
         }
-        //const url = "http://localhost:8000.propulsion-learn.ch/backend/api/auth/password-reset/";
 
-        const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/password-reset/";
+        const url = `${baseUrl}auth/password-reset/`;
         const regConfig =  {
             method: "POST",
             body: JSON.stringify(credentials),
@@ -29,7 +29,7 @@ export default function EditPasswordSection() {
         fetch(url, regConfig)
         .then(result => result.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
         })
         history.push("/resetTwo")
     }
