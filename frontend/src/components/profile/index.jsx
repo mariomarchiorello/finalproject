@@ -59,7 +59,7 @@ export default function Profile() {
                         >Completed</Link>
                         <Link className='underscored'
                          onClick={()=>profileMainChoice("incomplete")}
-                        >in progress</Link>
+                        >In Progress</Link>
                     </SelectionContainer>
                     {profileMainAction === "profile"? <MyProfile/> : null}
 
