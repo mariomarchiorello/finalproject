@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <>
         <FooterContainer>
-            <p>TESTTESTTEST</p>
+            
 
         </FooterContainer>
             

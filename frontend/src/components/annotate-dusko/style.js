@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { TransparentButton } from "../../globalstyles/globalStyle"
 
 
 export const Header = styled.div`
@@ -9,19 +10,14 @@ export const Header = styled.div`
 export const ToolsContainer = styled.div`
     display:flex;
     flex-direction: row;
-    justify-content:space-evenly;
-    width: 500px;
+    justify-content: space-between;
+    width: 40%;
     margin-left: 500px;
 `
 
-export const Tool = styled.button`
-    width: 50px;
-    height: 25px;
-    color: white;
-    background-color: blue;
-    :disabled{
-        background-color: grey;
-    }
+export const Tool = styled(TransparentButton)`
+    // color: ${props => props.theme.transbuttoncolor };
+    color: black;
 `
 
 export const StyledCanvas = styled.canvas`
@@ -48,6 +44,7 @@ export const SampleContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 100px;
-    width: 450px;
+    height: 50%;
+    width: 50%;
+    margin-top: 4rem;
 `

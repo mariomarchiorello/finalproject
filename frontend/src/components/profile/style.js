@@ -49,3 +49,35 @@ export const MainProfile = styled(Main)`
   height: 100%;
   z-index: 5;
 `;
+
+export const DisplayContainer = styled.div`
+  
+  height: 75vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 75vw;
+  
+  // width 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/// Track /
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/// Handle /
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+ //Handle on hover 
+::-webkit-scrollbar-thumb:hover {
+  background: black; 
+}
+  
+
+`;
