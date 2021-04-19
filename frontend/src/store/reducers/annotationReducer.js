@@ -4,8 +4,8 @@ const initialState = {
 };
 
 export function annotationReducer(state = initialState, action) {
-  console.log(initialState.currentSample, "current sample");
-  console.log(action.id, "id");
+  // console.log(initialState.currentSample, "current sample");
+  // console.log(action.id, "id");
   // if (action.type === "ANNOTATED_IMAGE") {
   //   return {
   //     ...state,

@@ -78,7 +78,7 @@ export const CanvasProvider = ({ children }) => {
       useCORS: true,
       foreignObjectRendering: true,
     }).then(function (canvas) {
-      console.log(canvas.toDataURL("image/jpeg", 0.9));
+      // console.log(canvas.toDataURL("image/jpeg", 0.9));
     });
   };
 
@@ -92,7 +92,7 @@ export const CanvasProvider = ({ children }) => {
   useEffect(() => {
     function fetchSample() {
       dispatch(getUserSampleAction());
-      console.log("------inside use effect ", annotatedData);
+      // console.log("------inside use effect ", annotatedData);
     }
     fetchSample();
   }, []);

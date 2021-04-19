@@ -15,7 +15,7 @@ export const getAllLocationsAction = (history) => {
         fetch(url, config)
             .then(res => res.json())
             .then(data => {
-                console.log("IN DA FETCH",typeof(data.results))
+                // console.log("IN DA FETCH",typeof(data.results))
                 const action = {
                     type: 'GET_ALL_LOCATIONS',
                     payload: data.results

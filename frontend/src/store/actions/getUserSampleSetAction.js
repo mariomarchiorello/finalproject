@@ -14,16 +14,26 @@ export const getUserSampleAction = (history) => {
     fetch(url, config)
       .then((res) => res.json())
       .then((data) => {
+        let allMySamples = {};
         let last = {};
         if (data.results) {
           last = data.results[data.results.length - 1];
-          // console.log("----------- results from fetch", data.results);
+          allMySamples = data.results;
+          // console.log("----------- results from fetch", allMySamples);
         }
+        const actionAll={
+            type: "ALL_MY_SAMPLES",
+            payload: allMySamples,
+        };
+                  // console.log("----------- results from achtionAll", actionAll);
+
         const action = {
           type: "GET_LAST_SAMPLE",
           payload: last,
         };
         dispatch(action);
+        dispatch(actionAll);
+
       });
   };
 };
