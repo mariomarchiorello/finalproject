@@ -49,7 +49,7 @@ export default function EditPasswordSection() {
             </Edit>
             <BottomContainer>
                     <SmallBlueButton onClick={registrationHandler}>Reset Password</SmallBlueButton>
-                    < SmallBlueButton onClick={()=>profileHandler("editProfile")}>back</SmallBlueButton>
+                    < SmallBlueButton onClick={()=>profileHandler("editProfile")}>Back</SmallBlueButton>
             </BottomContainer>
         </>
     )

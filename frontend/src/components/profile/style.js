@@ -17,6 +17,10 @@ export const SelectionContainer = styled.div`
         color: ${props => props.theme.labelcolor };
         text-decoration:none;
         border-bottom: transparent;
+        padding-bottom: 3px;
+      :hover {
+        font-weight: bold;
+      }
     }
 
     @media (max-width: 1620px) {
