@@ -28,7 +28,7 @@ const PasswordReset = () => {
             password_repeat: password_repeat
         }
 
-        const url = `${baseUrl}/auth/password-reset/`;
+        const url = `${baseUrl}auth/password-reset/validation/`;
         const config = {
             method: "PATCH",
             body: JSON.stringify(verificationCredentials),
@@ -37,7 +37,7 @@ const PasswordReset = () => {
         fetch(url,config)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
             })
             history.push('/sign-in')
     }

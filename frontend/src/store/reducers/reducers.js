@@ -8,6 +8,8 @@ const initialState = {
   userMe: {},
   profileEditSection: "info",
   profileMainSection: "profile",
+  allMySamples: [],
+
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -32,7 +34,13 @@ const UserReducer = (state = initialState, action) => {
         profileEditSection: action.payload[0],
       };
     case "TOGGLE_THEME":
-      return { ...state, ThemeEnabled: !state.ThemeEnabled };
+      return { ...state, ThemeEnabled: !state.ThemeEnabled
+      };
+    case "ALL_MY_SAMPLES":
+      // console.log("FROM IN DA REDUCER:", action.payload)
+      return {...state, allMySamples: action.payload
+      };
+
     default:
       return state;
   }

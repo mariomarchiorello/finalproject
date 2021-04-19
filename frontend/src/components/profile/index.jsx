@@ -4,7 +4,7 @@ import {Link, useHistory} from 'react-router-dom'
 import Footer from '../footer'
 import Header from '../header'
 import MyProfile from './self'
-import {BackgroundProfile, MainProfile, SelectionContainer} from './style'
+import {BackgroundProfile, DisplayContainer, MainProfile, SelectionContainer} from './style'
 // import { useDispatch, useSelector} from 'react-redux'
 import bg1 from "../../assets/background-images/5.jpg"
 import bg2 from "../../assets/background-images/8.jpg"
@@ -13,6 +13,7 @@ import bg4 from "../../assets/background-images/1.jpg"
 import bg5 from "../../assets/background-images/10.jpg"
 import {useDispatch, useSelector} from "react-redux";
 import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+import Completed from "./completed";
 
 
 
@@ -25,7 +26,7 @@ export default function Profile() {
 
     },[])
 
-    const userSelf = useSelector(state => state.UserReducer.userMe);
+    // const userSelf = useSelector(state => state.UserReducer.userMe);
     // console.log("from inside the profile/index:",userSelf)
 
     const dispatch = useDispatch()
@@ -61,10 +62,10 @@ export default function Profile() {
                          onClick={()=>profileMainChoice("incomplete")}
                         >In Progress</Link>
                     </SelectionContainer>
-                    {profileMainAction === "profile"? <MyProfile/> : null}
-                    {profileMainAction === "completed"? <MyProfile/> : null}
-                    {profileMainAction === "incomplete"? <MyProfile/> : null}
 
+                    {profileMainAction === "profile"? <MyProfile/> : null}
+                    {profileMainAction === "completed"?<DisplayContainer> <Completed/> </DisplayContainer> : null}
+                    {profileMainAction === "incomplete"? <MyProfile/> : null}
                 </MainProfile>
                 <Footer/>
             </BackgroundProfile>

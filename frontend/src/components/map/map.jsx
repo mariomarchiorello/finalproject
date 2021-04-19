@@ -39,7 +39,7 @@ export default function Map() {
 
     const allPos = locationsArray.map((value) => [[value.sample_latitude,value.sample_longitude],value.id, value.collection_date])
 
-    console.log("ARRAY WITH POS AND ID",allPos)
+    // console.log("ARRAY WITH POS AND ID",allPos)
 
     // console.log(allPos)
 
