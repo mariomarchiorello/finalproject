@@ -6,10 +6,11 @@ import {patchImageAction} from '../../../store/actions/patchImage'
 
 const CanvasTwo = (props) => {
     const dispatch = useDispatch()
-    const {color, sample, sampleId, size} = props
+    const {color, sample, sampleId, size, setSample} = props
     const [zooCount, setZooCount] = useState(0)
     const [phytoCount, setPhytoCount] = useState(0)
     const [imageData, setImageData] = useState(null)
+    const [flag, setFlag] = useState(false)
 
     let [history, setHistory] = useState([])
 
@@ -29,13 +30,18 @@ const CanvasTwo = (props) => {
       contextRef.current = context;
       if(sample){
         const image = new Image();
+        image.src = sample
         image.onload = () => {
           context.clearRect(0, 0, canvas.width, canvas.height);
           context.drawImage(image, 0, 0, canvas.width/2, canvas.height/1.5);
         };
-        image.src = sample
       }
-    }, [sample])
+      if(imageData && flag) { 
+        dispatch(patchImageAction(zooCount, phytoCount, imageData, sampleId))
+        setSample(imageData)
+        setFlag(false)
+      } 
+    }, [sample, imageData])
 
     const annotate = ({nativeEvent}) => {
       if (color !== 'transparent'){
@@ -82,15 +88,17 @@ const CanvasTwo = (props) => {
     }
 
     const save = () => {
+        window.scrollTo(0,0)
         html2canvas(canvasRef.current, {
             allowTaint: true,
             useCORS: true,
             foreignObjectRendering: true,
         }).then(canvas => {
-            setImageData(canvas.toDataURL('image/jpeg', 0.5))
-            console.log(imageData);
+            setFlag(true)
+            setImageData(() => canvas.toDataURL('image/jpeg', 0.5))
+            console.log('befor DISPATCH', imageData)
           })
-        dispatch(patchImageAction(zooCount, phytoCount, imageData, sampleId));
+          // .then(() => dispatch(patchImageAction(zooCount, phytoCount, imageData, sampleId)))
     }
 
     return (
