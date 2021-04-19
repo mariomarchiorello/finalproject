@@ -11,7 +11,12 @@ export const CompletedContainer = styled(CenterContainer)`
   padding: 0;
   display: flex;
   flex-direction: row;
-  
+  background: transparent;
+  transition: background 1s;
+  :hover{
+    cursor: pointer;
+    background: linear-gradient(#30ADEA, #216273);
+  }
  .left{
    display: flex;
    justify-content: space-around;
