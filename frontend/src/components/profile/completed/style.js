@@ -7,7 +7,7 @@ import {CenterContainer} from "../../../globalstyles/globalStyle";
 export const CompletedContainer = styled(CenterContainer)`
   height:20vh;
   margin: 2%;
-  color: white;
+  color: ${props => props.theme.labelcolor };
   padding: 0;
   display: flex;
   flex-direction: row;
