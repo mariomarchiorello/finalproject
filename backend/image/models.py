@@ -9,7 +9,7 @@ class Image(models.Model):
                                    null=True,
                                    on_delete=models.SET_NULL)
     original_image = models.ImageField()
-    annotated_image = models.ImageField(blank=True)
+    annotated_image = models.TextField(blank=True)
     marker_state = models.JSONField(default=dict, blank=True)
     zooplankton = models.IntegerField(null=True, blank=True)
     phytoplankton = models.IntegerField(null=True, blank=True)
