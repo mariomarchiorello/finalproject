@@ -13,6 +13,7 @@ export const Bluebutton = styled(BlueButton)`
 export const BackgroundMap = styled(CenterContainer)`
  //background-color:pink;
   padding: 1%;
+  margin-top: 2rem;
     //margin: 1rem;
 section.button{
      //background-color:green;
