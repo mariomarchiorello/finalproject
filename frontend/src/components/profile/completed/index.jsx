@@ -30,7 +30,7 @@ const Completed = () => {
             let totalZooCount = element.images.reduce((currentVal, total)=>currentVal + total.zooplankton, 0);
             let totalPhytoCount = element.images.reduce((currentVal, total)=>currentVal + total.phytoplankton, 0);
             let sampleImageArray = element.images.map(pic=>pic.original_image)
-                console.log(sampleImageArray)
+                // console.log(sampleImageArray)
             return (
             <CompletedContainer key={index}>
                 <section className='left'>

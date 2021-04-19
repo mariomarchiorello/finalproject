@@ -11,6 +11,7 @@ export const CompletedContainer = styled(CenterContainer)`
   padding: 0;
   display: flex;
   flex-direction: row;
+  
  .left{
    display: flex;
    justify-content: space-around;
@@ -29,4 +30,5 @@ export const CompletedContainer = styled(CenterContainer)`
       //width: 80px;
     }
   }
+  
 `;
