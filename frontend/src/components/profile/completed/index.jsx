@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {Info} from '../self/style'
 import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {getUserSampleAction} from "../../../store/actions/getUserSampleSetAction";
 import {CompletedContainer} from "./style";
 import {DisplayContainer} from "../style";
@@ -32,7 +32,7 @@ const Completed = () => {
             let sampleImageArray = element.images.map(pic=>pic.original_image)
                 // console.log(sampleImageArray)
             return (
-            <CompletedContainer key={index}>
+            <CompletedContainer key={index} >
                 <section className='left'>
                     <div>
                 <p> Sample ID: {element.id}</p>
@@ -52,7 +52,6 @@ const Completed = () => {
 
 
                 </section>
-
 
 
             </CompletedContainer>
