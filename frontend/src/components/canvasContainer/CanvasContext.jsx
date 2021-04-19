@@ -112,11 +112,11 @@ export const CanvasProvider = ({ children }) => {
           counter,
         }}
       >
-          <div>Plankton: {counter}</div>
+          {/* <div>Plankton: {counter}</div>
 
       <button onClick={nextImage}>Next Image</button>
       <button onClick={saveImage}>Submit</button>
-        {children}
+        {children} */}
       </CanvasContext.Provider>
 
     </>
