@@ -14,6 +14,7 @@ import bg5 from "../../assets/background-images/10.jpg"
 import {useDispatch, useSelector} from "react-redux";
 import {getUserMeAction} from "../../store/actions/getUserSelfAction";
 import Completed from "./completed";
+import NotCompleted from "./inProgress/inProgress";
 
 
 
@@ -65,7 +66,7 @@ export default function Profile() {
 
                     {profileMainAction === "profile"? <MyProfile/> : null}
                     {profileMainAction === "completed"?<DisplayContainer> <Completed/> </DisplayContainer> : null}
-                    {profileMainAction === "incomplete"? <MyProfile/> : null}
+                    {profileMainAction === "incomplete"?<DisplayContainer> <NotCompleted/></DisplayContainer> : null}
                 </MainProfile>
                 <Footer/>
             </BackgroundProfile>
