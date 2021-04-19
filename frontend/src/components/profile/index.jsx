@@ -54,15 +54,15 @@ export default function Profile() {
                 <MainProfile>
                     <SelectionContainer>
                         <Link className='underscored'
-                            style={profileMainAction === "profile" ? {borderBottom: "2px solid #30ADEA"} : null}
+                            style={profileMainAction === "profile" ? {borderBottom: "3px solid #30ADEA"} : null}
                             onClick={()=>profileMainChoice("profile")}
                         >Profile</Link>
                         <Link className='underscored'
-                            style={profileMainAction === "completed" ? {borderBottom: "2px solid #30ADEA"} : null}
+                            style={profileMainAction === "completed" ? {borderBottom: "3px solid #30ADEA"} : null}
                             onClick={()=>profileMainChoice("completed")}
                         >Completed</Link>
                         <Link className='underscored'
-                            style={profileMainAction === "incomplete" ? {borderBottom: "2px solid #30ADEA"} : null}
+                            style={profileMainAction === "incomplete" ? {borderBottom: "3px solid #30ADEA"} : null}
                             onClick={()=>profileMainChoice("incomplete")}
                         >In Progress</Link>
                     </SelectionContainer>
