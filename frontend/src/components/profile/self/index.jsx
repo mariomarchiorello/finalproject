@@ -25,7 +25,7 @@ export default function MyProfile() {
     const profileHandler = value => { dispatch({type:"PROFILE-EDIT-HANDLER",payload:value})}
 
     const profileEdit = useSelector( state => state.UserReducer.profileEditSection);
-    console.log(" from MyProfile" ,profileEdit)
+    // console.log(" from MyProfile" ,profileEdit)
 
 
 
