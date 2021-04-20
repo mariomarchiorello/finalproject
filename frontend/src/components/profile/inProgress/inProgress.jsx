@@ -27,11 +27,9 @@ const NotCompleted = () => {
 
         allUserSamples.map((element, index)=>{
             if(!element.is_completed){
-            // console.log("IMAGES FROM NOT COMPLETED", element.images)
             let totalZooCount = element.images.reduce((currentVal, total)=>currentVal + total.zooplankton, 0);
             let totalPhytoCount = element.images.reduce((currentVal, total)=>currentVal + total.phytoplankton, 0);
-            let sampleImageArray = element.images.map(pic=>pic.original_image)
-                // console.log(sampleImageArray)
+            let sampleImageArray = element.images.map(pic=>pic)
 
             return (
             <CompletedContainer onClick={() => continueAnnotating(element.id)} key={index}>

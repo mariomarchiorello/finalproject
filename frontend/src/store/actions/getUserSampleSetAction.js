@@ -7,7 +7,7 @@ export const getUserSampleAction = (history) => {
     const config = {
       method: "GET",
       headers: new Headers({
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
       }),
     };

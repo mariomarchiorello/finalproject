@@ -36,7 +36,7 @@ function AnnotateTwo() {
           images.map(img => {
               img.annotated_image ? count += 1 : count = 0
           })
-          count === images.length ? setSubmitEnabled(false) : setSubmitEnabled(true)
+          count === images.length ? setSubmitEnabled(true) : setSubmitEnabled(false)
         }
     }, [annotatedData.annotatedImages]);
     
@@ -96,7 +96,7 @@ function AnnotateTwo() {
                 <img src={phyto4} height='200px' width='200px'/>
             </References>
         </CanvasContainer>
-        <button onClick={() => history.push('/summary')}disabled={submitEnabled}>submit</button>
+        <button onClick={() => history.push('/summary')} disabled={submitEnabled}>submit</button>
         </>
     )
 }
