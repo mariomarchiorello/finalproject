@@ -42,6 +42,9 @@ class SampleSet(models.Model):
     weather_cloud = models.BooleanField(null=True, default=False)
     weather_snow = models.BooleanField(null=True, default=False)
 
+    class Meta:
+        ordering = ['-id']
+
 
 # class WaterSurface(models.Model):
 #     property = models.CharField(max_length=20, choices=WATER_SURFACE, blank=True)
