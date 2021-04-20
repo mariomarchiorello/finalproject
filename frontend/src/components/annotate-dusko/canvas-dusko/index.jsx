@@ -90,15 +90,15 @@ const CanvasTwo = (props) => {
     }
 
     const save = () => {
-        // html2canvas(canvasRef.current, {
-            // allowTaint: true,
-            // useCORS: true,
-            // scale: 2
+        html2canvas(canvasRef.current, {
+            allowTaint: true,
+            useCORS: true,
+            scale: 2
             // foreignObjectRendering: true,
-        // }).then(canvas => {
+        }).then(canvas => {
             setFlag(true)
             setImageData(() => canvas.toDataURL('image/jpeg', 1))
-          // })
+          })
     }
 
     return (
