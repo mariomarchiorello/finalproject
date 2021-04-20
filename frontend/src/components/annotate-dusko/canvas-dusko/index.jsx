@@ -1,17 +1,18 @@
 import React, {useRef, useEffect, useState} from 'react'
 import {StyledCanvas} from '../style'
 import html2canvas from 'html2canvas'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {patchImageAction} from '../../../store/actions/patchImage'
 
 const CanvasTwo = (props) => {
     const dispatch = useDispatch()
-    const {color, sample, sampleId, size, setSample} = props
-    const [zooCount, setZooCount] = useState(0)
-    const [phytoCount, setPhytoCount] = useState(0)
+    const {color, sample, sampleId, size, 
+           setSample, zooCount, phytoCount, 
+           setZooCount, setPhytoCount} = props
+    // const [zooCount, setZooCount] = useState(0)
+    // const [phytoCount, setPhytoCount] = useState(0)
     const [imageData, setImageData] = useState(null)
     const [flag, setFlag] = useState(false)
-
     let [history, setHistory] = useState([])
 
     const canvasRef = useRef(null)
@@ -44,6 +45,7 @@ const CanvasTwo = (props) => {
     }, [sample, imageData])
 
     const annotate = ({nativeEvent}) => {
+      console.log(zooCount)
       if (color !== 'transparent'){
         const {offsetX, offsetY} = nativeEvent;
         contextRef.current.strokeStyle = `${color}`;
@@ -96,7 +98,6 @@ const CanvasTwo = (props) => {
         }).then(canvas => {
             setFlag(true)
             setImageData(() => canvas.toDataURL('image/jpeg', 1))
-            console.log('befor DISPATCH', imageData)
           })
           // .then(() => dispatch(patchImageAction(zooCount, phytoCount, imageData, sampleId)))
     }

@@ -21,24 +21,40 @@ function AnnotateTwo() {
     const [sample, setSample] = useState('null')
     const [sampleId, setSampleId] = useState('null')
     const [size, setSize] = useState(30)
+    const [zooCount, setZooCount] = useState(0)
+    const [phytoCount, setPhytoCount] = useState(0)
     const annotatedData = useSelector(state => state.annotationReducer)
     const {images} = annotatedData.currentSample
+    const [submitEnabled, setSubmitEnabled] = useState(true)
 
     useEffect(() => {
           dispatch(getUserSampleAction());
+          if(images) {
+          let count = 0
+          images.map(img => {
+              img.annotated_image ? count += 1 : count = 0
+          })
+          count === images.length ? setSubmitEnabled(false) : setSubmitEnabled(true)
+        }
     }, [annotatedData.annotatedImages]);
-
+    
+    const updateCount = (index) => {
+        console.log(images[index].zooplankton)
+        setZooCount(images[index].zooplankton ? images[index].zooplankton : 0)
+        setPhytoCount(images[index].phytoplankton ? images[index].phytoplankton : 0)
+    }
 
     return (
         <>
         <Header><h1>HEADER</h1></Header>
         <SampleContainer>
-            {images ? images.map(img => {
+            {images ? images.map((img, index) => {
                return <img height='100px' 
                            width='100px' 
                            onClick={e => {
                                setSampleId(e.target.id)
                                setSample(e.target.src)
+                               updateCount(index)
                             }}
                            src={img.annotated_image ? img.annotated_image : img.original_image}
                            key={img.id}
@@ -64,7 +80,11 @@ function AnnotateTwo() {
                        sample={sample} 
                        size={size} 
                        sampleId={sampleId}
-                       setSample={setSample}/>
+                       setSample={setSample}
+                       zooCount={zooCount}
+                       phytoCount={phytoCount}
+                       setZooCount={setZooCount}
+                       setPhytoCount={setPhytoCount}/>
             <References onClick={() => {setColor('rgba(244, 208, 63, 0.5)')
                                         setReference(false)}}
                         style={{border: `7px solid ${(color == 'rgba(244, 208, 63, 0.5)' && !reference) ? color : 'transparent'}` }}>
@@ -74,6 +94,7 @@ function AnnotateTwo() {
                 <img src={phyto4} height='200px' width='200px'/>
             </References>
         </CanvasContainer>
+        <button disabled={submitEnabled}>submit</button>
         </>
     )
 }
