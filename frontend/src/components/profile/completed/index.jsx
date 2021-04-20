@@ -29,8 +29,8 @@ const Completed = () => {
 
             let totalZooCount = element.images.reduce((currentVal, total)=>currentVal + total.zooplankton, 0);
             let totalPhytoCount = element.images.reduce((currentVal, total)=>currentVal + total.phytoplankton, 0);
-            let sampleImageArray = element.images.map(pic=>pic.original_image)
-                // console.log(sampleImageArray)
+            let sampleImageArray = element.images.map(pic=>pic)
+                 console.log("  :",sampleImageArray)
             return (
             <CompletedContainer key={index} >
                 <section className='left'>
@@ -48,7 +48,9 @@ const Completed = () => {
                     </div>
                 </section>
                 <section className='right'>
-                    {sampleImageArray.map(image=> <img src={image} alt="sample Image"/>)}
+                    {sampleImageArray.map(image=> <img
+                        src={image.annotated_image === "" || image.annotated_image === "null"  ? image.original_image : image.annotated_image }
+                        alt="sample Image"/>)}
 
                 </section>
             </CompletedContainer>
