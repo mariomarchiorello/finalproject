@@ -124,8 +124,11 @@ const CreateNewSampleSet = () => {
         }
         fetch(url, config)
         .then(res => res.json())
-        .then(data => console.log("FROM IN DA SAMPLE_UPLOAD",data))
-        history.push('/annotate-dusko')
+        .then(data => {
+            console.log("FROM IN DA SAMPLE_UPLOAD",data)
+            localStorage.setItem('sample_id', data.id)
+            history.push('/annotate-dusko')
+        })
     }
 
 

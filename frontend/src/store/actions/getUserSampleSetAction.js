@@ -3,6 +3,7 @@ import baseUrl from "../../helpers/baseUrl";
 export const getUserSampleAction = (history) => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
+    const id = localStorage.getItem('sample_id')
     const config = {
       method: "GET",
       headers: new Headers({
@@ -10,18 +11,18 @@ export const getUserSampleAction = (history) => {
         "Content-Type": "application/json",
       }),
     };
-    const url = `${baseUrl}samples/my-samples/`;
+    const url = `${baseUrl}samples/${id}/`;
     fetch(url, config)
       .then((res) => res.json())
-      .then((data) => {
-        let last = {};
-        if (data.results) {
-          last = data.results[data.results.length - 1];
-          // console.log("----------- results from fetch", allMySamples);
-        }
+      .then(data => {
+        // let last = {};
+        // if (data.results) {
+        //   last = data.results[data.results.length - 1];
+        //   // console.log("----------- results from fetch", allMySamples);
+        // }
         const action = {
           type: "GET_LAST_SAMPLE",
-          payload: last,
+          payload: data,
         };
         dispatch(action);
 
