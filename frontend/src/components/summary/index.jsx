@@ -116,7 +116,7 @@ const SampleSetSummary = () => {
                                     {/*{ !currentSample.images[0] ? <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" /> : null }*/}
 
                                     <PlanktonCountContainer>
-                                    <LocalLabel>Phytoplankton: 9</LocalLabel>
+                                    <LocalLabel>Phytoplankton: 1</LocalLabel>
                                     <LocalLabel>Zooplankton: 12</LocalLabel>
                                     </PlanktonCountContainer>
                                     <ImagePreview src={placeHolderImg} alt="annotated image 2 preview" />
@@ -148,7 +148,7 @@ const SampleSetSummary = () => {
                                 </PreviewImagesContainer>
 
                             </OuterImagesContainer>
-                            <Link to='/canvas-page'><TransparentButton>Examine Images Further</TransparentButton></Link>
+                            <Link to='/annotate-dusko'><TransparentButton>Examine Images Further</TransparentButton></Link>
                         </ImagesElementsContainer>
 
                         <LocalLabel>Submit my sample for double check? (optional) <input type={'checkbox'} name={'storm'} /></LocalLabel>
