@@ -39,6 +39,13 @@ const SampleSetSummary = () => {
     console.log('Current sample from summary page: ', currentSample)
 
 
+    // let image;
+    // let sampleImageArray = currentSample.images.map(image => image.original_image)
+    // let plankton;
+    // let samplePlanktonArray = currentSample.images.map(plankton = plankton.plankton)
+    // console.log('plankton: ', plankton)
+
+
     return <>
         <Background>
             <Header/>
@@ -99,7 +106,15 @@ const SampleSetSummary = () => {
 
                                 <PreviewImagesContainer>
 
+
+                                    {/*{sampleImageArray.map(image => <ImagePreview src={image} alt="sample Image"/>)}*/}
+                                    {/*{sampleImageArray.map(phytoplankton => <LocalLabel>{sampleImageArray.}</LocalLabel>)}*/}
+
+
                                     <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" />
+                                    {/*<ImagePreview src={!currentSample.images[0] ? placeHolderImg : currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                    {/*{ !currentSample.images[0] ? <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" /> : null }*/}
+
                                     <PlanktonCountContainer>
                                     <LocalLabel>Phytoplankton: 9</LocalLabel>
                                     <LocalLabel>Zooplankton: 12</LocalLabel>
