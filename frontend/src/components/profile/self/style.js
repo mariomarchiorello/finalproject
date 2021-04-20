@@ -19,6 +19,7 @@ export const Info = styled.div`
     section{
         width:20vw;
         color:${props => props.theme.labelcolor };
+      line-height: 3;
         div{
             margin:0%;
         }

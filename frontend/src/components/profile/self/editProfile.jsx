@@ -111,8 +111,8 @@ const EditProfileSection=()=> {
             </Edit>
             <BottomContainer>
                     <EditPasswordButton onClick={()=>profileHandler("changePassword")} >Change Password</EditPasswordButton>
-                    <SmallBlueButton onClick={()=>profileHandler("info")} > go back</SmallBlueButton>
-                    <SmallBlueButton onClick={editProfileHandler} >save</SmallBlueButton>
+                    <SmallBlueButton onClick={()=>profileHandler("info")} > Go Back</SmallBlueButton>
+                    <SmallBlueButton onClick={editProfileHandler} >Save</SmallBlueButton>
             </BottomContainer>
             </form>
 

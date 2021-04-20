@@ -12,7 +12,10 @@ height: 2.5rem;
 font-size: 18px;
 cursor:pointer;
 outline:transparent;
-
+transition:color 0.5s;  
+:hover{
+  color:#30ADEA;
+}
 :active{
   outline:transparent;
 }
@@ -122,3 +125,25 @@ margin:3%;
     
     
 `;
+
+export const Scrollbar = styled.div`
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: ${props => props.theme.bgcolor };
+}
+
+::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); */
+  background-color: #E0E0E0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+     background: linear-gradient(#30ADEA, #216273);
+     border: none;
+     border-radius: 10px;
+
+}
+
+`

@@ -17,6 +17,12 @@ export const SelectionContainer = styled.div`
         color: ${props => props.theme.labelcolor };
         text-decoration:none;
         border-bottom: transparent;
+        padding: 3px;
+        font-size:18px;
+        transition:color 0.5s;
+      :hover {
+        color: #30ADEA;
+      }
     }
 
     @media (max-width: 1620px) {
@@ -57,7 +63,7 @@ export const DisplayContainer = styled.div`
   overflow-x: hidden;
   width: 75vw;
   
-  // width 
+  /* // width 
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -77,7 +83,24 @@ export const DisplayContainer = styled.div`
  //Handle on hover 
 ::-webkit-scrollbar-thumb:hover {
   background: black; 
+} */
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: ${props => props.theme.bgcolor };
 }
-  
+
+::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); */
+  background-color: #E0E0E0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+     background: linear-gradient(#30ADEA, #216273);
+     border: none;
+     border-radius: 10px;
+
+}
 
 `;
