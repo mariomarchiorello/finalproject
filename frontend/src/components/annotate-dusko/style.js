@@ -21,8 +21,7 @@ export const Tool = styled(TransparentButton)`
 `
 
 export const StyledCanvas = styled.canvas`
-    border: 2px solid blue;
-    display: block;
+    /* border: 2px solid red; */
     overflow: hidden;
 `
 

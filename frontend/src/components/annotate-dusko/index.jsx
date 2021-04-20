@@ -11,6 +11,7 @@ import phyto1 from '../../assets/background-images/5.jpg';
 import phyto2 from '../../assets/background-images/6.jpg';
 import phyto3 from '../../assets/background-images/7.jpg';
 import phyto4 from '../../assets/background-images/8.jpg';
+import {GlobalStyle} from '../../globalstyles/globalStyle'
 
 
 function AnnotateTwo() {

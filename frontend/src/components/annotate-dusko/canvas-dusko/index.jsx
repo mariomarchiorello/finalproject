@@ -88,14 +88,14 @@ const CanvasTwo = (props) => {
     }
 
     const save = () => {
-        window.scrollTo(0,0)
         html2canvas(canvasRef.current, {
             allowTaint: true,
             useCORS: true,
-            foreignObjectRendering: true,
+            scale: 2
+            // foreignObjectRendering: true,
         }).then(canvas => {
             setFlag(true)
-            setImageData(() => canvas.toDataURL('image/jpeg', 0.5))
+            setImageData(() => canvas.toDataURL('image/jpeg', 1))
             console.log('befor DISPATCH', imageData)
           })
           // .then(() => dispatch(patchImageAction(zooCount, phytoCount, imageData, sampleId)))
@@ -105,13 +105,13 @@ const CanvasTwo = (props) => {
       <>
         <h1>{zooCount}</h1>
         <button onClick={() => undo()}>undo</button>
-        <StyledCanvas 
+        <div><StyledCanvas 
         ref={canvasRef}
         onClick={annotate}
-        />
-        <button onClick={() => save()}>save</button>
+        /></div>
+        <button onClick={() => save()} width='10px'>save</button>
         <h1>{phytoCount}</h1>
-        <img ref={imgRef} height='60px' width='60px'/>
+        {/* <img ref={imgRef} height='60px' width='60px'/> */}
       </>
     )
 }
