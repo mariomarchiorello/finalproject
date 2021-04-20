@@ -90,7 +90,7 @@ export const CenterContainer = styled.div`
 `;
 
 export const Main = styled.div`
-  height: 84%;
+  height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
