@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from image.models import Image
 from sample_set.models import SampleSet
 from sample_set.serializers.default import SampleSetSerializer
-from sample_set.serializers.nested import SampleSetLocationsSerializer
+from sample_set.serializers.nested import AllSampleSetsSerializer
 
 
 class Upload(CreateAPIView):
@@ -37,7 +37,7 @@ class GetPatchDeleteSampleView(RetrieveUpdateDestroyAPIView):
 
 class GetAllSampleSets(ListAPIView):
     queryset = SampleSet.objects.all()
-    serializer_class = SampleSetLocationsSerializer
+    serializer_class = AllSampleSetsSerializer
 
 
 class GetSamplesFromUser(ListAPIView):

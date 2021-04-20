@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
 import {Info} from '../self/style'
 import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router-dom";
-import {getUserSampleAction} from "../../../store/actions/getUserSampleSetAction";
+import {Link, useHistory} from "react-router-dom";
 import {CompletedContainer} from "./style";
 import {DisplayContainer} from "../style";
+import {getAllUserSamples} from "../../../store/actions/getAllMySamplesAction";
 // import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 
 
@@ -14,7 +14,7 @@ const Completed = () => {
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        dispatch(getUserSampleAction(history))
+        dispatch(getAllUserSamples(history))
 
     },[])
 
@@ -32,7 +32,7 @@ const Completed = () => {
             let sampleImageArray = element.images.map(pic=>pic.original_image)
                 // console.log(sampleImageArray)
             return (
-            <CompletedContainer key={index}>
+            <CompletedContainer key={index} >
                 <section className='left'>
                     <div>
                 <p> Sample ID: {element.id}</p>
@@ -50,11 +50,7 @@ const Completed = () => {
                 <section className='right'>
                     {sampleImageArray.map(image=> <img src={image} alt="sample Image"/>)}
 
-
                 </section>
-
-
-
             </CompletedContainer>
             )
             }

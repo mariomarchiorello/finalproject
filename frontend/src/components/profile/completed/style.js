@@ -5,13 +5,18 @@ import {CenterContainer} from "../../../globalstyles/globalStyle";
 
 
 export const CompletedContainer = styled(CenterContainer)`
-  height:20vh;
+  height:16vh;
   margin: 2%;
-  color: white;
+  color: ${props => props.theme.labelcolor };
   padding: 0;
   display: flex;
   flex-direction: row;
-  
+  background-color: transparent;
+  transition: background-color 1s;
+  :hover{
+    cursor: pointer;
+    background-color: darkgray ;
+  }
  .left{
    display: flex;
    justify-content: space-around;
