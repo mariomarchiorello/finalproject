@@ -23,19 +23,21 @@ margin-left: 6%;
 export const RightContainer = styled.div`
 display: flex;
 align-items: center;
-//margin-right: -40px;
-  
+justify-content: space-evenly;  
+width: 40vw;  
+.headermenu {
+  text-decoration: none;
+  font-size: 18px;
+  color: ${props => props.theme.labelcolor};
+  cursor: pointer;
+  border-bottom: none;
+  transition: color 0.5s, border-bottom 0.5s;
+  :hover {
+    color: #30ADEA;
+  }
+}
 `;
-export const Profile = styled(TransparentButton)`
-font-size: 18px;
-color: ${props => props.theme.buttoncolor };
-cursor:pointer;
-transition:color 0.5s;  
-:hover{
-  color:#30ADEA;
-}  
-  
-`;
+
 export const LoginButton = styled(TransparentButton)`
 margin-left: 35px;
 margin-right: 35px;
