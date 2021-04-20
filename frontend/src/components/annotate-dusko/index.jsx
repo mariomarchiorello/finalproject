@@ -12,6 +12,7 @@ import phyto2 from '../../assets/background-images/6.jpg';
 import phyto3 from '../../assets/background-images/7.jpg';
 import phyto4 from '../../assets/background-images/8.jpg';
 import {GlobalStyle} from '../../globalstyles/globalStyle'
+import {useHistory} from 'react-router-dom'
 
 
 function AnnotateTwo() {
@@ -26,6 +27,7 @@ function AnnotateTwo() {
     const annotatedData = useSelector(state => state.annotationReducer)
     const {images} = annotatedData.currentSample
     const [submitEnabled, setSubmitEnabled] = useState(true)
+    const history = useHistory()
 
     useEffect(() => {
           dispatch(getUserSampleAction());
@@ -94,7 +96,7 @@ function AnnotateTwo() {
                 <img src={phyto4} height='200px' width='200px'/>
             </References>
         </CanvasContainer>
-        <button disabled={submitEnabled}>submit</button>
+        <button onClick={() => history.push('/summary')}disabled={submitEnabled}>submit</button>
         </>
     )
 }

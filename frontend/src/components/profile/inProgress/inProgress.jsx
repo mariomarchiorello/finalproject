@@ -21,6 +21,11 @@ const NotCompleted = () => {
     const allUserSamples = useSelector(state => state.UserReducer.allMySamples);
     // console.log("IN the component", allUserSamples)
 
+    const continueAnnotating = (id) => {
+        localStorage.setItem('sample_id', id)
+        history.push('/annotate-dusko')
+    }
+
     return (
 
 
@@ -34,7 +39,7 @@ const NotCompleted = () => {
                 // console.log(sampleImageArray)
 
             return (
-            <CompletedContainer key={index}>
+            <CompletedContainer onClick={() => continueAnnotating(element.id)} key={index}>
                  <section className='left'>
                     <div>
                 <p> Sample ID: {element.id}</p>
