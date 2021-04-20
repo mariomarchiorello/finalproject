@@ -50,6 +50,7 @@ export const OuterImagesContainer = styled.div`
 
 export const PreviewImagesContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   padding: 15px;
 `
