@@ -17,7 +17,7 @@ import {
   CreateNewSampleSet,
 } from "./LazyComponents";
 import Spinner from "./components/spinner";
-import { withAuth } from "./components/HOC";
+import { withAuth, withNoAuth } from "./components/HOC";
 import CanvasContainer from "./components/canvasContainer";
 import { CanvasProvider } from "./components/canvasContainer/CanvasContext";
 import CanvasPage from "./components/canvaspage";
@@ -36,16 +36,15 @@ const App = () => {
               <Route exact path="/profile" component={withAuth(Profile)} />
               <Route exact path="/upload" component={withAuth(CreateNewSampleSet)}/>
               <Route exact path="/resetTwo" component={PasswordReset} />
-              <Route exact path={["/home", "/"]} component={Home} />
+              <Route exact path={["/home", "/"]} component={withNoAuth(Home)} />
               <Route exact path="/resetOne" component={ResetPwEmail} />
               <Route exact path={["/signIn", "/sign-in"]} component={SignIn} />
               <Route exact path="/verification" component={Verification} />
               <Route exact path="/sign-up" component={SignUp} />
               <Route exact path="/toggletest" component={Toggle} />
               <Route exact path="/canvas-page" component={CanvasPage}/>
-              <CanvasProvider>
-                <Route exact path="/canvas" component={CanvasContainer} />
-              </CanvasProvider>
+              <CanvasProvider><Route exact path="/canvas" component={CanvasContainer} />
+                </CanvasProvider>
               <Route exact path="/summary" component={withAuth(SampleSetSummary)} />
 
 
