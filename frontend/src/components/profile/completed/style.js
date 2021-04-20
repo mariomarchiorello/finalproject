@@ -12,7 +12,7 @@ export const CompletedContainer = styled(CenterContainer)`
   display: flex;
   flex-direction: row;
   background-color: transparent;
-  transition: color 1s;
+  transition: color 0.5s;
   opacity:100%;
   :hover{
     cursor: pointer;
