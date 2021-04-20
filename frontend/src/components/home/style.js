@@ -22,12 +22,15 @@ export const MainHome = styled(Main)`
 
 export const Buttonholder = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    width: 100%;
+    width: 80%;
     height: 100%;
 `;
 
 export const HomeBackground = styled(Background)`
     background-image: url(${backgroundimg});
+    // background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
 `;
