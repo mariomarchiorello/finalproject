@@ -17,23 +17,21 @@ const Header = () => {
     useEffect(()=>{
 
         setLocalToken(localStorage.getItem("token"));
-        //console.log("in da useEffect", localToken);
     },[]);
         const [localToken, setLocalToken] = useState("");
 
-    //console.log("from selecthor", localToken)
     const profileMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
-   // console.log("from useSelector",storeToken)
+
     const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
 
-    //console.log("from use Selecthor",userSelf.first_name)
     const profileHandler = (value) => {
 
         dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
         history.push("/profile")
     };
+
     const logOut = (e)=>{
         e.preventDefault()
         window.localStorage.clear()
@@ -62,8 +60,10 @@ const Header = () => {
                     style={profileMainAction === "profile" || profileMainAction === "info" || profileMainAction === "completed" || profileMainAction === "incomplete" ? {borderBottom: "3px solid #30ADEA"} : null}
                     className="headermenu"
                     onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Link>
-                <LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) :
-            (<RightContainer><Link className="headernemu" onClick={joinUs}>Join</Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
+                <LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) : null}
+        {localToken ? null:
+            (<RightContainer>
+                <Link className="headermenu" to="/sign-up">Join</Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
     </HeaderContainer>
   </>
 }

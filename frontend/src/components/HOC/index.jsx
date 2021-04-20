@@ -9,3 +9,16 @@ export const withAuth = (WrappedComponent) => {
         }
     }
 }
+
+
+export const withNoAuth = (WrappedComponent) => {
+    return (props) => {
+        const token = localStorage.getItem('token')
+        if(!token) {
+            return <WrappedComponent />
+        }else {
+            props.history.push('/map', token)
+            return null
+        }
+    }
+}

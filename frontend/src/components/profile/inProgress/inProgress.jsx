@@ -28,7 +28,9 @@ const NotCompleted = () => {
 
     return (
 
-
+//==================================================================================================================
+//=========================== Each entire " <CompletedContainer> will be clickable, triggers the  push to the annotator
+// ========================== with the id (?) as a selecting parameter for the fetch? ==============================
 
         allUserSamples.map((element, index)=>{
             if(!element.is_completed){

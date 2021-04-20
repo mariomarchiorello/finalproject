@@ -12,28 +12,25 @@ export const CompletedContainer = styled(CenterContainer)`
   display: flex;
   flex-direction: row;
   background-color: transparent;
-  transition: background-color 1s;
+  transition: color 0.5s;
+  opacity:100%;
   :hover{
     cursor: pointer;
-    background-color: darkgray ;
+    color:#30ADEA;  
   }
  .left{
    display: flex;
    justify-content: space-around;
    line-height: 2;
-   //background-color: pink;
    width: 50%;
  }
   .right{
-    //background-color: green;
     width: 50%;
     display: flex;
     justify-content: flex-start;
     img{
       margin: 2%;
-      height: 7rem;
-      //width: 80px;
+      height: 6rem;
     }
-  }
-  
+  }  
 `;

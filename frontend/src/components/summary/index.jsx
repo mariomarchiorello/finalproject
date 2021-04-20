@@ -36,11 +36,11 @@ const SampleSetSummary = () => {
     },[])
 
     const currentSample = useSelector(state => state.annotationReducer.currentSample)
-    console.log('Current sample from summary page: ', currentSample)
+    console.log('Current sample from summary page: ', currentSample.images)
 
+    let sampleImageArray = currentSample.images.map(image => image)
 
     // let image;
-    // let sampleImageArray = currentSample.images.map(image => image.original_image)
     // let plankton;
     // let samplePlanktonArray = currentSample.images.map(plankton = plankton.plankton)
     // console.log('plankton: ', plankton)
@@ -105,49 +105,63 @@ const SampleSetSummary = () => {
                             <OuterImagesContainer>
 
                                 <PreviewImagesContainer>
+                                    { sampleImageArray.map((image) => {
+                                        return (
+                                        <ImagePreview src={image.annotated_image === "" || image.annotated_image === "null"  ? image.original_image : image.annotated_image } alt="Samples image to be reviewed"/>,
+                                        <PlanktonCountContainer>
+                                        <LocalLabel>Phytoplankton: {image.phytoplankton} </LocalLabel>
+                                        <LocalLabel>Zooplankton: {image.zooplankton}</LocalLabel>
+                                        </PlanktonCountContainer>
+                                        )})}
+                                </PreviewImagesContainer>
+                            </OuterImagesContainer>
+
 
 
                                     {/*{sampleImageArray.map(image => <ImagePreview src={image} alt="sample Image"/>)}*/}
                                     {/*{sampleImageArray.map(phytoplankton => <LocalLabel>{sampleImageArray.}</LocalLabel>)}*/}
 
 
-                                    <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" />
-                                    {/*<ImagePreview src={!currentSample.images[0] ? placeHolderImg : currentSample.images[0]} alt="annotated image 1 preview" />*/}
-                                    {/*{ !currentSample.images[0] ? <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" /> : null }*/}
+                                {/*    <ImagePreview*/}
+                                {/*       src={sampleImageArray[0].annotated_image === "" || sampleImageArray[0].annotated_image === "null"  ? sampleImageArray[0].original_image : sampleImageArray[0].annotated_image }*/}
 
-                                    <PlanktonCountContainer>
-                                    <LocalLabel>Phytoplankton: 1</LocalLabel>
-                                    <LocalLabel>Zooplankton: 12</LocalLabel>
-                                    </PlanktonCountContainer>
-                                    <ImagePreview src={placeHolderImg} alt="annotated image 2 preview" />
-                                    <PlanktonCountContainer>
-                                    <LocalLabel>Phytoplankton: 2</LocalLabel>
-                                    <LocalLabel>Zooplankton: 23</LocalLabel>
-                                    </PlanktonCountContainer>
-                                    {/*<ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
-                                    {/*<ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
-                                    {/*<ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
-                                    {/*<ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
-                                </PreviewImagesContainer>
+                                {/*        alt="annotated image 1 preview" />*/}
+                                {/*    <ImagePreview src={!currentSample.images[0] ? placeHolderImg : currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                {/*    { !currentSample.images[0] ? <ImagePreview src={placeHolderImg} alt="annotated image 1 preview" /> : null }*/}
 
-                                <PreviewImagesContainer>
-                                    <ImagePreview src={placeHolderImg} alt="annotated image 3 preview" />
-                                    <PlanktonCountContainer>
-                                    <LocalLabel>Phytoplankton: 12</LocalLabel>
-                                    <LocalLabel>Zooplankton: 7</LocalLabel>
-                                    </PlanktonCountContainer>
-                                    <ImagePreview src={placeHolderImg} alt="annotated image 4 preview" />
-                                    <PlanktonCountContainer>
-                                    <LocalLabel>Phytoplankton: 18</LocalLabel>
-                                    <LocalLabel>Zooplankton: 4</LocalLabel>
-                                    </PlanktonCountContainer>
-                                    {/*<ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
-                                    {/*<ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
-                                    {/*<ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
-                                    {/*<ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
-                                </PreviewImagesContainer>
+                                {/*    <PlanktonCountContainer>*/}
+                                {/*    <LocalLabel>Phytoplankton: 1</LocalLabel>*/}
+                                {/*    <LocalLabel>Zooplankton: 12</LocalLabel>*/}
+                                {/*    </PlanktonCountContainer>*/}
+                                {/*    <ImagePreview src={placeHolderImg} alt="annotated image 2 preview" />*/}
+                                {/*    <PlanktonCountContainer>*/}
+                                {/*    <LocalLabel>Phytoplankton: 2</LocalLabel>*/}
+                                {/*    <LocalLabel>Zooplankton: 23</LocalLabel>*/}
+                                {/*    </PlanktonCountContainer>*/}
+                                {/*    <ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                {/*    <ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
+                                {/*    <ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
+                                {/*    <ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
+                                {/*</PreviewImagesContainer>*/}
 
-                            </OuterImagesContainer>
+                                {/*<PreviewImagesContainer>*/}
+                                {/*    <ImagePreview src={placeHolderImg} alt="annotated image 3 preview" />*/}
+                                {/*    <PlanktonCountContainer>*/}
+                                {/*    <LocalLabel>Phytoplankton:  </LocalLabel>*/}
+                                {/*    <LocalLabel>Zooplankton: 7</LocalLabel>*/}
+                                {/*    </PlanktonCountContainer>*/}
+                                {/*    <ImagePreview src={placeHolderImg} alt="annotated image 4 preview" />*/}
+                                {/*    <PlanktonCountContainer>*/}
+                                {/*    <LocalLabel>Phytoplankton: 18</LocalLabel>*/}
+                                {/*    <LocalLabel>Zooplankton: 4</LocalLabel>*/}
+                                {/*    </PlanktonCountContainer>*/}
+                                {/*    <ImagePreview src={currentSample.images[0]} alt="annotated image 1 preview" />*/}
+                                {/*    <ImagePreview src={currentSample.images[1]} alt="annotated image 2 preview" />*/}
+                                {/*    <ImagePreview src={currentSample.images[2]} alt="annotated image 3 preview" />*/}
+                                {/*    <ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
+                                {/*</PreviewImagesContainer>*/}
+
+                            {/*</OuterImagesContainer>*/}
                             <Link to='/annotate-dusko'><TransparentButton>Examine Images Further</TransparentButton></Link>
                         </ImagesElementsContainer>
 
