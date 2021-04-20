@@ -1,11 +1,8 @@
 import React, {useEffect} from 'react'
-import {Info} from '../self/style'
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {CompletedContainer} from "./style";
-import {DisplayContainer} from "../style";
 import {getAllUserSamples} from "../../../store/actions/getAllMySamplesAction";
-// import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 
 
 const Completed = () => {
@@ -21,8 +18,6 @@ const Completed = () => {
     const allUserSamples = useSelector(state => state.UserReducer.allMySamples);
 
     return (
-
-
 
         allUserSamples.map((element, index)=>{
             if(element.is_completed){
@@ -51,7 +46,6 @@ const Completed = () => {
                     {sampleImageArray.map(image=> <img
                         src={image.annotated_image === "" || image.annotated_image === "null"  ? image.original_image : image.annotated_image }
                         alt="sample Image"/>)}
-
                 </section>
             </CompletedContainer>
             )

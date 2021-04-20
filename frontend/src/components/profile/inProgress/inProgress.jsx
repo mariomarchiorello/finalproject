@@ -1,11 +1,8 @@
 import React, {useEffect} from 'react'
-import {Info} from '../self/style'
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {CompletedContainer} from "../completed/style";
 import {getAllUserSamples} from "../../../store/actions/getAllMySamplesAction";
-// import {DisplayContainer} from "../style";
-// import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 
 
 const NotCompleted = () => {
@@ -27,10 +24,6 @@ const NotCompleted = () => {
     }
 
     return (
-
-//==================================================================================================================
-//=========================== Each entire " <CompletedContainer> will be clickable, triggers the  push to the annotator
-// ========================== with the id (?) as a selecting parameter for the fetch? ==============================
 
         allUserSamples.map((element, index)=>{
             if(!element.is_completed){
@@ -57,22 +50,13 @@ const NotCompleted = () => {
                     </div>
                 </section>
                 <section className='right'>
-                    {sampleImageArray.map(image=> <img src={image} alt="sample Image"/>)}
-
-
+                    {sampleImageArray.map(image=> <img
+                        src={image.annotated_image === "" || image.annotated_image === "null"  ? image.original_image : image.annotated_image }
+                        alt="sample Image"/>)}
                 </section>
-
-
             </CompletedContainer>
             )}
         })
-
-
-
-
-
-
-
     )
 }
 export default(NotCompleted)
