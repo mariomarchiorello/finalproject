@@ -22,9 +22,11 @@ const Header = () => {
         const [localToken, setLocalToken] = useState("");
 
     //console.log("from selecthor", localToken)
+    const profileMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
    // console.log("from useSelector",storeToken)
+    const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
 
     //console.log("from use Selecthor",userSelf.first_name)
     const profileHandler = (value) => {
@@ -49,9 +51,19 @@ const Header = () => {
     return  <>
     <HeaderContainer>
 
-        {localToken ? (<Link to="/map"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) : (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
-        {localToken ? (<RightContainer><Link><Profile onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Profile></Link><LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) :
-            (<RightContainer><Profile onClick={joinUs}>Join</Profile><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
+        {localToken ?
+            (<Link onClick={()=>profileMainChoice("home")} to="/map"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) :
+            (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
+        {localToken ?
+            (<RightContainer>
+                <Link className="headermenu" to="/map" onClick={()=>profileMainChoice("home")} style={profileMainAction === "home" ? {borderBottom: "3px solid #30ADEA"} : null} >Home</Link>
+                <Link className="headermenu" to="/upload" onClick={()=>profileMainChoice("upload")} style={profileMainAction === "upload" ? {borderBottom: "3px solid #30ADEA"} : null} >Upload</Link>
+                <Link
+                    style={profileMainAction === "profile" || profileMainAction === "info" || profileMainAction === "completed" || profileMainAction === "incomplete" ? {borderBottom: "3px solid #30ADEA"} : null}
+                    className="headermenu"
+                    onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Link>
+                <LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) :
+            (<RightContainer><Link className="headernemu" onClick={joinUs}>Join</Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
     </HeaderContainer>
   </>
 }
