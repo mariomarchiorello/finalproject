@@ -24,6 +24,7 @@ import {
     TextsContainer,
     SummaryContainer
 } from "./style"
+import {patchSampleSet} from "../../store/actions/patchIsCompletedAction";
 
 
 const SampleSetSummary = () => {
@@ -36,10 +37,10 @@ const SampleSetSummary = () => {
     },[])
 
     const currentSample = useSelector(state => state.annotationReducer.currentSample)
-    console.log('Current sample from summary page: ', currentSample.images)
+    console.log('Current sample from summary page: ', currentSample)
 
-    let sampleImageArray = currentSample.images.map(image => image)
-
+    // let sampleImageArray = currentSample.images.map(image => image)
+    // console.log("SampleImageArray: ",sampleImageArray)
     // let image;
     // let plankton;
     // let samplePlanktonArray = currentSample.images.map(plankton = plankton.plankton)
@@ -105,15 +106,21 @@ const SampleSetSummary = () => {
                             <OuterImagesContainer>
 
                                 <PreviewImagesContainer>
-                                    { sampleImageArray.map((image) => {
+                                    {currentSample.images ? (currentSample.images.map( image => {
                                         return (
-                                        <ImagePreview src={image.annotated_image === "" || image.annotated_image === "null"  ? image.original_image : image.annotated_image } alt="Samples image to be reviewed"/>,
+                                            <>
+                                        <ImagePreview src={(image.annotated_image === "" || image.annotated_image === "null" ) ? image.original_image : image.annotated_image }
+                                                      alt="Samples image to be reviewed"/>
                                         <PlanktonCountContainer>
                                         <LocalLabel>Phytoplankton: {image.phytoplankton} </LocalLabel>
                                         <LocalLabel>Zooplankton: {image.zooplankton}</LocalLabel>
                                         </PlanktonCountContainer>
-                                        )})}
+                                            </>
+                                        )}
+                                        ) ): null}
+
                                 </PreviewImagesContainer>
+
                             </OuterImagesContainer>
 
 
@@ -169,7 +176,7 @@ const SampleSetSummary = () => {
                         {/*<LocalLabel>Storm <input type={'checkbox'} name={'storm'} onChange={() => setStormChecked(!stormChecked)} checked={stormChecked} /></LocalLabel>*/}
 
                         <ConfirmElementsContainer>
-                            <Link to='/map'><BlueButton>Confirm</BlueButton></Link>
+                            <Link><BlueButton onClick={()=>dispatch(patchSampleSet(history))} >Confirm</BlueButton></Link>
                         </ConfirmElementsContainer>
                     </SummaryContainer>
                 </Main> 
