@@ -12,7 +12,10 @@ height: 2.5rem;
 font-size: 18px;
 cursor:pointer;
 outline:transparent;
-
+transition:color 0.5s;  
+:hover{
+  color:#30ADEA;
+}
 :active{
   outline:transparent;
 }

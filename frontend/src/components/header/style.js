@@ -30,13 +30,11 @@ export const Profile = styled(TransparentButton)`
 font-size: 18px;
 color: ${props => props.theme.buttoncolor };
 cursor:pointer;
-//trasition:color 2s ease 0s;  
-
-
-:hover {
-color:#30ADEA ;
+transition:color 0.5s;  
+:hover{
+  color:#30ADEA;
+}  
   
-}
 `;
 export const LoginButton = styled(TransparentButton)`
 margin-left: 35px;
@@ -44,13 +42,10 @@ margin-right: 35px;
 background-color: transparent;
 color: ${props => props.theme.buttoncolor };
 font-size: 18px;
-//font-weight: bold;
-//trasition:color 2s ease 0s;  
-:hover {
-color:#30ADEA;  
-}  
-
-  
+transition:color 0.5s;  
+:hover{
+  color:#30ADEA;
+}
 
 :active{
   outline-color:#ffffff;
