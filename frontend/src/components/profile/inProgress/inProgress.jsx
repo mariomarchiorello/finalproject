@@ -2,8 +2,8 @@ import React, {useEffect} from 'react'
 import {Info} from '../self/style'
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {getUserSampleAction} from "../../../store/actions/getUserSampleSetAction";
 import {CompletedContainer} from "../completed/style";
+import {getAllUserSamples} from "../../../store/actions/getAllMySamplesAction";
 // import {DisplayContainer} from "../style";
 // import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
 
@@ -14,7 +14,7 @@ const NotCompleted = () => {
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        dispatch(getUserSampleAction(history))
+        dispatch(getAllUserSamples(history))
 
     },[])
 
