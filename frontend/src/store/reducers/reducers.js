@@ -7,7 +7,7 @@ const initialState = {
   user: [],
   userMe: {},
   profileEditSection: "info",
-  profileMainSection: "profile",
+  profileMainSection: "home",
   allMySamples: [],
 
 };

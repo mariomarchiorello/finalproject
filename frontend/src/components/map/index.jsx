@@ -34,10 +34,7 @@ const MapPage = ()=>  {
                     <Main>
                         <BackgroundMap>
                         <Map />
-                        <section className="button">
-                        <Link to="/upload"><Bluebutton>Upload</Bluebutton></Link>
-                        <Bluebutton onClick={()=>profileHandler(["info","profile"])} >Profile</Bluebutton>
-                        </section>
+
                         </BackgroundMap>
                     </Main>
                     <Footer />

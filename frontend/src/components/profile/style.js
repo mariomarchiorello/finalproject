@@ -19,7 +19,8 @@ export const SelectionContainer = styled.div`
         border-bottom: transparent;
         padding: 3px;
         font-size:18px;
-        transition:color 0.5s;
+        border-bottom: none;
+        transition:color 0.5s, border-bottom 0.5s ;
       :hover {
         color: #30ADEA;
       }
