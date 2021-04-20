@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { MapContainer, TileLayer, Marker , Popup} from 'react-leaflet';
+import { MapContainer, TileLayer, Marker , Popup, CircleMarker} from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { Box } from './style';
 import { sampleAllIcon, sampleMeIcon,shipMeIcon, shipAllIcon, homeMeIcon, homeAllIcon } from './mapIcons';
@@ -35,9 +35,10 @@ export default function Map() {
     dispatch(getAllLocationsAction(history))
     },[])
     const locationsArray = useSelector(state => state.locationReducer.allLocations)
-    // console.log("all locations inside the map ",locationsArray)
+    console.log("all locations inside the map ",locationsArray)
 
-    const allPos = locationsArray.map((value) => [[value.sample_latitude,value.sample_longitude],value.id, value.collection_date])
+    const allPos = locationsArray.map((value) => [[value.sample_latitude, value.sample_longitude], value.id, value.collection_date, value.total_phytoplankton, value.total_zooplankton])
+    console.log(allPos)
 
     // console.log("ARRAY WITH POS AND ID",allPos)
 
@@ -55,12 +56,17 @@ export default function Map() {
                 
                 <TileLayer attribution='&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-earth">GoogleMaps</a> Data 2021' url='http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}'/>
 
+
                 {/*{*/}
                 {/*    sampleMePositions.map(position => <Marker position={position} icon={sampleMeIcon}/> )*/}
                 {/*}*/}
 
+                {/*{*/}
+                {/*    allPos.map(position => <Marker position={position[0]} icon={sampleAllIcon}><Popup>{`Sample Id: ${position[1]}`}<br/>{`Sample Date: ${position[2]}`}</Popup></Marker>  )*/}
+                {/*}*/}
+
                 {
-                    allPos.map(position => <Marker position={position[0]} icon={sampleAllIcon}><Popup>{`Sample Id: ${position[1]}`}<br/>{`Sample Date: ${position[2]}`}</Popup></Marker>  )
+                    allPos.map(position => <CircleMarker center={position[0]} radius={4 * (1 + ((position[3] + position[4]) / 30))} color={'red'} weight={1} fillOpacity={0.1} > <Popup>{`Sample Id: ${position[1]}`}<br/>{`Sample Date: ${position[2]}`}</Popup> </CircleMarker> )
                 }
 
                 {/*{*/}
