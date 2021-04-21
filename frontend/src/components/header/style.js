@@ -12,7 +12,18 @@ top: 0;
 background-color: transparent;
 opacity: 95%;  
 height: 10%;
-  z-index: 10;
+z-index: 10;
+.headermenu {
+  text-decoration: none;
+  font-size: 18px;
+  color: ${props => props.theme.labelcolor};
+  cursor: pointer;
+  border-bottom: none;
+  transition: color 0.5s, border-bottom 0.5s;
+  :hover {
+    color: #30ADEA;
+  }
+}
 `;
 export const Logo = styled.img`
  width: 190px;
