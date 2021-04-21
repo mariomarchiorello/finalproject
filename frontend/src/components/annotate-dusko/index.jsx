@@ -7,6 +7,7 @@ import {
   SampleContainer,
 } from "./style";
 import Header from "../header";
+import { Background } from "../../globalstyles/globalStyle";
 import CanvasTwo from "./canvas-dusko/";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserSampleAction } from "../../store/actions/getUserSampleSetAction";
@@ -59,7 +60,7 @@ function AnnotateTwo() {
   };
 
   return (
-    <>
+    <Background>
       <Header />
       {onCanvas ? (
         <Cursor color={color} duration={0.8} size={size * 2} />
@@ -69,8 +70,8 @@ function AnnotateTwo() {
           ? images.map((img, index) => {
               return (
                 <img
-                  height="100px"
-                  width="100px"
+                  height="70px"
+                  width="70px"
                   onClick={(e) => {
                     setSampleId(e.target.id);
                     setSample(e.target.src);
@@ -158,7 +159,7 @@ function AnnotateTwo() {
       <button onClick={() => history.push("/summary")} disabled={submitEnabled}>
         submit
       </button>
-    </>
+    </Background>
   );
 }
 

@@ -138,7 +138,7 @@ const CanvasTwo = (props) => {
 
   return (
     <>
-      <h1>{zooCount}</h1>
+      <h1 style={{ color: "white" }}>{zooCount}</h1>
       <button onClick={() => undo()}>undo</button>
       <div>
         <StyledCanvas
@@ -151,7 +151,7 @@ const CanvasTwo = (props) => {
       <button onClick={() => save()} width="10px">
         save
       </button>
-      <h1>{phytoCount}</h1>
+      <h1 style={{ color: "white" }}>{phytoCount}</h1>
       {/* <img ref={imgRef} height='60px' width='60px'/> */}
     </>
   );
