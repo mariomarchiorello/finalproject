@@ -2,16 +2,19 @@ import styled from "styled-components";
 import { TransparentButton, BlueButton } from "../../globalstyles/globalStyle";
 
 export const ToolsContainer = styled.div`
+  width: 20%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-end;
+  /* border: 1px solid red; */
 `;
 
 export const Tool = styled(TransparentButton)`
-  // color: ${(props) => props.theme.transbuttoncolor};
-  color: white;
+  color: ${(props) => props.theme.transbuttoncolor};
+  /* color: white; */
   height: 30px;
+  font-weight: 500;
+  margin-left: 1rem;
+  /* border: 1px solid transparent; */
 `;
 
 export const StyledCanvas = styled.canvas`
@@ -25,7 +28,7 @@ export const StyledCanvas = styled.canvas`
 
 export const References = styled.div`
   flex-direction: column;
-  width: 100px;
+  width: 120px;
   height: 30vh;
   /* box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
   -webkit-box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
@@ -59,9 +62,10 @@ export const References = styled.div`
 export const ReferenceCount = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const CanvasContainer = styled.div`
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -69,17 +73,19 @@ export const CanvasContainer = styled.div`
 
 export const SampleContainer = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
   height: 70px;
-  width: 30%;
+  width: 33%;
+  margin-right: 50px;
 `;
 
 export const ToolsAndImages = styled.div`
-  width: 58%;
+  width: 48vw;
   display: flex;
   justify-content: space-between;
-`
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+`;
 
 export const SampleImg = styled.img`
   height: 70px;
@@ -91,31 +97,48 @@ export const SampleImg = styled.img`
 `;
 
 export const TopContainer = styled.div`
+  width: 100vw;
   height: 15%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-`
+`;
 
 export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
-  align-items:center;
-`
+  align-items: center;
+`;
 
 export const SubmitButton = styled(BlueButton)`
+  width: 8rem;
+  height: 2rem;
+  font-size: 1rem;
+  padding: 0;
+  margin-top: 1.2rem;
+`;
+export const SubmitWrapper = styled.div`
+  width: 100vw;
+  height: 2vh;
+  display: flex;
+  justify-content: center;
+`;
 
-`
 export const CanvasWithButtons = styled.div`
   display: flex;
   justify-content: space-between;
   width: 58%;
-`
+`;
 
 export const SaveButton = styled(TransparentButton)`
-  height: 30px;
-`
+  height: 10px;
+  margin-right: 1vw;
+  border: 0px solid transparent;
+  display: flex;
+  justify-content: flex-start;
+`;
 export const DummyButton = styled(TransparentButton)`
-  height: 30px;
+  height: 10px;
+  margin-left: 1vw;
   visibility: hidden;
-`
+`;

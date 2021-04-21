@@ -7,8 +7,14 @@ import phyto1 from "../../../assets/background-images/5.jpg";
 import phyto2 from "../../../assets/background-images/6.jpg";
 import phyto3 from "../../../assets/background-images/7.jpg";
 import phyto4 from "../../../assets/background-images/8.jpg";
-import { StyledCanvas, References, Sidebar, SaveButton, 
-         DummyButton, CanvasWithButtons } from "../style";
+import {
+  StyledCanvas,
+  References,
+  Sidebar,
+  SaveButton,
+  DummyButton,
+  CanvasWithButtons,
+} from "../style";
 import html2canvas from "html2canvas";
 import { useDispatch } from "react-redux";
 import { patchImageAction } from "../../../store/actions/patchImage";
@@ -147,16 +153,17 @@ const CanvasTwo = (props) => {
   const circleHandlerLeave = () => {
     setOnCanvas(false);
   };
-  
+
   const circleHandlerIn = () => {
     setOnCanvas(true);
   };
-  
+
   return (
     <>
-      <Sidebar>
-      <h1 style={{ color: "white" }}>{zooCount}</h1>
-      <References
+      <Sidebar style={{ marginLeft: "200px" }}>
+        <h1 style={{ color: "white" }}>{zooCount}</h1>
+        <h2 style={{ color: "white", fontSize: "1rem" }}>Zooplanton</h2>
+        <References
           onClick={() => {
             setColor("rgba(0, 230, 64, 0.5)");
             setReference(true);
@@ -169,28 +176,33 @@ const CanvasTwo = (props) => {
             }`,
           }}
         >
-          <img src={zoo1} height="100px" width="100px" alt="shh" />
-          <img src={zoo2} height="100px" width="100px" alt="shh" />
-          <img src={zoo3} height="100px" width="100px" alt="shh" />
-          <img src={zoo4} height="100px" width="100px" alt="shh" />
+          <img src={zoo1} height="120" width="120" alt="shh" />
+          <img src={zoo2} height="120" width="120" alt="shh" />
+          <img src={zoo3} height="120" width="120" alt="shh" />
+          <img src={zoo4} height="120" width="120" alt="shh" />
         </References>
       </Sidebar>
       {/* <CanvasButton onClick={() => undo()}>undo</CanvasButton> */}
       <CanvasWithButtons>
-      <DummyButton><i class="fas fa-check" style={{color: 'transparent'}}></i></DummyButton>
-      <div>
-        <StyledCanvas
-          ref={canvasRef}
-          onClick={annotate}
-          onMouseMove={circleHandlerIn}
-          onMouseLeave={circleHandlerLeave}
-        />
-      </div>
-      <SaveButton onClick={() => save()}><i class="far fa-save fa-lg" color={{color: 'white'}}></i></SaveButton>
+        <DummyButton>
+          <i class="far fa-save fa-lg" color={{ color: "transparent" }}></i>
+        </DummyButton>
+        <div>
+          <StyledCanvas
+            ref={canvasRef}
+            onClick={annotate}
+            onMouseMove={circleHandlerIn}
+            onMouseLeave={circleHandlerLeave}
+          />
+        </div>
+        <SaveButton onClick={() => save()}>
+          <i class="far fa-save fa-lg" color={{ color: "white" }}></i>
+        </SaveButton>
       </CanvasWithButtons>
-      <Sidebar>
-      <h1 style={{color: "white"}}>{phytoCount}</h1>
-      <References
+      <Sidebar style={{ marginRight: "200px" }}>
+        <h1 style={{ color: "white" }}>{phytoCount}</h1>
+        <h2 style={{ color: "white", fontSize: "1rem" }}>Phytoplanton</h2>
+        <References
           onClick={() => {
             setColor("rgba(244, 208, 63, 0.5)");
             setReference(false);
@@ -203,12 +215,12 @@ const CanvasTwo = (props) => {
             }`,
           }}
         >
-          <img src={phyto1} height="100px" width="100px" alt="shh" />
-          <img src={phyto2} height="100px" width="100px" alt="shh" />
-          <img src={phyto3} height="100px" width="100px" alt="shh" />
-          <img src={phyto4} height="100px" width="100px" alt="shh" />
+          <img src={phyto1} height="120" width="120" alt="shh" />
+          <img src={phyto2} height="120" width="120" alt="shh" />
+          <img src={phyto3} height="120" width="120" alt="shh" />
+          <img src={phyto4} height="120" width="120" alt="shh" />
         </References>
-        </Sidebar>
+      </Sidebar>
     </>
   );
 };
