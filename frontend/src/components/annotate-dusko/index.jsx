@@ -7,7 +7,8 @@ import {
   SampleImg,
   ToolsAndImages,
   TopContainer,
-  SubmitButton
+  SubmitButton,
+  SubmitWrapper,
 } from "./style";
 import Header from "../header";
 import { Background } from "../../globalstyles/globalStyle";
@@ -64,35 +65,35 @@ function AnnotateTwo() {
         <Cursor color={color} duration={0.5} size={size * 2} />
       ) : null}
       <TopContainer>
-      <ToolsAndImages>
-      <SampleContainer>
-        {images
-          ? images.map((img, index) => {
-              return isLoading ? (
-                <SpinnerContainer></SpinnerContainer>
-              ) : (
-                <SampleImg
-                  onClick={(e) => {
-                    setSampleId(e.target.id);
-                    setSample(e.target.src);
-                    updateCount(index);
-                  }}
-                  src={
-                    img.annotated_image
-                      ? img.annotated_image
-                      : img.original_image
-                  }
-                  key={img.id}
-                  id={img.id}
-                  alt="shh"
-                />
-              );
-            })
-          : null}
-      </SampleContainer>
-      <ToolsContainer>
-        {/* <Tool>undo</Tool> */}
-        {/* <i
+        <ToolsAndImages>
+          <SampleContainer>
+            {images
+              ? images.map((img, index) => {
+                  return isLoading ? (
+                    <SpinnerContainer></SpinnerContainer>
+                  ) : (
+                    <SampleImg
+                      onClick={(e) => {
+                        setSampleId(e.target.id);
+                        setSample(e.target.src);
+                        updateCount(index);
+                      }}
+                      src={
+                        img.annotated_image
+                          ? img.annotated_image
+                          : img.original_image
+                      }
+                      key={img.id}
+                      id={img.id}
+                      alt="shh"
+                    />
+                  );
+                })
+              : null}
+          </SampleContainer>
+          <ToolsContainer>
+            {/* <Tool>undo</Tool> */}
+            {/* <i
           class="fas fa-circle"
           style={{
             color,
@@ -101,13 +102,14 @@ function AnnotateTwo() {
             marginTop: "3.5px",
           }}
         ></i> */}
-        <Tool
-          onClick={() => setSize((currentSize) => currentSize + 20)}
-          disabled={size > 100 ? true : false}
-        >
-          +{/* <i class="far fa-circle" style={{ fontSize: "1.2em" }}></i> */}
-        </Tool>
-        {/* <i
+            <Tool
+              onClick={() => setSize((currentSize) => currentSize + 20)}
+              disabled={size > 100 ? true : false}
+            >
+              +
+              {/* <i class="far fa-circle" style={{ fontSize: "1.2em" }}></i> */}
+            </Tool>
+            {/* <i
           class="fas fa-circle"
           style={{
             color,
@@ -117,14 +119,15 @@ function AnnotateTwo() {
             marginLeft: "10px",
           }}
         ></i> */}
-        <Tool
-          onClick={() => setSize((currentSize) => currentSize - 20)}
-          disabled={size < 11 ? true : false}
-        >
-          -{/* <i class="far fa-circle" style={{ fontSize: "0.6em" }}></i> */}
-        </Tool>
-      </ToolsContainer>
-      </ToolsAndImages>
+            <Tool
+              onClick={() => setSize((currentSize) => currentSize - 20)}
+              disabled={size < 11 ? true : false}
+            >
+              -
+              {/* <i class="far fa-circle" style={{ fontSize: "0.6em" }}></i> */}
+            </Tool>
+          </ToolsContainer>
+        </ToolsAndImages>
       </TopContainer>
       <CanvasContainer>
         <CanvasTwo
@@ -144,13 +147,15 @@ function AnnotateTwo() {
           setIsLoading={setIsLoading}
         />
       </CanvasContainer>
-      <SubmitButton
-        style={{ color: "white" }}
-        onClick={() => history.push("/summary")}
-        disabled={submitEnabled}
-      >
-        Submit
-      </SubmitButton>
+      <SubmitWrapper>
+        <SubmitButton
+          style={{ color: "white" }}
+          onClick={() => history.push("/summary")}
+          disabled={submitEnabled ? "disabled" : null}
+        >
+          Submit
+        </SubmitButton>
+      </SubmitWrapper>
     </Background>
   );
 }
