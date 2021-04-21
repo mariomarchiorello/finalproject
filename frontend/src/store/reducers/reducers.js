@@ -40,7 +40,6 @@ const UserReducer = (state = initialState, action) => {
       // console.log("FROM IN DA REDUCER:", action.payload)
       return {...state, allMySamples: action.payload
       };
-
     default:
       return state;
   }

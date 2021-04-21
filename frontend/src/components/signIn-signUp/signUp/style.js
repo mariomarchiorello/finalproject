@@ -17,9 +17,15 @@ export const RegInputContainer = styled.div`
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
-  p{
-    color: ${props => props.theme.labelcolor };
-  }
+  div {
+    margin-top: 2%;
+      color: ${props => props.theme.labelcolor};
+    transition:color 0.5s;
+    :hover{
+      color:#30adea ;
+    }
+    }
+  
 `;
 
 export const RegButton = styled(BlueButton)`
