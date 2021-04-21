@@ -15,7 +15,6 @@ export const CanvasProvider = ({ children }) => {
 
   const dispatch = useDispatch();
   const annotatedData = useSelector((state) => state.annotationReducer);
-  // console.log(annotatedData, "state images after selector");
 
   const prepareCanvas = () => {
     const canvas = canvasRef.current;
@@ -77,9 +76,7 @@ export const CanvasProvider = ({ children }) => {
       allowTaint: true,
       useCORS: true,
       foreignObjectRendering: true,
-    }).then(function (canvas) {
-      // console.log(canvas.toDataURL("image/jpeg", 0.9));
-    });
+    }).then(function (canvas) {});
   };
 
   const nextImage = () => {
@@ -92,7 +89,6 @@ export const CanvasProvider = ({ children }) => {
   useEffect(() => {
     function fetchSample() {
       dispatch(getUserSampleAction());
-      // console.log("------inside use effect ", annotatedData);
     }
     fetchSample();
   }, []);
@@ -112,13 +108,12 @@ export const CanvasProvider = ({ children }) => {
           counter,
         }}
       >
-          {/* <div>Plankton: {counter}</div>
+        {/* <div>Plankton: {counter}</div>
 
       <button onClick={nextImage}>Next Image</button>
       <button onClick={saveImage}>Submit</button>
         {children} */}
       </CanvasContext.Provider>
-
     </>
   );
 };
