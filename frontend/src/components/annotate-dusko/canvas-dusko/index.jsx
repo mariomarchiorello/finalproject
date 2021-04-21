@@ -29,6 +29,10 @@ const CanvasTwo = (props) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    // canvas.width = window.innerWidth;
+    // canvas.height = window.innerHeight / 0.75;
+    // canvas.style.width = `${window.innerWidth / 2}px`;
+    // canvas.style.height = `${window.innerHeight / 1.5}px`;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight / 0.75;
     canvas.style.width = `${window.innerWidth / 2}px`;
@@ -139,7 +143,9 @@ const CanvasTwo = (props) => {
   return (
     <>
       <h1 style={{ color: "white" }}>{zooCount}</h1>
-      <button onClick={() => undo()}>undo</button>
+      <button onClick={() => undo()} style={{ height: "50px", width: "50px" }}>
+        undo
+      </button>
       <div>
         <StyledCanvas
           ref={canvasRef}
@@ -148,7 +154,7 @@ const CanvasTwo = (props) => {
           onMouseLeave={circleHandlerLeave}
         />
       </div>
-      <button onClick={() => save()} width="10px">
+      <button onClick={() => save()} style={{ height: "50px", width: "50px" }}>
         save
       </button>
       <h1 style={{ color: "white" }}>{phytoCount}</h1>
