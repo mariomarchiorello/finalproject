@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^12.1.10",
     "canvas-to-image": "^2.2.0",
     "cra-template": "1.1.2",
+    "eslint": "^7.24.0",
+    "eslint-webpack-plugin": "^2.5.4",
     "html2canvas": "1.0.0-rc.1",
     "leaflet": "^1.7.1",
     "leaflet-draw": "^1.0.4",

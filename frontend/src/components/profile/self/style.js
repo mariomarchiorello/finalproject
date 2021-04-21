@@ -19,13 +19,15 @@ export const Info = styled.div`
     section{
         width:20vw;
         color:${props => props.theme.labelcolor };
-      line-height: 3;
+      line-height: 1.5;
         div{
             margin:0%;
         }
         .type{
-            font-size:16px;
+            font-size:18px;
             margin-bottom:-4%;
+          //text-decoration: underline white ;
+          font-weight:bold ;
         }
         .value{
             font-size:18px;
