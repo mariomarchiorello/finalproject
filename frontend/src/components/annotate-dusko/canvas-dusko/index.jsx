@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { StyledCanvas } from "../style";
 import html2canvas from "html2canvas";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { patchImageAction } from "../../../store/actions/patchImage";
 
 const CanvasTwo = (props) => {
@@ -17,16 +17,15 @@ const CanvasTwo = (props) => {
     setZooCount,
     setPhytoCount,
     setOnCanvas,
+    setIsLoading,
   } = props;
-  // const [zooCount, setZooCount] = useState(0)
-  // const [phytoCount, setPhytoCount] = useState(0)
+
   const [imageData, setImageData] = useState(null);
   const [flag, setFlag] = useState(false);
   let [history, setHistory] = useState([]);
 
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
-  const imgRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -124,6 +123,7 @@ const CanvasTwo = (props) => {
       // foreignObjectRendering: true,
     }).then((canvas) => {
       setFlag(true);
+      setIsLoading(true);
       setImageData(() => canvas.toDataURL("image/jpeg", 1));
     });
   };
