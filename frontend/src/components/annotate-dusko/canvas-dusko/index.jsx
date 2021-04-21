@@ -3,6 +3,7 @@ import { StyledCanvas } from "../style";
 import html2canvas from "html2canvas";
 import { useDispatch } from "react-redux";
 import { patchImageAction } from "../../../store/actions/patchImage";
+import { CanvasButton } from "./style";
 
 const CanvasTwo = (props) => {
   const dispatch = useDispatch();
@@ -143,9 +144,7 @@ const CanvasTwo = (props) => {
   return (
     <>
       <h1 style={{ color: "white" }}>{zooCount}</h1>
-      <button onClick={() => undo()} style={{ height: "50px", width: "50px" }}>
-        undo
-      </button>
+      <CanvasButton onClick={() => undo()}>undo</CanvasButton>
       <div>
         <StyledCanvas
           ref={canvasRef}
@@ -154,10 +153,14 @@ const CanvasTwo = (props) => {
           onMouseLeave={circleHandlerLeave}
         />
       </div>
-      <button onClick={() => save()} style={{ height: "50px", width: "50px" }}>
-        save
-      </button>
-      <h1 style={{ color: "white" }}>{phytoCount}</h1>
+      <CanvasButton onClick={() => save()}>save</CanvasButton>
+      <h1
+        style={{
+          color: "white",
+        }}
+      >
+        {phytoCount}
+      </h1>
       {/* <img ref={imgRef} height='60px' width='60px'/> */}
     </>
   );

@@ -18,12 +18,18 @@ export const StyledCanvas = styled.canvas`
   /* border: 2px solid red; */
   background-color: white;
   overflow: hidden;
+  box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
+  -webkit-box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
+  -moz-box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
 `;
 
 export const References = styled.div`
   flex-direction: column;
   width: 100px;
   height: 30vh;
+  box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
+  -webkit-box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
+  -moz-box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
   /* overflow-x: hidden;
   overflow-y: scroll;  */
 
