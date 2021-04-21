@@ -5,8 +5,9 @@ export const ToolsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 40%;
+  width: 6%;
   margin-left: 500px;
+  margin-bottom: 3px;
 `;
 
 export const Tool = styled(TransparentButton)`

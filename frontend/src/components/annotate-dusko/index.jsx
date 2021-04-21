@@ -26,7 +26,7 @@ import { SpinnerContainer } from "../spinner/style";
 
 function AnnotateTwo() {
   const dispatch = useDispatch();
-  const [color, setColor] = useState("transparent");
+  const [color, setColor] = useState("rgba(0, 230, 64, 0.5)");
   const [reference, setReference] = useState("null");
   const [sample, setSample] = useState("null");
   const [sampleId, setSampleId] = useState("null");
@@ -97,20 +97,38 @@ function AnnotateTwo() {
           : null}
       </SampleContainer>
       <ToolsContainer>
-        <Tool>undo</Tool>
+        {/* <Tool>undo</Tool> */}
+        <i
+          class="fas fa-circle"
+          style={{
+            color,
+            fontSize: "1.2em",
+            marginRight: "3px",
+            marginTop: "3.5px",
+          }}
+        ></i>
         <Tool
           onClick={() => setSize((currentSize) => currentSize + 20)}
           disabled={size > 100 ? true : false}
         >
-          +
+          +{/* <i class="far fa-circle" style={{ fontSize: "1.2em" }}></i> */}
         </Tool>
+        <i
+          class="fas fa-circle"
+          style={{
+            color,
+            fontSize: "0.6em",
+            marginRight: "3px",
+            marginTop: "10px",
+            marginLeft: "10px",
+          }}
+        ></i>
         <Tool
           onClick={() => setSize((currentSize) => currentSize - 20)}
           disabled={size < 11 ? true : false}
         >
-          -
+          -{/* <i class="far fa-circle" style={{ fontSize: "0.6em" }}></i> */}
         </Tool>
-        <Tool />
       </ToolsContainer>
       <CanvasContainer>
         <References
@@ -119,7 +137,7 @@ function AnnotateTwo() {
             setReference(true);
           }}
           style={{
-            border: `7px solid ${
+            border: `4px solid ${
               color == "rgba(0, 230, 64, 0.5)" && reference
                 ? color
                 : "transparent"
@@ -150,7 +168,7 @@ function AnnotateTwo() {
             setReference(false);
           }}
           style={{
-            border: `7px solid ${
+            border: `4px solid ${
               color == "rgba(244, 208, 63, 0.5)" && !reference
                 ? color
                 : "transparent"
