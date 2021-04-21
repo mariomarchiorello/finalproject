@@ -48,10 +48,10 @@ const Header = () => {
 
     return  <>
     <HeaderContainer>
-
         {localToken ?
             (<Link onClick={()=>profileMainChoice("home")} to="/map"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) :
             (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
+        
         {localToken ?
             (<RightContainer>
                 <Link className="headermenu" to="/map" onClick={()=>profileMainChoice("home")} style={profileMainAction === "home" ? {borderBottom: "3px solid #30ADEA"} : null} >Home</Link>
@@ -60,6 +60,7 @@ const Header = () => {
                     style={profileMainAction === "profile" || profileMainAction === "info" || profileMainAction === "completed" || profileMainAction === "incomplete" ? {borderBottom: "3px solid #30ADEA"} : null}
                     className="headermenu"
                     onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Link>
+                <Link className="headermenu" to="/about" onClick={()=>profileMainChoice("about")} style={profileMainAction === "about" ? {borderBottom: "3px solid #30ADEA"} : null}>About</Link>
                 <LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) : null}
         {localToken ? null:
             (<RightContainer>
