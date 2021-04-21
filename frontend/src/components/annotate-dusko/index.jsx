@@ -126,10 +126,10 @@ function AnnotateTwo() {
             }`,
           }}
         >
-          <img src={zoo1} height="200px" width="200px" alt="shh" />
-          <img src={zoo2} height="200px" width="200px" alt="shh" />
-          <img src={zoo3} height="200px" width="200px" alt="shh" />
-          <img src={zoo4} height="200px" width="200px" alt="shh" />
+          <img src={zoo1} height="100px" width="100px" alt="shh" />
+          <img src={zoo2} height="100px" width="100px" alt="shh" />
+          <img src={zoo3} height="100px" width="100px" alt="shh" />
+          <img src={zoo4} height="100px" width="100px" alt="shh" />
         </References>
         <CanvasTwo
           color={color}
@@ -157,13 +157,17 @@ function AnnotateTwo() {
             }`,
           }}
         >
-          <img src={phyto1} height="200px" width="200px" alt="shh" />
-          <img src={phyto2} height="200px" width="200px" alt="shh" />
-          <img src={phyto3} height="200px" width="200px" alt="shh" />
-          <img src={phyto4} height="200px" width="200px" alt="shh" />
+          <img src={phyto1} height="100px" width="100px" alt="shh" />
+          <img src={phyto2} height="100px" width="100px" alt="shh" />
+          <img src={phyto3} height="100px" width="100px" alt="shh" />
+          <img src={phyto4} height="100px" width="100px" alt="shh" />
         </References>
       </CanvasContainer>
-      <button onClick={() => history.push("/summary")} disabled={submitEnabled}>
+      <button
+        style={{ color: "white" }}
+        onClick={() => history.push("/summary")}
+        disabled={submitEnabled}
+      >
         submit
       </button>
     </Background>
