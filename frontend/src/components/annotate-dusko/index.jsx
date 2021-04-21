@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import {ToolsContainer, Tool, References, CanvasContainer, Header, SampleContainer} from './style'
+import {ToolsContainer, Tool, References, CanvasContainer, SampleContainer} from './style'
 import CanvasTwo from './canvas-dusko/'
+import Header from '../header';
+import {Background} from '../../globalstyles/globalStyle' 
 import {useDispatch, useSelector} from 'react-redux'
 import { getUserSampleAction } from "../../store/actions/getUserSampleSetAction";
 import zoo1 from '../../assets/background-images/1.jpg';
@@ -13,6 +15,8 @@ import phyto3 from '../../assets/background-images/7.jpg';
 import phyto4 from '../../assets/background-images/8.jpg';
 import {GlobalStyle} from '../../globalstyles/globalStyle'
 import {useHistory} from 'react-router-dom'
+// @ts-ignore
+import Cursor from "react-cursor-follow";
 
 
 function AnnotateTwo() {
@@ -36,7 +40,7 @@ function AnnotateTwo() {
           images.map(img => {
               img.annotated_image ? count += 1 : count = 0
           })
-          count === images.length ? setSubmitEnabled(true) : setSubmitEnabled(false)
+          count === images.length - 1 ? setSubmitEnabled(false) : setSubmitEnabled(true)
         }
     }, [annotatedData.annotatedImages]);
     
@@ -47,12 +51,13 @@ function AnnotateTwo() {
     }
 
     return (
-        <>
-        <Header><h1>HEADER</h1></Header>
+        <Background>
+        <Cursor hollow duration={0.8} color={color} size={size*2} />
+        <Header/>
         <SampleContainer>
             {images ? images.map((img, index) => {
-               return <img height='100px' 
-                           width='100px' 
+               return <img height='70px'
+                           width='70px'
                            onClick={e => {
                                setSampleId(e.target.id)
                                setSample(e.target.src)
@@ -97,7 +102,7 @@ function AnnotateTwo() {
             </References>
         </CanvasContainer>
         <button onClick={() => history.push('/summary')} disabled={submitEnabled}>submit</button>
-        </>
+        </Background>
     )
 }
 

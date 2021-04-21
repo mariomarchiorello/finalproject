@@ -13,6 +13,8 @@ const CanvasTwo = (props) => {
     // const [phytoCount, setPhytoCount] = useState(0)
     const [imageData, setImageData] = useState(null)
     const [flag, setFlag] = useState(false)
+    const [x, setX] = useState(null)
+    const [y, setY] = useState(null)
     let [history, setHistory] = useState([])
 
     const canvasRef = useRef(null)
@@ -105,10 +107,12 @@ const CanvasTwo = (props) => {
       <>
         <h1>{zooCount}</h1>
         <button onClick={() => undo()}>undo</button>
-        <div><StyledCanvas 
-        ref={canvasRef}
-        onClick={annotate}
-        /></div>
+        <div>
+            <StyledCanvas 
+            ref={canvasRef}
+            onClick={annotate}
+            />
+        </div>
         <button onClick={() => save()} width='10px'>save</button>
         <h1>{phytoCount}</h1>
         {/* <img ref={imgRef} height='60px' width='60px'/> */}
