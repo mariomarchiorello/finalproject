@@ -71,3 +71,11 @@ export const SampleContainer = styled.div`
   width: 20%;
   margin-top: 4rem;
 `;
+
+export const SampleImg = styled.img`
+  height: 70px;
+  width: 70px;
+  box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75);
+  -webkit-box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75);
+  -moz-box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75);
+`;

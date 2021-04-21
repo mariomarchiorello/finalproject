@@ -5,6 +5,7 @@ import {
   References,
   CanvasContainer,
   SampleContainer,
+  SampleImg,
 } from "./style";
 import Header from "../header";
 import { Background } from "../../globalstyles/globalStyle";
@@ -56,7 +57,6 @@ function AnnotateTwo() {
   }, [annotatedData.annotatedImages]);
 
   const updateCount = (index) => {
-    console.log(images[index].zooplankton);
     setZooCount(images[index].zooplankton ? images[index].zooplankton : 0);
     setPhytoCount(
       images[index].phytoplankton ? images[index].phytoplankton : 0
@@ -75,9 +75,7 @@ function AnnotateTwo() {
               return isLoading ? (
                 <SpinnerContainer></SpinnerContainer>
               ) : (
-                <img
-                  height="70px"
-                  width="70px"
+                <SampleImg
                   onClick={(e) => {
                     setSampleId(e.target.id);
                     setSample(e.target.src);
