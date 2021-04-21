@@ -22,6 +22,7 @@ import phyto4 from "../../assets/background-images/8.jpg";
 import { GlobalStyle } from "../../globalstyles/globalStyle";
 import { useHistory } from "react-router-dom";
 import Cursor from "react-cursor-follow";
+import { SpinnerContainer } from "../spinner/style";
 
 function AnnotateTwo() {
   const dispatch = useDispatch();
@@ -33,6 +34,8 @@ function AnnotateTwo() {
   const [zooCount, setZooCount] = useState(0);
   const [phytoCount, setPhytoCount] = useState(0);
   const [onCanvas, setOnCanvas] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const annotatedData = useSelector((state) => state.annotationReducer);
   const { images } = annotatedData.currentSample;
   const [submitEnabled, setSubmitEnabled] = useState(true);
@@ -40,6 +43,7 @@ function AnnotateTwo() {
 
   useEffect(() => {
     dispatch(getUserSampleAction());
+    setIsLoading(false);
     if (images) {
       let count = 0;
       images.map((img) => {
@@ -68,7 +72,9 @@ function AnnotateTwo() {
       <SampleContainer>
         {images
           ? images.map((img, index) => {
-              return (
+              return isLoading ? (
+                <SpinnerContainer></SpinnerContainer>
+              ) : (
                 <img
                   height="70px"
                   width="70px"
@@ -136,6 +142,7 @@ function AnnotateTwo() {
           setZooCount={setZooCount}
           setPhytoCount={setPhytoCount}
           setOnCanvas={setOnCanvas}
+          setIsLoading={setIsLoading}
         />
         <References
           onClick={() => {
