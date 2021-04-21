@@ -4,9 +4,9 @@ import {
   Tool,
   References,
   CanvasContainer,
-  Header,
   SampleContainer,
 } from "./style";
+import Header from "../header";
 import CanvasTwo from "./canvas-dusko/";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserSampleAction } from "../../store/actions/getUserSampleSetAction";
@@ -60,10 +60,7 @@ function AnnotateTwo() {
 
   return (
     <>
-      {/* <Header>
-        <h1>HEADER</h1>
-    </Header> */}
-
+      <Header />
       {onCanvas ? (
         <Cursor color={color} duration={0.8} size={size * 2} />
       ) : null}
@@ -86,6 +83,7 @@ function AnnotateTwo() {
                   }
                   key={img.id}
                   id={img.id}
+                  alt="shh"
                 />
               );
             })
@@ -121,10 +119,10 @@ function AnnotateTwo() {
             }`,
           }}
         >
-          <img src={zoo1} height="200px" width="200px" />
-          <img src={zoo2} height="200px" width="200px" />
-          <img src={zoo3} height="200px" width="200px" />
-          <img src={zoo4} height="200px" width="200px" />
+          <img src={zoo1} height="200px" width="200px" alt="shh" />
+          <img src={zoo2} height="200px" width="200px" alt="shh" />
+          <img src={zoo3} height="200px" width="200px" alt="shh" />
+          <img src={zoo4} height="200px" width="200px" alt="shh" />
         </References>
         <CanvasTwo
           color={color}
@@ -151,10 +149,10 @@ function AnnotateTwo() {
             }`,
           }}
         >
-          <img src={phyto1} height="200px" width="200px" />
-          <img src={phyto2} height="200px" width="200px" />
-          <img src={phyto3} height="200px" width="200px" />
-          <img src={phyto4} height="200px" width="200px" />
+          <img src={phyto1} height="200px" width="200px" alt="shh" />
+          <img src={phyto2} height="200px" width="200px" alt="shh" />
+          <img src={phyto3} height="200px" width="200px" alt="shh" />
+          <img src={phyto4} height="200px" width="200px" alt="shh" />
         </References>
       </CanvasContainer>
       <button onClick={() => history.push("/summary")} disabled={submitEnabled}>
