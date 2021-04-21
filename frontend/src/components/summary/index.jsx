@@ -22,7 +22,7 @@ import {
     LocalLabel, OuterImagesContainer, PlanktonCountContainer, PreviewImagesContainer,
     SummariesSectionsContainer,
     TextsContainer,
-    SummaryContainer
+    SummaryContainer, MainSummary
 } from "./style"
 import {patchSampleSet} from "../../store/actions/patchIsCompletedAction";
 
@@ -39,25 +39,23 @@ const SampleSetSummary = () => {
     const currentSample = useSelector(state => state.annotationReducer.currentSample)
     console.log('Current sample from summary page: ', currentSample)
 
-    // let sampleImageArray = currentSample.images.map(image => image)
-    // console.log("SampleImageArray: ",sampleImageArray)
-    // let image;
-    // let plankton;
-    // let samplePlanktonArray = currentSample.images.map(plankton = plankton.plankton)
-    // console.log('plankton: ', plankton)
+
 
 
     return <>
         <Background>
             <Header/>
-                <Main>
+                <MainSummary>
                     <TitleWrapper>
-                        <span>Sample Set Summary</span>
+                        <span >Sample Set Summary</span>
                     </TitleWrapper>
                     <SummaryContainer>
                         <TextsContainer>
-                            <GlobalLabel>Sample Information</GlobalLabel>
+
+                            <GlobalLabel  >Sample Information</GlobalLabel>
+                            <div className="top">
                             <SummariesSectionsContainer>
+
                                 <InfoLabelsContainer>
                                     <LocalLabel>Collection Date: {currentSample.collection_date}</LocalLabel>
                                 </InfoLabelsContainer>
@@ -69,8 +67,8 @@ const SampleSetSummary = () => {
                                 <InfoLabelsContainer>
                                     <LocalLabel>Air Temperature: {currentSample.air_temperature}</LocalLabel>
                                 </InfoLabelsContainer>
-                            </SummariesSectionsContainer>
 
+                            </SummariesSectionsContainer>
                             <SummariesSectionsContainer>
                                 <InfoLabelsContainer>
                                     <LocalLabel>Sample Depth: {currentSample.sample_depth}</LocalLabel>
@@ -83,19 +81,21 @@ const SampleSetSummary = () => {
                                 <InfoLabelsContainer>
                                     <LocalLabel>Water Temperature: {currentSample.water_temperature}</LocalLabel>
                                 </InfoLabelsContainer>
-                            </SummariesSectionsContainer>
 
+                            </SummariesSectionsContainer>
+                            </div>
+                            <div className="bottom">
                             <SummariesSectionsContainer>
                                 <InfoLabelsContainer>
                                     <LocalLabel>Water Surface Characteristics: {!currentSample.water_foam ? '' : 'Foam  '} {!currentSample.water_oil ? '' : 'Oil  '} {!currentSample.water_bioluminescence ? '' : 'Bioluminescence'} </LocalLabel>
                                 </InfoLabelsContainer>
                             </SummariesSectionsContainer>
-
                             <SummariesSectionsContainer>
                                 <InfoLabelsContainer>
                                     <LocalLabel>Weather Events: {!currentSample.weather_sun ? '' : 'Sun  '} {!currentSample.weather_cloud ? '' : 'Clound  '} {!currentSample.weather_rain ? '' : 'Rain  '} {!currentSample.weather_snow ? '' : 'Snow  '} {!currentSample.weather_storm ? '' : 'storm'} </LocalLabel>
                                 </InfoLabelsContainer>
                             </SummariesSectionsContainer>
+                            </div>
 
                             <Link to='/upload'><TransparentButton>Edit Sample Information</TransparentButton></Link>
                         </TextsContainer>
@@ -109,17 +109,22 @@ const SampleSetSummary = () => {
                                     {currentSample.images ? (currentSample.images.map( image => {
                                         return (
                                             <>
+                                        <div>
                                         <ImagePreview src={(image.annotated_image === "" || image.annotated_image === "null" ) ? image.original_image : image.annotated_image }
-                                                      alt="Samples image to be reviewed"/>
+                                                      alt="Samples image to be reviewed"
+                                                      style={{width:"9rem",height:"9rem",padding:"0"}}
+                                                        />
                                         <PlanktonCountContainer>
                                         <LocalLabel>Phytoplankton: {image.phytoplankton} </LocalLabel>
                                         <LocalLabel>Zooplankton: {image.zooplankton}</LocalLabel>
                                         </PlanktonCountContainer>
+                                            </div>
                                             </>
                                         )}
                                         ) ): null}
 
                                 </PreviewImagesContainer>
+                            <Link to='/annotate-dusko'><TransparentButton>Examine Images Further</TransparentButton></Link>
 
                             </OuterImagesContainer>
 
@@ -168,18 +173,16 @@ const SampleSetSummary = () => {
                                 {/*    <ImagePreview src={currentSample.images[3]} alt="annotated image 4 preview" />*/}
                                 {/*</PreviewImagesContainer>*/}
 
-                            {/*</OuterImagesContainer>*/}
-                            <Link to='/annotate-dusko'><TransparentButton>Examine Images Further</TransparentButton></Link>
                         </ImagesElementsContainer>
 
-                        <LocalLabel>Submit my sample for double check? (optional) <input type={'checkbox'} name={'storm'} /></LocalLabel>
                         {/*<LocalLabel>Storm <input type={'checkbox'} name={'storm'} onChange={() => setStormChecked(!stormChecked)} checked={stormChecked} /></LocalLabel>*/}
-
-                        <ConfirmElementsContainer>
-                            <Link><BlueButton onClick={()=>dispatch(patchSampleSet(history))} >Confirm</BlueButton></Link>
-                        </ConfirmElementsContainer>
                     </SummaryContainer>
-                </Main> 
+
+                    <ConfirmElementsContainer>
+                        <LocalLabel>Submit my sample for double check? (optional) <input type={'checkbox'} name={'storm'} /></LocalLabel>
+                        <Link><BlueButton onClick={()=>dispatch(patchSampleSet(history))} >Confirm</BlueButton></Link>
+                        </ConfirmElementsContainer>
+                </MainSummary>
         </Background>
     </>
 }
