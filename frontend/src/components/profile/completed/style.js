@@ -30,7 +30,8 @@ export const CompletedContainer = styled(CenterContainer)`
     justify-content: flex-start;
     img{
       margin: 2%;
-      height: 6rem;
+      height: 7rem;
+      width: 7rem;
     }
   }  
 `;
