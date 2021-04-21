@@ -10,3 +10,4 @@ export const Profile = lazy(() => import("./components/profile"));
 export const CreateNewSampleSet = lazy(() =>
   import("./components/sampleSetUpload")
 );
+export const AnnotateTwo = lazy(() => import("./components/annotate-dusko"));
