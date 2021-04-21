@@ -57,7 +57,6 @@ function AnnotateTwo() {
   }, [annotatedData.annotatedImages]);
 
   const updateCount = (index) => {
-    console.log(images[index].zooplankton);
     setZooCount(images[index].zooplankton ? images[index].zooplankton : 0);
     setPhytoCount(
       images[index].phytoplankton ? images[index].phytoplankton : 0

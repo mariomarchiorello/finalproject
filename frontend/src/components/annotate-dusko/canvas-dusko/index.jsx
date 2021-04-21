@@ -82,7 +82,6 @@ const CanvasTwo = (props) => {
 
   const undo = () => {
     history.pop();
-    console.log("from undo", history);
     if (sample) {
       // contextRef.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
       const image = new Image();
