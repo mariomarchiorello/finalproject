@@ -34,11 +34,8 @@ export default function Map() {
     dispatch(getAllLocationsAction(history))
     },[])
     const locationsArray = useSelector(state => state.locationReducer.allLocations)
-    console.log("all locations inside the map ",locationsArray)
 
     const allPos = locationsArray.map((value) => [[value.sample_latitude, value.sample_longitude], value.id, value.collection_date, value.total_phytoplankton, value.total_zooplankton])
-    console.log(allPos)
-
 
     return (
         <> 
@@ -46,7 +43,6 @@ export default function Map() {
             <MapContainer style={{ height: '100%', width: '100%', borderRadius: "10px"}} center={center} zoom={2} minZoom={1} scrollWheelZoom={false} >
                 
                 <TileLayer attribution='&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-earth">GoogleMaps</a> Data 2021' url='http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}'/>
-
 
                 {/*{*/}
                 {/*    sampleMePositions.map(position => <Marker position={position} icon={sampleMeIcon}/> )*/}
