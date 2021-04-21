@@ -71,8 +71,11 @@ width: 14rem;
 height: 1.5rem;
 cursor:pointer;
 padding: 0 20px 0 20px;
-  margin: 3%;
-  
+margin: 3%;  
+transition:color 0.5s;
+:hover{
+      color:#30adea ;
+}  
 :active{
   outline:transparent;
 }
