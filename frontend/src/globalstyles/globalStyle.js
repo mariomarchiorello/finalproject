@@ -119,10 +119,13 @@ height: 1.5rem;
 cursor:pointer;
 outline:transparent;
 margin:3%;
+transition:color 0.5s;  
 :active{
   outline:transparent;
 }
-    
+:hover{
+  color: #30adea;
+}    
     
 `;
 
