@@ -44,6 +44,6 @@ export const SampleContainer = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     height: 50%;
-    width: 50%;
+    width: 20%;
     margin-top: 4rem;
 `
