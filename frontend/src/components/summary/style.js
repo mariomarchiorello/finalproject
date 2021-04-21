@@ -86,4 +86,6 @@ export const ConfirmElementsContainer = styled.div`
   flex-direction: column;
   margin-top: 10px;
 
+  justify-content: center;
+  align-items: center;
 `
