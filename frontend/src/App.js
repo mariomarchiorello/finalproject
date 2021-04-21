@@ -18,6 +18,7 @@ import {
 import Spinner from "./components/spinner";
 import { withAuth, withNoAuth } from "./components/HOC";
 import SampleSetSummary from "./components/summary";
+import About from "./components/about";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Router>
           <Switch>
             <Suspense fallback={<Spinner />}>
+              <Route exact path="/about" component={About} />
               <Route exact path="/map" component={withAuth(Map)} />
               <Route exact path="/annotate-dusko" component={AnnotateTwo} />
               <Route exact path="/profile" component={withAuth(Profile)} />
@@ -40,7 +42,6 @@ const App = () => {
               <Route exact path={["/signIn", "/sign-in"]} component={SignIn} />
               <Route exact path="/verification" component={Verification} />
               <Route exact path="/sign-up" component={SignUp} />
-              <Route exact path="/toggletest" component={Toggle} />
               <Route
                 exact
                 path="/summary"
