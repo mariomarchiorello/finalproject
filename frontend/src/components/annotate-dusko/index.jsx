@@ -5,6 +5,7 @@ import {
   References,
   CanvasContainer,
   SampleContainer,
+  SampleImg,
 } from "./style";
 import Header from "../header";
 import { Background } from "../../globalstyles/globalStyle";
@@ -75,9 +76,7 @@ function AnnotateTwo() {
               return isLoading ? (
                 <SpinnerContainer></SpinnerContainer>
               ) : (
-                <img
-                  height="70px"
-                  width="70px"
+                <SampleImg
                   onClick={(e) => {
                     setSampleId(e.target.id);
                     setSample(e.target.src);
