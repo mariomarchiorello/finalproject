@@ -26,7 +26,7 @@ z-index: 10;
 }
 `;
 export const Logo = styled.img`
- width: 190px;
+width: 190px;
 height: 62px; 
 padding: 10px;
 margin-left: 6%;  

@@ -28,24 +28,28 @@ export const LeftContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     color: ${props => props.theme.labelcolor };
-    border-right: 2px solid #30ADEA;
+    // border-right: 2px solid #30ADEA;
     label {
         font-size: 20px;
     }
 
 `;
 export const SupportContainer = styled.div`
-    height: 50%;
+    height: 60%;
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     color: ${props => props.theme.labelcolor };
     font-size: 24px;
 
     a {
         font-size: 18px;
+    }
+    span {
+        margin-bottom: 1.5em;
+        font-size: 20px;
     }
 `;
 export const AboutContainer = styled(CenterContainer)`
@@ -55,6 +59,9 @@ export const AboutContainer = styled(CenterContainer)`
 `;
 
 export const HyperLinks = styled.a`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: ${props => props.theme.labelcolor };
     text-decoration: none;
     :hover{
@@ -63,4 +70,9 @@ export const HyperLinks = styled.a`
     :active{
         outline:transparent;
     }
-    `
+`;
+
+export const Logo = styled.img`
+    padding: 10px;
+    max-width: 120px;
+`;
