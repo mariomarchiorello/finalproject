@@ -186,10 +186,10 @@ const CanvasTwo = (props) => {
     }
     if(phytoCount <= tempPhyto){
       setPhytoCount(0)
-      setTempZoo(0)
+      setTempPhyto(0)
     }else{
       setPhytoCount(phytoCount - tempPhyto)
-      setTempZoo(0)
+      setTempPhyto(0)
     }
   }
 
