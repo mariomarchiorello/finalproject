@@ -32,6 +32,8 @@ function AnnotateTwo() {
   const [onCanvas, setOnCanvas] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(0)
+  const [style, setStyle] = useState('0.5')
+  const [idx, setIdx] = useState(null)
 
   const annotatedData = useSelector((state) => state.annotationReducer);
   const { images } = annotatedData.currentSample;
@@ -79,6 +81,7 @@ function AnnotateTwo() {
                         setSample(e.target.src);
                         updateCount(index);
                         setIsVisible(1)
+                        setIdx(index)
                       }}
                       src={
                         img.annotated_image
@@ -88,6 +91,7 @@ function AnnotateTwo() {
                       key={img.id}
                       id={img.id}
                       alt="shh"
+                      style={idx === index ? {opacity: '1'} : {opacity: '0.5'}}
                     />
                   );
                 })
