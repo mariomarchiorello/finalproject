@@ -4,6 +4,7 @@ import { Background, Main, GlobalLabel } from "../../globalstyles/globalStyle"
 import { TitleWrapper, Logo, PersonContainer, SupportContainer, LeftContainer, AboutContainer, HyperLinks } from "./style"
 import goes from "../../assets/graphics/goes-logo_color-white.png"
 import propulsion from "../../assets/graphics/Propulsion.png"
+import linkedin from "../../assets/graphics/linkedin.png"
 
 const About = () => {
 
@@ -17,26 +18,35 @@ const About = () => {
                 <AboutContainer>
                     <LeftContainer>
                         <PersonContainer>
-                            <GlobalLabel>Mario Marchiorello</GlobalLabel>
-                            <HyperLinks href="https://www.linkedin.com/in/mario-marchiorello-516859140/" target="_blank">LinkedIn</HyperLinks>
+                            <HyperLinks href="https://www.LinkedIn.com/in/mario-marchiorello-516859140/" target="_blank">
+                                <GlobalLabel>Mario Marchiorello</GlobalLabel>
+                                <Logo src={linkedin}/>
+                            </HyperLinks>
                         </PersonContainer>
                         <PersonContainer>
-                            <GlobalLabel>Dusko Radovic</GlobalLabel>
-                            <HyperLinks href="https://www.linkedin.com/in/duško-radović-413b60180/" target="_blank">LinkedIn</HyperLinks>
+                            <HyperLinks href="https://www.LinkedIn.com/in/duško-radović-413b60180/" target="_blank">
+                                <GlobalLabel>Dusko Radovic</GlobalLabel>
+                                <Logo src={linkedin}/>
+                            </HyperLinks>
                         </PersonContainer>
                         <PersonContainer>
-                            <GlobalLabel>Ezequias Calvo</GlobalLabel>
-                            <HyperLinks href="https://www.linkedin.com/in/ezequias-calvo-ladmann-9868481a7/" target="_blank">LinkedIn</HyperLinks>
+                            <HyperLinks href="https://www.LinkedIn.com/in/ezequias-calvo-ladmann-9868481a7/" target="_blank">
+                                <GlobalLabel>Ezequias Calvo</GlobalLabel>
+                                <Logo src={linkedin}/>
+                            </HyperLinks>
                         </PersonContainer>
                         <PersonContainer>
-                            <GlobalLabel>Dino Rossi</GlobalLabel>
-                            <HyperLinks href="https://www.linkedin.com/in/dinoprossi/" target="_blank">LinkedIn</HyperLinks>
+                            <HyperLinks href="https://www.LinkedIn.com/in/dinoprossi/" target="_blank">
+                                <GlobalLabel>Dino Rossi</GlobalLabel>
+                                <Logo src={linkedin}/>
+                            </HyperLinks>
                         </PersonContainer>
                         <PersonContainer>
-                            <GlobalLabel>Andras Gombos</GlobalLabel>
-                            <HyperLinks href="https://www.linkedin.com/in/andrasgombos/" target="_blank">LinkedIn</HyperLinks>
+                            <HyperLinks href="https://www.LinkedIn.com/in/andrasgombos/" target="_blank">
+                                <GlobalLabel>Andras Gombos</GlobalLabel>
+                                <Logo src={linkedin}/>
+                            </HyperLinks>
                         </PersonContainer>
-
                     </LeftContainer>
                     <SupportContainer>
                         <span>Supported by</span>

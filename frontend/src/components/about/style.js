@@ -31,8 +31,18 @@ export const LeftContainer = styled.div`
     // border-right: 2px solid #30ADEA;
     label {
         font-size: 20px;
+        cursor: pointer;
+        :hover{
+        color:#30ADEA;
     }
-
+        :active{
+        outline:transparent;
+    }
+    }
+    img {
+        width: 25px;
+    }
+    
 `;
 export const SupportContainer = styled.div`
     height: 60%;
