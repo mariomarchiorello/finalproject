@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { TransparentButton, BlueButton } from "../../globalstyles/globalStyle";
+import canvasBackground from '../../assets/graphics/canvasbg.png'
 
 export const ToolsContainer = styled.div`
   width: 20%;
@@ -9,18 +10,28 @@ export const ToolsContainer = styled.div`
 `;
 
 export const Tool = styled(TransparentButton)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: ${(props) => props.theme.transbuttoncolor};
-  /* color: white; */
   height: 30px;
+  width: 50px;
   font-weight: 500;
+  font-size: 20px;
   margin-left: 1rem;
-  /* border: 1px solid transparent; */
+  transition:color 0.5s;  
+  :hover{
+   color:#30ADEA;
+  }
 `;
 
 export const StyledCanvas = styled.canvas`
   /* border: 2px solid red; */
   background-color: white;
   overflow: hidden;
+  background-image: url(${canvasBackground});
+  background-size: cover;
+  background-repeat: no-repeat;
   /* box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
   -webkit-box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75);
   -moz-box-shadow: 4px 4px 16px 0px rgba(182, 163, 163, 0.75); */
@@ -73,9 +84,9 @@ export const CanvasContainer = styled.div`
 
 export const SampleContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 70px;
-  width: 33%;
+  width: 300px;
   margin-right: 50px;
 `;
 
@@ -91,6 +102,7 @@ export const SampleImg = styled.img`
   height: 70px;
   width: 70px;
   border-radius: 5%;
+  opacity: 0.5;
   /* box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75);
   -webkit-box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75);
   -moz-box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75); */
@@ -127,18 +139,29 @@ export const SubmitWrapper = styled.div`
 export const CanvasWithButtons = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 58%;
+  width: 60%;
 `;
 
 export const SaveButton = styled(TransparentButton)`
-  height: 10px;
+  height: 30px;
   margin-right: 1vw;
-  border: 0px solid transparent;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  width: 56px;
+  margin-bottom: 12px;
+  transition:color 0.5s;  
+  :hover{
+   color:#30ADEA;
+  }
 `;
 export const DummyButton = styled(TransparentButton)`
   height: 10px;
   margin-left: 1vw;
   visibility: hidden;
 `;
+
+export const SaveClear = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`

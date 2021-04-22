@@ -62,7 +62,7 @@ function AnnotateTwo() {
     <Background>
       <Header />
       {onCanvas ? (
-        <Cursor color={color} duration={0.5} size={size * 2} />
+        <Cursor color={color} duration={0.5} size={size * 2}/>
       ) : null}
       <TopContainer>
         <ToolsAndImages>
