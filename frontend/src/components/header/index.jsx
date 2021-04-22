@@ -64,6 +64,7 @@ const Header = () => {
                 <LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) : null}
         {localToken ? null:
             (<RightContainer>
+                <Link className="headermenu" to="/about" onClick={()=>profileMainChoice("about")} style={profileMainAction === "about" ? {borderBottom: "3px solid #30ADEA"} : null}>About</Link>
                 <Link className="headermenu" to="/sign-up">Join</Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
     </HeaderContainer>
   </>
