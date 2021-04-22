@@ -22,7 +22,7 @@ import { SpinnerContainer } from "../spinner/style";
 
 function AnnotateTwo() {
   const dispatch = useDispatch();
-  const [color, setColor] = useState("rgba(0, 230, 64, 0.5)");
+  const [color, setColor] = useState("transparent");
   const [reference, setReference] = useState("null");
   const [sample, setSample] = useState("null");
   const [sampleId, setSampleId] = useState("null");
@@ -31,6 +31,7 @@ function AnnotateTwo() {
   const [phytoCount, setPhytoCount] = useState(0);
   const [onCanvas, setOnCanvas] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(0)
 
   const annotatedData = useSelector((state) => state.annotationReducer);
   const { images } = annotatedData.currentSample;
@@ -77,6 +78,7 @@ function AnnotateTwo() {
                         setSampleId(e.target.id);
                         setSample(e.target.src);
                         updateCount(index);
+                        setIsVisible(1)
                       }}
                       src={
                         img.annotated_image
@@ -91,7 +93,7 @@ function AnnotateTwo() {
                 })
               : null}
           </SampleContainer>
-          <ToolsContainer>
+          <ToolsContainer style={{opacity: isVisible}}>
             {/* <Tool>undo</Tool> */}
             {/* <i
           class="fas fa-circle"
@@ -145,11 +147,12 @@ function AnnotateTwo() {
           setPhytoCount={setPhytoCount}
           setOnCanvas={setOnCanvas}
           setIsLoading={setIsLoading}
+          isVisible={isVisible}
         />
       </CanvasContainer>
       <SubmitWrapper>
         <SubmitButton
-          style={{ color: "white" }}
+          style={{ color: "white", opacity: isVisible }}
           onClick={() => history.push("/summary")}
           disabled={submitEnabled ? "disabled" : null}
         >

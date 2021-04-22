@@ -15,6 +15,9 @@ import {
   DummyButton,
   CanvasWithButtons,
   SaveClear,
+  CountAndType,
+  MainWrapper,
+  RefImages
 } from "../style";
 import html2canvas from "html2canvas";
 import { useDispatch } from "react-redux";
@@ -38,6 +41,7 @@ const CanvasTwo = (props) => {
     setPhytoCount,
     setOnCanvas,
     setIsLoading,
+    isVisible
   } = props;
 
   const [imageData, setImageData] = useState(null);
@@ -169,27 +173,37 @@ const CanvasTwo = (props) => {
   }
 
   return (
-    <>
-      <Sidebar style={{ marginLeft: "200px" }}>
-        <h1 style={{ color: "white" }}>{zooCount}</h1>
-        <h2 style={{ color: "white", fontSize: "1rem" }}>Zooplankton</h2>
+    <MainWrapper>
+      <Sidebar style={{
+            background: `${
+              color == "rgba(0, 230, 64, 0.5)" && reference
+                ? color
+                : "transparent"
+            }`,
+            direction: 'rtl',
+            opacity: isVisible
+          }}>
+        <CountAndType>
+          <h2 style={{ color: "white", fontSize: "1rem" }}>Zooplankton</h2>
+          <h1 style={{ color: "white" }}>{zooCount}</h1>
+        </CountAndType>
         <References
           onClick={() => {
             setColor("rgba(0, 230, 64, 0.5)");
             setReference(true);
           }}
-          style={{
-            border: `4px solid ${
-              color == "rgba(0, 230, 64, 0.5)" && reference
-                ? color
-                : "transparent"
-            }`,
-          }}
+          // style={{
+          //   border: `4px solid ${
+          //     color == "rgba(0, 230, 64, 0.5)" && reference
+          //       ? color
+          //       : "transparent"
+          //   }`,
+          // }}
         >
-          <img src={zoo1} height="120" width="120" alt="shh" />
-          <img src={zoo2} height="120" width="120" alt="shh" />
-          <img src={zoo3} height="120" width="120" alt="shh" />
-          <img src={zoo4} height="120" width="120" alt="shh" />
+          <RefImages src={zoo1} height="120" width="120" alt="shh" />
+          <RefImages src={zoo2} height="120" width="120" alt="shh" />
+          <RefImages src={zoo3} height="120" width="120" alt="shh" />
+          <RefImages src={zoo4} height="120" width="120" alt="shh" />
         </References>
       </Sidebar>
       {/* <CanvasButton onClick={() => undo()}>undo</CanvasButton> */}
@@ -205,28 +219,35 @@ const CanvasTwo = (props) => {
             onMouseLeave={circleHandlerLeave}
           />
         </div>
-        <SaveClear>
+        <SaveClear style={{opacity: isVisible}}>
         <SaveButton onClick={() => save()}>
             Save
         </SaveButton>
         <SaveButton onClick={() => clear(contextRef.current, canvasRef.current)}>Clear</SaveButton>
         </SaveClear>
       </CanvasWithButtons>
-      <Sidebar style={{ marginRight: "200px" }}>
-        <h1 style={{ color: "white" }}>{phytoCount}</h1>
+      <Sidebar style={{
+            background: `${
+              color == "rgba(244, 208, 63, 0.5)" && !reference
+                ? color
+                : "transparent"
+            }`,
+            opacity: isVisible
+          }}>
         <h2 style={{ color: "white", fontSize: "1rem" }}>Phytoplankton</h2>
+        <h1 style={{ color: "white" }}>{phytoCount}</h1>
         <References
           onClick={() => {
             setColor("rgba(244, 208, 63, 0.5)");
             setReference(false);
           }}
-          style={{
-            border: `4px solid ${
-              color == "rgba(244, 208, 63, 0.5)" && !reference
-                ? color
-                : "transparent"
-            }`,
-          }}
+          // style={{
+          //   border: `4px solid ${
+          //     color == "rgba(244, 208, 63, 0.5)" && !reference
+          //       ? color
+          //       : "transparent"
+          //   }`,
+          // }}
         >
           <img src={phyto1} height="120" width="120" alt="shh" />
           <img src={phyto2} height="120" width="120" alt="shh" />
@@ -234,7 +255,7 @@ const CanvasTwo = (props) => {
           <img src={phyto4} height="120" width="120" alt="shh" />
         </References>
       </Sidebar>
-    </>
+    </MainWrapper>
   );
 };
 
