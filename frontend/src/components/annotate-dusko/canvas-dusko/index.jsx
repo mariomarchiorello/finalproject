@@ -44,6 +44,9 @@ const CanvasTwo = (props) => {
     isVisible
   } = props;
 
+  const [tempZoo, setTempZoo] = useState(0)
+  const [tempPhyto, setTempPhyto] = useState(0)
+
   const [imageData, setImageData] = useState(null);
   const [flag, setFlag] = useState(false);
   let [history, setHistory] = useState([]);
@@ -90,9 +93,13 @@ const CanvasTwo = (props) => {
       contextRef.current.stroke();
       contextRef.current.closePath();
       contextRef.current.fill();
-      color === "rgba(0, 230, 64, 0.5)"
-        ? setZooCount((zoo) => (zoo += 1))
-        : setPhytoCount((phyto) => (phyto += 1));
+      if(color === "rgba(0, 230, 64, 0.5)") {
+        setZooCount((zoo) => (zoo += 1))
+        setTempZoo(zoo => zoo += 1)
+      }else{
+        setPhytoCount((phyto) => (phyto += 1));
+        setTempPhyto(phyto => phyto += 1)
+      }
       let annotation = {
         offsetX,
         offsetY,
@@ -170,6 +177,20 @@ const CanvasTwo = (props) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(image, 0, 0, canvas.width / 2, canvas.height / 1.5);
     };
+    if(zooCount <= tempZoo){
+      setZooCount(0)
+      setTempZoo(0)
+    }else{
+      setZooCount(zooCount - tempZoo)
+      setTempZoo(0)
+    }
+    if(phytoCount <= tempPhyto){
+      setPhytoCount(0)
+      setTempZoo(0)
+    }else{
+      setPhytoCount(phytoCount - tempPhyto)
+      setTempZoo(0)
+    }
   }
 
   return (

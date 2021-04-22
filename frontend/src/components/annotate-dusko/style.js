@@ -121,7 +121,6 @@ export const SampleImg = styled.img`
   height: 70px;
   width: 70px;
   border-radius: 5%;
-  opacity: 0.5;
   :hover{
     opacity: 1;
     cursor: pointer;
