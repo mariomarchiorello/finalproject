@@ -14,6 +14,7 @@ import {
   SaveButton,
   DummyButton,
   CanvasWithButtons,
+  SaveClear,
 } from "../style";
 import html2canvas from "html2canvas";
 import { useDispatch } from "react-redux";
@@ -158,11 +159,20 @@ const CanvasTwo = (props) => {
     setOnCanvas(true);
   };
 
+  const clear = (ctx, canvas) => {
+    const image = new Image();
+    image.src = sample;
+    image.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(image, 0, 0, canvas.width / 2, canvas.height / 1.5);
+    };
+  }
+
   return (
     <>
       <Sidebar style={{ marginLeft: "200px" }}>
         <h1 style={{ color: "white" }}>{zooCount}</h1>
-        <h2 style={{ color: "white", fontSize: "1rem" }}>Zooplanton</h2>
+        <h2 style={{ color: "white", fontSize: "1rem" }}>Zooplankton</h2>
         <References
           onClick={() => {
             setColor("rgba(0, 230, 64, 0.5)");
@@ -195,13 +205,16 @@ const CanvasTwo = (props) => {
             onMouseLeave={circleHandlerLeave}
           />
         </div>
+        <SaveClear>
         <SaveButton onClick={() => save()}>
-          <i class="far fa-save fa-lg" color={{ color: "white" }}></i>
+            Save
         </SaveButton>
+        <SaveButton onClick={() => clear(contextRef.current, canvasRef.current)}>Clear</SaveButton>
+        </SaveClear>
       </CanvasWithButtons>
       <Sidebar style={{ marginRight: "200px" }}>
         <h1 style={{ color: "white" }}>{phytoCount}</h1>
-        <h2 style={{ color: "white", fontSize: "1rem" }}>Phytoplanton</h2>
+        <h2 style={{ color: "white", fontSize: "1rem" }}>Phytoplankton</h2>
         <References
           onClick={() => {
             setColor("rgba(244, 208, 63, 0.5)");
