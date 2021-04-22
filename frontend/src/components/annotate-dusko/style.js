@@ -6,6 +6,7 @@ export const ToolsContainer = styled.div`
   width: 20%;
   display: flex;
   justify-content: flex-end;
+  transition: all 0.5s;
   /* border: 1px solid red; */
 `;
 
@@ -50,6 +51,11 @@ export const References = styled.div`
   /* height: 75vh; */
   overflow: scroll;
   overflow-x: hidden;
+  padding: 15px;
+  background-color: transparent;
+  :hover{
+    cursor: pointer;
+  }
   /* width: 75vw; */
 
   ::-webkit-scrollbar {
@@ -69,6 +75,19 @@ export const References = styled.div`
     border-radius: 10px;
   }
 `;
+
+export const RefImages = styled.img`
+  height: 120px;
+  width: 120px;
+  border-radius: 4%;
+`
+
+export const MainWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`
 
 export const ReferenceCount = styled.div`
   display: flex;
@@ -91,7 +110,7 @@ export const SampleContainer = styled.div`
 `;
 
 export const ToolsAndImages = styled.div`
-  width: 48vw;
+  width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -103,6 +122,10 @@ export const SampleImg = styled.img`
   width: 70px;
   border-radius: 5%;
   opacity: 0.5;
+  :hover{
+    opacity: 1;
+    cursor: pointer;
+  }
   /* box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75);
   -webkit-box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75);
   -moz-box-shadow: 2px 1px 16px 0px rgba(182, 163, 163, 0.75); */
@@ -120,7 +143,19 @@ export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 8%;
+  height: 80%;
+  border-radius:8px 8px;
+  transition: all 0.7s;
 `;
+
+export const CountAndType = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+`
 
 export const SubmitButton = styled(BlueButton)`
   width: 8rem;
@@ -128,6 +163,7 @@ export const SubmitButton = styled(BlueButton)`
   font-size: 1rem;
   padding: 0;
   margin-top: 1.2rem;
+  transition: all 0.5s;
 `;
 export const SubmitWrapper = styled.div`
   width: 100vw;
@@ -164,4 +200,5 @@ export const SaveClear = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  transition: all 0.5s;
 `
