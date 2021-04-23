@@ -14,7 +14,7 @@ cursor:pointer;
 outline:transparent;
 transition:color 0.5s;  
 :hover{
-  color:#30ADEA;
+  color:#121212;
 }
 :active{
   outline:transparent;
