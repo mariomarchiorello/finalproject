@@ -103,7 +103,7 @@ export const CanvasContainer = styled.div`
 
 export const SampleContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 70px;
   width: 300px;
   margin-right: 50px;
@@ -121,6 +121,7 @@ export const SampleImg = styled.img`
   height: 70px;
   width: 70px;
   border-radius: 5%;
+  margin-right: 5px;
   :hover{
     opacity: 1;
     cursor: pointer;
