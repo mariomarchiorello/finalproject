@@ -83,6 +83,7 @@ const CreateNewSampleSet = () => {
       const objectUrl = URL.createObjectURL(image[i]);
       tempPreview.push(objectUrl);
       setPreview(tempPreview);
+      console.log(tempPreview, "tmpppp preview");
     }
   }, [image]);
 
@@ -289,37 +290,19 @@ const CreateNewSampleSet = () => {
               <ImagesContainer>
                 {/*placeholder images, should only show when images are added*/}
                 <ImagePreview
-                  src={preview ? preview[0] : placeholderimg}
+                  src={preview && preview[0] ? preview[0] : placeholderimg}
                   alt="image 1 preview"
                 />
                 <ImagePreview
-                  src={
-                    preview
-                      ? preview[1]
-                        ? preview
-                        : placeholderimg
-                      : placeholderimg
-                  }
+                  src={preview && preview[1] ? preview[1] : placeholderimg}
                   alt="image 2 preview"
                 />
                 <ImagePreview
-                  src={
-                    preview
-                      ? preview[2]
-                        ? preview
-                        : placeholderimg
-                      : placeholderimg
-                  }
+                  src={preview && preview[2] ? preview[2] : placeholderimg}
                   alt="image 3 preview"
                 />
                 <ImagePreview
-                  src={
-                    preview
-                      ? preview[3]
-                        ? preview
-                        : placeholderimg
-                      : placeholderimg
-                  }
+                  src={preview && preview[3] ? preview[3] : placeholderimg}
                   alt="image 4 preview"
                 />
               </ImagesContainer>
