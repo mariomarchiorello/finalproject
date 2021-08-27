@@ -4,7 +4,7 @@ import lightlogo from "../../assets/graphics/GOES-Logo_dark-text.png"
 import {Link, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from 'react'
-import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+import {getUserMeAction} from "../../store/actions/getUserMeAction";
 import store from "../../store";
 import Toggle from "../themes/toggle";
 import { useDarkMode } from "../themes/useDarkMode"
@@ -18,13 +18,15 @@ const Header = () => {
 
         setLocalToken(localStorage.getItem("token"));
     },[]);
-        const [localToken, setLocalToken] = useState("");
+
+
+    const [localToken, setLocalToken] = useState("");
+    const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
+    const userSelf = useSelector(state => state.UserReducer.userMe);
+    const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
+
 
     const profileMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
-
-    const userSelf = useSelector(state => state.UserReducer.userMe);
-
-    const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
 
     const profileHandler = (value) => {
 
@@ -44,14 +46,17 @@ const Header = () => {
     }
     
     
-    const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
 
     return  <>
     <HeaderContainer>
+{/*----------- determines the (to="") value when clicking on the logo in the hearder--------------------------------*/}
+
         {localToken ?
             (<Link onClick={()=>profileMainChoice("home")} to="/map"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) :
             (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
-        
+
+{/*---------- determines what will render in the menu bar, depending on the localstorage.token---------------------*/}
+
         {localToken ?
             (<RightContainer>
                 <Link className="headermenu" to="/map" onClick={()=>profileMainChoice("home")} style={profileMainAction === "home" ? {borderBottom: "3px solid #30ADEA"} : null} >Home</Link>

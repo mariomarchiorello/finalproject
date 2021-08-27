@@ -6,7 +6,7 @@ import { ProfileCenterContainer } from "./style";
 import { SmallBlueButton } from "../../../globalstyles/globalStyle";
 import { BottomContainer } from "../style";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserMeAction } from "../../../store/actions/getUserSelfAction";
+import { getUserMeAction } from "../../../store/actions/getUserMeAction";
 import { useHistory } from "react-router-dom";
 
 export default function MyProfile() {
@@ -34,9 +34,7 @@ export default function MyProfile() {
           {profileEdit === "info" ? <InfoSection /> : null}
           {profileEdit === "info" ? (
             <BottomContainer>
-              <SmallBlueButton onClick={() => profileHandler("editProfile")}>
-                Edit
-              </SmallBlueButton>
+              <SmallBlueButton onClick={() => profileHandler("editProfile")}>Edit</SmallBlueButton>
             </BottomContainer>
           ) : null}
 

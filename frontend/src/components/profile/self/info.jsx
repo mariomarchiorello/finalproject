@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {Info} from './style'
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {getUserMeAction} from "../../../store/actions/getUserSelfAction";
+import {getUserMeAction} from "../../../store/actions/getUserMeAction";
 
 
 const InfoSection=()=> {

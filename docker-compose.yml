@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: registry.gitlab.propulsion-home.ch/full-stack/batch-15-february-2021/final-projects/goes:latest
+    image: registry.gitlab.com/mariomarchiorello/goes-app:latest
     restart: always
     env_file:
       - ./envs/dev.env

@@ -2,8 +2,7 @@ import baseUrl from "../../helpers/baseUrl";
 
 export const signInAction = (credentials, history) => {
     return (dispatch) => {
-      const url = `${baseUrl}auth/token/`;
-      // const url = "https://goes-app.propulsion-learn.ch/backend/api/auth/token/";
+      const url = "http://localhost:8000/backend/api/auth/token/";
       const config = {
       method: "POST",
       body: JSON.stringify(credentials),

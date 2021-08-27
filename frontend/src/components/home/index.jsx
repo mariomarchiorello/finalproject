@@ -3,7 +3,7 @@ import { BlueButton } from "../../globalstyles/globalStyle";
 import Header from "../header";
 import { QuoteWrapper, MainHome, Buttonholder, HomeBackground } from "./style";
 import {useEffect} from "react";
-import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+import {getUserMeAction} from "../../store/actions/getUserMeAction";
 //import {getUserSampleAction} from "../../store/actions/getUserSampleSetAction";
 import {useDispatch} from "react-redux";
 

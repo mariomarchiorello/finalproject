@@ -16,7 +16,6 @@ const SignUp = () => {
 
     const history = useHistory()
 
-    // <Link to='/sucess'> </Link>
 
     const registrationHandler = (e) => {
         e.preventDefault();

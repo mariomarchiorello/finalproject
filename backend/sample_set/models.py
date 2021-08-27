@@ -1,19 +1,19 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-# WATER_SURFACE = [
-#     ('Oil', 'Oily surface'),
-#     ('Foam', 'Foamy surface'),
-#     ('Bioluminescence', 'Bioluminescent')
-# ]
-#
-# WEATHER_CONDITIONS = [
-#     ('Storm', 'Stormy'),
-#     ('Rain', 'Rainy'),
-#     ('Sun', 'Sunny'),
-#     ('Cloud', 'Cloudy'),
-#     ('Snow', 'Snowy')
-# ]
+WATER_SURFACE = [
+     ('Oil', 'Oily surface'),
+     ('Foam', 'Foamy surface'),
+     ('Bioluminescence', 'Bioluminescent')
+ ]
+
+WEATHER_CONDITIONS = [
+     ('Storm', 'Stormy'),
+     ('Rain', 'Rainy'),
+     ('Sun', 'Sunny'),
+     ('Cloud', 'Cloudy'),
+     ('Snow', 'Snowy')
+ ]
 
 User = get_user_model()
 
@@ -43,7 +43,7 @@ class SampleSet(models.Model):
     weather_snow = models.BooleanField(null=True, default=False)
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-id'],
 
 
 # class WaterSurface(models.Model):

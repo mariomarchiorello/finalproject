@@ -30,7 +30,7 @@ export default function Map() {
             <MapContainer style={{ height: '100%', width: '100%', borderRadius: "10px"}} center={center} zoom={2} minZoom={1} scrollWheelZoom={false} >
                 <TileLayer attribution='&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-earth">GoogleMaps</a> Data 2021' url='http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}'/>
 
-                {
+                {/*{
                     allPos
                         .filter(sample => sample[5] === userSelfId)
                         .map(position =>
@@ -56,7 +56,7 @@ export default function Map() {
                                 {`Zooplankton: ${position[4]}`}
                             </Popup>
                         </CircleMarker> )
-                }
+                }*/}
 
             </MapContainer>
             </Box>

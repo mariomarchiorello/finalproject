@@ -6,7 +6,7 @@ import Map from './map'
 import { BackgroundMap, Bluebutton } from './style'
 //import {preventDefault} from "leaflet/src/dom/DomEvent";
 import {useDispatch} from "react-redux";
-import {getUserMeAction} from "../../store/actions/getUserSelfAction";
+import {getUserMeAction} from "../../store/actions/getUserMeAction";
 import {Link, useHistory} from "react-router-dom";
 
 const MapPage = ()=>  {
@@ -15,13 +15,13 @@ const MapPage = ()=>  {
 
     useEffect(()=>{
         dispatch(getUserMeAction(history))
-
+        // dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: ""})
     },[])
 
-    const profileHandler = value => {
-        dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
-        history.push("/profile")
-    };
+    // const profileHandler = value => {
+    //     dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
+    //     history.push("/profile")
+    // };
 
 
 

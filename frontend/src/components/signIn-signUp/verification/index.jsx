@@ -41,9 +41,7 @@ const Verification = () => {
         }
         fetch(url,config)
             .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-            })
+            .then(data => data)
             history.push('/sign-in')
     }
 

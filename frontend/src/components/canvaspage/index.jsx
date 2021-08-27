@@ -5,7 +5,7 @@ import {
   Main,
 } from "../../globalstyles/globalStyle";
 import { useHistory } from "react-router-dom";
-import { getUserMeAction } from "../../store/actions/getUserSelfAction";
+import { getUserMeAction } from "../../store/actions/getUserMeAction";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../header";
 import Footer from "../footer";

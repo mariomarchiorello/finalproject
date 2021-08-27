@@ -1,32 +1,31 @@
 import React, { useEffect, useState } from "react";
-import {
-  GlobalInput,
-  GlobalLabel,
-  SmallBlueButton,
-} from "../../../globalstyles/globalStyle";
+import {GlobalInput, GlobalLabel, SmallBlueButton} from "../../../globalstyles/globalStyle";
 import { Edit, EditPasswordButton, ModeSelect, RadioButton } from "./style";
 import InfoSection from "./info";
 import { BottomContainer } from "../style";
 import { useDispatch, useSelector } from "react-redux";
 import baseUrl from "../../../helpers/baseUrl";
 import { useHistory } from "react-router-dom";
-import { getUserMeAction } from "../../../store/actions/getUserSelfAction";
+import { getUserMeAction } from "../../../store/actions/getUserMeAction";
 import Toggle from "../../themes/toggle";
 import { useDarkMode } from "../../themes/useDarkMode";
-import Footer from "../../footer";
+
+
+
 
 const EditProfileSection = () => {
+
   const history = useHistory();
   const dispatch = useDispatch();
-
   const token = localStorage.getItem("token");
+
 
   // useEffect(()=>{
   //     dispatch(getUserMeAction(history))
   // },[])
 
   const userSelf = useSelector((state) => state.UserReducer.userMe);
-
+  // console.log(userSelf)
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [first_name, setFirstName] = useState("");
@@ -34,9 +33,10 @@ const EditProfileSection = () => {
   const [home_latitude, setHomeLat] = useState("");
   const [home_longitude, setHomeLon] = useState("");
   const [vessel_name, setVessel] = useState("");
-  const [mode, setMode] = useState();
 
   const editProfileHandler = (e) => {
+    e.preventDefault();
+
     const editProfileCredentials = {
       email: email,
       username: username,
@@ -45,9 +45,9 @@ const EditProfileSection = () => {
       home_latitude: home_latitude,
       home_longitude: home_longitude,
       vessel_name: vessel_name,
-      mode: mode,
     };
-    console.log("changing credentials", editProfileCredentials);
+
+
     const config = {
       method: "PATCH",
       body: JSON.stringify(editProfileCredentials),
@@ -56,17 +56,16 @@ const EditProfileSection = () => {
         "Content-Type": "application/json",
       }),
     };
-    fetch(`${baseUrl}users/me/`, config)
+    fetch("http://localhost:8000/backend/api/users/me/", config)
       .then((res) => res.json())
       .then((data) => {
         console.log(" in da patch fatch", data);
-        //profileHandler("info")
+        profileHandler("info")
       });
   };
 
   const profileHandler = (value) => {
     dispatch({ type: "PROFILE-EDIT-HANDLER", payload: value });
-    editProfileHandler();
   };
 
   const [theme, toggleTheme] = useDarkMode();
