@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import InfoSection from "./info";
 import { Edit } from "./style";
-import {
-  GlobalInput,
-  GlobalLabel,
-  SmallBlueButton,
-} from "../../../globalstyles/globalStyle";
+import {GlobalInput, GlobalLabel, SmallBlueButton} from "../../../globalstyles/globalStyle";
 import { useHistory } from "react-router-dom";
 import { BottomContainer } from "../style";
 import { useDispatch } from "react-redux";

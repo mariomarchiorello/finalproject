@@ -4,7 +4,6 @@ import lightlogo from "../../assets/graphics/GOES-Logo_dark-text.png"
 import {Link, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from 'react'
-import {getUserMeAction} from "../../store/actions/getUserMeAction";
 import store from "../../store";
 import Toggle from "../themes/toggle";
 import { useDarkMode } from "../themes/useDarkMode"

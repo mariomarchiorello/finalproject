@@ -4,7 +4,6 @@ import { Edit, EditPasswordButton, ModeSelect, RadioButton } from "./style";
 import InfoSection from "./info";
 import { BottomContainer } from "../style";
 import { useDispatch, useSelector } from "react-redux";
-import baseUrl from "../../../helpers/baseUrl";
 import { useHistory } from "react-router-dom";
 import { getUserMeAction } from "../../../store/actions/getUserMeAction";
 import Toggle from "../../themes/toggle";
@@ -59,7 +58,6 @@ const EditProfileSection = () => {
     fetch("http://localhost:8000/backend/api/users/me/", config)
       .then((res) => res.json())
       .then((data) => {
-        console.log(" in da patch fatch", data);
         profileHandler("info")
       });
   };

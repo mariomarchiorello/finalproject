@@ -4,7 +4,6 @@ import Footer from '../footer'
 import Header from '../header'
 import Map from './map'
 import { BackgroundMap, Bluebutton } from './style'
-//import {preventDefault} from "leaflet/src/dom/DomEvent";
 import {useDispatch} from "react-redux";
 import {getUserMeAction} from "../../store/actions/getUserMeAction";
 import {Link, useHistory} from "react-router-dom";

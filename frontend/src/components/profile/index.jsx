@@ -22,7 +22,6 @@ export default function Profile() {
   }, []);
 
   const userSelf = useSelector(state => state.UserReducer.userMe);
-  // console.log("when page profile renders" , userSelf)
   const dispatch = useDispatch();
   const profileMainChoice = (value) => {
     dispatch({ type: "PROFILE-MAIN-HANDLER", payload: value });
