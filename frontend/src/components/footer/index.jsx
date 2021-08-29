@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <>
         <FooterContainer>
-            
+            <p>empty footer</p>
 
         </FooterContainer>
             

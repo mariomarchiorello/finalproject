@@ -19,6 +19,8 @@ import Spinner from "./components/spinner";
 import { withAuth, withNoAuth } from "./components/HOC";
 import SampleSetSummary from "./components/summary";
 import About from "./components/about";
+import Annotate from "./components/annotate";
+import StartPage from "./components/start";
 
 const App = () => {
   return (
@@ -29,6 +31,13 @@ const App = () => {
             <Suspense fallback={<Spinner />}>
               <Route exact path="/about" component={About} />
               <Route exact path="/map" component={withAuth(Map)} />
+              <Route exact path="/start" component={StartPage} />
+
+              <Route exact path="/react-image-annotate" component={Annotate}/>
+
+
+
+
               {/*<Route exact path="/annotate-dusko" component={AnnotateTwo} />*/}
               <Route exact path="/profile" component={withAuth(Profile)} />
               <Route exact path="/upload" component={withAuth(CreateNewSampleSet)}/>

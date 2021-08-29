@@ -64,7 +64,7 @@ export const DisplayContainer = styled.div`
   overflow-x: hidden;
   width: 75vw;
   
-  /* // width 
+   // width 
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -84,15 +84,15 @@ export const DisplayContainer = styled.div`
  //Handle on hover 
 ::-webkit-scrollbar-thumb:hover {
   background: black; 
-} */
+}
 
-::-webkit-scrollbar {
+/*  ::-webkit-scrollbar {
   width: 10px;
   background-color: ${props => props.theme.bgcolor };
 }
 
 ::-webkit-scrollbar-track {
-  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); */
+  /!* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); *!/
   background-color: #E0E0E0;
   border-radius: 10px;
 }
@@ -102,6 +102,6 @@ export const DisplayContainer = styled.div`
      border: none;
      border-radius: 10px;
 
-}
+}*/
 
 `;

@@ -10,7 +10,7 @@ export const getAllUserSamples = (history) => {
         "Content-Type": "application/json",
       }),
     };
-    const url = `${baseUrl}samples/my-samples/`;
+    const url = "http://localhost:8000/backend/api/samples/my-samples/";
     fetch(url, config)
       .then((res) => res.json())
       .then((data) => {

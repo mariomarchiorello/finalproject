@@ -14,7 +14,7 @@ export const getUserMeAction = (history) => {
         fetch(url, config)
             .then(res => res.json())
             .then(data => {
-                console.log('data:', data);
+                // console.log('data:', data);
                 const action = {
                     type: 'GET_USER_ME',
                     payload: data

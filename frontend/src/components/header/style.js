@@ -9,8 +9,8 @@ width: 100%;
 justify-content: space-between;
 position: sticky;
 top: 0;
-background-color: transparent;
-opacity: 95%;  
+background-color:#121212;
+opacity: 85%;  
 height: 10%;
 z-index: 10;
 .headermenu {

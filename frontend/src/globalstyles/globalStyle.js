@@ -38,7 +38,6 @@ export const GlobalLabel = styled.label`
 
 export const TransparentButton = styled.button`
 border-radius: 5px;
-//width: 8rem;
 background: transparent;
 color: ${props => props.theme.transbuttoncolor };
 padding: 5px 20px 5px 20px;
@@ -65,9 +64,30 @@ export const Background = styled.div`
 
 export const GlobalStyle = createGlobalStyle`
     body {
+      background-color: #121212;
         margin: 0;
         padding: 0;
         font-family: 'Roboto', sans-serif;
+      max-width:100%;
+      overflow-x:hidden;
+      ::-webkit-scrollbar {
+  width: 10px;
+  
+}
+
+::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); */
+  background-color: #E0E0E0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+     background: linear-gradient(#30ADEA, #216273);
+     border: none;
+     border-radius: 10px;
+
+}
+      
     }
 `;
 

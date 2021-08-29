@@ -90,7 +90,6 @@ const CreateNewSampleSet = () => {
   const NewSampleSetHandler = (event) => {
     // console.log(images)
     event.preventDefault();
-    const url = `${baseUrl}samples/new/`;
 
     let formData = new FormData();
     // basic info
@@ -114,11 +113,15 @@ const CreateNewSampleSet = () => {
       formData.append(`images`, image[i]);
     }
 
+    const url = "http://localhost:8000/backend/api/samples/new/";
+
+
     const config = {
       method: "POST",
       body: formData,
       headers: new Headers({
         Authorization: `Bearer ${token}`,
+        // "Content-Type": "application/json"
       }),
     };
     fetch(url, config)
@@ -126,7 +129,7 @@ const CreateNewSampleSet = () => {
       .then((data) => {
         console.log("FROM IN DA SAMPLE_UPLOAD", data);
         localStorage.setItem("sample_id", data.id);
-        history.push("/annotate-dusko");
+          history.push("/react-image-annotate")
       });
   };
 

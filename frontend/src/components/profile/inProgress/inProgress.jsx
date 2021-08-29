@@ -16,7 +16,7 @@ const NotCompleted = () => {
 
   const continueAnnotating = (id) => {
     localStorage.setItem("sample_id", id);
-    history.push("/annotate-dusko");
+    // history.push("/annotate-dusko");
   };
 
   return allUserSamples.map((element, index) => {
