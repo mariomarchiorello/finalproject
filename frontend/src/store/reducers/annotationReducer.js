@@ -1,6 +1,5 @@
 const initialState = {
   currentSample: [],
-  annotatedImages: {},
 };
 
 export function annotationReducer(state = initialState, action) {
@@ -9,8 +8,6 @@ export function annotationReducer(state = initialState, action) {
       ...state,
       currentSample: action.payload,
     };
-  } else if (action.type === "PATCH_IMAGE") {
-    return { ...state, annotatedImages: action.payload };
   }
   return state;
 }

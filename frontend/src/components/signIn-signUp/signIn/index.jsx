@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {Link, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 import { Background, GlobalInput, Main } from '../../../globalstyles/globalStyle';
 import { signInAction } from '../../../store/actions/signInAction';

@@ -1,12 +1,12 @@
-import { HeaderContainer, Logo, RightContainer, Profile, LoginButton, LogoContainer } from "./style"
+import { HeaderContainer, Logo, RightContainer, LoginButton, LogoContainer } from "./style"
 import darklogo from "../../assets/graphics/goes-logo_color-white.png"
 import lightlogo from "../../assets/graphics/GOES-Logo_dark-text.png"
 import {Link, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from 'react'
-import store from "../../store";
-import Toggle from "../themes/toggle";
-import { useDarkMode } from "../themes/useDarkMode"
+// import store from "../../store";
+// import Toggle from "../themes/toggle";
+// import { useDarkMode } from "../themes/useDarkMode"
 
 const Header = () => {
     const history = useHistory();
@@ -39,12 +39,6 @@ const Header = () => {
         history.push("/")
 
     };
-    const joinUs=(e)=>{
-        e.preventDefault();
-        history.push("/sign-up")
-    }
-    
-    
 
     return  <>
     <HeaderContainer>

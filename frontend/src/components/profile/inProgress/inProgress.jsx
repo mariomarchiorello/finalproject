@@ -10,7 +10,7 @@ const NotCompleted = () => {
 
   useEffect(() => {
     dispatch(getAllUserSamples(history));
-  }, []);
+  });
 
   const allUserSamples = useSelector((state) => state.UserReducer.allMySamples);
 
@@ -59,7 +59,7 @@ const NotCompleted = () => {
                     ? image.original_image
                     : image.annotated_image
                 }
-                alt="sample Image"
+                alt="sample"
               />
             ))}
           </section>

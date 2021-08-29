@@ -1,7 +1,6 @@
 import { Background, GlobalInput, Main, GlobalLabel, } from "../../../globalstyles/globalStyle"
 import Header from "../../header"
 import { RegistrationWrapper, RegInputContainer, RegButton } from "./style"
-import Footer from "../../footer";
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import baseUrl from "../../../helpers/baseUrl";

@@ -17,7 +17,7 @@ export default function Map() {
 
     useEffect(()=>{
     dispatch(getAllLocationsAction(history))
-    },[])
+    })
 
     const locationsArray = useSelector(state => state.locationReducer.allLocations)
     const userSelfId = useSelector(state => state.UserReducer.userMe.id)

@@ -6,4 +6,6 @@
 //  }
 //
 // export default baseUrl;
-let baseUrl = "http://localhost:8000/backend/api/"
+const baseUrl = "http://localhost:8000/backend/api/"
+
+export default baseUrl

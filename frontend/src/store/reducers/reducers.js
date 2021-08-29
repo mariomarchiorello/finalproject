@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-import { annotationReducer } from "./annotationReducer";
 import { locationReducer} from "./locationReducer";
 
 const initialState = {
@@ -47,6 +46,5 @@ const UserReducer = (state = initialState, action) => {
 
 export const rootReducer = combineReducers({
   UserReducer,
-  annotationReducer,
   locationReducer,
 });

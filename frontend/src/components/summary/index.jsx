@@ -1,19 +1,14 @@
 import React, {useEffect} from 'react'
 import Header from "../header"
-import Footer from "../footer"
 
 import {
-    Background, BlueButton, GlobalLabel,
-    Main, TransparentButton,
+    Background, BlueButton, GlobalLabel, TransparentButton,
 } from "../../globalstyles/globalStyle"
 
-import {
-    ImagePreview, StandardText,
-    TitleWrapper
-} from "../sampleSetUpload/style"
+import {ImagePreview, TitleWrapper} from "../sampleSetUpload/style"
 
 import {Link, useHistory} from "react-router-dom"
-import placeHolderImg from "../../assets/graphics/placeholder.jpg"
+// import placeHolderImg from "../../assets/graphics/placeholder.jpg"
 import {useDispatch, useSelector} from "react-redux"
 import {getUserSampleAction} from "../../store/actions/getUserSampleSetAction"
 import {
@@ -34,10 +29,10 @@ const SampleSetSummary = () => {
 
     useEffect(() => {
         dispatch(getUserSampleAction(history))
-    },[])
+    })
 
     const currentSample = useSelector(state => state.annotationReducer.currentSample)
-    console.log('Current sample from summary page: ', currentSample)
+    // console.log('Current sample from summary page: ', currentSample)
 
 
 

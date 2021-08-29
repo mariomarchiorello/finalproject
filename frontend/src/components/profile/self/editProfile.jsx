@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import {GlobalInput, GlobalLabel, SmallBlueButton} from "../../../globalstyles/globalStyle";
-import { Edit, EditPasswordButton, ModeSelect, RadioButton } from "./style";
+import { Edit, EditPasswordButton } from "./style";
 import InfoSection from "./info";
 import { BottomContainer } from "../style";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { getUserMeAction } from "../../../store/actions/getUserMeAction";
+import { useDispatch } from "react-redux";
 import Toggle from "../../themes/toggle";
 import { useDarkMode } from "../../themes/useDarkMode";
 
@@ -14,7 +12,7 @@ import { useDarkMode } from "../../themes/useDarkMode";
 
 const EditProfileSection = () => {
 
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
 
@@ -23,7 +21,7 @@ const EditProfileSection = () => {
   //     dispatch(getUserMeAction(history))
   // },[])
 
-  const userSelf = useSelector((state) => state.UserReducer.userMe);
+  // const userSelf = useSelector((state) => state.UserReducer.userMe);
   // console.log(userSelf)
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -67,8 +65,6 @@ const EditProfileSection = () => {
   };
 
   const [theme, toggleTheme] = useDarkMode();
-
-  const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled);
 
   return (
     <>

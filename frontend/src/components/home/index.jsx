@@ -16,7 +16,7 @@ export default function Home() {
 
     useEffect(()=>{
     dispatch(getUserMeAction(history))
-    },[])
+    })
 
     return (
         <>

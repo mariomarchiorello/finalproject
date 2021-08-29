@@ -25,7 +25,6 @@ import {
   UploadContainer,
 } from "./style";
 // import planktonImage from '../../assets/background-images/10.jpg'
-import baseUrl from "../../helpers/baseUrl";
 import placeholderimg from "../../assets/graphics/placeholder.jpg";
 
 const CreateNewSampleSet = () => {

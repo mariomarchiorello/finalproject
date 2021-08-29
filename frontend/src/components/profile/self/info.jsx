@@ -13,7 +13,7 @@ const InfoSection=()=> {
     useEffect(()=>{
         dispatch(getUserMeAction(history))
 
-    },[])
+    })
 
     const userSelf = useSelector(state => state.UserReducer.userMe);
     // console.log("from inside the infosection:",userSelf)

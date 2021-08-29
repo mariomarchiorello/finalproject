@@ -3,7 +3,6 @@ import { Background, GlobalInput, Main } from "../../../globalstyles/globalStyle
 import { VerButton, VerificationMsg, VerInputContainer, VerLabel } from "./style"
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
-import Footer from "../../footer";
 import baseUrl from "../../../helpers/baseUrl";
 
 

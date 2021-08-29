@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import {Link} from 'react-router-dom'
 import {TransparentButton} from "../../globalstyles/globalStyle";
 
 export const HeaderContainer = styled.div`

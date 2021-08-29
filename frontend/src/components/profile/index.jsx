@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
@@ -19,9 +19,9 @@ export default function Profile() {
 
   useEffect(() => {
     dispatch(getUserMeAction(history));
-  }, []);
+  });
 
-  const userSelf = useSelector(state => state.UserReducer.userMe);
+  // const userSelf = useSelector(state => state.UserReducer.userMe);
   const dispatch = useDispatch();
   const profileMainChoice = (value) => {
     dispatch({ type: "PROFILE-MAIN-HANDLER", payload: value });

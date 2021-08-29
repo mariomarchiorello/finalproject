@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import { Background, Main } from '../../globalstyles/globalStyle'
 import Footer from '../footer'
 import Header from '../header'
 import Map from './map'
-import { BackgroundMap, Bluebutton } from './style'
+import { BackgroundMap } from './style'
 import {useDispatch} from "react-redux";
 import {getUserMeAction} from "../../store/actions/getUserMeAction";
-import {Link, useHistory} from "react-router-dom";
+import { useHistory} from "react-router-dom";
 
 const MapPage = ()=>  {
     const history = useHistory()
@@ -15,7 +15,7 @@ const MapPage = ()=>  {
     useEffect(()=>{
         dispatch(getUserMeAction(history))
         // dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: ""})
-    },[])
+    })
 
     // const profileHandler = value => {
     //     dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})

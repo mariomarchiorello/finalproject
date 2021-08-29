@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from "../header";
-import {Background, Main} from "../../globalstyles/globalStyle";
+import {Background} from "../../globalstyles/globalStyle";
 import Map from "../map/map";
-import {MainStart, StartContainer, StartMap, StartOptionContainer} from "./style";
+import {MainStart, StartContainer, StartMap} from "./style";
 import {Link} from "react-router-dom";
 import Footer from "../footer";
 

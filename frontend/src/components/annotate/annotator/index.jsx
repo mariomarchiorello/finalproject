@@ -3,7 +3,6 @@ import ReactImageAnnotate from "react-image-annotate";
 import imageTwo from '../../../assets/background-images/plankton.jpg'
 import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getUserSampleAction} from "../../../store/actions/getUserSampleSetAction";
 import {getUserMeAction} from "../../../store/actions/getUserMeAction";
 import {getAllUserSamples} from "../../../store/actions/getAllMySamplesAction";
 
@@ -16,12 +15,9 @@ const Annotator = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllUserSamples(history));
-        // dispatch(getUserSampleAction(history))
         dispatch(getUserMeAction(history))
 
-    }, []);
-//---------gets last uploaded sample from logged in user----- but this only makes sense when the annotation page is rendered after uploading-------
-//----------------------------------------------------------- the userflow needs to be redesigned----
+    });
 
     const currentSampelSet = useSelector((state) => state.UserReducer.allMySamples[`${state.UserReducer.allMySamples.length - 1}`]);
     console.log(" currentsampleset",currentSampelSet);

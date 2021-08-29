@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import { ZooChoices } from '../style.js';
 import { ZooChoiceOne, ZooChoiceTwo, ZooChoiceThree } from '../style'
 

@@ -1,4 +1,3 @@
-import baseUrl from "../../helpers/baseUrl";
 
 export const getUserSampleAction = (history) => {
   return (dispatch) => {

@@ -13,9 +13,9 @@ export default function MyProfile() {
   const history = useHistory();
   useEffect(() => {
     dispatch(getUserMeAction(history));
-  }, []);
+  });
 
-  const userSelf = useSelector((state) => state.UserReducer.userMe);
+  // const userSelf = useSelector((state) => state.UserReducer.userMe);
 
   const dispatch = useDispatch();
 

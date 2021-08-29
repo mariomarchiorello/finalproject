@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { TOGGLE_THEME } from "../../store/actions/changeMode"
-import { useDarkMode } from './useDarkMode';
 
 
 const Toggle = () => {

@@ -43,7 +43,7 @@ class SampleSet(models.Model):
     weather_snow = models.BooleanField(null=True, default=False)
 
     class Meta:
-        ordering = ['-id'],
+        ordering = ['id']
 
 
 # class WaterSurface(models.Model):
