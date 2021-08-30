@@ -63,6 +63,7 @@ export const DisplayContainer = styled.div`
   overflow: scroll;
   overflow-x: hidden;
   width: 75vw;
+  background-color: deeppink;
   
    // width 
 ::-webkit-scrollbar {

@@ -23,12 +23,11 @@ const Header = () => {
     const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
     const userSelf = useSelector(state => state.UserReducer.userMe);
     const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
+    console.log("when header renders:",userSelf)
 
-
-    const profileMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
+    const headerMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
 
     const profileHandler = (value) => {
-
         dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
         history.push("/profile")
     };
@@ -45,24 +44,24 @@ const Header = () => {
 {/*----------- determines the (to="") value when clicking on the logo in the hearder--------------------------------*/}
 
         {localToken ?
-            (<Link onClick={()=>profileMainChoice("home")} to="/map"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) :
+            (<Link onClick={()=>headerMainChoice("home")} to="/start"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) :
             (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
 
 {/*---------- determines what will render in the menu bar, depending on the localstorage.token---------------------*/}
 
         {localToken ?
             (<RightContainer>
-                <Link className="headermenu" to="/map" onClick={()=>profileMainChoice("home")} style={profileMainAction === "home" ? {borderBottom: "3px solid #30ADEA"} : null} >Home</Link>
-                <Link className="headermenu" to="/upload" onClick={()=>profileMainChoice("upload")} style={profileMainAction === "upload" ? {borderBottom: "3px solid #30ADEA"} : null} >Upload</Link>
+                <Link className="headermenu" to="/map" onClick={()=>headerMainChoice("home")} style={profileMainAction === "home" ? {borderBottom: "3px solid #30ADEA"} : null} >Home</Link>
+                <Link className="headermenu" to="/upload" onClick={()=>headerMainChoice("upload")} style={profileMainAction === "upload" ? {borderBottom: "3px solid #30ADEA"} : null} >Upload</Link>
                 <Link
                     style={profileMainAction === "profile" || profileMainAction === "info" || profileMainAction === "completed" || profileMainAction === "incomplete" ? {borderBottom: "3px solid #30ADEA"} : null}
                     className="headermenu"
                     onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Link>
-                <Link className="headermenu" to="/about" onClick={()=>profileMainChoice("about")} style={profileMainAction === "about" ? {borderBottom: "3px solid #30ADEA"} : null}>About</Link>
+                <Link className="headermenu" to="/about" onClick={()=>headerMainChoice("about")} style={profileMainAction === "about" ? {borderBottom: "3px solid #30ADEA"} : null}>About</Link>
                 <LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) : null}
         {localToken ? null:
             (<RightContainer>
-                <Link className="headermenu" to="/about" onClick={()=>profileMainChoice("about")} style={profileMainAction === "about" ? {borderBottom: "3px solid #30ADEA"} : null}>About</Link>
+                <Link className="headermenu" to="/about" onClick={()=>headerMainChoice("about")} style={profileMainAction === "about" ? {borderBottom: "3px solid #30ADEA"} : null}>About</Link>
                 <Link className="headermenu" to="/sign-up">Join</Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
     </HeaderContainer>
   </>

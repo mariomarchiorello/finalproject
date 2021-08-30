@@ -3,7 +3,6 @@ import { locationReducer} from "./locationReducer";
 
 const initialState = {
   token: "",
-  user: [],
   userMe: {},
   profileEditSection: "info",
   profileMainSection: "home",
@@ -20,12 +19,12 @@ const UserReducer = (state = initialState, action) => {
       // THIS IS THE ACTION TRIGERRED AFTER LOGIN, UserMe WILL BE STILL EMPTY THEN
       //console.log(" IN DA USER SIGN IN", action.payload);
       return { ...state, token: action.payload };
-    case "MENUCOUNTER":
-      return { ...state, pageId: action.payload };
+//----------- used in the steps edit-profile/password and delete account----------------
     case "PROFILE-EDIT-HANDLER":
       return { ...state, profileEditSection: action.payload };
     case "PROFILE-MAIN-HANDLER":
       return { ...state, profileMainSection: action.payload };
+//----------- from header to profile and "old" info/completed/incompleted section---------
     case "HEADER_TO_PROFILE_ACTION":
       return {
         ...state,

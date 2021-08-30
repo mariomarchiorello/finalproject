@@ -10,7 +10,7 @@ const Completed = () => {
 
   useEffect(() => {
     dispatch(getAllUserSamples(history));
-  });
+  },[]);
 
   const allUserSamples = useSelector((state) => state.UserReducer.allMySamples);
 

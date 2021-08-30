@@ -13,6 +13,8 @@ import SampleSetSummary from "./components/summary";
 import About from "./components/about";
 import Annotate from "./components/annotate";
 import StartPage from "./components/start";
+import ShowIncompleteSamples from "./components/start/startToAnnotate";
+import ShowCompletedSamples from "./components/start/startToCompleted";
 
 const App = () => {
   return (
@@ -34,13 +36,15 @@ const App = () => {
               {/*-------------landing and functionalities-----------------------------------*/}
 
               <Route exact path="/about" component={About} />
-              {/*--------------Map will be restructured and made available for everyone------*/}
-              <Route exact path="/map" component={withAuth(Map)} />
+              <Route exact path="/incomplete-samples" component={withAuth(ShowIncompleteSamples)}/>
+              <Route exact path="/completed-samples" component={withAuth(ShowCompletedSamples)}/>
               <Route exact path="/react-image-annotate" component={withAuth(Annotate)}/>
               <Route exact path="/profile" component={withAuth(Profile)} />
               <Route exact path="/upload" component={withAuth(CreateNewSampleSet)}/>
               <Route exact path="/summary" component={withAuth(SampleSetSummary)}/>
 
+              {/*--------------Map will be restructured and made available for everyone------*/}
+              <Route exact path="/map" component={withAuth(Map)} />
 
 
 

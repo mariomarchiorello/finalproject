@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {BackgroundMap} from "../map/style";
-import {Main} from "../../globalstyles/globalStyle";
+import {Background, Main} from "../../globalstyles/globalStyle";
 
 export const MainStart = styled(Main)`
   height: auto;
@@ -41,3 +41,15 @@ export const StartContainer = styled.div`
      
   }
 `;
+
+export const BackgroundIncomplete = styled(Main)`
+  position: absolute;
+  top: 10%;
+  display: flex;
+  overflow-x: hidden;
+  align-items: center;
+  background-color: transparent;
+  height: auto;
+  overflow: scroll;
+  
+`
