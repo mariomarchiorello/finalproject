@@ -23,6 +23,7 @@ const App = () => {
             <Suspense fallback={<Spinner />}>
 
               <Route exact path={["/home", "/"]} component={withNoAuth(Home)} />
+              <Route exact path="/start" component={withAuth(StartPage)} />
 
               {/*------------login and registration sequence-------------------------------*/}
               <Route exact path="/sign-up" component={SignUp} />
@@ -32,7 +33,6 @@ const App = () => {
               <Route exact path="/resetOne" component={ResetPwEmail} />
               {/*-------------landing and functionalities-----------------------------------*/}
 
-              <Route exact path="/start" component={StartPage} />
               <Route exact path="/about" component={About} />
               {/*--------------Map will be restructured and made available for everyone------*/}
               <Route exact path="/map" component={withAuth(Map)} />

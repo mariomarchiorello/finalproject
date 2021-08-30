@@ -17,7 +17,7 @@ export const withNoAuth = (WrappedComponent) => {
         if(!token) {
             return <WrappedComponent />
         }else {
-            props.history.push('/map', token)
+            props.history.push('/start', token)
             return null
         }
     }
