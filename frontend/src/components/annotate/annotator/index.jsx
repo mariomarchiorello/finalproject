@@ -35,7 +35,7 @@ const Annotator = () => {
         src: currentSampelSet.images[0].original_image ,
         name: "Image 1",
         regions: []
-      },*/
+      }, */
       {
         src: imageTwo,
         name: "Image 2",
