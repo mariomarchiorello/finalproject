@@ -1,28 +1,31 @@
-import React, {useState } from "react";
+import React, {useEffect, useState} from "react";
 import {GlobalInput, GlobalLabel, SmallBlueButton} from "../../../globalstyles/globalStyle";
 import { Edit, EditPasswordButton } from "./style";
 import InfoSection from "./info";
 import { BottomContainer } from "../style";
 import { useDispatch } from "react-redux";
 import Toggle from "../../themes/toggle";
-import { useDarkMode } from "../../themes/useDarkMode";
+import {useHistory} from "react-router-dom";
+import {getUserMeAction} from "../../../store/actions/getUserMeAction";
 
 
 
-
+/*------- show current user information as input field to edit and delete the profile-----------------------------*/
 const EditProfileSection = () => {
 
-  // const history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
 
 
-  // useEffect(()=>{
-  //     dispatch(getUserMeAction(history))
-  // },[])
+  useEffect(()=>{
+      dispatch(getUserMeAction(history))
+  },[])
 
   // const userSelf = useSelector((state) => state.UserReducer.userMe);
   // console.log(userSelf)
+
+/*------------- functionality to edit the userprofile------------------------------------------------- -----------*/
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [first_name, setFirstName] = useState("");
@@ -59,12 +62,12 @@ const EditProfileSection = () => {
         profileHandler("info")
       });
   };
-
+/*------------------trigger function for saving the changes-----------------------------------------------------------*/
   const profileHandler = (value) => {
     dispatch({ type: "PROFILE-EDIT-HANDLER", payload: value });
   };
 
-  const [theme, toggleTheme] = useDarkMode();
+
 
   return (
     <>
@@ -143,7 +146,7 @@ const EditProfileSection = () => {
               }}
             />
             <GlobalLabel forHtml="theme">Switch to Light Theme</GlobalLabel>
-            <Toggle theme={theme} toggleTheme={toggleTheme}></Toggle>
+
           </section>
         </Edit>
         <BottomContainer>

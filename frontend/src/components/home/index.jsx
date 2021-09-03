@@ -28,6 +28,9 @@ export default function Home() {
                         <p>Dr. Howard Dryden, CSO</p>
                     </QuoteWrapper>
                     <Buttonholder>
+                        <Link to="/sign-in"><BlueButton>Sign In</BlueButton></Link>
+                    </Buttonholder>
+                    <Buttonholder>
                         <Link to="/sign-up"><BlueButton>Join Us!</BlueButton></Link>
                     </Buttonholder>
                 </MainHome>

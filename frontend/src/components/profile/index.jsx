@@ -37,7 +37,7 @@ export default function Profile() {
 {/*
 -----------------MENU BAR WITH "PROFILE     COMPLETED      IN PROGRESS" ------------------------------------------
 */}
-          <SelectionContainer>
+          {/*<SelectionContainer>
             <Link className="underscored"
                   style={ profileMainAction === "profile" ? { borderBottom: "3px solid #30ADEA" } : null}
                   onClick={() => profileMainChoice("profile")}>Profile</Link>
@@ -47,12 +47,12 @@ export default function Profile() {
             <Link className="underscored"
                   style={profileMainAction === "incomplete" ? { borderBottom: "3px solid #30ADEA" } : null}
                   onClick={() => profileMainChoice("incomplete")}>In Progress</Link>
-          </SelectionContainer>
+          </SelectionContainer>*/}
 {/*---------------- AREA TO RENDER WHAT HAS BEEN SELECTED IN THE ABOVE----------------------------------------------*/}
 
-          {profileMainAction === "profile" ? <MyProfile /> : null}
-          {profileMainAction === "completed" ? (<DisplayContainer> <Completed /> </DisplayContainer>) : null}
-          {profileMainAction === "incomplete" ? (<DisplayContainer> <NotCompleted /> </DisplayContainer>) : null}
+           <MyProfile />
+          {/*{profileMainAction === "incomplete" ? (<DisplayContainer> <NotCompleted /> </DisplayContainer>) : null}
+          {profileMainAction === "completed" ? (<DisplayContainer> <Completed /> </DisplayContainer>) : null}*/}
         </MainProfile>
         <Footer />
       </BackgroundProfile>

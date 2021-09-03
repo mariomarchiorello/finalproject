@@ -1,69 +1,84 @@
-import { HeaderContainer, Logo, RightContainer, LoginButton, LogoContainer } from "./style"
+import {HeaderContainer, Logo, RightContainer, LogoContainer, SettingsIcon} from "./style"
 import darklogo from "../../assets/graphics/goes-logo_color-white.png"
 import lightlogo from "../../assets/graphics/GOES-Logo_dark-text.png"
 import {Link, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from 'react'
-// import store from "../../store";
+import Modal from "react-modal"
+import icon from "../../assets/graphics/settings_icon.png"
+import SettingsMenu from "./settingsMenu";
 // import Toggle from "../themes/toggle";
 // import { useDarkMode } from "../themes/useDarkMode"
 
 const Header = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+/*------------------- not sure, need to talk to andirs about all this theme stuff------*/
+    const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
 
-
+/*------------ getting the token to confirm that the right sections are rendered------*/
     useEffect(()=>{
-
         setLocalToken(localStorage.getItem("token"));
     },[]);
-
-
     const [localToken, setLocalToken] = useState("");
-    const ThemeEnabled = useSelector((state) => state.UserReducer.ThemeEnabled)
-    const userSelf = useSelector(state => state.UserReducer.userMe);
-    const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
-    console.log("when header renders:",userSelf)
 
-    const headerMainChoice = value => { dispatch({type:"PROFILE-MAIN-HANDLER",payload:value})}
+/*------------ activating the modal with onClick event-------------*/
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const setModalIsOpenToTrue =()=>{
+        setModalIsOpen(true)
+    }
+/*---------------- styling for modal-----------------------------------*/
+const customStyles = {
+        content : {
+            display:"flex",
+            flexdirection:"column",
+            justifyContent:"center",
+            alignItems:"center",
+            marginTop: '3%',
+            marginLeft: '70vw',
+            marginRight: '300px',
+            height:"30vh",
+            width:"22vw",
+            backgroundColor: "rgba(18, 18, 18, 0.75)",
+            border:"none",
 
-    const profileHandler = (value) => {
-        dispatch({type:"HEADER_TO_PROFILE_ACTION",payload: value})
-        history.push("/profile")
+        },
+        overlay : {
+            backgroundColor: "transparent"
+        }
     };
 
-    const logOut = (e)=>{
-        e.preventDefault()
-        window.localStorage.clear()
-        history.push("/")
 
-    };
+
+// const profileMainAction = useSelector( state => state.UserReducer.profileMainSection);
+
+
+
 
     return  <>
     <HeaderContainer>
 {/*----------- determines the (to="") value when clicking on the logo in the hearder--------------------------------*/}
 
         {localToken ?
-            (<Link onClick={()=>headerMainChoice("home")} to="/start"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) :
+            (<Link  to="/start"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>) :
             (<Link to="/"><LogoContainer><Logo src={ThemeEnabled === true ? lightlogo : darklogo}/></LogoContainer></Link>)}
 
 {/*---------- determines what will render in the menu bar, depending on the localstorage.token---------------------*/}
 
         {localToken ?
             (<RightContainer>
-                <Link className="headermenu" to="/map" onClick={()=>headerMainChoice("home")} style={profileMainAction === "home" ? {borderBottom: "3px solid #30ADEA"} : null} >Home</Link>
-                <Link className="headermenu" to="/upload" onClick={()=>headerMainChoice("upload")} style={profileMainAction === "upload" ? {borderBottom: "3px solid #30ADEA"} : null} >Upload</Link>
-                <Link
-                    style={profileMainAction === "profile" || profileMainAction === "info" || profileMainAction === "completed" || profileMainAction === "incomplete" ? {borderBottom: "3px solid #30ADEA"} : null}
-                    className="headermenu"
-                    onClick={()=>profileHandler(["info","profile"])}>{userSelf.first_name}'s profile</Link>
-                <Link className="headermenu" to="/about" onClick={()=>headerMainChoice("about")} style={profileMainAction === "about" ? {borderBottom: "3px solid #30ADEA"} : null}>About</Link>
-                <LoginButton onClick={logOut}>Sign Out</LoginButton></RightContainer>) : null}
-        {localToken ? null:
-            (<RightContainer>
-                <Link className="headermenu" to="/about" onClick={()=>headerMainChoice("about")} style={profileMainAction === "about" ? {borderBottom: "3px solid #30ADEA"} : null}>About</Link>
-                <Link className="headermenu" to="/sign-up">Join</Link><Link to = '/sign-in'><LoginButton >Sign in</LoginButton></Link></RightContainer>)}
+                <SettingsIcon onClick={setModalIsOpenToTrue} src={icon}></SettingsIcon>
+
+             </RightContainer>) : null}
+
+
+{/*----------- if the user is NOT logged (so there is no token present) there is no need for the settings menu */}
+        {localToken ? null : (<RightContainer></RightContainer>)}
     </HeaderContainer>
+    <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={()=> setModalIsOpen(false)}>
+        <SettingsMenu/>
+    </Modal>
+
   </>
 }
 

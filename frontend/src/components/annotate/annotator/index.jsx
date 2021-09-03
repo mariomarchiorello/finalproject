@@ -17,7 +17,7 @@ const Annotator = () => {
         dispatch(getAllUserSamples(history));
         dispatch(getUserMeAction(history))
 
-    });
+    },[]);
 
     const currentSampelSet = useSelector((state) => state.UserReducer.allMySamples[`${state.UserReducer.allMySamples.length - 1}`]);
     console.log(" currentsampleset",currentSampelSet);

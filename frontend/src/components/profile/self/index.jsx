@@ -9,15 +9,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserMeAction } from "../../../store/actions/getUserMeAction";
 import { useHistory } from "react-router-dom";
 
+
+
 export default function MyProfile() {
+
+
+  const dispatch = useDispatch();
   const history = useHistory();
+
   useEffect(() => {
     dispatch(getUserMeAction(history));
   });
 
-  // const userSelf = useSelector((state) => state.UserReducer.userMe);
-
-  const dispatch = useDispatch();
+/*--------in "userSelf" is the information about the logged in user-------------*/
+  const userSelf = useSelector((state) => state.UserReducer.userMe);
 
   const profileHandler = (value) => {
     dispatch({ type: "PROFILE-EDIT-HANDLER", payload: value });
@@ -31,16 +36,16 @@ export default function MyProfile() {
     <div>
       <div>
         <ProfileCenterContainer>
-          {profileEdit === "info" ? <InfoSection /> : null}
-          {profileEdit === "info" ? (
+          <InfoSection />
+          {/*{profileEdit === "info" ? (
             <BottomContainer>
               <SmallBlueButton onClick={() => profileHandler("editProfile")}>Edit</SmallBlueButton>
             </BottomContainer>
-          ) : null}
+          ) : null}*/}
 
-          {profileEdit === "editProfile" ? <EditProfileSection /> : null}
+          <EditProfileSection />
 
-          {profileEdit === "changePassword" ? <EditPasswordSection /> : null}
+          {/*{profileEdit === "changePassword" ? <EditPasswordSection /> : null}*/}
         </ProfileCenterContainer>
       </div>
     </div>

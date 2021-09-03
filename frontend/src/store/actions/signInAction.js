@@ -27,7 +27,7 @@ export const signInAction = (credentials, history) => {
         // console.log("IN DA ACTION", user)
         dispatch(action,user);
         if(data.access)localStorage.setItem("token", data.access);
-        history.push('/map')
+        history.push('/start')
         }else {
             alert('something went wrong please enter the correct information or create an account ')
         }
